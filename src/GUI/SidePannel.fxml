@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.layout.VBox?>
+
+
+<VBox fx:id="pan" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="135.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.SidePannelController">
+   <children>
+      <JFXButton contentDisplay="TOP" mnemonicParsing="false" prefHeight="400.0" prefWidth="160.0" styleClass="toolbar-button" text="Add Member" textAlignment="CENTER">
+         <graphic>
+            <FontAwesomeIconView glyphName="USER" size="25" />
+         </graphic>
+      </JFXButton>
+      <JFXButton contentDisplay="TOP" mnemonicParsing="false" prefHeight="400.0" prefWidth="160.0" styleClass="toolbar-button" text="Add Match" textAlignment="CENTER">
+         <graphic>
+            <FontAwesomeIconView glyphName="FUTBOL_ALT" size="25" />
+         </graphic>
+      </JFXButton>
+      <JFXButton contentDisplay="TOP" mnemonicParsing="false" prefHeight="400.0" prefWidth="160.0" styleClass="toolbar-button" text="Match List" textAlignment="CENTER">
+         <graphic>
+            <FontAwesomeIconView glyphName="TABLE" size="25" />
+         </graphic>
+      </JFXButton>
+      <JFXButton contentDisplay="TOP" mnemonicParsing="false" prefHeight="400.0" prefWidth="160.0" styleClass="toolbar-button" text="Stade List" textAlignment="CENTER">
+         <graphic>
+            <FontAwesomeIconView glyphName="TABLE" size="25" />
+         </graphic>
+      </JFXButton>
+   </children>
+</VBox>

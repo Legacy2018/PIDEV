@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXDrawer?>
+<?import com.jfoenix.controls.JFXHamburger?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="444.0" prefWidth="711.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ToolbarController">
+   <children>
+      <BorderPane layoutX="47.0" layoutY="1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="443.0" prefWidth="665.0" style="-fx-background-color: transparent;">
+         <center>
+            <AnchorPane prefHeight="437.0" prefWidth="665.0" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fitHeight="444.0" fitWidth="756.0" layoutX="-47.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Ressource/thumb2-2018-fifa-world-cup-4k-russia-2018-soccer-fifa.jpg" />
+                     </image>
+                  </ImageView>
+                  <AnchorPane layoutX="-48.0" layoutY="-1.0" prefHeight="443.0" prefWidth="712.0" style="-fx-background-color: rgba(0, 0, 0,0.5);" />
+                  <AnchorPane layoutX="-32.0" layoutY="16.0" prefHeight="417.0" prefWidth="687.0" style="-fx-background-color: rgba(34, 49, 63,0.7);">
+                     <children>
+                        <JFXHamburger fx:id="Sp" alignment="CENTER_RIGHT" layoutX="-4.0" layoutY="-10.0" />
+                     </children></AnchorPane>
+               </children>
+            </AnchorPane>
+         </center>
+      </BorderPane>
+      <JFXDrawer fx:id="SidePannel" layoutX="-1.0" layoutY="26.0" prefHeight="399.0" prefWidth="135.0" />
+   </children>
+</AnchorPane>
