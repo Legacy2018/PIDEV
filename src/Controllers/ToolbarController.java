@@ -23,6 +23,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
 /**
@@ -36,6 +38,20 @@ public class ToolbarController implements Initializable {
     private JFXDrawer SidePannel;
     @FXML
     private JFXHamburger Sp;
+    @FXML
+    private AnchorPane rootPane;
+    @FXML
+    private HBox boxMenus;
+    @FXML
+    private AnchorPane paneUsers;
+    @FXML
+    private AnchorPane paneTickets;
+    @FXML
+    private AnchorPane paneBuses;
+    @FXML
+    private AnchorPane paneDrivers;
+    @FXML
+    private StackPane fabsContainer;
 
    
     /**
@@ -50,10 +66,10 @@ public class ToolbarController implements Initializable {
         try {
             VBox SP = FXMLLoader.load(getClass().getResource("/GUI/SidePannel.fxml"));
 
-            Scene sceneAffichage = new Scene(SP);
-
-            sceneAffichage.getStylesheets().add(getClass().getResource("/Asset/Style.css").toExternalForm());
-
+            
+            
+            SP.getStylesheets().add(getClass().getResource("/Asset/Style.css").toExternalForm());
+            
             SidePannel.setSidePane(SP);
 
         } catch (IOException ex) {
@@ -73,5 +89,22 @@ public class ToolbarController implements Initializable {
             }
         });
     }
+
+    @FXML
+    private void switchToUsers(MouseEvent event) {
+    }
+
+    @FXML
+    private void switchToTickets(MouseEvent event) {
+    }
+
+    @FXML
+    private void switchToBuses(MouseEvent event) {
+    }
+
+    @FXML
+    private void switchToDrivers(MouseEvent event) {
+    }
+
     
 }

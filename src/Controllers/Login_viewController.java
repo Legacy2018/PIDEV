@@ -75,7 +75,7 @@ public class Login_viewController implements Initializable {
                 else
         root = FXMLLoader.load(getClass().getResource("/GUI/DashBord.fxml"));
         Scene scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("/Asset/Style.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/Asset/MainFram.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
                 }
