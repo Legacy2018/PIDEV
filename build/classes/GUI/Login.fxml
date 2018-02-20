@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="368.0" prefWidth="586.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Login_viewController">
+   <children>
+      <ImageView pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Ressource/thumb2-2018-fifa-world-cup-4k-russia-2018-soccer-fifa.jpg" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="-1.0" layoutY="1.0" prefHeight="443.0" prefWidth="712.0" style="-fx-background-color: rgba(0, 0, 0,0.5);" />
+      <AnchorPane layoutX="400.0" layoutY="51.0" prefHeight="342.0" prefWidth="284.0" style="-fx-background-color: rgba(34, 49, 63,0.7);">
+         <children>
+            <Label fx:id="Fauxmail" layoutX="242.0" layoutY="162.0" />
+            <Label layoutX="76.0" layoutY="53.0" style="-fx-font: white;" text="Login" textFill="WHITE">
+               <font>
+                  <Font size="37.0" />
+               </font>
+            </Label>
+            <Label fx:id="accees" layoutX="14.0" layoutY="133.0" prefHeight="17.0" prefWidth="215.0" textFill="WHITE" />
+            <JFXTextField fx:id="ID" layoutX="14.0" layoutY="159.0" onKeyPressed="#Veriflogs" onKeyReleased="#Veriflog" onKeyTyped="#Verif" prefHeight="26.0" prefWidth="215.0" promptText="Username/Email" style="-fx-color: #ffffff;" unFocusColor="#834949" />
+            <JFXPasswordField fx:id="password" layoutX="14.0" layoutY="208.0" prefHeight="26.0" prefWidth="215.0" promptText="Password" />
+            <JFXButton fx:id="submit" layoutX="196.0" layoutY="277.0" onAction="#Log" text="Login" />
+         </children>
+      </AnchorPane>
+      <Label layoutX="106.0" layoutY="181.0" style="-fx-font: white;" text="Pas encore inscrit ?" textFill="WHITE">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="signinbtn" layoutX="172.0" layoutY="222.0" onAction="#Sign" text="Sign in" />
+   </children>
+</AnchorPane>

@@ -8,7 +8,7 @@ import com.sun.org.apache.xerces.internal.impl.xpath.regex.Match;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-
+import services.ServiceUtilisateur;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -79,7 +79,7 @@ public class TicketDAO implements ITicketDAO {
                t.setIdMatch(new MatchDAO().chercherMatchParId(resultat.getInt(5)));
 
                // t.setIdMatch(new Match (resultSet2.getInt(1),resultSet2.getString(5),resultSet2.getString(7),resultSet2.getString(6),resultSet2.getString(3),resultSet2.getString(4)));
-                t.setIdUser(new ServiceUtilisateur().chercherUserParId(resultat.getInt(6)));
+                t.setIdUser(new ServiceUtilisateur().findUtilisateurbyID(resultat.getInt(6)));
                 System.out.println(t);
                 listTicket.add(t);
             }
