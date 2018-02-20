@@ -32,6 +32,12 @@ public class Fos_User {
         this.role = role;
     }
 
+     public Fos_User(int id) {
+        this.id = id;
+    }
+
+   
+
     public int getId() {
         return id;
     }

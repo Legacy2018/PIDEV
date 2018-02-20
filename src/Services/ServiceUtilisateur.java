@@ -73,6 +73,33 @@ public class ServiceUtilisateur extends ServiceFos_User {
         return null;
         }
     }
+    public Utilisateur findUtilisateurbyID(int id)
+    {
+        Fos_User fu=findFos_UserbyID(id);
+        if(fu==null)
+        {
+          
+            return null;
+        }
+        else
+        {
+             try
+        { ResultSet res= st.executeQuery("Select * from utilisateur where id='"+fu.getId()+"';");
+          if(res.next())
+          {
+              return new Utilisateur(res.getInt("id"), res.getString("position"), res.getString("telephone"), false, res.getString("nom"),res.getString("prenom") , res.getString("date_de_naissances"),fu);
+          }
+          else
+          { 
+              return null;
+          }
+        }
+        catch (SQLException ex) {
+            System.out.println(ex);
+        }
+        return null;
+        }
+    }
     public boolean MailExiste(String mail)
     {
          try
