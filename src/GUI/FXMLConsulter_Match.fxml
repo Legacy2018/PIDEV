@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="728.0" prefWidth="1015.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Consulter_Match">
+    <stylesheets>
+        
+    </stylesheets>
+   <children>
+      <TableView fx:id="t" layoutX="-2.0" layoutY="142.0" prefHeight="537.0" prefWidth="987.0">
+         <columns>
+            <TableColumn fx:id="Equipe1_2" prefWidth="129.0" text="Equipe1" />
+            <TableColumn fx:id="Equipe2_2" prefWidth="139.0" text="Equipe 2" />
+            <TableColumn fx:id="st_2" prefWidth="156.0" text="Stade" />
+            <TableColumn fx:id="ph_2" prefWidth="142.0" text="phase" />
+            <TableColumn fx:id="dt_2" prefWidth="107.0" text="date" />
+            <TableColumn fx:id="h_2" prefWidth="97.0" text="heure" />
+            <TableColumn fx:id="sc_2" prefWidth="122.0" text="score" />
+            <TableColumn fx:id="sc_21" prefWidth="122.0" text="score2" />
+         </columns>
+      </TableView>
+      <JFXButton fx:id="d" layoutX="548.0" layoutY="26.0" onAction="#d" prefHeight="44.0" prefWidth="128.0" text="par date" />
+      <JFXTextField fx:id="phs" layoutX="196.0" layoutY="86.0" onAction="#pha" prefHeight="32.0" prefWidth="170.0" />
+      <JFXDatePicker fx:id="dta" layoutX="555.0" layoutY="86.0" prefHeight="31.0" prefWidth="154.0" />
+      <JFXButton fx:id="AC" layoutX="30.0" layoutY="29.0" onMouseClicked="#ac" prefHeight="39.0" prefWidth="128.0" text="Accueil" />
+      <JFXButton layoutX="840.0" layoutY="27.0" onMouseClicked="#par" prefHeight="44.0" prefWidth="115.0" text="Par Equipe" />
+      <JFXComboBox fx:id="sa" editable="true" layoutX="840.0" layoutY="84.0" prefHeight="34.0" prefWidth="161.0" />
+      <JFXButton fx:id="pha" layoutX="217.0" layoutY="26.0" onAction="#pha" prefHeight="44.0" prefWidth="128.0" text="Par phase" />
+      <FontAwesomeIconView glyphName="MAIL_FORWARD" layoutX="43.0" layoutY="57.0" size="25" wrappingWidth="14.285714149475098" />
+   </children>
+</AnchorPane>

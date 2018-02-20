@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DBAcess;
+package DataSource;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -24,7 +24,7 @@ public class DataSource {
         try {
             
 //         Class.forName("com.mysql.jdbc.Driver");
-            con= DriverManager.getConnection("jdbc:mysql://localhost:3306/pidev_v1", "root","");
+            con= DriverManager.getConnection("jdbc:mysql://localhost:3306/pidev_v2", "root","");
             System.out.println("connexion Ok ! !");
         } catch (SQLException x) {
             

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="anchro" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.GestionJoueurController">
+    <stylesheets>
+        <URL value="@/Asset/fxml.css" />
+    </stylesheets>   
+    <children>
+        <ChoiceBox fx:id="eqchoice" layoutX="140.0" layoutY="128.0" prefHeight="25.0" prefWidth="213.0" />
+        <Button fx:id="btSupp" layoutX="433.0" layoutY="111.0" mnemonicParsing="false" onAction="#SupprimerJ" prefHeight="40.0" prefWidth="171.0" text="Supprimer" />
+        <Button fx:id="btModif" layoutX="433.0" layoutY="48.0" mnemonicParsing="false" onAction="#modifEJ" prefHeight="40.0" prefWidth="171.0" text="Modifier" />
+        <Button fx:id="btAjouter" layoutX="443.0" layoutY="300.0" mnemonicParsing="false" onAction="#AjouterJ" prefHeight="40.0" prefWidth="171.0" text="Ajouter" textOverrun="LEADING_ELLIPSIS" />
+        <Label layoutX="26.0" layoutY="68.0" text="Nom et Prenom" textFill="WHITE" />
+        <Label layoutX="50.0" layoutY="123.0" text="Equipe" textFill="WHITE" />
+        <Label layoutX="28.0" layoutY="208.0" text="Nombre de but" textFill="WHITE" />
+        <Label layoutX="28.0" layoutY="292.0" text="Nationalité" textFill="WHITE" />
+        <TableView fx:id="lstjoueur" layoutX="39.0" layoutY="465.0" onMousePressed="#chargerDonn" prefHeight="200.0" prefWidth="1046.0">
+            <columns>
+                <TableColumn fx:id="id_joueur" prefWidth="117.0" text="Identifiant" />
+                <TableColumn fx:id="nom_joueur" minWidth="3.0" prefWidth="218.0" text="Nom et Prenom" />
+                <TableColumn fx:id="pays" prefWidth="151.0" text="Equipe" />
+                <TableColumn fx:id="nbr_but" prefWidth="207.0" text="Nombre de But total" />
+                <TableColumn fx:id="position" prefWidth="182.0" text="Position" />
+                <TableColumn fx:id="nationalite" prefWidth="182.0" text="Nationalité" />
+            </columns>
+        </TableView>
+        <JFXTextField fx:id="txtnom" layoutX="140.0" layoutY="49.0" prefHeight="38.0" prefWidth="213.0" />
+        <JFXTextField fx:id="txtsearch" layoutX="1059.0" layoutY="144.0" onKeyPressed="#verifnom" promptText="Tapez votre recherche" />
+        <JFXButton fx:id="btsearch" layoutX="1029.0" layoutY="217.0" onAction="#search" prefHeight="40.0" prefWidth="213.0" text="Recherche" />
+        <JFXTextField fx:id="txtbut" accessibleRole="DECREMENT_BUTTON" layoutX="140.0" layoutY="189.0" onKeyPressed="#verifnum" prefHeight="38.0" prefWidth="213.0" />
+        <JFXTextField fx:id="txtnat" layoutX="140.0" layoutY="260.0" prefHeight="38.0" prefWidth="213.0" />
+        <Label layoutX="28.0" layoutY="351.0" text="Position" textFill="WHITE" />
+        <ButtonBar prefHeight="40.0" prefWidth="200.0" />
+        <ChoiceBox fx:id="pochoice" layoutX="140.0" layoutY="346.0" prefHeight="25.0" prefWidth="213.0" />
+        <ImageView fx:id="RECHIC" fitHeight="25.0" fitWidth="24.0" layoutX="1007.0" layoutY="151.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../Images/loupe.png" />
+            </image>
+        </ImageView>
+        <ImageView fx:id="FILTERIC" fitHeight="25.0" fitWidth="37.0" layoutX="1007.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../Images/filter.png" />
+            </image>
+        </ImageView>
+        <Label layoutX="1056.0" layoutY="23.0" prefHeight="34.0" prefWidth="245.0" text="Raffinez votre recherche" textFill="#4d4d4d" underline="true">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Label>
+        <JFXRadioButton fx:id="chkPos" layoutX="1056.0" layoutY="60.0" text="Position" textFill="WHITE" />
+        <JFXRadioButton fx:id="chkEq" layoutX="1056.0" layoutY="88.0" text="Equipe" textFill="WHITE" />
+        <JFXRadioButton fx:id="chkNat" layoutX="1056.0" layoutY="115.0" text="Equipe" textFill="WHITE" />
+      <JFXButton fx:id="acceuil" contentDisplay="TOP" layoutX="807.0" layoutY="681.0" mnemonicParsing="false" onMouseClicked="#accueil" prefHeight="72.0" prefWidth="385.0" styleClass="toolbar-button" text="Accueil" textAlignment="CENTER">
+         <graphic>
+            <FontAwesomeIconView glyphName="HOME" size="25" />
+         </graphic>
+      </JFXButton>
+    </children>
+</AnchorPane>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTimePicker?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="895.0" prefWidth="1184.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Gestion_match">
+   
+   <children>
+      <Pane layoutY="602.0" prefHeight="297.0" prefWidth="980.0">
+         <children>
+            <Label layoutX="47.0" layoutY="28.0" text="Ajouter match" textAlignment="CENTER" textFill="#fcf6f6" textOverrun="CENTER_ELLIPSIS">
+               <font>
+                  <Font name="Arial Narrow" size="25.0" />
+               </font></Label>
+            <Label layoutX="46.0" layoutY="85.0" text="Equipe1" textFill="#f8f4f4" />
+            <Label layoutX="42.0" layoutY="137.0" prefHeight="21.0" prefWidth="53.0" text="Equipe2" textFill="#fcf7f7" />
+            <Label layoutX="345.0" layoutY="75.0" prefHeight="21.0" prefWidth="53.0" text="Stades" textFill="#eeeded" />
+            <Label layoutX="350.0" layoutY="137.0" prefHeight="21.0" prefWidth="53.0" text="Phase" textFill="#f5eeee" />
+            <Label layoutX="32.0" layoutY="234.0" prefHeight="21.0" prefWidth="53.0" text="date" textFill="#fcf8f8" />
+            <Label layoutX="325.0" layoutY="214.0" prefHeight="21.0" prefWidth="53.0" text="heure" textFill="#f8f5f5" />
+            <JFXDatePicker fx:id="date" layoutX="141.0" layoutY="211.0" prefHeight="38.0" prefWidth="132.0" />
+            <JFXTimePicker fx:id="ta" layoutX="449.0" layoutY="206.0" prefHeight="38.0" prefWidth="210.0" />
+            <JFXComboBox fx:id="phase" editable="true" layoutX="449.0" layoutY="141.0" prefHeight="34.0" prefWidth="210.0" />
+            <JFXComboBox fx:id="Stades" editable="true" layoutX="449.0" layoutY="79.0" prefHeight="34.0" prefWidth="210.0" />
+            <JFXComboBox fx:id="id_equipe" editable="true" layoutX="141.0" layoutY="69.0" prefHeight="34.0" prefWidth="132.0" />
+            <JFXComboBox fx:id="id_equipe2" editable="true" layoutX="141.0" layoutY="131.0" prefHeight="34.0" prefWidth="132.0" />
+            <JFXButton fx:id="btn_ajouter" contentDisplay="TOP" layoutX="699.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#ajouter_m" prefHeight="60.0" prefWidth="234.0" styleClass="toolbar-button" text="Ajouter Match" textAlignment="CENTER" textFill="#2b1313">
+               <graphic>
+                  <FontAwesomeIconView glyphName="FUTBOL_ALT" onMouseClicked="#ajouter_m" size="25" />
+               </graphic>
+            </JFXButton>
+         </children>
+      </Pane>
+      <TableView fx:id="t" layoutY="104.0" prefHeight="500.0" prefWidth="980.0">
+         <columns>
+            <TableColumn fx:id="Equipe1" prefWidth="99.0" text="Equipe1" />
+            <TableColumn fx:id="sc" prefWidth="65.0" text="Score1" />
+            <TableColumn fx:id="sc1" prefWidth="65.0" text="Score2" />
+            <TableColumn fx:id="Equipe2" prefWidth="143.0" text="Equipe 2" />
+            <TableColumn fx:id="Stade" prefWidth="126.0" text="Stade" />
+            <TableColumn fx:id="ph" prefWidth="91.0" text="phase" />
+            <TableColumn fx:id="dt" prefWidth="133.0" text="date" />
+            <TableColumn fx:id="h" prefWidth="192.0" text="heure" />
+         </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+      <ImageView fitHeight="103.0" fitWidth="248.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/logo.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="38.0" fitWidth="48.0" layoutX="329.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/gestMatch.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="391.0" layoutY="49.0" prefHeight="48.0" prefWidth="251.0" text="Gestion des matches" textFill="#f8f4f4">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="24.0" />
+         </font>
+      </Label>
+      <VBox layoutX="978.0" prefHeight="908.0" prefWidth="206.0" styleClass="toolbar-container" stylesheets="@fxml.css">
+         <children>
+            <JFXButton fx:id="c_phase1" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#c_phase" prefHeight="90.0" prefWidth="206.0" styleClass="toolbar-button" text="Consulter (date/phase)" textAlignment="CENTER">
+               <graphic>
+                  <FontAwesomeIconView glyphName="CALENDAR_ALT" size="25" />
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="Supprimer" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#Supprimer" prefHeight="155.0" prefWidth="245.0" styleClass="toolbar-button" text="Supprimer" textAlignment="CENTER">
+               <graphic>
+                  <FontAwesomeIconView glyphName="TRASH" size="25" />
+               </graphic>
+            </JFXButton>
+            <JFXDatePicker fx:id="date1" prefHeight="65.0" prefWidth="206.0" />
+            <JFXButton fx:id="mo" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#modifier" prefHeight="96.0" prefWidth="206.0" styleClass="toolbar-button" text="Modifier Date" textAlignment="CENTER">
+               <graphic>
+                  <FontAwesomeIconView glyphName="CALENDAR_TIMES_ALT" size="25" />
+               </graphic>
+            </JFXButton>
+            <JFXComboBox fx:id="score1" editable="true" prefHeight="79.0" prefWidth="206.0" promptText="score1" />
+            <JFXComboBox fx:id="score2" editable="true" prefHeight="79.0" prefWidth="206.0" promptText="score2" />
+            <JFXButton fx:id="mo1" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#modifier_C" prefHeight="102.0" prefWidth="206.0" styleClass="toolbar-button" text="Modifier Score" textAlignment="CENTER">
+               <graphic>
+                  <FontAwesomeIconView glyphName="FUTBOL_ALT" size="25" />
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="mo11" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#modifier_Ca" prefHeight="103.0" prefWidth="206.0" styleClass="toolbar-button" text="Consulter Stades" textAlignment="CENTER">
+               <graphic>
+                  <ImageView fitHeight="57.0" fitWidth="71.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/gestStades.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="mo2" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#Gere_Joueur" prefHeight="104.0" prefWidth="206.0" styleClass="toolbar-button" text="Gerer Joueur" textAlignment="CENTER">
+               <graphic>
+                  <ImageView fitHeight="32.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/gestMatch.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="mo3" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#Gerer_equipe" prefHeight="170.0" prefWidth="245.0" styleClass="toolbar-button" text="Gerer equipe" textAlignment="CENTER">
+               <graphic>
+                  <ImageView fitHeight="45.0" fitWidth="102.0" onMouseClicked="#Gerer_equipe" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/gestEquipes.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
