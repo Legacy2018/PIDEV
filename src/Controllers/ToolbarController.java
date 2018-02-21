@@ -95,7 +95,14 @@ public class ToolbarController implements Initializable {
 
 
     @FXML
-    private void switchToTickets(MouseEvent event) {
+    private void switchToTickets(MouseEvent event) throws IOException {
+         Stage stage=(Stage) paneDeconnection.getScene().getWindow();
+         Parent root = FXMLLoader.load(getClass().getResource("/GUI/ListTickets.fxml"));
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("/Asset/accueilannonces.css").toExternalForm());
+        stage.setScene(scene);
+        stage.show();
+        
     }
 
     @FXML

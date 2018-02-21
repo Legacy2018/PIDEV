@@ -48,10 +48,30 @@ public class ServiceFos_User {
          
          return fu.getId();
     }
+    
     public Fos_User findFos_User(String login) 
     {
         try
         { ResultSet res= st.executeQuery("Select * from fos_User where email='"+login+"' or username='"+login+"';");
+          if(res.next())
+          {
+              return new Fos_User(res.getInt("id"), res.getString("username"), res.getString("email"), res.getString("password"), res.getBoolean("enabled"), res.getBoolean("enabled"), res.getString("roles"));
+              
+          }
+          else
+          {   
+              return null;
+          }
+        }
+        catch (SQLException ex) {
+            System.out.println(ex);
+        }
+        return null;
+    }
+    public Fos_User findFos_UserbyID(int id) 
+    {
+        try
+        { ResultSet res= st.executeQuery("Select * from fos_User where id="+id+";");
           if(res.next())
           {
               return new Fos_User(res.getInt("id"), res.getString("username"), res.getString("email"), res.getString("password"), res.getBoolean("enabled"), res.getBoolean("enabled"), res.getString("roles"));

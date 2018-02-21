@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Asset/MainFram.css</file>
             <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Controllers/ConsulterAnnoncesCollocationsController.java</file>
             <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/DataSource/DataSource.java</file>
@@ -14,6 +15,25 @@
             <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Controllers/AfficherItineraireCovoiturageController.java</file>
             <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Controllers/EnvoyerMailController.java</file>
             <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Entities/match.java</file>
+=======
+            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Services/TicketDAO.java</file>
+            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Entities/Fos_User.java</file>
+            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Main/PIDEV_V1.java</file>
+            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Controllers/Login_viewController.java</file>
+            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Services/ServiceUtilisateur.java</file>
+            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Controllers/ListTicketsController.java</file>
+            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Asset/Style.css</file>
+            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/GUI/SidePannel.fxml</file>
+            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Asset/MainFram.css</file>
+            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Entities/Utilisateur.java</file>
+            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Controllers/ToolbarController.java</file>
+            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Controllers/SidePannelController.java</file>
+            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Services/ServiceReclamation.java</file>
+            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/GUI/Login.fxml</file>
+            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/DataSource/DataSource.java</file>
+            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Services/ServiceFos_User.java</file>
+            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/GUI/toolbar.fxml</file>
+>>>>>>> 093524cc9d05f2d30abd77dfa2080c5b4acd7d97
         </group>
     </open-files>
 </project-private>

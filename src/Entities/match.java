@@ -34,6 +34,10 @@ public class match {
         this.phase = phase;
     
     }
+     public match(int idMatch) {
+        this.idMatch = idMatch;
+    }
+    
 
     public match(int score,int score2) {
         this.score = score;
