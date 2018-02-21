@@ -119,13 +119,13 @@ public class ModifierTicketController implements Initializable {
         System.out.println(ticketSelectionne);
         id_categorie.setItems(lstcat);
         id_nbticket.setItems(lstnb);
-        id_equipe1.setText(ticketSelectionne.getIdMatch().getEquipe1());
-        id_equipe2.setText(ticketSelectionne.getIdMatch().getEquipe2());
+        id_equipe1.setText(ticketSelectionne.getIdMatch().getEquipe1().getPays());
+        id_equipe2.setText(ticketSelectionne.getIdMatch().getEquipe2().getPays());
         id_heur.setText(ticketSelectionne.getIdMatch().getHeureMatch());
         id_date.setText(ticketSelectionne.getIdMatch().getDateMatch());
         id_nbticket.setValue(ticketSelectionne.getNbrTicket());
         id_prix.setText(Float.toString(ticketSelectionne.getPrix()));
-        id_stade.setText(ticketSelectionne.getIdMatch().getStade());
+        id_stade.setText(ticketSelectionne.getIdMatch().getStade().getNom_Stade());
         id_categorie.setValue(ticketSelectionne.getCategories());
 
         
@@ -165,9 +165,9 @@ id_matchht.setCellValueFactory(new PropertyValueFactory<>("idMatch"));
                 int s = tableViws.getSelectionModel().getSelectedIndex();
                 System.out.println(s);
              id_matchht.setText(Integer.toString(gr.getIdMatch()));
-               id_equipe1.setText(gr.getEquipe1());
-               id_equipe2.setText(gr.getEquipe2());
-                id_stade.setText(gr.getStade());
+               id_equipe1.setText(gr.getEquipe1().getPays());
+               id_equipe2.setText(gr.getEquipe2().getPays());
+                id_stade.setText(gr.getStade().getNom_Stade());
                // id_nbticket.setText(Integer.toString(gr.getNbTicket()));
                // id_prix.setText(Float.toString(gr.getPrix()));
                 id_date.setText(gr.getDateMatch());

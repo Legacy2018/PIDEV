@@ -24,15 +24,15 @@
             <Label fx:id="MailExiste" layoutX="194.0" layoutY="204.0" prefHeight="25.0" prefWidth="65.0" textFill="WHITE" />
             <Label fx:id="NoMatch" layoutX="194.0" layoutY="167.0" prefHeight="25.0" prefWidth="65.0" textFill="WHITE" />
             <Label fx:id="Faux" layoutX="12.0" layoutY="368.0" prefHeight="17.0" prefWidth="149.0" textFill="WHITE" />
-            <JFXTextField fx:id="nom" layoutX="51.0" layoutY="15.0" promptText="Nom" />
-            <JFXTextField fx:id="pnom" layoutX="50.0" layoutY="54.0" promptText="Prénom" />
-            <JFXTextField fx:id="Username" layoutX="50.0" layoutY="91.0" onKeyReleased="#Vuser" promptText="Username" />
-            <JFXPasswordField fx:id="password" layoutX="50.0" layoutY="130.0" prefHeight="25.0" prefWidth="135.0" promptText="Password" />
-            <JFXPasswordField fx:id="Cpassword" layoutX="50.0" layoutY="167.0" onKeyReleased="#Vpass" promptText="Conform password" />
-            <JFXTextField fx:id="Email" layoutX="49.0" layoutY="204.0" onKeyReleased="#Vmail" promptText="Email" />
+            <JFXTextField fx:id="nom" layoutX="51.0" layoutY="15.0" prefHeight="17.0" prefWidth="149.0" promptText="Nom" />
+            <JFXTextField fx:id="pnom" layoutX="50.0" layoutY="54.0" prefHeight="25.0" prefWidth="149.0" promptText="Prénom" />
+            <JFXTextField fx:id="Username" layoutX="50.0" layoutY="91.0" onKeyReleased="#Vuser" prefHeight="25.0" prefWidth="149.0" promptText="Username" />
+            <JFXPasswordField fx:id="password" layoutX="50.0" layoutY="130.0" prefHeight="25.0" prefWidth="149.0" promptText="Password" />
+            <JFXPasswordField fx:id="Cpassword" layoutX="50.0" layoutY="167.0" onKeyReleased="#Vpass" prefHeight="17.0" prefWidth="149.0" promptText="Conform password" />
+            <JFXTextField fx:id="Email" layoutX="49.0" layoutY="204.0" onKeyReleased="#Vmail" prefHeight="25.0" prefWidth="149.0" promptText="Email" />
             <JFXToggleButton fx:id="Fumeur" layoutX="53.0" layoutY="242.0" onAction="#chagefum" text="Fummeur?" />
-            <JFXTextField fx:id="Telephone" layoutX="50.0" layoutY="304.0" prefHeight="25.0" prefWidth="135.0" promptText="Téléphone" />
-            <JFXButton fx:id="add" layoutX="192.0" layoutY="363.0" onAction="#add" text="Inscription" />
+            <JFXTextField fx:id="Telephone" layoutX="51.0" layoutY="300.0" prefHeight="17.0" prefWidth="149.0" promptText="Téléphone" />
+            <JFXButton fx:id="add" layoutX="191.0" layoutY="356.0" onAction="#add" text="Inscription" />
          </children>
       </AnchorPane>
       <Label layoutX="116.0" layoutY="191.0" style="-fx-font: white;" text="Déja inscrit ?" textFill="WHITE">
