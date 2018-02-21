@@ -1,6 +1,6 @@
 package entities;
 
-import entites.Fos_User;
+import Entities.Fos_User;
 import java.sql.Date;
 import Entities.match;
 import java.util.Objects;

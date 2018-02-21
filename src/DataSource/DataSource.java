@@ -22,9 +22,12 @@ public class DataSource {
 
     private DataSource() {
         try {
-            
-//         Class.forName("com.mysql.jdbc.Driver");
+                  //         Class.forName("com.mysql.jdbc.Driver");
+
+
             con= DriverManager.getConnection("jdbc:mysql://localhost:3306/pidev_v2", "root","");
+        
+
             System.out.println("connexion Ok ! !");
         } catch (SQLException x) {
             

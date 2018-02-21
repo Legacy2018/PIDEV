@@ -5,9 +5,18 @@
  */
 package Controllers;
 
-import entites.Utilisateur;
+import com.jfoenix.controls.JFXButton;
+import Entities.Utilisateur;
+import java.io.File;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
+import java.nio.file.CopyOption;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -24,7 +33,10 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import services.ServiceUtilisateur;
 
@@ -64,6 +76,12 @@ public class sign implements Initializable {
     @FXML
     private Button logbtn;
     private Label fum;
+    @FXML
+    private JFXButton loadImg;
+    @FXML
+    private ImageView profile;
+    @FXML
+    private Label imgpath;
 
     /**
      * Initializes the controller class.
@@ -71,13 +89,14 @@ public class sign implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-      
+     // profile.setImage(new Image(getClass().getResource("../Ressource/Tunisia$20-$20Chott$20el$20Jerid.jpg").toString(), true));
         
     }    
 
     @FXML
     private void add(ActionEvent event) {
        // System.out.println(Fumeur.selectedProperty().get());
+       System.out.println("hetha houwa"+imgpath.getText());
         if(new ServiceUtilisateur().UsernameExiste(Username.getText())) {
             Faux.setText("Verifier vos coordonnée");
             return;
@@ -87,9 +106,10 @@ public class sign implements Initializable {
         } else if(!password.getText().equals(Cpassword.getText())) {
             Faux.setText("Verifier vos coordonnée");
             return;
-        } else
-            
-        new ServiceUtilisateur().ajouter(new Utilisateur(0, null, Telephone.getText(), Fumeur.selectedProperty().get(), nom.getText(), pnom.getText(), null, 0, Username.getText(), Email.getText(), password.getText(), false, false, "user"));
+        }
+        
+        
+        new ServiceUtilisateur().ajouter(new Utilisateur(0, null, Telephone.getText(), Fumeur.selectedProperty().get(), nom.getText(), pnom.getText(), null, 0, Username.getText(), Email.getText(), password.getText(), false, false, "user",imgpath.getText()));
         Faux.setText("Inscription Confirmer");
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Inscription");
@@ -120,18 +140,47 @@ public class sign implements Initializable {
 
     @FXML
     private void log(ActionEvent event) throws IOException {
-          Parent root = FXMLLoader.load(getClass().getResource("/GUI/Login_view.fxml"));
-        
+        Parent root = FXMLLoader.load(getClass().getResource("/GUI/Login.fxml"));
+        Stage stage=(Stage) Faux.getScene().getWindow();
         Scene scene = new Scene(root);
-        Stage stage = (Stage) logbtn.getScene().getWindow();
+        scene.getStylesheets().add(getClass().getResource("/Asset/Style.css").toExternalForm());
         stage.setScene(scene);
-        
         stage.show();
+      
+           
+       
     }
 
     @FXML
     private void chagefum(ActionEvent event) {
        
+    }
+
+    @FXML
+    private void filechooser(ActionEvent event) throws URISyntaxException, IOException {
+        
+         FileChooser fileChooser = new FileChooser();
+            File file;
+              //Set extension filter
+            fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("jpg files (*.jpg)", "*.jpg"));
+            fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("png files (*.png)", "*.png"));  
+         
+//Show open file dialog
+              file = fileChooser.showOpenDialog(null);
+            
+            
+           Path from = Paths.get(file.toURI());
+        Path to = Paths.get("C:\\Users\\Katouchi\\Documents\\GitHub\\PIDEV1\\src\\Ressource\\"+file.getName());
+        CopyOption[] options = new CopyOption[]{
+                StandardCopyOption.REPLACE_EXISTING,
+                StandardCopyOption.COPY_ATTRIBUTES
+        };
+        Files.copy(from, to, options);
+        
+        
+        imgpath.setText("../Ressource/"+file.getName());
+            profile.setImage(new Image(getClass().getResource("../Ressource/"+file.getName()).toString(), true));
+
     }
 
     

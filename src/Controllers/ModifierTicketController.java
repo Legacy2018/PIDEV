@@ -12,7 +12,7 @@ import IServices.ITicketDAO;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
-import entites.Fos_User;
+import Entities.Fos_User;
 import Entities.match;
 import entities.Ticket;
 
