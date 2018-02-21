@@ -23,6 +23,7 @@ import Entities.Equipe;
 import Entities.match;
 import Entities.stade;
 
+
 import java.io.IOException;
 import javafx.scene.control.*;
 import java.net.URL;
@@ -40,6 +41,7 @@ import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.Event;
@@ -55,6 +57,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import org.controlsfx.control.Notifications;
 
 
 /**
@@ -81,10 +84,10 @@ public class Gestion_match implements Initializable {
     private JFXButton mo;
 
     @FXML
-    private TableColumn<?, String> Equipe1;
+    private TableColumn<match, String> Equipe1;
 
     @FXML
-    private TableColumn<?, String> Equipe2;
+    private TableColumn<match, String> Equipe2;
 
     @FXML
     private TableColumn<?, ?> ph;
@@ -98,7 +101,7 @@ public class Gestion_match implements Initializable {
     private TableColumn<?, ?> sc1;
     
     @FXML
-    private TableColumn<?, ?> Stade;
+    private TableColumn<match, String> Stade;
     @FXML
     private TableColumn<?, ?> h;
     @FXML
@@ -158,7 +161,7 @@ public class Gestion_match implements Initializable {
        s1=s.ConsulterStadeList();
       eq = e.selectEquipes();
       eq1=eq.stream().map(e->e.getPays()).collect(Collectors.toList());
-      eq2=eq.stream().map(e->e.getId_equipe()).collect(Collectors.toList());
+      eq2=eq.stream().map(e->e.getIdEquipe()).collect(Collectors.toList());
      
       s2=s1.stream().map(e->e.getNom_Stade()).collect(Collectors.toList());
       s3=s1.stream().map(e->e.getId_stade()).collect(Collectors.toList());
@@ -324,6 +327,10 @@ public class Gestion_match implements Initializable {
         String s = date1.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
     
        M.modifierDateMatch(s, m6);
+       Notifications.create()
+           .title("Changement du date")
+              .text("le match est reporté pour "+s)
+             .showWarning();
       
        t.refresh();
        
@@ -344,9 +351,28 @@ public class Gestion_match implements Initializable {
         
 
         match  m6 =  t.getSelectionModel().getSelectedItem();
+        String e1= t.getSelectionModel().getSelectedItem().getEquipe1().getPays();
+        String e2= t.getSelectionModel().getSelectedItem().getEquipe2().getPays();
         String c =score1.getValue();
         String c2=score2.getValue();
         M.modifierMatchScore(c,c2, m6);
+        if(Integer.parseInt(c)>Integer.parseInt(c2)){
+         Notifications.create()
+           .title("Changement du score")
+              .text("l'equipe "+e1+"a gagné")
+             .showInformation();}
+        else if (Integer.parseInt(c)<Integer.parseInt(c2)){
+             Notifications.create()
+           .title("Changement du score")
+              .text("l'equipe "+e2+"a gagné")
+             .showInformation();
+        }
+        else {
+             Notifications.create()
+           .title("Changement du score")
+              .text("Null")
+             .showInformation();
+        }
         t.refresh();
        
        
@@ -393,10 +419,10 @@ public class Gestion_match implements Initializable {
             data.add(e);
         });
        t.setItems(data);
-       Equipe1.setCellValueFactory(new PropertyValueFactory<>("equipe1"));
-       Equipe2.setCellValueFactory(new PropertyValueFactory<>("equipe2"));
-       //mchkla lehna
-       Stade.setCellValueFactory(new PropertyValueFactory<>("stade"));
+       Equipe1.setCellValueFactory(c-> new SimpleStringProperty(c.getValue().getEquipe1().getPays()));
+       Equipe2.setCellValueFactory(c-> new SimpleStringProperty(c.getValue().getEquipe2().getPays()));
+       
+       Stade.setCellValueFactory(c-> new SimpleStringProperty(c.getValue().getStade().getNom_Stade()));
        ph.setCellValueFactory(new PropertyValueFactory<>("phase"));
        h.setCellValueFactory(new PropertyValueFactory<>("heureMatch"));
        dt.setCellValueFactory(new PropertyValueFactory<>("dateMatch"));

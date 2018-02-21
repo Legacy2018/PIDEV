@@ -351,7 +351,7 @@ public class GestionEquipeController implements Initializable {
                 System.out.println("IN");
             }
             Equipe eq = se.AfficherEquipe(eqchoice.getSelectionModel().selectedItemProperty().getValue().toString());
-            int id = eq.getId_equipe();
+            int id = eq.getIdEquipe();
             Equipe e = new Equipe(txtpays.getText(),
                     etat,
                     cbpahse.getSelectionModel().selectedItemProperty().getValue().toString(),

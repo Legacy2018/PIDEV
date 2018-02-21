@@ -151,7 +151,8 @@ public class MatchDAO implements IMatchDAO {
                 match.setIdMatch(resultat.getInt(1));
                 match.setScore(resultat.getInt(2));
                 match.setScore2(resultat.getInt(3));
-                
+                Equipe e = new Equipe();
+            //    e= resultat.getString(4);
                 match.setEquipe1(iEquipeDao.AfficherEquipe(resultat.getString(4)));
                 match.setEquipe2(iEquipeDao.AfficherEquipe(resultat.getString(5)));
                 match.setDateMatch(resultat.getString(6));
@@ -200,7 +201,7 @@ public class MatchDAO implements IMatchDAO {
             return listeMatch;
         } catch (SQLException ex) {
             //Logger.getLogger(PersonneDao.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("erreur lors du chargement des Poules " + ex.getMessage());
+            System.out.println("erreur lors du chargement  " + ex.getMessage());
             return null;
         }
     }
@@ -235,7 +236,7 @@ public class MatchDAO implements IMatchDAO {
             return listeMatch;
         } catch (SQLException ex) {
             //Logger.getLogger(PersonneDao.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("erreur lors du chargement des Poules " + ex.getMessage());
+            System.out.println("erreur lors du chargement  " + ex.getMessage());
             return null;
         }
     }
@@ -268,7 +269,7 @@ public class MatchDAO implements IMatchDAO {
             return listeMatch;
         } catch (SQLException ex) {
             //Logger.getLogger(PersonneDao.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("erreur lors du chargement des Poules " + ex.getMessage());
+            System.out.println("erreur lors du chargement " + ex.getMessage());
             return null;
         }
     }
@@ -299,7 +300,7 @@ public class MatchDAO implements IMatchDAO {
             return match;
         } catch (SQLException ex) {
             //Logger.getLogger(PersonneDao.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("erreur lors du chargement des Poules " + ex.getMessage());
+            System.out.println("erreur lors du chargement " + ex.getMessage());
             return null;
         }
     }
@@ -307,7 +308,7 @@ public class MatchDAO implements IMatchDAO {
     @Override
     public List<match> chercherMatchParEquipe(Equipe equipe) {
         List<match> listeMatch = new ArrayList<>();
-        String requete = "select * from matchs where id_equipe1='" + equipe.getId_equipe() + "';";
+        String requete = "select * from matchs where id_equipe1='" + equipe.getIdEquipe() + "';";
         try {
             ste = connection.createStatement();
             ResultSet resultat = ste.executeQuery(requete);

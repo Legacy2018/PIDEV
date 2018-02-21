@@ -3,6 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package Controllers;
 
 import com.jfoenix.controls.JFXButton;
@@ -37,6 +42,7 @@ import javafx.scene.layout.AnchorPane;
 import Services.serviceEquipe;
 import Services.serviceJoueur;
 import java.io.IOException;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -82,7 +88,7 @@ public class GestionJoueurController implements Initializable {
     private TableColumn<?, ?> nom_joueur;
 
     @FXML
-    private TableColumn<?, ?> pays;
+    private TableColumn<Joueur, String> pays;
 
     @FXML
     private TableColumn<?, ?> nbr_but;
@@ -110,6 +116,8 @@ public class GestionJoueurController implements Initializable {
 
     @FXML
     private JFXTextField txtnat;
+     @FXML
+    private JFXButton acceuil;
 
     @FXML
     void AjouterJ(ActionEvent event) {
@@ -125,8 +133,9 @@ public class GestionJoueurController implements Initializable {
                     txtnat.getText(),
                     Integer.parseInt(txtbut.getText()),
                     pochoice.getSelectionModel().selectedItemProperty().getValue().toString(),
-                    e.getId_equipe(),
-                    pays.getText());
+                    e
+            // , pays.getText()
+            );
 
             Joueur j;
             System.out.println("mon id" + j1.getId_joueur());
@@ -168,22 +177,11 @@ public class GestionJoueurController implements Initializable {
             alert.showAndWait();
         }
     }
-    @FXML
-    void accueil(MouseEvent event) throws IOException {
-         Parent creerGroupe = FXMLLoader.load(getClass().getResource("/Gui/FXMLGestion_Match.fxml"));
-        Scene sceneAffichage = new Scene(creerGroupe);
-        sceneAffichage.getStylesheets().add(getClass().getResource("../Asset/fxml.css").toExternalForm());
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(sceneAffichage);
-        stage.show();
-
-
-    }
 
     @FXML
     void chargerDonn(MouseEvent event) {
         Joueur j = (Joueur) lstjoueur.getSelectionModel().selectedItemProperty().getValue();
-        System.out.println("jouer +" + j);
+
         txtnom.setText(j.getNom_joueur());
         int nb = j.getNbr_but();
         txtbut.setText(String.valueOf(nb));
@@ -191,8 +189,9 @@ public class GestionJoueurController implements Initializable {
         // txtpos.setText(j.getPosition());
         txtnat.setText(j.getNationalite());
 
-        eqchoice.setValue(j.getPays());
+        eqchoice.setValue(j.getId_equipe().getPays());
         pochoice.setValue(j.getPosition());
+        System.out.println("joueuuurr id +" + j.getId_equipe().getPays());
 
     }
 
@@ -266,7 +265,7 @@ public class GestionJoueurController implements Initializable {
                 Equipe e = se.AfficherEquipe(eq);
                 j.setNom_joueur(txtnom.getText());
                 j.setNationalite(txtnat.getText());
-                j.setId_equipe(e.getId_equipe());
+                j.setId_equipe(e);
                 j.setNbr_but(Integer.parseInt(txtbut.getText()));
                 j.setPosition(pochoice.getSelectionModel().selectedItemProperty().getValue().toString());
                 System.out.println("id eq +" + eq);
@@ -318,7 +317,8 @@ public class GestionJoueurController implements Initializable {
             lstjoueur.getItems().addAll(jEq);
             id_joueur.setCellValueFactory(new PropertyValueFactory<>("id_joueur"));
             nom_joueur.setCellValueFactory(new PropertyValueFactory<>("nom_joueur"));
-            pays.setCellValueFactory(new PropertyValueFactory<>("pays"));
+            pays.setCellValueFactory(e -> new SimpleStringProperty(e.getValue().getId_equipe().getPays()));
+
             nbr_but.setCellValueFactory(new PropertyValueFactory<>("nbr_but"));
             position.setCellValueFactory(new PropertyValueFactory<>("position"));
             nationalite.setCellValueFactory(new PropertyValueFactory<>("nationalite"));
@@ -330,7 +330,8 @@ public class GestionJoueurController implements Initializable {
                 lstjoueur.getItems().addAll(jEq);
                 id_joueur.setCellValueFactory(new PropertyValueFactory<>("id_joueur"));
                 nom_joueur.setCellValueFactory(new PropertyValueFactory<>("nom_joueur"));
-                pays.setCellValueFactory(new PropertyValueFactory<>("pays"));
+                pays.setCellValueFactory(e -> new SimpleStringProperty(e.getValue().getId_equipe().getPays()));
+
                 nbr_but.setCellValueFactory(new PropertyValueFactory<>("nbr_but"));
                 position.setCellValueFactory(new PropertyValueFactory<>("position"));
                 nationalite.setCellValueFactory(new PropertyValueFactory<>("nationalite"));
@@ -342,7 +343,8 @@ public class GestionJoueurController implements Initializable {
                 lstjoueur.getItems().addAll(jEq);
                 id_joueur.setCellValueFactory(new PropertyValueFactory<>("id_joueur"));
                 nom_joueur.setCellValueFactory(new PropertyValueFactory<>("nom_joueur"));
-                pays.setCellValueFactory(new PropertyValueFactory<>("pays"));
+                pays.setCellValueFactory(e -> new SimpleStringProperty(e.getValue().getId_equipe().getPays()));
+                ;
                 nbr_but.setCellValueFactory(new PropertyValueFactory<>("nbr_but"));
                 position.setCellValueFactory(new PropertyValueFactory<>("position"));
                 nationalite.setCellValueFactory(new PropertyValueFactory<>("nationalite"));
@@ -353,7 +355,7 @@ public class GestionJoueurController implements Initializable {
                 lstjoueur.getItems().addAll(jEq);
                 id_joueur.setCellValueFactory(new PropertyValueFactory<>("id_joueur"));
                 nom_joueur.setCellValueFactory(new PropertyValueFactory<>("nom_joueur"));
-                pays.setCellValueFactory(new PropertyValueFactory<>("pays"));
+                pays.setCellValueFactory(e -> new SimpleStringProperty(e.getValue().getId_equipe().getPays()));
                 nbr_but.setCellValueFactory(new PropertyValueFactory<>("nbr_but"));
                 position.setCellValueFactory(new PropertyValueFactory<>("position"));
                 nationalite.setCellValueFactory(new PropertyValueFactory<>("nationalite"));
@@ -363,7 +365,8 @@ public class GestionJoueurController implements Initializable {
     }
 
     public ObservableList<Joueur> getJ() {
-        ObservableList<Joueur> j = FXCollections.observableArrayList(sj.chercherParEquipe());
+        ObservableList<Joueur> j = FXCollections.observableArrayList(sj.selectJoueurs());
+
         return j;
     }
 
@@ -380,7 +383,8 @@ public class GestionJoueurController implements Initializable {
         lstjoueur.getItems().addAll(getJ());
         id_joueur.setCellValueFactory(new PropertyValueFactory<>("id_joueur"));
         nom_joueur.setCellValueFactory(new PropertyValueFactory<>("nom_joueur"));
-        pays.setCellValueFactory(new PropertyValueFactory<>("pays"));
+        pays.setCellValueFactory(e -> new SimpleStringProperty(e.getValue().getId_equipe().getPays()));
+
         nbr_but.setCellValueFactory(new PropertyValueFactory<>("nbr_but"));
         position.setCellValueFactory(new PropertyValueFactory<>("position"));
         nationalite.setCellValueFactory(new PropertyValueFactory<>("nationalite"));
@@ -411,7 +415,17 @@ public class GestionJoueurController implements Initializable {
             }
         });
     }
+@FXML
+    void accueil(MouseEvent event) throws IOException {
+         Parent creerGroupe = FXMLLoader.load(getClass().getResource("/Gui/FXMLGestion_Match.fxml"));
+        Scene sceneAffichage = new Scene(creerGroupe);
+        sceneAffichage.getStylesheets().add(getClass().getResource("../Asset/fxml.css").toExternalForm());
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(sceneAffichage);
+        stage.show();
 
+
+    }
     @FXML
     void verifnom(KeyEvent event) {
         /*
@@ -425,7 +439,8 @@ public class GestionJoueurController implements Initializable {
                 lstjoueur.getItems().addAll(jEq);
                 id_joueur.setCellValueFactory(new PropertyValueFactory<>("id_joueur"));
                 nom_joueur.setCellValueFactory(new PropertyValueFactory<>("nom_joueur"));
-                pays.setCellValueFactory(new PropertyValueFactory<>("pays"));
+                               pays.setCellValueFactory(e-> new SimpleStringProperty(e.getValue().getId_equipe().getPays()));
+
                 nbr_but.setCellValueFactory(new PropertyValueFactory<>("nbr_but"));
                 position.setCellValueFactory(new PropertyValueFactory<>("position"));
                 nationalite.setCellValueFactory(new PropertyValueFactory<>("nationalite"));
@@ -434,3 +449,6 @@ public class GestionJoueurController implements Initializable {
     }
 
 }
+    
+
+    

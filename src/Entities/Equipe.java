@@ -42,11 +42,11 @@ public class Equipe {
         this.selecteur = selecteur;
     }
 
-    public int getId_equipe() {
+    public int getIdEquipe() {
         return idEquipe;
     }
 
-    public void setId_equipe(int id_equipe) {
+    public void setIdEquipe(int id_equipe) {
         this.idEquipe = id_equipe;
     }
 

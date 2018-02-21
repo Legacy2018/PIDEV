@@ -82,7 +82,7 @@ public class Consulter_Stades implements Initializable {
 
     @FXML
     void accueil(MouseEvent event) throws IOException {
-         Parent creerGroupe = FXMLLoader.load(getClass().getResource("/Gui/FXMLGestion_Match.fxml"));
+         Parent creerGroupe = FXMLLoader.load(getClass().getResource("/GUI/FXMLGestion_Match.fxml"));
         Scene sceneAffichage = new Scene(creerGroupe);
         sceneAffichage.getStylesheets().add(getClass().getResource("../Asset/fxml.css").toExternalForm());
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -94,7 +94,7 @@ public class Consulter_Stades implements Initializable {
 
     @FXML
     void loca(MouseEvent event) throws IOException {
-       Parent creerGroupe = FXMLLoader.load(getClass().getResource("/Gui/Admin/Views/FXMLLoca.fxml"));
+       Parent creerGroupe = FXMLLoader.load(getClass().getResource("/GUI/FXMLLoca.fxml"));
         Scene sceneAffichage = new Scene(creerGroupe);
         sceneAffichage.getStylesheets().add(getClass().getResource("../Asset/fxml.css").toExternalForm());
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

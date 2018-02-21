@@ -18,18 +18,19 @@ public class Joueur implements Comparable<Joueur>{
     String nationalite;
     int nbrBut;
     String position;
-    int idEquipe;
-        String pays ;
-    public Joueur(String nom_joueur, String nationalite, int nbr_but, String position, int id_equipe, String pays) {
+   
+    Equipe idEquipe;
+     
+    public Joueur(String nom_joueur, String nationalite, int nbr_but, String position, Equipe id_equipe) {
         this.nomJoueur = nom_joueur;
         this.nationalite = nationalite;
         this.nbrBut = nbr_but;
         this.position = position;
         this.idEquipe = id_equipe;
-           this.pays = pays;
+          // this.pays = pays;
     }
 
-    public String getPays() {
+  /*  public String getPays() {
         return pays;
     }
 
@@ -37,15 +38,15 @@ public class Joueur implements Comparable<Joueur>{
         this.pays = pays;
     }
     
-    
-    public Joueur(int id_joueur, String nom_joueur, String nationalite, int nbr_but, String position, int id_equipe , String pays) {
+    */
+    public Joueur(int id_joueur, String nom_joueur, String nationalite, int nbr_but, String position, Equipe id_equipe ) {
         this.idJoueur = id_joueur;
         this.nomJoueur = nom_joueur;
         this.nationalite = nationalite;
         this.nbrBut = nbr_but;
         this.position = position;
         this.idEquipe = id_equipe;
-         this.pays = pays;
+//         this.pays = pays;
     }
     
 
@@ -89,18 +90,22 @@ public class Joueur implements Comparable<Joueur>{
         this.position = position;
     }
 
-    public int getId_equipe() {
+    public Equipe getId_equipe() {
         return idEquipe;
     }
 
-    public void setId_equipe(int id_equipe) {
+    public void setId_equipe(Equipe id_equipe) {
         this.idEquipe = id_equipe;
     }
 
     @Override
     public String toString() {
-        return "joueur{" + "id_joueur=" + idJoueur + ", nom_joueur=" + nomJoueur + ", nationalite=" + nationalite + ", nbr_but=" + nbrBut + ", position=" + position + ", pays=" + pays + '}';
+        return "Joueur{" + "idJoueur=" + idJoueur + ", nomJoueur=" + nomJoueur + 
+                ", nationalite=" + nationalite + ", nbrBut=" + nbrBut +
+                ", position=" + position + ", idEquipe=" + idEquipe + '}';
     }
+
+   
 
    
     public Joueur() {
