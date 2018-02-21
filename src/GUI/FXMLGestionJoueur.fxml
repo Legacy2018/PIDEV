@@ -49,12 +49,12 @@
         <ChoiceBox fx:id="pochoice" layoutX="140.0" layoutY="346.0" prefHeight="25.0" prefWidth="213.0" />
         <ImageView fx:id="RECHIC" fitHeight="25.0" fitWidth="24.0" layoutX="1007.0" layoutY="151.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@../Images/loupe.png" />
+                <Image url="@../Ressource/loupe.png" />
             </image>
         </ImageView>
         <ImageView fx:id="FILTERIC" fitHeight="25.0" fitWidth="37.0" layoutX="1007.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@../Images/filter.png" />
+                <Image url="@../Ressource/filter.png" />
             </image>
         </ImageView>
         <Label layoutX="1056.0" layoutY="23.0" prefHeight="34.0" prefWidth="245.0" text="Raffinez votre recherche" textFill="#4d4d4d" underline="true">

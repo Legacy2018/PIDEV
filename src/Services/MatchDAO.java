@@ -52,9 +52,9 @@ public class MatchDAO implements IMatchDAO {
             ps = connection.prepareStatement(requete);
             ps.setString(4, match.getDateMatch());
            ps.setString(6, match.getHeureMatch());
-            ps.setString(5, match.getStade());
-            ps.setString(2, match.getEquipe1());
-            ps.setString(3, match.getEquipe2());
+            ps.setString(5, match.getStade().getNom_Stade());
+            ps.setString(2, match.getEquipe1().getPays());
+            ps.setString(3, match.getEquipe2().getPays());
            
            
             ps.setString(7, match.getPhase());
@@ -151,12 +151,11 @@ public class MatchDAO implements IMatchDAO {
                 match.setIdMatch(resultat.getInt(1));
                 match.setScore(resultat.getInt(2));
                 match.setScore2(resultat.getInt(3));
-                Equipe e = new Equipe();
                 
-                match.setEquipe1(iEquipeDao.ConsulterstadeNom(resultat.getString(4)));
-                match.setEquipe2(iEquipeDao.ConsulterstadeNom(resultat.getString(5)));
+                match.setEquipe1(iEquipeDao.AfficherEquipe(resultat.getString(4)));
+                match.setEquipe2(iEquipeDao.AfficherEquipe(resultat.getString(5)));
                 match.setDateMatch(resultat.getString(6));
-                match.setStade(iStadeDao.ConsulterstadeNom(resultat.getString(7)));
+                match.setStade(iStadeDao.Consulterstade(resultat.getString(7)));
                 match.setHeureMatch(resultat.getString(8));
                 match.setPhase(resultat.getString(9));
                
@@ -188,10 +187,10 @@ public class MatchDAO implements IMatchDAO {
                 match.setIdMatch(resultat.getInt(1));
                 match.setScore(resultat.getInt(2));
                 match.setScore2(resultat.getInt(3));
-                match.setEquipe1(iEquipeDao.ConsulterstadeNom(resultat.getString(4)));
-                match.setEquipe2(iEquipeDao.ConsulterstadeNom(resultat.getString(5)));
+                match.setEquipe1(iEquipeDao.AfficherEquipe(resultat.getString(4)));
+                match.setEquipe2(iEquipeDao.AfficherEquipe(resultat.getString(5)));
                 match.setDateMatch(resultat.getString(6));
-                match.setStade(iStadeDao.ConsulterstadeNom(resultat.getString(7)));
+                match.setStade(iStadeDao.Consulterstade(resultat.getString(7)));
                 match.setHeureMatch(resultat.getString(8));
                 match.setPhase(resultat.getString(9));
                 
@@ -223,10 +222,10 @@ public class MatchDAO implements IMatchDAO {
                 match.setIdMatch(resultat.getInt(1));
                 match.setScore(resultat.getInt(2));
                 match.setScore2(resultat.getInt(3));
-                match.setEquipe1(iEquipeDao.ConsulterstadeNom(resultat.getString(4)));
-                match.setEquipe2(iEquipeDao.ConsulterstadeNom(resultat.getString(5)));
+                match.setEquipe1(iEquipeDao.AfficherEquipe(resultat.getString(4)));
+                match.setEquipe2(iEquipeDao.AfficherEquipe(resultat.getString(5)));
                 match.setDateMatch(resultat.getString(6));
-                match.setStade(iStadeDao.ConsulterstadeNom(resultat.getString(7)));
+                match.setStade(iStadeDao.Consulterstade(resultat.getString(7)));
                 match.setHeureMatch(resultat.getString(8));
                 match.setPhase(resultat.getString(9));
               
@@ -257,10 +256,10 @@ public class MatchDAO implements IMatchDAO {
                 match.setIdMatch(resultat.getInt(1));
                 match.setScore(resultat.getInt(2));
                 match.setScore2(resultat.getInt(3));
-              match.setEquipe1(iEquipeDao.ConsulterstadeNom(resultat.getString(4)));
-                match.setEquipe2(iEquipeDao.ConsulterstadeNom(resultat.getString(5)));
+               match.setEquipe1(iEquipeDao.AfficherEquipe(resultat.getString(4)));
+                match.setEquipe2(iEquipeDao.AfficherEquipe(resultat.getString(5)));
                 match.setDateMatch(resultat.getString(6));
-                match.setStade(iStadeDao.ConsulterstadeNom(resultat.getString(7)));
+                match.setStade(iStadeDao.Consulterstade(resultat.getString(7)));
                 match.setHeureMatch(resultat.getString(8));
                 match.setPhase(resultat.getString(9));
               
@@ -289,10 +288,10 @@ public class MatchDAO implements IMatchDAO {
                 match.setIdMatch(resultat.getInt(1));
                 match.setScore(resultat.getInt(2));
                 match.setScore2(resultat.getInt(3));
-               match.setEquipe1(iEquipeDao.ConsulterstadeNom(resultat.getString(4)));
-                match.setEquipe2(iEquipeDao.ConsulterstadeNom(resultat.getString(5)));
+                match.setEquipe1(iEquipeDao.AfficherEquipe(resultat.getString(4)));
+                match.setEquipe2(iEquipeDao.AfficherEquipe(resultat.getString(5)));
                 match.setDateMatch(resultat.getString(6));
-                match.setStade(iStadeDao.ConsulterstadeNom(resultat.getString(7)));
+                match.setStade(iStadeDao.Consulterstade(resultat.getString(7)));
                 match.setHeureMatch(resultat.getString(8));
                 match.setPhase(resultat.getString(9));
               
@@ -320,10 +319,10 @@ public class MatchDAO implements IMatchDAO {
                 match.setIdMatch(resultat.getInt(1));
                 match.setScore(resultat.getInt(2));
                 match.setScore2(resultat.getInt(3));
-                match.setEquipe1(iEquipeDao.ConsulterstadeNom(resultat.getString(4)));
-                match.setEquipe2(iEquipeDao.ConsulterstadeNom(resultat.getString(5)));
+                 match.setEquipe1(iEquipeDao.AfficherEquipe(resultat.getString(4)));
+                match.setEquipe2(iEquipeDao.AfficherEquipe(resultat.getString(5)));
                 match.setDateMatch(resultat.getString(6));
-                match.setStade(iStadeDao.ConsulterstadeNom(resultat.getString(7)));
+                match.setStade(iStadeDao.Consulterstade(resultat.getString(7)));
                 match.setHeureMatch(resultat.getString(8));
                 match.setPhase(resultat.getString(9));
               
@@ -352,10 +351,10 @@ public class MatchDAO implements IMatchDAO {
                 match.setIdMatch(resultat.getInt(1));
                 match.setScore(resultat.getInt(2));
                 match.setScore2(resultat.getInt(3));
-               match.setEquipe1(iEquipeDao.ConsulterstadeNom(resultat.getString(4)));
-                match.setEquipe2(iEquipeDao.ConsulterstadeNom(resultat.getString(5)));
+                match.setEquipe1(iEquipeDao.AfficherEquipe(resultat.getString(4)));
+                match.setEquipe2(iEquipeDao.AfficherEquipe(resultat.getString(5)));
                 match.setDateMatch(resultat.getString(6));
-                match.setStade(iStadeDao.ConsulterstadeNom(resultat.getString(7)));
+                match.setStade(iStadeDao.Consulterstade(resultat.getString(7)));
                 match.setHeureMatch(resultat.getString(8));
                 match.setPhase(resultat.getString(9));
                 

@@ -38,6 +38,8 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
+import javafx.application.Application;
+import static javafx.application.Application.launch;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.Event;
@@ -79,10 +81,10 @@ public class Gestion_match implements Initializable {
     private JFXButton mo;
 
     @FXML
-    private TableColumn<?, ?> Equipe1;
+    private TableColumn<?, String> Equipe1;
 
     @FXML
-    private TableColumn<?, ?> Equipe2;
+    private TableColumn<?, String> Equipe2;
 
     @FXML
     private TableColumn<?, ?> ph;
@@ -188,19 +190,24 @@ public class Gestion_match implements Initializable {
     @FXML
     void ajouter_m(MouseEvent event) throws IOException {
         
-        
-    m = new match(date.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")),ta.getValue().format(DateTimeFormatter.ofPattern("hh:mm")),id_equipe.getValue().toString(),Stades.getValue().toString(),id_equipe2.getValue().toString(),phase.getValue());
+        Equipe eqa= new Equipe(); 
+        Equipe eqb = new Equipe();
+        eqa=e.AfficherEquipe(id_equipe.getValue());
+        eqb=e.AfficherEquipe(id_equipe2.getValue());
+        stade saa = new stade();
+        saa =s.Consulterstade(Stades.getValue());
+    m = new match(date.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")),ta.getValue().format(DateTimeFormatter.ofPattern("hh:mm")),eqa,saa,eqb,phase.getValue());
      
     List<match> sda= M.chercherMatchParDate(date.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
    List sda1=sda.stream().map(e->e.getStade()).collect(Collectors.toList());
-   if(sda.stream().anyMatch(e->e.getStade().contains(Stades.getValue()))){
+   if(sda.stream().anyMatch(e->e.getStade().getNom_Stade().contains(Stades.getValue()))){
         Alert alert = new Alert(AlertType.ERROR);
          alert.setTitle("Stade !!!");
          alert.setHeaderText(null);
         alert.setContentText("il y a un match dans ce stade déja !!");
         alert.showAndWait();
    }
-   else if ((sda.stream().anyMatch(e->e.getEquipe1().contains(id_equipe.getValue())))||(sda.stream().anyMatch(e->e.getEquipe2().contains(id_equipe.getValue()))))
+   else if ((sda.stream().anyMatch(e->e.getEquipe1().getPays().contains(id_equipe.getValue())))||(sda.stream().anyMatch(e->e.getEquipe2().getPays().contains(id_equipe.getValue()))))
            {
        Alert alert = new Alert(AlertType.ERROR);
          alert.setTitle("Equipe !!!");
@@ -208,8 +215,8 @@ public class Gestion_match implements Initializable {
         alert.setContentText("l'equipe1 dèja a un match");
         alert.showAndWait();
    }
-   else if ((sda.stream().anyMatch(e->e.getEquipe1().contains(id_equipe2.getValue())))||
-           (sda.stream().anyMatch(e->e.getEquipe2().contains(id_equipe2.getValue()))))
+   else if ((sda.stream().anyMatch(e->e.getEquipe1().getPays().contains(id_equipe2.getValue())))||
+           (sda.stream().anyMatch(e->e.getEquipe2().getPays().contains(id_equipe2.getValue()))))
    {
         Alert alert = new Alert(AlertType.ERROR);
          alert.setTitle("Equipe !!!");
@@ -402,6 +409,9 @@ public class Gestion_match implements Initializable {
         //TRAVEL TODO
     }    
      
+   
+   
+
    
 
     /**

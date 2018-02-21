@@ -36,7 +36,7 @@
             <JFXComboBox fx:id="Stades" editable="true" layoutX="449.0" layoutY="79.0" prefHeight="34.0" prefWidth="210.0" />
             <JFXComboBox fx:id="id_equipe" editable="true" layoutX="141.0" layoutY="69.0" prefHeight="34.0" prefWidth="132.0" />
             <JFXComboBox fx:id="id_equipe2" editable="true" layoutX="141.0" layoutY="131.0" prefHeight="34.0" prefWidth="132.0" />
-            <JFXButton fx:id="btn_ajouter" contentDisplay="TOP" layoutX="699.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#ajouter_m" prefHeight="60.0" prefWidth="234.0" styleClass="toolbar-button" text="Ajouter Match" textAlignment="CENTER" textFill="#2b1313">
+            <JFXButton fx:id="btn_ajouter" contentDisplay="TOP" layoutX="707.0" layoutY="181.0" mnemonicParsing="false" onMouseClicked="#ajouter_m" prefHeight="60.0" prefWidth="234.0" styleClass="toolbar-button" text="Valider" textAlignment="CENTER" textFill="#2b1313">
                <graphic>
                   <FontAwesomeIconView glyphName="FUTBOL_ALT" onMouseClicked="#ajouter_m" size="25" />
                </graphic>
@@ -60,12 +60,12 @@
       </TableView>
       <ImageView fitHeight="103.0" fitWidth="248.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../Images/logo.png" />
+            <Image url="@../Ressource/logo.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="38.0" fitWidth="48.0" layoutX="329.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../Images/gestMatch.png" />
+            <Image url="@../Ressource/gestMatch.png" />
          </image>
       </ImageView>
       <Label layoutX="391.0" layoutY="49.0" prefHeight="48.0" prefWidth="251.0" text="Gestion des matches" textFill="#f8f4f4">
@@ -102,7 +102,7 @@
                <graphic>
                   <ImageView fitHeight="57.0" fitWidth="71.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../Images/gestStades.png" />
+                        <Image url="@../Ressource/gestStades.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -111,7 +111,7 @@
                <graphic>
                   <ImageView fitHeight="32.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../Images/gestMatch.png" />
+                        <Image url="@../Ressource/gestMatch.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -120,7 +120,7 @@
                <graphic>
                   <ImageView fitHeight="45.0" fitWidth="102.0" onMouseClicked="#Gerer_equipe" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../Images/gestEquipes.png" />
+                        <Image url="@../Ressource/gestEquipes.png" />
                      </image>
                   </ImageView>
                </graphic>

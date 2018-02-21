@@ -19,13 +19,13 @@ public class match {
     private int score2;
     private String dateMatch;
     private String heureMatch;
-    private String stade;
-    private String equipe1;
-    private String equipe2;
+    private stade stade;
+    private Equipe equipe1;
+    private Equipe equipe2;
     private String phase;
     
 
-    public match(String dateMatch, String heureMatch, String equipe1,String stade,  String equipe2, String phase) {
+    public match(String dateMatch, String heureMatch, Equipe equipe1,stade stade,Equipe  equipe2, String phase) {
         this.dateMatch = dateMatch;
         this.heureMatch = heureMatch;
         this.stade = stade;
@@ -43,7 +43,7 @@ public class match {
     public match() {
     }
 
-    public match(String d) {
+    public match(stade  d) {
      this.stade=d;  
     }
 
@@ -67,15 +67,15 @@ public class match {
         return dateMatch;
     }
     
-    public String getStade() {
+    public stade getStade() {
         return stade;
     }
 
-    public String getEquipe1() {
+    public Equipe getEquipe1() {
         return equipe1;
     }
 
-    public String getEquipe2() {
+    public Equipe getEquipe2() {
         return equipe2;
     }
 
@@ -103,15 +103,15 @@ public class match {
         this.dateMatch = dateMatch;
     }
 
-    public void setStade(String stade) {
+    public void setStade(stade stade) {
         this.stade = stade;
     }
 
-    public void setEquipe1(String equipe1) {
+    public void setEquipe1(Equipe equipe1) {
         this.equipe1 = equipe1;
     }
 
-    public void setEquipe2(String equipe2) {
+    public void setEquipe2(Equipe equipe2) {
         this.equipe2 = equipe2;
     }
 
