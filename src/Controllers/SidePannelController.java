@@ -36,6 +36,8 @@ public class SidePannelController implements Initializable {
     private JFXButton logout;
     @FXML
     private JFXButton Home;
+    @FXML
+    private JFXButton Profil;
 
     /**
      * Initializes the controller class.
@@ -49,7 +51,7 @@ public class SidePannelController implements Initializable {
     
     @FXML
     private void logout(ActionEvent event) throws IOException {
-                 Stage stage=(Stage) pan.getScene().getWindow();
+        Stage stage=(Stage) pan.getScene().getWindow();
         Login_viewController.u=null;
         Parent root = FXMLLoader.load(getClass().getResource("/GUI/Login.fxml"));
         
@@ -57,6 +59,32 @@ public class SidePannelController implements Initializable {
         scene.getStylesheets().add(getClass().getResource("/Asset/Style.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
+    }
+
+    @FXML
+    private void goHome(ActionEvent event) throws IOException {
+        Stage stage=(Stage) pan.getScene().getWindow();
+        
+        Parent root = FXMLLoader.load(getClass().getResource("/GUI/toolbar.fxml"));
+        
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("/Asset/MainFram.css").toExternalForm());
+        stage.setScene(scene);
+        stage.show();
+        
+    }
+
+    @FXML
+    private void goProfil(ActionEvent event) throws IOException {
+        Stage stage=(Stage) pan.getScene().getWindow();
+        
+        Parent root = FXMLLoader.load(getClass().getResource("/GUI/Profile.fxml"));
+        
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("/Asset/MainFram.css").toExternalForm());
+        stage.setScene(scene);
+        stage.show();
+        
     }
     
 }

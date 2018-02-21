@@ -3,57 +3,22 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Services/metierequipe.java</file>
-            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Entities/Fos_User.java</file>
-            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Controllers/GestionEquipeController.java</file>
-            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Controllers/GestionJoueurController.java</file>
-            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Main/PIDEV_V1.java</file>
-            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Services/CollocationService.java</file>
-            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/IServices/IServiceGestionJoueur.java</file>
-            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Asset/Style.css</file>
-            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Controllers/Localisation.java</file>
-            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Asset/MainFram.css</file>
-            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Controllers/GestionCovoiturageController.java</file>
-            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Services/ServiceFos_User.java</file>
-            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Controllers/AccueilAnnoncesController.java</file>
-            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Controllers/SidePanelContentController.java</file>
-            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Entities/Entraineur.java</file>
-            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/IServices/IMatchDAO.java</file>
-            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Services/DAOStade.java</file>
-            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Controllers/AjouterTicketController.java</file>
-            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Controllers/Gestion_match.java</file>
-            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/IServices/ITicketDAO.java</file>
-            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Services/ServiceReclamation.java</file>
-            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/GUI/Login.fxml</file>
-            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Services/MatchDAO.java</file>
-            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/IServices/IStadeDAO.java</file>
-            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Entities/Ticket.java</file>
-            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Controllers/Commentaire1Controller.java</file>
             <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Services/TicketDAO.java</file>
-            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Entities/Equipe.java</file>
+            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Entities/Fos_User.java</file>
+            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Main/PIDEV_V1.java</file>
             <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Controllers/Login_viewController.java</file>
             <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Services/ServiceUtilisateur.java</file>
-            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Controllers/Consulter_Match.java</file>
             <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Controllers/ListTicketsController.java</file>
-            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Controllers/DisplayEquipeJoueurController.java</file>
-            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Controllers/ModifierTicketController.java</file>
-            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Entities/Commentaire.java</file>
-            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Entities/Joueur.java</file>
-            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Services/CovoiturageService.java</file>
-            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Services/serviceEntraineur.java</file>
-            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Entities/match.java</file>
-            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/IServices/Icommentaire.java</file>
-            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Entities/stade.java</file>
-            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Services/serviceJoueur.java</file>
+            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Asset/Style.css</file>
             <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/GUI/SidePannel.fxml</file>
-            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Services/serviceEquipe.java</file>
+            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Asset/MainFram.css</file>
             <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Entities/Utilisateur.java</file>
             <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Controllers/ToolbarController.java</file>
             <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Controllers/SidePannelController.java</file>
+            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Services/ServiceReclamation.java</file>
+            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/GUI/Login.fxml</file>
             <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/DataSource/DataSource.java</file>
-            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/IServices/IServiceGestionEquipe.java</file>
-            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Services/serviceCommentaire.java</file>
-            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Controllers/Consulter_Stades.java</file>
+            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Services/ServiceFos_User.java</file>
             <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/GUI/toolbar.fxml</file>
         </group>
     </open-files>
