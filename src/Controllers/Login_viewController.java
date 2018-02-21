@@ -5,7 +5,7 @@
  */
 package Controllers;
 
-import entites.Utilisateur;
+import Entities.Utilisateur;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;

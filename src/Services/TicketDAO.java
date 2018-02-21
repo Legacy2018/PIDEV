@@ -1,7 +1,7 @@
 package Services;
 
 import IServices.ITicketDAO;
-import entites.Fos_User;
+import Entities.Fos_User;
 import entities.Ticket;
 import Entities.match;
 import com.sun.org.apache.xerces.internal.impl.xpath.regex.Match;

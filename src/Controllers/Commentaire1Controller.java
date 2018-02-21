@@ -8,7 +8,7 @@ package Controllers;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import Entities.Commentaire;
-import entites.Fos_User;
+import Entities.Fos_User;
 import entities.Ticket;
 import java.net.URL;
 import java.util.ResourceBundle;

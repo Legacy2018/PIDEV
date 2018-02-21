@@ -8,8 +8,8 @@ package services;
 import DataSource.DataSource;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
-import entites.Fos_User;
-import entites.Utilisateur;
+import Entities.Fos_User;
+import Entities.Utilisateur;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -38,12 +38,12 @@ public class ServiceUtilisateur extends ServiceFos_User {
         
          try {
             String req = " INSERT INTO utilisateur  "
-                    + "VALUES ("+GetAnFos_User(new Fos_User(u.getId(), u.getUsername(), u.getEmail(), u.getPassword(), false, false, "user"))+", '"+u.getPosition()+"', '"+u.getTelephone()+"',"+u.isFumeur()+",'"+u.getNom()+"','"+u.getPnom()+"',null);";
-             System.out.println(req);
+                    + "VALUES ("+GetAnFos_User(new Fos_User(u.getId(), u.getUsername(), u.getEmail(), u.getPassword(), false, false, "user"))+", '"+u.getPosition()+"', '"+u.getTelephone()+"',"+u.isFumeur()+",'"+u.getNom()+"','"+u.getPnom()+"',null,'"+u.getImg_profile()+"');";
+             System.out.println(u.getImg_profile());
             st.executeUpdate(req);
           
          } catch (SQLException ex) {
-             System.out.println(ex);
+             System.out.println("hoooooooooooooooooooooouubbbnnni"+ex);
         }
     }
     public Utilisateur findUtilisateur(String login)
@@ -60,7 +60,7 @@ public class ServiceUtilisateur extends ServiceFos_User {
         { ResultSet res= st.executeQuery("Select * from utilisateur where id='"+fu.getId()+"';");
           if(res.next())
           {
-              return new Utilisateur(res.getInt("id"), res.getString("position"), res.getString("telephone"), false, res.getString("nom"),res.getString("prenom") , res.getString("date_de_naissances"),fu);
+              return new Utilisateur(res.getInt("id"), res.getString("position"), res.getString("telephone"), false, res.getString("nom"),res.getString("prenom") , res.getString("date_de_naissances"),fu,res.getString("Img_profile"));
           }
           else
           { 
@@ -87,7 +87,7 @@ public class ServiceUtilisateur extends ServiceFos_User {
         { ResultSet res= st.executeQuery("Select * from utilisateur where id='"+fu.getId()+"';");
           if(res.next())
           {
-              return new Utilisateur(res.getInt("id"), res.getString("position"), res.getString("telephone"), false, res.getString("nom"),res.getString("prenom") , res.getString("date_de_naissances"),fu);
+              return new Utilisateur(res.getInt("id"), res.getString("position"), res.getString("telephone"), false, res.getString("nom"),res.getString("prenom") , res.getString("date_de_naissances"),fu,res.getString("Img_profile"));
           }
           else
           { 

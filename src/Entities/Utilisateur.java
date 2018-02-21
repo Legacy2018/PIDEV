@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package entites;
+package Entities;
 
 /**
  *
@@ -17,11 +17,11 @@ public class Utilisateur extends Fos_User{
     private String nom;
     private String pnom;
     private String date_de_naissance;
-
+    private String Img_profile;
     public Utilisateur() {
     }
 
-    public Utilisateur(int id_user, String position, String telephone, boolean fumeur, String nom, String pnom, String date_de_naissance,Fos_User fu) {
+    public Utilisateur(int id_user, String position, String telephone, boolean fumeur, String nom, String pnom, String date_de_naissance,Fos_User fu,String Img_profile) {
         super(fu.id, fu.username, fu.email, fu.password, fu.enabled, fu.confirmation_token, fu.role);
         this.id_user = id_user;
         this.position = position;
@@ -32,7 +32,7 @@ public class Utilisateur extends Fos_User{
         this.date_de_naissance = date_de_naissance;
     }
 
-    public Utilisateur(int id_user, String position, String telephone, boolean fumeur, String nom, String pnom, String date_de_naissance, int id, String username, String email, String password, boolean enabled, boolean confirmation_token, String role) {
+    public Utilisateur(int id_user, String position, String telephone, boolean fumeur, String nom, String pnom, String date_de_naissance, int id, String username, String email, String password, boolean enabled, boolean confirmation_token, String role,String Img_profile) {
         super(id, username, email, password, enabled, confirmation_token, role);
         this.id_user = id_user;
         this.position = position;
@@ -53,6 +53,14 @@ public class Utilisateur extends Fos_User{
 
     public int getId() {
         return id;
+    }
+
+    public String getImg_profile() {
+        return Img_profile;
+    }
+
+    public void setImg_profile(String Img_profile) {
+        this.Img_profile = Img_profile;
     }
 
     public int getId_user() {

@@ -7,7 +7,7 @@ package Entities;
 
 import java.util.Objects;
 import entities.Ticket;
-import entites.Fos_User;
+import Entities.Fos_User;
 /**
  *
  * @author BSS
