@@ -359,12 +359,12 @@ public class Gestion_match implements Initializable {
         if(Integer.parseInt(c)>Integer.parseInt(c2)){
          Notifications.create()
            .title("Changement du score")
-              .text("l'equipe "+e1+"a gagné")
+              .text("l'equipe "+e1+" a gagné")
              .showInformation();}
         else if (Integer.parseInt(c)<Integer.parseInt(c2)){
              Notifications.create()
            .title("Changement du score")
-              .text("l'equipe "+e2+"a gagné")
+              .text("l'equipe "+e2+" a gagné")
              .showInformation();
         }
         else {
