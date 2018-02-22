@@ -54,7 +54,7 @@ public class ServiceFos_User {
         try
         { ResultSet res= st.executeQuery("Select * from fos_User where email='"+login+"' or username='"+login+"';");
           if(res.next())
-          {
+          { System.out.println(new Fos_User(res.getInt("id"), res.getString("username"), res.getString("email"), res.getString("password"), res.getBoolean("enabled"), res.getBoolean("enabled"), res.getString("roles")));
               return new Fos_User(res.getInt("id"), res.getString("username"), res.getString("email"), res.getString("password"), res.getBoolean("enabled"), res.getBoolean("enabled"), res.getString("roles"));
               
           }
@@ -97,6 +97,17 @@ public class ServiceFos_User {
             System.out.println(ex);
         }
     }
-    
+    public void enableaccount(int id)
+    {
+        try
+        {   
+            
+            st.executeUpdate(" UPDATE Fos_User SET enabled = 1 WHERE id ="+id);
+            
+        }
+        catch (SQLException ex) {
+            System.out.println(ex);
+        }
+    }
     
 }
