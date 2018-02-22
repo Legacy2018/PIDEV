@@ -30,6 +30,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 import javafx.application.Application;
+import static javafx.application.Application.launch;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -37,10 +38,14 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -119,6 +124,19 @@ public class AjouterTicketController extends Application implements Initializabl
     List eq2;
     List s2;
  static public int test;
+ @Override
+    public void start(Stage stage) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("../GUI/AjouterTicket.fxml"));
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("../Asset/fxml.css").toExternalForm());
+        stage.setScene(scene);
+        stage.show();
+        stage.getIcons().add(new Image("/Ressource/fa.png"));
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
     @FXML
     void verifnum(KeyEvent event) {
         id_prix.textProperty().addListener(new ChangeListener<String>() {
@@ -221,9 +239,6 @@ id_matchht.setCellValueFactory(new PropertyValueFactory<>("idMatch"));
         });
     }
 
-    @Override
-    public void start(Stage primaryStage) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
 
 }

@@ -81,7 +81,7 @@ public class Localisation implements  Initializable, MapComponentInitializedList
                 .scaleControl(false)
                 .streetViewControl(false)
                 .zoomControl(false)
-                .zoom(12);
+                .zoom(16);
 
         map = mapView.createMap(mapOptions);
         
@@ -107,6 +107,7 @@ public class Localisation implements  Initializable, MapComponentInitializedList
             }
             
             map.setCenter(latLong);
+            
 
         });
     }

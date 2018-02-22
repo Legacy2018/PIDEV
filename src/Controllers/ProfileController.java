@@ -11,6 +11,7 @@ import com.jfoenix.transitions.hamburger.HamburgerSlideCloseTransition;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import static javafx.application.Application.launch;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -97,5 +98,6 @@ public class ProfileController implements Initializable {
     @FXML
     private void switchToDrivers(MouseEvent event) {
     }
-    
+
+ 
 }
