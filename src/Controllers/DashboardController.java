@@ -15,10 +15,13 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -78,11 +81,28 @@ public class DashboardController implements Initializable {
         });
     }
     @FXML
-    private void switchToMatch(MouseEvent event) {
+    private void switchToMatch(MouseEvent event) throws IOException {
+         Stage stage=(Stage) paneDeconnection.getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getResource("/GUI/FXMLGestion_Match.fxml"));
+        
+        Scene scene2 = new Scene(root);
+         scene2.getStylesheets().add(getClass().getResource("/Asset/fxml.css").toExternalForm());
+        
+        stage.setScene(scene2);
+        stage.show();
+         stage.setTitle("Russie 2018");
     }
 
     @FXML
-    private void Logout(MouseEvent event) {
+    private void Logout(MouseEvent event) throws IOException {
+         Stage stage=(Stage) paneDeconnection.getScene().getWindow();
+        Login_viewController.u=null;
+        Parent root = FXMLLoader.load(getClass().getResource("/GUI/Login.fxml"));
+        
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("/Asset/Style.css").toExternalForm());
+        stage.setScene(scene);
+        stage.show();
     }
     
 }
