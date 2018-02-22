@@ -33,6 +33,18 @@ public class ServiceReclamation {
         }
         
     }
+    public void supprimer(int id)
+    {
+         try
+        {   
+            
+            st.executeUpdate("DELETE FROM reclamation WHERE id = "+id);
+            
+        }
+        catch (SQLException ex) {
+            System.out.println(ex);
+        }
+    }
     public void posterReclamation(Reclamation r)
     {
           try {

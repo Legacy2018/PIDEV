@@ -5,10 +5,14 @@
  */
 package Controllers;
 
+import Entities.EmailAttachmentSender;
+import static Entities.EmailAttachmentSender.sendEmailWithAttachments;
 import com.jfoenix.controls.JFXButton;
 import Entities.Utilisateur;
 import java.io.File;
 import java.io.IOException;
+import static java.lang.Integer.max;
+import static java.lang.Math.max;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -38,6 +42,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import java.util.concurrent.ThreadLocalRandom;
 import services.ServiceUtilisateur;
 
 /**
@@ -107,9 +112,16 @@ public class sign implements Initializable {
             Faux.setText("Verifier vos coordonnée");
             return;
         }
-        
-        
-        new ServiceUtilisateur().ajouter(new Utilisateur(0, null, Telephone.getText(), Fumeur.selectedProperty().get(), nom.getText(), pnom.getText(), null, 0, Username.getText(), Email.getText(), password.getText(), false, false, "user",imgpath.getText()));
+        int num_confirmation=ThreadLocalRandom.current().nextInt(1000, 9999 + 1);
+         try {
+            sendEmailWithAttachments(Email.getText(),
+                "Email de Confirmation", EmailAttachmentSender.part1+num_confirmation+EmailAttachmentSender.part2, null);
+            System.out.println("Email sent.");
+        } catch (Exception ex) {
+            System.out.println("Could not send email.");
+            ex.printStackTrace();
+        }
+        new ServiceUtilisateur().ajouter(new Utilisateur(0, null, Telephone.getText(), Fumeur.selectedProperty().get(), nom.getText(), pnom.getText(), null, 0, Username.getText(), Email.getText(), password.getText(), false, false, "user",imgpath.getText(),num_confirmation));
         Faux.setText("Inscription Confirmer");
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Inscription");
@@ -179,7 +191,7 @@ public class sign implements Initializable {
         
         
         imgpath.setText("../Ressource/"+file.getName());
-            profile.setImage(new Image(getClass().getResource("../Ressource/"+file.getName()).toString(), true));
+        profile.setImage(new Image(getClass().getResource("../Ressource/"+file.getName()).toString(), true));
 
     }
 

@@ -18,10 +18,11 @@ public class Utilisateur extends Fos_User{
     private String pnom;
     private String date_de_naissance;
     private String Img_profile;
+    private int num_confirm;
     public Utilisateur() {
     }
 
-    public Utilisateur(int id_user, String position, String telephone, boolean fumeur, String nom, String pnom, String date_de_naissance,Fos_User fu,String Img_profile) {
+    public Utilisateur(int id_user, String position, String telephone, boolean fumeur, String nom, String pnom, String date_de_naissance,Fos_User fu,String Img_profile,int num_confirm) {
         super(fu.id, fu.username, fu.email, fu.password, fu.enabled, fu.confirmation_token, fu.role);
         this.id_user = id_user;
         this.position = position;
@@ -30,9 +31,11 @@ public class Utilisateur extends Fos_User{
         this.nom = nom;
         this.pnom = pnom;
         this.date_de_naissance = date_de_naissance;
+        this.Img_profile=Img_profile;
+        this.num_confirm=num_confirm;
     }
 
-    public Utilisateur(int id_user, String position, String telephone, boolean fumeur, String nom, String pnom, String date_de_naissance, int id, String username, String email, String password, boolean enabled, boolean confirmation_token, String role,String Img_profile) {
+    public Utilisateur(int id_user, String position, String telephone, boolean fumeur, String nom, String pnom, String date_de_naissance, int id, String username, String email, String password, boolean enabled, boolean confirmation_token, String role,String Img_profile,int num_confirm) {
         super(id, username, email, password, enabled, confirmation_token, role);
         this.id_user = id_user;
         this.position = position;
@@ -41,6 +44,8 @@ public class Utilisateur extends Fos_User{
         this.nom = nom;
         this.pnom = pnom;
         this.date_de_naissance = date_de_naissance;
+        this.Img_profile=Img_profile;
+        this.num_confirm=num_confirm;
     }
 
     public String getDate_de_naissance() {
@@ -59,6 +64,14 @@ public class Utilisateur extends Fos_User{
         return Img_profile;
     }
 
+    public int getNum_confirm() {
+        return num_confirm;
+    }
+
+    public void setNum_confirm(int num_confirm) {
+        this.num_confirm = num_confirm;
+    }
+    
     public void setImg_profile(String Img_profile) {
         this.Img_profile = Img_profile;
     }

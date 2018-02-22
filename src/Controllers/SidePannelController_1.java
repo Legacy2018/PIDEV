@@ -27,7 +27,7 @@ import javafx.stage.Stage;
  *
  * @author Katouchi
  */
-public class SidePannelController implements Initializable {
+public class SidePannelController_1 implements Initializable {
 
     @FXML
     private VBox pan;
@@ -72,7 +72,7 @@ public class SidePannelController implements Initializable {
     private void goHome(ActionEvent event) throws IOException {
         Stage stage=(Stage) pan.getScene().getWindow();
         
-        Parent root = FXMLLoader.load(getClass().getResource("/GUI/toolbar.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/GUI/Dashboard.fxml"));
         
         Scene scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("/Asset/MainFram.css").toExternalForm());
@@ -85,7 +85,7 @@ public class SidePannelController implements Initializable {
     private void goProfil(ActionEvent event) throws IOException {
         Stage stage=(Stage) pan.getScene().getWindow();
         
-        Parent root = FXMLLoader.load(getClass().getResource("/GUI/Profile.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/GUI/DProfiles.fxml"));
         
         Scene scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("/Asset/MainFram.css").toExternalForm());
@@ -98,7 +98,7 @@ public class SidePannelController implements Initializable {
     private void goreclamation(ActionEvent event) throws IOException {
          Stage stage=(Stage) pan.getScene().getWindow();
         
-        Parent root = FXMLLoader.load(getClass().getResource("/GUI/Reclamation.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/GUI/DReclamations.fxml"));
         
         Scene scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("/Asset/MainFram.css").toExternalForm());

@@ -55,7 +55,7 @@ public class Login_viewController implements Initializable {
     private void Log(ActionEvent event){
         
         u=new ServiceUtilisateur().findUtilisateur(ID.getText());
-        
+        System.out.println(u);
         if(u!=null)
         {System.out.println(u.getPassword()+"   "+password.getText());
          
@@ -66,23 +66,35 @@ public class Login_viewController implements Initializable {
             }
             else
             { 
-        
-                try
-                {Stage stage = (Stage) submit.getScene().getWindow();
-                Parent root;
-                if(u.getRole().equals("user"))
-        root = FXMLLoader.load(getClass().getResource("/GUI/toolbar.fxml"));
+                
+                
+                    try
+                    {
+                        Stage stage = (Stage) submit.getScene().getWindow();
+                        Parent root;
+                        if(u.isEnabled())
+                {
+                        if(u.getRole().equals("user"))
+                            root = FXMLLoader.load(getClass().getResource("/GUI/toolbar.fxml"));
+                        else
+                            root = FXMLLoader.load(getClass().getResource("/GUI/Dashboard.fxml"));
+                 }
                 else
-        root = FXMLLoader.load(getClass().getResource("/GUI/DashBord.fxml"));
-        Scene scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("/Asset/MainFram.css").toExternalForm());
-        stage.setScene(scene);
-        stage.show();
+                {
+                    root = FXMLLoader.load(getClass().getResource("/GUI/Confirmationscreen.fxml"));
                 }
-        catch(IOException e)
-        {
-            System.out.println(e);
-        }
+                        Scene scene = new Scene(root);
+                        scene.getStylesheets().add(getClass().getResource("/Asset/MainFram.css").toExternalForm());
+                        stage.setScene(scene);
+                        stage.show();
+                    }
+                    catch(IOException e)
+                    {
+                        System.out.println(e);
+                    }
+                
+                
+                
             }
                 
         }

@@ -38,7 +38,7 @@ public class ServiceUtilisateur extends ServiceFos_User {
         
          try {
             String req = " INSERT INTO utilisateur  "
-                    + "VALUES ("+GetAnFos_User(new Fos_User(u.getId(), u.getUsername(), u.getEmail(), u.getPassword(), false, false, "user"))+", '"+u.getPosition()+"', '"+u.getTelephone()+"',"+u.isFumeur()+",'"+u.getNom()+"','"+u.getPnom()+"',null,'"+u.getImg_profile()+"');";
+                    + "VALUES ("+GetAnFos_User(new Fos_User(u.getId(), u.getUsername(), u.getEmail(), u.getPassword(), false, false, "user"))+", '"+u.getPosition()+"', '"+u.getTelephone()+"',"+u.isFumeur()+",'"+u.getNom()+"','"+u.getPnom()+"',null,'"+u.getImg_profile()+"',"+u.getNum_confirm()+");";
              System.out.println(u.getImg_profile());
             st.executeUpdate(req);
           
@@ -49,6 +49,7 @@ public class ServiceUtilisateur extends ServiceFos_User {
     public Utilisateur findUtilisateur(String login)
     {
         Fos_User fu=findFos_User(login);
+        System.out.println(fu);
         if(fu==null)
         {
           
@@ -60,7 +61,7 @@ public class ServiceUtilisateur extends ServiceFos_User {
         { ResultSet res= st.executeQuery("Select * from utilisateur where id='"+fu.getId()+"';");
           if(res.next())
           {
-              return new Utilisateur(res.getInt("id"), res.getString("position"), res.getString("telephone"), false, res.getString("nom"),res.getString("prenom") , res.getString("date_de_naissances"),fu,res.getString("Img_profile"));
+              return new Utilisateur(res.getInt("id"), res.getString("position"), res.getString("telephone"), false, res.getString("nom"),res.getString("prenom") , res.getString("date_de_naissances"),fu,res.getString("Img_profile"),res.getInt("Numdeconfirmation"));
           }
           else
           { 
@@ -87,7 +88,7 @@ public class ServiceUtilisateur extends ServiceFos_User {
         { ResultSet res= st.executeQuery("Select * from utilisateur where id='"+fu.getId()+"';");
           if(res.next())
           {
-              return new Utilisateur(res.getInt("id"), res.getString("position"), res.getString("telephone"), false, res.getString("nom"),res.getString("prenom") , res.getString("date_de_naissances"),fu,res.getString("Img_profile"));
+              return new Utilisateur(res.getInt("id"), res.getString("position"), res.getString("telephone"), false, res.getString("nom"),res.getString("prenom") , res.getString("date_de_naissances"),fu,res.getString("Img_profile"),res.getInt("Numdeconfirmation"));
           }
           else
           { 
@@ -158,6 +159,21 @@ public class ServiceUtilisateur extends ServiceFos_User {
          return us;
        
     }
+    public List<Utilisateur> getallfiltred(String column,String val) 
+    {   List<Utilisateur> us=new ArrayList<>();
+         try
+        {  
+            ResultSet res= st.executeQuery("Select username from fos_user where "+column+" like '"+val+"%';");
+            while(res.next())
+            {
+                us.add(new ServiceUtilisateur().findUtilisateur(res.getString("username")));
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+         return us;
+       
+    }
     public void suprimer(int id)
     {
           try
@@ -183,6 +199,8 @@ public class ServiceUtilisateur extends ServiceFos_User {
             System.out.println(ex);
         }
     }
+    
+    
     
     
 }

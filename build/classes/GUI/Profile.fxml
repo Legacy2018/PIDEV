@@ -3,10 +3,11 @@
 <?import com.jfoenix.controls.JFXDrawer?>
 <?import com.jfoenix.controls.JFXHamburger?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
@@ -16,81 +17,62 @@
          <center>
             <AnchorPane id="AnchorPane" fx:id="rootPane" prefHeight="603.0" prefWidth="895.0" styleClass="gradient">
                <children>
-                  <Label layoutX="314.0" layoutY="29.0" prefHeight="42.0" prefWidth="432.0" text="TRANSPORT MANAGEMENT SYSTEM" textFill="WHITE">
-                     <font>
-                        <Font name="Roboto Medium" size="23.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="293.0" layoutY="71.0" prefHeight="51.0" prefWidth="474.0" text="A simple javafx system to manage transport routines,with main modules being users,vehicles,drivers and tickets. " textAlignment="CENTER" textFill="WHITE" wrapText="true">
-                     <font>
-                        <Font name="Roboto Medium" size="14.0" />
-                     </font>
-                  </Label>
-                  <HBox fx:id="boxMenus" layoutX="63.0" layoutY="197.0" prefHeight="227.0" prefWidth="921.0" spacing="20.0">
-                     <children>
-                        <AnchorPane fx:id="paneUsers" onMouseClicked="#switchToUsers" prefHeight="227.0" prefWidth="207.0" styleClass="menus">
-                           <children>
-                              <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="54.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
-                              <Label alignment="CENTER" layoutX="77.0" layoutY="135.0" text="Users" textFill="WHITE">
-                                 <font>
-                                    <Font name="Roboto Black" size="20.0" />
-                                 </font>
-                              </Label>
-                              <Label alignment="CENTER" layoutX="18.0" layoutY="163.0" prefHeight="51.0" prefWidth="171.0" text="Manage users,add,edit,delete and user logs" textAlignment="CENTER" textFill="WHITE" wrapText="true">
-                                 <font>
-                                    <Font name="Roboto Medium" size="11.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane fx:id="paneTickets" onMouseClicked="#switchToTickets" prefHeight="227.0" prefWidth="207.0" styleClass="menus">
-                           <children>
-                              <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="54.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
-                              <Label alignment="CENTER" layoutX="77.0" layoutY="135.0" text="Tickets" textFill="WHITE">
-                                 <font>
-                                    <Font name="Roboto Black" size="20.0" />
-                                 </font>
-                              </Label>
-                              <Label alignment="CENTER" layoutX="18.0" layoutY="163.0" prefHeight="51.0" prefWidth="171.0" text="Manage tickets: Book,View,revoke,administer" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP" wrapText="true">
-                                 <font>
-                                    <Font name="Roboto Medium" size="11.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane fx:id="paneBuses" onMouseClicked="#switchToBuses" prefHeight="227.0" prefWidth="207.0" styleClass="menus">
-                           <children>
-                              <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="54.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
-                              <Label alignment="CENTER" layoutX="77.0" layoutY="135.0" text="Buses" textFill="WHITE">
-                                 <font>
-                                    <Font name="Roboto Black" size="20.0" />
-                                 </font>
-                              </Label>
-                              <Label alignment="CENTER" layoutX="18.0" layoutY="163.0" prefHeight="51.0" prefWidth="171.0" text="Manage buses: movements ,routes,drivers,licences" textAlignment="CENTER" textFill="WHITE" wrapText="true">
-                                 <font>
-                                    <Font name="Roboto Medium" size="11.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane fx:id="paneDrivers" onMouseClicked="#switchToDrivers" prefHeight="227.0" prefWidth="207.0" styleClass="menus">
-                           <children>
-                              <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="54.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
-                              <Label alignment="CENTER" layoutX="77.0" layoutY="135.0" text="Drivers" textFill="WHITE">
-                                 <font>
-                                    <Font name="Roboto Black" size="20.0" />
-                                 </font>
-                              </Label>
-                              <Label alignment="CENTER" layoutX="18.0" layoutY="163.0" prefHeight="51.0" prefWidth="171.0" text="Manage Drivers:,add,edit,delete and user logs" textAlignment="CENTER" textFill="WHITE" wrapText="true">
-                                 <font>
-                                    <Font name="Roboto Medium" size="11.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </AnchorPane>
-                     </children>
-                  </HBox>
                   <StackPane fx:id="fabsContainer" layoutX="903.0" layoutY="439.0" prefHeight="100.0" prefWidth="45.0" />
+                  <ImageView fx:id="imgprofil" fitHeight="276.0" fitWidth="342.0" layoutX="79.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Ressource/001_0071.jpg" />
+                     </image>
+                  </ImageView>
+                  <TextField fx:id="nom" editable="false" layoutX="589.0" layoutY="44.0" onInputMethodTextChanged="#cgn" onKeyReleased="#ngc" onKeyTyped="#cng" onMousePressed="#changethis" promptText="Nom" style="-fx-background-color: rgba(192, 57, 43,0);">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="prenom" editable="false" layoutX="589.0" layoutY="95.0" onInputMethodTextChanged="#cgn" onKeyReleased="#ngc" onKeyTyped="#cng" onMousePressed="#changethis" promptText="Prenom" style="-fx-background-color: rgba(192, 57, 43,0);">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="Username" editable="false" layoutX="589.0" layoutY="146.0" onInputMethodTextChanged="#cgn" onKeyReleased="#ngc" onMousePressed="#changethis" promptText="Username" style="-fx-background-color: rgba(192, 57, 43,0);">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="Email" editable="false" layoutX="589.0" layoutY="248.0" onInputMethodTextChanged="#cgn" onKeyReleased="#ngc" onMousePressed="#changethis" promptText="E-mail" style="-fx-background-color: rgba(192, 57, 43,0);">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="Telephone" editable="false" layoutX="589.0" layoutY="197.0" onInputMethodTextChanged="#cgn" onKeyReleased="#ngc" onKeyTyped="#cng" onMousePressed="#changethis" promptText="Telephone" style="-fx-background-color: rgba(192, 57, 43,0);">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </TextField>
+                  <Label layoutX="455.0" layoutY="52.0" text="Nom">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="453.0" layoutY="103.0" text="Prenom">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="457.0" layoutY="154.0" text="Username">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="457.0" layoutY="256.0" text="Email">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="454.0" layoutY="205.0" text="Telephone">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
          </center>
