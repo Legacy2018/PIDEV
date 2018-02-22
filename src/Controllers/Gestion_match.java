@@ -55,6 +55,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.controlsfx.control.Notifications;
@@ -65,7 +66,7 @@ import org.controlsfx.control.Notifications;
  *
  * @author admin
  */
-public class Gestion_match implements Initializable {
+public class Gestion_match extends Application implements Initializable {
 
     @FXML
     private JFXComboBox<String> id_equipe;
@@ -152,7 +153,7 @@ public class Gestion_match implements Initializable {
      */
     
     
-    public Gestion_match() {
+    public Gestion_match()  {
     
        eq1 = new ArrayList<>();       
        eq2 = new ArrayList<>();
@@ -166,7 +167,20 @@ public class Gestion_match implements Initializable {
       s2=s1.stream().map(e->e.getNom_Stade()).collect(Collectors.toList());
       s3=s1.stream().map(e->e.getId_stade()).collect(Collectors.toList());
     
-    }    
+    }   
+     @Override
+    public void start(Stage stage) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("../GUI/FXMLGestion_Match.fxml"));
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("../Asset/fxml.css").toExternalForm());
+        stage.setScene(scene);
+        stage.show();
+        stage.getIcons().add(new Image("/Ressource/fa.png"));
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
       @FXML
     void Gere_Joueur(MouseEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/Gui/FXMLGestionJoueur.fxml"));
@@ -215,7 +229,7 @@ public class Gestion_match implements Initializable {
        Alert alert = new Alert(AlertType.ERROR);
          alert.setTitle("Equipe !!!");
          alert.setHeaderText(null);
-        alert.setContentText("l'equipe1 dèja a un match");
+        alert.setContentText("l'equipe"+id_equipe.getValue()+"dèja a un match");
         alert.showAndWait();
    }
    else if ((sda.stream().anyMatch(e->e.getEquipe1().getPays().contains(id_equipe2.getValue())))||
@@ -224,7 +238,7 @@ public class Gestion_match implements Initializable {
         Alert alert = new Alert(AlertType.ERROR);
          alert.setTitle("Equipe !!!");
          alert.setHeaderText(null);
-        alert.setContentText("l'equipe2 dèja a un match");
+        alert.setContentText("l'equipe"+id_equipe2.getValue()+ "dèja a un match");
         alert.showAndWait();
    }
        else
