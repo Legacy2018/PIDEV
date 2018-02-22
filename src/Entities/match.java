@@ -117,6 +117,7 @@ public class match {
 
     public void setEquipe2(Equipe equipe2) {
         this.equipe2 = equipe2;
+        
     }
 
     

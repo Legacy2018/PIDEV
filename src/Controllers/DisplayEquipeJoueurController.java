@@ -132,7 +132,7 @@ public class DisplayEquipeJoueurController implements Initializable {
         phase.setVisible(true);
         select.setVisible(true);
         phase.setText(e.getPhase());
-        nbrbuteq.setText(String.valueOf(me.afficherNombreButParEquipe(e.getId_equipe())));
+        nbrbuteq.setText(String.valueOf(me.afficherNombreButParEquipe(e.getIdEquipe())));
         select.setText(e.getSelecteur());
         System.out.println("equipe " + e);
         ObservableList<Joueur> jEq = FXCollections.observableArrayList(sj.chercherParEquipe(e.getPays()));

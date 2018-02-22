@@ -3,6 +3,30 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
+            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Controllers/Consulter_Match.java</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Controllers/GestionJoueurController.java</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Controllers/ConsulterAnnoncesCollocationsController.java</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Services/serviceJoueur.java</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Controllers/Gestion_match.java</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Controllers/AfficherItineraireCovoiturageController.java</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Entities/match.java</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Controllers/ListTicketsController.java</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/IServices/IServiceGestionJoueur.java</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Entities/Equipe.java</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/DataSource/DataSource.java</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Services/serviceEquipe.java</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Services/MatchDAO.java</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Controllers/DisplayEquipeJoueurController.java</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Controllers/GestionEquipeController.java</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Main/PIDEV_V1.java</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Controllers/Localisation.java</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Entities/Joueur.java</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/IServices/IServiceGestionEquipe.java</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Controllers/EnvoyerMailController.java</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Controllers/AjouterTicketController.java</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Controllers/ModifierTicketController.java</file>
+=======
             <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Services/TicketDAO.java</file>
             <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/GUI/Sign_view.fxml</file>
             <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Controllers/GestionCollocationController.java</file>
@@ -28,6 +52,7 @@
             <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/DataSource/DataSource.java</file>
             <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Controllers/AfficherItineraireCovoiturageController.java</file>
             <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/GUI/toolbar.fxml</file>
+>>>>>>> 15fe2ef3b86832e055e32c6a121605f1e4b147f5
         </group>
     </open-files>
 </project-private>

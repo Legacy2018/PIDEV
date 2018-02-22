@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -49,13 +50,13 @@ public class Consulter_Match implements Initializable {
     private TableView<match> t;
      ObservableList<match> data ; 
      @FXML
-    private TableColumn<?, ?> Equipe1_2;
+    private TableColumn<match,String> Equipe1_2;
 
     @FXML
-    private TableColumn<?, ?> Equipe2_2;
+    private TableColumn<match,String> Equipe2_2;
 
     @FXML
-    private TableColumn<?, ?> st_2;
+    private TableColumn<match,String> st_2;
 
     @FXML
     private TableColumn<?, ?> ph_2;
@@ -89,7 +90,7 @@ private JFXButton ac;
 
 @FXML
 void ac(MouseEvent event) throws IOException{
-    Parent creerGroupe = FXMLLoader.load(getClass().getResource("/Gui/FXMLGestion_Match.fxml"));
+    Parent creerGroupe = FXMLLoader.load(getClass().getResource("/GUI/FXMLGestion_Match.fxml"));
         Scene sceneAffichage = new Scene(creerGroupe);
         sceneAffichage.getStylesheets().add(getClass().getResource("../Asset/fxml.css").toExternalForm());
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -106,10 +107,10 @@ void ac(MouseEvent event) throws IOException{
             data.add(e);
         });
        t.setItems(data);
-        Equipe1_2.setCellValueFactory(new PropertyValueFactory<>("equipe1"));
-       Equipe2_2.setCellValueFactory(new PropertyValueFactory<>("equipe2"));
-       //mchkla lehna saat
-       st_2.setCellValueFactory(new PropertyValueFactory<>("stade"));
+        Equipe1_2.setCellValueFactory(c-> new SimpleStringProperty(c.getValue().getEquipe1().getPays()));
+       Equipe2_2.setCellValueFactory(c-> new SimpleStringProperty(c.getValue().getEquipe2().getPays()));
+       
+       st_2.setCellValueFactory(c-> new SimpleStringProperty(c.getValue().getStade().getNom_Stade()));
        ph_2.setCellValueFactory(new PropertyValueFactory<>("phase"));
        h_2.setCellValueFactory(new PropertyValueFactory<>("heureMatch"));
        dt_2.setCellValueFactory(new PropertyValueFactory<>("dateMatch"));
@@ -134,10 +135,10 @@ void ac(MouseEvent event) throws IOException{
             data.add(e);
         });
        t.setItems(data);
-      Equipe1_2.setCellValueFactory(new PropertyValueFactory<>("equipe1"));
-       Equipe2_2.setCellValueFactory(new PropertyValueFactory<>("equipe2"));
-       //mchkla lehna saat
-       st_2.setCellValueFactory(new PropertyValueFactory<>("stade"));
+       Equipe1_2.setCellValueFactory(c-> new SimpleStringProperty(c.getValue().getEquipe1().getPays()));
+       Equipe2_2.setCellValueFactory(c-> new SimpleStringProperty(c.getValue().getEquipe2().getPays()));
+       
+       st_2.setCellValueFactory(c-> new SimpleStringProperty(c.getValue().getStade().getNom_Stade()));
        ph_2.setCellValueFactory(new PropertyValueFactory<>("phase"));
        h_2.setCellValueFactory(new PropertyValueFactory<>("heureMatch"));
        dt_2.setCellValueFactory(new PropertyValueFactory<>("dateMatch"));
@@ -153,10 +154,10 @@ void ac(MouseEvent event) throws IOException{
             data.add(e);
         });
        t.setItems(data);
-        Equipe1_2.setCellValueFactory(new PropertyValueFactory<>("equipe1"));
-       Equipe2_2.setCellValueFactory(new PropertyValueFactory<>("equipe2"));
-       //mchkla lehna saat
-       st_2.setCellValueFactory(new PropertyValueFactory<>("stade"));
+         Equipe1_2.setCellValueFactory(c-> new SimpleStringProperty(c.getValue().getEquipe1().getPays()));
+       Equipe2_2.setCellValueFactory(c-> new SimpleStringProperty(c.getValue().getEquipe2().getPays()));
+       
+       st_2.setCellValueFactory(c-> new SimpleStringProperty(c.getValue().getStade().getNom_Stade()));
        ph_2.setCellValueFactory(new PropertyValueFactory<>("phase"));
        h_2.setCellValueFactory(new PropertyValueFactory<>("heureMatch"));
        dt_2.setCellValueFactory(new PropertyValueFactory<>("dateMatch"));
@@ -180,10 +181,10 @@ void ac(MouseEvent event) throws IOException{
             data.add(e);
         });
        t.setItems(data);
-       Equipe1_2.setCellValueFactory(new PropertyValueFactory<>("equipe1"));
-       Equipe2_2.setCellValueFactory(new PropertyValueFactory<>("equipe2"));
-       //mchkla lehna saat
-       st_2.setCellValueFactory(new PropertyValueFactory<>("stade"));
+       Equipe1_2.setCellValueFactory(c-> new SimpleStringProperty(c.getValue().getEquipe1().getPays()));
+       Equipe2_2.setCellValueFactory(c-> new SimpleStringProperty(c.getValue().getEquipe2().getPays()));
+       
+       st_2.setCellValueFactory(c-> new SimpleStringProperty(c.getValue().getStade().getNom_Stade()));
        ph_2.setCellValueFactory(new PropertyValueFactory<>("phase"));
        h_2.setCellValueFactory(new PropertyValueFactory<>("heureMatch"));
        dt_2.setCellValueFactory(new PropertyValueFactory<>("dateMatch"));

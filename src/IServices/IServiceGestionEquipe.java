@@ -21,6 +21,7 @@ public interface IServiceGestionEquipe {
     public boolean supprimerEquipe(String pays);
 
     public List<Equipe> chercherParPays(String pays);
+     public Equipe AfficherEquipe(int id);
 
     public Equipe AfficherEquipe(String pays);
     

@@ -128,7 +128,7 @@ public class serviceEquipe implements IServices.IServiceGestionEquipe{
                 rest.beforeFirst();
                 while (rest.next()) {
                     Equipe e = new Equipe();
-                    e.setId_equipe(rest.getInt(1));
+                    e.setIdEquipe(rest.getInt(1));
                     e.setPays(rest.getString(2));
                     e.setEtat(rest.getInt(3));
                     e.setPhase(rest.getString(4));
@@ -162,7 +162,7 @@ public class serviceEquipe implements IServices.IServiceGestionEquipe{
                 rest.beforeFirst();
                 while (rest.next()) {
 
-                    eq.setId_equipe(rest.getInt(1));
+                    eq.setIdEquipe(rest.getInt(1));
                     eq.setPays(rest.getString(2));
                     eq.setEtat(rest.getInt(3));
                     eq.setPhase(rest.getString(4));
@@ -192,7 +192,7 @@ public class serviceEquipe implements IServices.IServiceGestionEquipe{
                 rest.beforeFirst();
                 while (rest.next()) {
 
-                    eq.setId_equipe(rest.getInt(1));
+                    eq.setIdEquipe(rest.getInt(1));
                     eq.setPays(rest.getString(2));
                     eq.setEtat(rest.getInt(3));
                     eq.setPhase(rest.getString(4));
@@ -223,7 +223,7 @@ public class serviceEquipe implements IServices.IServiceGestionEquipe{
                 rest.beforeFirst();
                 while (rest.next()) {
                     Equipe e = new Equipe();
-                    e.setId_equipe(rest.getInt(1));
+                    e.setIdEquipe(rest.getInt(1));
                     e.setPays(rest.getString(2));
                     e.setEtat(rest.getInt(3));
                     e.setPhase(rest.getString(4));
@@ -255,7 +255,7 @@ public class serviceEquipe implements IServices.IServiceGestionEquipe{
                     = st.executeQuery("select * from Equipe where etat=0");
             while (rest.next()) {
                 Equipe e = new Equipe();
-                e.setId_equipe(rest.getInt(1));
+                e.setIdEquipe(rest.getInt(1));
                 e.setPays(rest.getString(2));
                 e.setEtat(rest.getInt(3));
                 e.setPhase(rest.getString(4));
@@ -289,7 +289,7 @@ public class serviceEquipe implements IServices.IServiceGestionEquipe{
                 rest.beforeFirst();
                 while (rest.next()) {
                     Equipe e = new Equipe();
-                    e.setId_equipe(rest.getInt(1));
+                    e.setIdEquipe(rest.getInt(1));
                     e.setPays(rest.getString(2));
                     e.setEtat(rest.getInt(3));
                     e.setPhase(rest.getString(4));
@@ -324,7 +324,7 @@ public class serviceEquipe implements IServices.IServiceGestionEquipe{
                 rest.beforeFirst();
                 while (rest.next()) {
                     Equipe e = new Equipe();
-                    e.setId_equipe(rest.getInt(1));
+                    e.setIdEquipe(rest.getInt(1));
                     e.setPays(rest.getString(2));
                     e.setEtat(rest.getInt(3));
                     e.setPhase(rest.getString(4));
@@ -360,7 +360,7 @@ public class serviceEquipe implements IServices.IServiceGestionEquipe{
                 rest.beforeFirst();
                 while (rest.next()) {
                     Equipe e = new Equipe();
-                    e.setId_equipe(rest.getInt(1));
+                    e.setIdEquipe(rest.getInt(1));
                     e.setPays(rest.getString(2));
                     e.setEtat(rest.getInt(3));
                     e.setPhase(rest.getString(4));
@@ -429,4 +429,33 @@ public class serviceEquipe implements IServices.IServiceGestionEquipe{
             return null;
         }
     }
-}
+
+    @Override
+    public Equipe AfficherEquipe(int id) {
+ Equipe eq = new Equipe();
+        try {
+
+            ResultSet rest = st.executeQuery("select * from Equipe where id_equipe=" + id + ";");
+            if (!rest.next()) {
+                System.err.println("Resultat introuvable");
+            } else {
+                rest.beforeFirst();
+                while (rest.next()) {
+
+                    eq.setIdEquipe(rest.getInt(1));
+                    eq.setPays(rest.getString(2));
+                    eq.setEtat(rest.getInt(3));
+                    eq.setPhase(rest.getString(4));
+                    eq.setGroupe(rest.getString(5));
+                    eq.setSelecteur(rest.getString(6));
+
+                }
+
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(serviceEquipe.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return eq;    }}
+

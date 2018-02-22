@@ -5,6 +5,7 @@
  */
 package Controllers;
 
+import com.jfoenix.controls.JFXComboBox;
 import com.lynden.gmapsfx.GoogleMapView;
 import com.lynden.gmapsfx.MapComponentInitializedListener;
 import com.lynden.gmapsfx.javascript.object.DirectionsPane;
@@ -46,8 +47,7 @@ public class Localisation implements  Initializable, MapComponentInitializedList
     @FXML
     private GoogleMapView mapView;
     
-    @FXML
-    private TextField addressTextField;
+   
     
     private GoogleMap map;
     
@@ -55,14 +55,16 @@ public class Localisation implements  Initializable, MapComponentInitializedList
 
     private StringProperty address = new SimpleStringProperty();
     
-   
+    @FXML
+    private JFXComboBox<String> combo;
   
     
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         mapView.addMapInializedListener(this);
-        address.bind(addressTextField.textProperty());
+        address.bind(combo.selectionModelProperty().asString());
+         this.combo.getItems().addAll("Stade Loujniki","lekaterinbourg Arena","Stade Krestovski","Rostov Arena","Samara Arena","Volgograd Arena","Stade Ficht","Kazan Arena","Stade de Mordovie","Stade de Kaliningrad");
     }    
     
     
@@ -87,8 +89,8 @@ public class Localisation implements  Initializable, MapComponentInitializedList
     
     
     @FXML
-    public void addressTextFieldAction(ActionEvent event) {
-        geocodingService.geocode(address.get(), (GeocodingResult[] results, GeocoderStatus status) -> {
+    public void comboAction(ActionEvent event) {
+        geocodingService.geocode(combo.getValue(), (GeocodingResult[] results, GeocoderStatus status) -> {
             
             LatLong latLong = null;
             
