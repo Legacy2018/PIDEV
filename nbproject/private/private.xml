@@ -3,29 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Controllers/ConfirmationscreenController.java</file>
-            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Controllers/DashboardController.java</file>
-            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Controllers/ReclamationController.java</file>
-            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/GUI/DProfiles.fxml</file>
-            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Main/PIDEV_V1.java</file>
+            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Controllers/ConsulterAnnoncesCollocationsController.java</file>
+            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/GUI/Recherche_Profile.fxml</file>
             <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Controllers/Login_viewController.java</file>
-            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Services/ServiceUtilisateur.java</file>
-            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Controllers/ListTicketsController.java</file>
-            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Controllers/sign.java</file>
-            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Controllers/EnvoyerMailController.java</file>
-            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Controllers/Gestion_match.java</file>
-            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Entities/EmailAttachmentSender.java</file>
-            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Controllers/DProfilesController.java</file>
-            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Controllers/Localisation.java</file>
-            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Entities/Utilisateur.java</file>
-            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Controllers/ToolbarController.java</file>
-            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Controllers/SidePannelController.java</file>
-            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Services/ServiceFos_User.java</file>
-            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/GUI/Profile.fxml</file>
-            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Controllers/SidePannelController_1.java</file>
-            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/nbproject/jfx-impl.xml</file>
-            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Controllers/ProfileController.java</file>
-            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/GUI/Confirmationscreen.fxml</file>
+            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Controllers/Recherche_ProfileController.java</file>
         </group>
     </open-files>
 </project-private>

@@ -161,12 +161,15 @@ public class ServiceUtilisateur extends ServiceFos_User {
     }
     public List<Utilisateur> getallfiltred(String column,String val) 
     {   List<Utilisateur> us=new ArrayList<>();
+    ResultSet res;
          try
-        {  
-            ResultSet res= st.executeQuery("Select username from fos_user where "+column+" like '"+val+"%';");
+        {  if(!column.equals("username"))
+            res= st.executeQuery("Select * from Utilisateur where "+column+" like '"+val+"%';");
+        else
+            res= st.executeQuery("Select * from fos_User where "+column+" like '"+val+"%';");
             while(res.next())
             {
-                us.add(new ServiceUtilisateur().findUtilisateur(res.getString("username")));
+                us.add(new ServiceUtilisateur().findUtilisateurbyID(res.getInt("id")));
             }
         } catch (SQLException ex) {
             System.out.println(ex);

@@ -149,7 +149,7 @@ public class ConsulterAnnoncesCollocationsController extends Application impleme
             for (Annonce_collocation annonce: annonces) {
                 
        
-                AnchorPane newAnnoncesAnchorPane = new AnchorPane();
+        AnchorPane newAnnoncesAnchorPane = new AnchorPane();
         newAnnoncesAnchorPane.setStyle(annoncesAnchorPane.getStyle());
         newAnnoncesAnchorPane.setEffect(annoncesAnchorPane.getEffect());
 

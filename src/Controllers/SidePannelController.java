@@ -53,6 +53,10 @@ public class SidePannelController implements Initializable {
         name.setText(Login_viewController.u.getNom());
         if(( Login_viewController.u.getImg_profile()!=null)&&(Login_viewController.u.getImg_profile()!="null"))
         imgprofile.setImage(new Image(getClass().getResource(Login_viewController.u.getImg_profile()).toString(), true));
+        else
+        {
+         imgprofile.setImage(new Image(getClass().getResource("../Ressource/a.jpg").toString(), true));
+        }
     }    
 
     
