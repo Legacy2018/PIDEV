@@ -3,10 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/GUI/Sign_view.fxml</file>
             <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Controllers/ConsulterAnnoncesCollocationsController.java</file>
             <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/GUI/Recherche_Profile.fxml</file>
+            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Main/PIDEV_V1.java</file>
             <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Controllers/Login_viewController.java</file>
+            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Services/ServiceUtilisateur.java</file>
+            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Controllers/ShowProfileController.java</file>
+            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/GUI/ShowProfile.fxml</file>
             <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Controllers/Recherche_ProfileController.java</file>
+            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Asset/MainFram.css</file>
+            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Controllers/SidePannelController.java</file>
+            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/GUI/Profile.fxml</file>
+            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Controllers/ProfileController.java</file>
         </group>
     </open-files>
 </project-private>

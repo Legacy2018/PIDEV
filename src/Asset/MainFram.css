@@ -367,3 +367,7 @@ TiTled pane Customusation
 {
     -fx-base: -fx-primary;
 }
+#pansearch
+{
+    -fx-background-color: rgba(236, 240, 241,0.65);
+}

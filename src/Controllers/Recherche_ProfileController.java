@@ -68,6 +68,7 @@ public class Recherche_ProfileController extends Application implements Initiali
     private ImageView Profileimg;
     @FXML
     private JFXTextField search;
+    public static Utilisateur u;
     /**
      * Initializes the controller class.
      */
@@ -77,7 +78,8 @@ public class Recherche_ProfileController extends Application implements Initiali
         scroller.setFitToWidth(true);
        
     initDrawer();
-    AfficherUtilisateur(new ServiceUtilisateur().getall());
+     AfficherUtilisateur(new ServiceUtilisateur().getallfiltred("nom", SidePannelController.srch));
+     AfficherUtilisateur(new ServiceUtilisateur().getallfiltred("prenom", SidePannelController.srch));
     
     }    
     private void initDrawer() {
@@ -160,6 +162,29 @@ public class Recherche_ProfileController extends Application implements Initiali
         sp.setMinHeight(7);
         newProfile.getChildren().addAll(imgprof,nom,sp);
         
+        
+        
+        newProfile.setOnMouseClicked(e ->{
+        Recherche_ProfileController.u=u;
+        try
+        {
+            
+        Parent root = FXMLLoader.load(getClass().getResource("/GUI/ShowProfile.fxml"));
+        Stage stage=new Stage();
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("/Asset/MainFram.css").toExternalForm());
+        stage.setScene(scene);
+        stage.show();
+        }
+        catch(IOException ex)
+        {
+            System.out.println(ex);
+        }
+        
+        
+        
+        
+        });
         Profilevbox.getChildren().add(newProfile);
        }
        

@@ -6,6 +6,7 @@
 package Controllers;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -18,6 +19,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.InputMethodEvent;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -43,7 +46,10 @@ public class SidePannelController implements Initializable {
     private ImageView imgprofile;
     @FXML
     private JFXButton reclamation;
-
+    @FXML
+    private JFXTextField search;
+    public static String srch;
+    
     /**
      * Initializes the controller class.
      */
@@ -109,6 +115,23 @@ public class SidePannelController implements Initializable {
         stage.setScene(scene);
         stage.show();
         
+    }
+
+   
+    
+    
+
+    @FXML
+    private void chercher(KeyEvent event) throws IOException {
+        System.out.println(event.getCode().getName());
+        srch=search.getText();
+        if(event.getCode().getName().equals("Enter"))
+        {Stage stage = (Stage) search.getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getResource("/GUI/Recherche_Profile.fxml"));
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("/Asset/MainFram.css").toExternalForm());
+        stage.setScene(scene);
+        stage.show();}
     }
     
 }

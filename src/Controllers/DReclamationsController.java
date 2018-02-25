@@ -9,7 +9,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.transitions.hamburger.HamburgerSlideCloseTransition;
-import entites.Reclamation;
+import Entities.Reclamation;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
