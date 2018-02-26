@@ -7,12 +7,23 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 
-<AnchorPane id="AnchorPane" prefHeight="691.0" prefWidth="1032.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Consulter_Stades">
-   
-   <children>
-      <TableView fx:id="t" layoutX="3.0" layoutY="75.0" prefHeight="447.0" prefWidth="1049.0">
+<BorderPane prefHeight="691.0" prefWidth="1066.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Consulter_Stades">
+   <top>
+      <Label prefHeight="44.0" prefWidth="194.0" text="Consulter Stades" textFill="WHITE" BorderPane.alignment="CENTER">
+         <graphic>
+            <ImageView fx:id="img" fitHeight="61.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Ressource/gestStades.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Label>
+   </top>
+   <center>
+      <TableView fx:id="t" prefHeight="355.0" prefWidth="1066.0" BorderPane.alignment="CENTER">
          <columns>
             <TableColumn fx:id="Nom_Stade" prefWidth="99.0" text="Nom Stade" />
             <TableColumn fx:id="Pays" prefWidth="143.0" text="Pays" />
@@ -22,26 +33,26 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <JFXButton fx:id="loca" contentDisplay="TOP" layoutY="598.0" mnemonicParsing="false" onMouseClicked="#loca" prefHeight="72.0" prefWidth="333.0" styleClass="toolbar-button" textAlignment="CENTER">
-         <graphic>
-            <FontAwesomeIconView glyphName="MAP" size="25" />
-         </graphic>
-      </JFXButton>
-      <JFXButton fx:id="meteo" contentDisplay="TOP" layoutX="333.0" layoutY="598.0" mnemonicParsing="false" onMouseClicked="#meteo" prefHeight="72.0" prefWidth="333.0" styleClass="toolbar-button" textAlignment="CENTER">
-         <graphic>
-            <FontAwesomeIconView glyphName="UMBRELLA" size="25" />
-         </graphic>
-      </JFXButton>
-      <JFXButton fx:id="acceuil" contentDisplay="TOP" layoutX="666.0" layoutY="598.0" mnemonicParsing="false" onMouseClicked="#accueil" prefHeight="72.0" prefWidth="385.0" styleClass="toolbar-button" textAlignment="CENTER">
-         <graphic>
-            <FontAwesomeIconView glyphName="HOME" size="25" />
-         </graphic>
-      </JFXButton>
-      <ImageView fx:id="img" fitHeight="61.0" fitWidth="100.0" layoutX="280.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../Ressource/gestStades.png" />
-         </image>
-      </ImageView>
-      <Label layoutX="454.0" layoutY="17.0" prefHeight="44.0" prefWidth="194.0" text="Consulter Stades" textFill="WHITE" />
-   </children>
-</AnchorPane>
+   </center>
+   <bottom>
+      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <JFXButton fx:id="meteo" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#meteo" prefHeight="72.0" prefWidth="333.0" styleClass="toolbar-button" textAlignment="CENTER">
+               <graphic>
+                  <FontAwesomeIconView fill="#f5f3f3" glyphName="UMBRELLA" size="25" />
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="loca" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#loca" prefHeight="72.0" prefWidth="333.0" styleClass="toolbar-button" textAlignment="CENTER">
+               <graphic>
+                  <FontAwesomeIconView fill="#fcf9f9" glyphName="MAP" size="25" />
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="acceuil" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#accueil" prefHeight="72.0" prefWidth="400.0" styleClass="toolbar-button" textAlignment="CENTER">
+               <graphic>
+                  <FontAwesomeIconView fill="#f2ecec" glyphName="HOME" size="25" />
+               </graphic>
+            </JFXButton>
+         </children>
+      </HBox>
+   </bottom>
+</BorderPane>

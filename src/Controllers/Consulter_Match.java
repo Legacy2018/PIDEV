@@ -35,6 +35,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TreeTableColumn;
+import javafx.scene.control.TreeTableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -123,10 +125,8 @@ void ac(MouseEvent event) throws IOException{
     
     
 
-    /**
-     * Initializes the controller class.
-     * 
-     */
+    
+    
     @FXML
     void pha(ActionEvent event) {
         List<match> lsa=M.afficherMatchParPhase(phs.getText());
@@ -169,10 +169,12 @@ void ac(MouseEvent event) throws IOException{
       
     
     
-    
+         
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        eq1=e.selectEquipes().stream().map(e->e.getPays()).collect(Collectors.toList());
+       
+    eq1=e.selectEquipes().stream().map(e->e.getPays()).collect(Collectors.toList());
         System.out.print(eq1);
         this.sa.getItems().addAll(eq1);
         List<match> lsa=M.afficherMatch();
@@ -190,7 +192,8 @@ void ac(MouseEvent event) throws IOException{
        dt_2.setCellValueFactory(new PropertyValueFactory<>("dateMatch"));
        sc_2.setCellValueFactory(new PropertyValueFactory<>("score"));
        sc_21.setCellValueFactory(new PropertyValueFactory<>("score2"));
-        // TODO
+        // TODO 
+
     }    
     
 }

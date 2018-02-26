@@ -64,7 +64,7 @@
         </Label>
         <JFXRadioButton fx:id="chkPos" layoutX="1056.0" layoutY="60.0" text="Position" textFill="WHITE" />
         <JFXRadioButton fx:id="chkEq" layoutX="1056.0" layoutY="88.0" text="Equipe" textFill="WHITE" />
-        <JFXRadioButton fx:id="chkNat" layoutX="1056.0" layoutY="115.0" text="Equipe" textFill="WHITE" />
+        <JFXRadioButton fx:id="chkNat" layoutX="1056.0" layoutY="115.0" text="nationalité" textFill="WHITE" />
       <JFXButton fx:id="acceuil" contentDisplay="TOP" layoutX="807.0" layoutY="681.0" mnemonicParsing="false" onMouseClicked="#accueil" prefHeight="72.0" prefWidth="385.0" styleClass="toolbar-button" text="Accueil" textAlignment="CENTER">
          <graphic>
             <FontAwesomeIconView glyphName="HOME" size="25" />

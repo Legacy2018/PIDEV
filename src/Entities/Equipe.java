@@ -16,7 +16,8 @@ public class Equipe {
     String phase; //1/8 ou 1/4 ou 1/2 ou 3éme place ou finale
     String groupe; //A ou B ou C ou D ou E ou F ou G ou H 
     String selecteur;
-
+    int point ;
+    
    public String getSelecteur() {
         return selecteur;
     }
@@ -32,6 +33,20 @@ public class Equipe {
         this.groupe = "groupe";
         this.selecteur = selecteur;
 
+    }
+
+    public Equipe(int id ,int point) {
+        
+        this.idEquipe= id ; 
+        this.point = point;
+    }
+
+    public int getPoint() {
+        return point;
+    }
+
+    public void setPoint(int point) {
+        this.point = point;
     }
 
     public Equipe(String pays, int etat, String phase, String groupe,  String selecteur) {

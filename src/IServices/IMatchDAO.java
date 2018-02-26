@@ -20,7 +20,7 @@ public interface IMatchDAO {
     void  ajouterMatch(match match); //on ajoute les equipes et le stade
     
     void modifierMatch(match match); //on modifie les buts et le score
-     public void modifierMatchScore(String score,String score2,match match);
+     public void modifierMatchScore(int score,int score2,match match);
     void modifierDateMatch(String date, match match);
     
     void supprimerMatch(int id);

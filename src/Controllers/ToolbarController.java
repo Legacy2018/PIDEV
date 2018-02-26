@@ -99,7 +99,7 @@ public class ToolbarController implements Initializable {
          Stage stage=(Stage) paneDeconnection.getScene().getWindow();
          Parent root = FXMLLoader.load(getClass().getResource("/GUI/ListTickets.fxml"));
         Scene scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("/Asset/accueilannonces.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/Asset/MainFram.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
         

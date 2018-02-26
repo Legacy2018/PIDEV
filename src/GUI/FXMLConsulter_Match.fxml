@@ -7,34 +7,76 @@
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
 <AnchorPane id="AnchorPane" prefHeight="728.0" prefWidth="1015.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Consulter_Match">
     <stylesheets>
         
     </stylesheets>
    <children>
-      <TableView fx:id="t" layoutX="-2.0" layoutY="142.0" prefHeight="587.0" prefWidth="1015.0">
-         <columns>
-            <TableColumn fx:id="Equipe1_2" prefWidth="129.0" text="Equipe1" />
-            <TableColumn fx:id="sc_2" prefWidth="122.0" text="score" />
-            <TableColumn fx:id="sc_21" prefWidth="122.0" text="score2" />
-            <TableColumn fx:id="Equipe2_2" prefWidth="139.0" text="Equipe 2" />
-            <TableColumn fx:id="st_2" prefWidth="156.0" text="Stade" />
-            <TableColumn fx:id="ph_2" prefWidth="142.0" text="phase" />
-            <TableColumn fx:id="dt_2" prefWidth="107.0" text="date" />
-            <TableColumn fx:id="h_2" prefWidth="97.0" text="heure" />
-         </columns>
-      </TableView>
-      <JFXButton fx:id="d" layoutX="544.0" layoutY="26.0" onAction="#d" prefHeight="44.0" prefWidth="128.0" text="par date" />
-      <JFXTextField fx:id="phs" layoutX="196.0" layoutY="86.0" onAction="#pha" prefHeight="32.0" prefWidth="170.0" />
-      <JFXDatePicker fx:id="dta" layoutX="555.0" layoutY="86.0" prefHeight="31.0" prefWidth="154.0" />
-      <JFXButton fx:id="AC" layoutX="31.0" layoutY="27.0" onMouseClicked="#ac" prefHeight="44.0" prefWidth="128.0">
-         <graphic>
-            <FontAwesomeIconView glyphName="MAIL_FORWARD" size="25" wrappingWidth="14.285714149475098" />
-         </graphic></JFXButton>
-      <JFXButton layoutX="840.0" layoutY="27.0" onMouseClicked="#par" prefHeight="44.0" prefWidth="115.0" text="Par Equipe" />
-      <JFXComboBox fx:id="sa" editable="true" layoutX="840.0" layoutY="84.0" prefHeight="34.0" prefWidth="161.0" />
-      <JFXButton fx:id="pha" layoutX="217.0" layoutY="27.0" onAction="#pha" prefHeight="44.0" prefWidth="128.0" text="Par phase" />
+      <HBox prefHeight="100.0" prefWidth="1015.0">
+         <children>
+            <JFXButton fx:id="pha1" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#ac" prefHeight="61.0" prefWidth="241.0" styleClass="toolbar-button" textAlignment="CENTER">
+               <graphic>
+                  <ImageView fitHeight="32.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Ressource/back.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <VBox prefHeight="103.0" prefWidth="237.0">
+               <children>
+                  <JFXButton fx:id="pha" contentDisplay="TOP" mnemonicParsing="false" onAction="#pha" prefHeight="72.0" prefWidth="241.0" styleClass="toolbar-button" text=" phase" textAlignment="CENTER">
+                     <graphic>
+                        <FontAwesomeIconView fill="#fcf6f6" glyphName="MAP" size="25" />
+                     </graphic>
+                  </JFXButton>
+                  <JFXTextField fx:id="phs" onAction="#pha" prefHeight="32.0" prefWidth="170.0" />
+               </children>
+            </VBox>
+            <VBox prefHeight="108.0" prefWidth="268.0">
+               <children>
+                  <JFXButton fx:id="d" contentDisplay="TOP" mnemonicParsing="false" onAction="#d" prefHeight="75.0" prefWidth="268.0" styleClass="toolbar-button" text="Date" textAlignment="CENTER">
+                     <graphic>
+                        <FontAwesomeIconView fill="#f5f3f3" glyphName="CALENDAR_ALT" size="25" />
+                     </graphic>
+                  </JFXButton>
+                  <JFXDatePicker fx:id="dta" prefHeight="24.0" prefWidth="262.0" />
+               </children>
+            </VBox>
+            <VBox prefHeight="103.0" prefWidth="237.0">
+               <children>
+                  <JFXButton contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#par" prefHeight="69.0" prefWidth="237.0" styleClass="toolbar-button" text="Equipe" textAlignment="CENTER">
+                     <graphic>
+                        <ImageView fitHeight="23.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Ressource/gestEquipes.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXComboBox fx:id="sa" editable="true" prefHeight="29.0" prefWidth="255.0" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   
+<TableView fx:id="t" layoutX="-2.0" layoutY="142.0" prefHeight="587.0" prefWidth="1015.0">
+        
+<columns>
+      <TableColumn fx:id="Equipe1_2" prefWidth="129.0" text="Equipe1" />
+      <TableColumn fx:id="sc_2" prefWidth="122.0" text="score" />
+      <TableColumn fx:id="sc_21" prefWidth="122.0" text="score2" />
+      <TableColumn fx:id="Equipe2_2" prefWidth="139.0" text="Equipe 2" />
+      <TableColumn fx:id="st_2" prefWidth="156.0" text="Stade" />
+      <TableColumn fx:id="ph_2" prefWidth="142.0" text="phase" />
+      <TableColumn fx:id="dt_2" prefWidth="107.0" text="date" />
+      <TableColumn fx:id="h_2" prefWidth="97.0" text="heure" />
+   </columns></TableView>
    </children>
 </AnchorPane>

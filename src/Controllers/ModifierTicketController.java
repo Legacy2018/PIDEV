@@ -6,15 +6,15 @@
 package Controllers;
 
 
+import static Controllers.ListTicketsController.ticketSelectionne;
 import IServices.IMatchDAO;
 import IServices.IStadeDAO;
-import IServices.ITicketDAO;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import Entities.Fos_User;
 import Entities.match;
-import entities.Ticket;
+import Entities.Ticket;
 
 import java.io.IOException;
 import java.net.URL;
@@ -28,7 +28,6 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
@@ -41,6 +40,11 @@ import Services.DAOStade;
 import Services.MatchDAO;
 import Services.serviceEquipe;
 import Services.TicketDAO;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.scene.Node;
+import org.controlsfx.control.Notifications;
 
 public class ModifierTicketController implements Initializable {
 
@@ -83,13 +87,13 @@ public class ModifierTicketController implements Initializable {
     private TableColumn<?, ?> id_matchht;
 
     @FXML
-    private TableColumn<?, ?> Equipe1;
+    private TableColumn<match, String> Equipe1;
 
     @FXML
-    private TableColumn<?, ?> Equipee2;
+    private TableColumn<match, String> Equipee2;
 
     @FXML
-    private TableColumn<?, ?> satades;
+    private TableColumn<match, String> satades;
 
     @FXML
     private TableColumn<?, ?> datematch;
@@ -119,13 +123,14 @@ public class ModifierTicketController implements Initializable {
         System.out.println(ticketSelectionne);
         id_categorie.setItems(lstcat);
         id_nbticket.setItems(lstnb);
-        id_equipe1.setText(ticketSelectionne.getIdMatch().getEquipe1().getPays());
-        id_equipe2.setText(ticketSelectionne.getIdMatch().getEquipe2().getPays());
+      id_equipe1.setText(ticketSelectionne.getIdMatch().getEquipe1().getPays());
+            id_equipe2.setText(ticketSelectionne.getIdMatch().getEquipe2().getPays());
+              id_stade.setText(ticketSelectionne.getIdMatch().getStade().getNom_Stade());
         id_heur.setText(ticketSelectionne.getIdMatch().getHeureMatch());
         id_date.setText(ticketSelectionne.getIdMatch().getDateMatch());
         id_nbticket.setValue(ticketSelectionne.getNbrTicket());
         id_prix.setText(Float.toString(ticketSelectionne.getPrix()));
-        id_stade.setText(ticketSelectionne.getIdMatch().getStade().getNom_Stade());
+       
         id_categorie.setValue(ticketSelectionne.getCategories());
 
         
@@ -140,11 +145,9 @@ public class ModifierTicketController implements Initializable {
        
        tableViws.setItems(data);
       //  txdann.setCellValueFactory(new PropertyValueFactory<>("id_ticket"));
-       Equipe1.setCellValueFactory(new PropertyValueFactory<>("equipe1"));
-       Equipee2.setCellValueFactory(new PropertyValueFactory<>("equipe2"));
-    //categories.setCellValueFactory(new PropertyValueFactory<>("categories"));
-     
-       satades.setCellValueFactory(new PropertyValueFactory<>("stade"));
+       Equipe1.setCellValueFactory(c-> new SimpleStringProperty(c.getValue().getEquipe1().getPays()));
+       Equipee2.setCellValueFactory(c-> new SimpleStringProperty(c.getValue().getEquipe2().getPays()));
+       satades.setCellValueFactory(c-> new SimpleStringProperty(c.getValue().getStade().getNom_Stade()));
 id_matchht.setCellValueFactory(new PropertyValueFactory<>("idMatch"));
        datematch.setCellValueFactory(new PropertyValueFactory<>("dateMatch"));
               heur.setCellValueFactory(new PropertyValueFactory<>("heureMatch"));
@@ -179,26 +182,25 @@ id_matchht.setCellValueFactory(new PropertyValueFactory<>("idMatch"));
 
     @FXML
     void ModifierTicket(ActionEvent event) throws IOException {
-        int s = Integer.parseInt(txdann.getText());
+      //  int s = Integer.parseInt(txdann.getText());
          int z = ticketSelectionne.getIdUser().getId();
-        Ticket x = new Ticket(ticketSelectionne.getIdTicket(), id_nbticket.getValue(), id_categorie.getValue(), Float.parseFloat(id_prix.getText()), new Fos_User(z), new match(s));
+        Ticket x = new Ticket(ticketSelectionne.getIdTicket(), id_nbticket.getValue(), id_categorie.getValue(), Float.parseFloat(id_prix.getText()), new Fos_User(z), new match(ticketSelectionne.getIdMatch().getIdMatch()));
 
         tda.modifierTicket(x);
-       // ((Node) (event.getSource())).getScene().getWindow().hide();
-Stage stage ;
+         Parent creerGroupe = FXMLLoader.load(getClass().getResource("/GUI/ListTickets.fxml"));
+        Scene sceneAffichage = new Scene(creerGroupe);
+       sceneAffichage.getStylesheets().add(getClass().getResource("/Asset/Style.css").toExternalForm());
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(sceneAffichage);
+        stage.show();
+       /* Stage stage ;
      
             FXMLLoader afficher = new FXMLLoader();
         afficher.setLocation(getClass().getResource("ListTickets.fxml"));
-         Parent  root2 = afficher.load();
-            stage =new Stage();
-    
-        stage.setScene(new Scene(root2));
-        stage.initModality(Modality.APPLICATION_MODAL);
-     //   stage.initOwner(btnInviterMembres.getScene().getWindow());
-        stage.showAndWait();
-        Scene scene =new Scene(root2);
-    stage.setScene(scene);
-    stage.show();
+         Parent  root = afficher.load();
+            stage =new Stage();*/
+         Notifications.create().title("Signaler").text("Ticket Modifié ").showConfirm();
+              
     }
 
     public ModifierTicketController() {

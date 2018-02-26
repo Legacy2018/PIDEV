@@ -46,7 +46,7 @@ public class MatchDAO implements IMatchDAO {
     @Override
     public void ajouterMatch(match match) {
 
-        String requete = "INSERT INTO `matchs` (`id_match`, `nom_equipe1`, `Nom_equipe2`, `date`, `nom_stade`, `heure`, `phase`) VALUES (?,?,?,?,?,?,?)";
+        String requete = "INSERT INTO `matchs` (`id_match`, `nom_equipe1`, `Nom_equipe2`, `date`, `nom_stade`, `heure`, `phase`,`score`,`score2`) VALUES (?,?,?,?,?,?,?,null,null)";
         PreparedStatement ps;
         try {
             ps = connection.prepareStatement(requete);
@@ -73,8 +73,8 @@ public class MatchDAO implements IMatchDAO {
         try {
             PreparedStatement ps = connection.prepareStatement(requete);
            
-            ps.setInt(1,match.getScore());
-            ps.setInt(2,match.getScore2());
+            ps.setString(1,match.getScore());
+            ps.setString(2,match.getScore2());
            
             ps.setInt(3, match.getIdMatch());
 
@@ -88,13 +88,13 @@ public class MatchDAO implements IMatchDAO {
 
     
      @Override
-    public void modifierMatchScore(String score,String score2,match match) {
+    public void modifierMatchScore(int score,int score2,match match) {
         String requete = "update matchs set score=?,score2=?   where id_match=?";
         try {
             PreparedStatement ps = connection.prepareStatement(requete);
            
-            ps.setString(1, score);
-            ps.setString(2, score2);
+            ps.setInt(1, score);
+            ps.setInt(2, score2);
            
             ps.setInt(3, match.getIdMatch());
 
@@ -149,8 +149,8 @@ public class MatchDAO implements IMatchDAO {
             while (resultat.next()) {
                 match match = new match();
                 match.setIdMatch(resultat.getInt(1));
-                match.setScore(resultat.getInt(2));
-                match.setScore2(resultat.getInt(3));
+                match.setScore(resultat.getString(2));
+                match.setScore2(resultat.getString(3));
                 Equipe e = new Equipe();
             //    e= resultat.getString(4);
                 match.setEquipe1(iEquipeDao.AfficherEquipe(resultat.getString(4)));
@@ -186,8 +186,8 @@ public class MatchDAO implements IMatchDAO {
               match match = new match();
                 
                 match.setIdMatch(resultat.getInt(1));
-                match.setScore(resultat.getInt(2));
-                match.setScore2(resultat.getInt(3));
+                match.setScore(resultat.getString(2));
+                match.setScore2(resultat.getString(3));
                 match.setEquipe1(iEquipeDao.AfficherEquipe(resultat.getString(4)));
                 match.setEquipe2(iEquipeDao.AfficherEquipe(resultat.getString(5)));
                 match.setDateMatch(resultat.getString(6));
@@ -221,8 +221,8 @@ public class MatchDAO implements IMatchDAO {
               match match = new match();
                 
                 match.setIdMatch(resultat.getInt(1));
-                match.setScore(resultat.getInt(2));
-                match.setScore2(resultat.getInt(3));
+                match.setScore(resultat.getString(2));
+                match.setScore2(resultat.getString(3));
                 match.setEquipe1(iEquipeDao.AfficherEquipe(resultat.getString(4)));
                 match.setEquipe2(iEquipeDao.AfficherEquipe(resultat.getString(5)));
                 match.setDateMatch(resultat.getString(6));
@@ -255,8 +255,8 @@ public class MatchDAO implements IMatchDAO {
             while (resultat.next()) {
                  match match = new match();
                 match.setIdMatch(resultat.getInt(1));
-                match.setScore(resultat.getInt(2));
-                match.setScore2(resultat.getInt(3));
+                match.setScore(resultat.getString(2));
+                match.setScore2(resultat.getString(3));
                match.setEquipe1(iEquipeDao.AfficherEquipe(resultat.getString(4)));
                 match.setEquipe2(iEquipeDao.AfficherEquipe(resultat.getString(5)));
                 match.setDateMatch(resultat.getString(6));
@@ -287,8 +287,8 @@ public class MatchDAO implements IMatchDAO {
             while (resultat.next()) {
              
                 match.setIdMatch(resultat.getInt(1));
-                match.setScore(resultat.getInt(2));
-                match.setScore2(resultat.getInt(3));
+                match.setScore(resultat.getString(2));
+                match.setScore2(resultat.getString(3));
                 match.setEquipe1(iEquipeDao.AfficherEquipe(resultat.getString(4)));
                 match.setEquipe2(iEquipeDao.AfficherEquipe(resultat.getString(5)));
                 match.setDateMatch(resultat.getString(6));
@@ -318,8 +318,8 @@ public class MatchDAO implements IMatchDAO {
             while (resultat.next()) {
                 match match = new match();
                 match.setIdMatch(resultat.getInt(1));
-                match.setScore(resultat.getInt(2));
-                match.setScore2(resultat.getInt(3));
+                match.setScore(resultat.getString(2));
+                match.setScore2(resultat.getString(3));
                  match.setEquipe1(iEquipeDao.AfficherEquipe(resultat.getString(4)));
                 match.setEquipe2(iEquipeDao.AfficherEquipe(resultat.getString(5)));
                 match.setDateMatch(resultat.getString(6));
@@ -350,8 +350,8 @@ public class MatchDAO implements IMatchDAO {
             while (resultat.next()) {
                 match match = new match();
                 match.setIdMatch(resultat.getInt(1));
-                match.setScore(resultat.getInt(2));
-                match.setScore2(resultat.getInt(3));
+                match.setScore(resultat.getString(2));
+                match.setScore2(resultat.getString(3));
                 match.setEquipe1(iEquipeDao.AfficherEquipe(resultat.getString(4)));
                 match.setEquipe2(iEquipeDao.AfficherEquipe(resultat.getString(5)));
                 match.setDateMatch(resultat.getString(6));

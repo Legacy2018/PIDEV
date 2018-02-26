@@ -15,14 +15,16 @@ public class match {
     
     private int idMatch;
     private int nbButTot;
-    private int score;
-    private int score2;
+    private String score;
+    private String score2;
     private String dateMatch;
     private String heureMatch;
     private stade stade;
     private Equipe equipe1;
     private Equipe equipe2;
     private String phase;
+   
+
     
 
     public match(String dateMatch, String heureMatch, Equipe equipe1,stade stade,Equipe  equipe2, String phase) {
@@ -39,7 +41,7 @@ public class match {
     }
     
 
-    public match(int score,int score2) {
+    public match(String score,String score2) {
         this.score = score;
         this.score2=score2;
     }
@@ -63,7 +65,7 @@ public class match {
         return nbButTot;
     }
 
-    public int getScore() {
+    public String getScore() {
         return score;
     }
 
@@ -91,15 +93,15 @@ public class match {
         this.nbButTot = nbButTot;
     }
 
-    public void setScore(int Score) {
+    public void setScore(String Score) {
         this.score = Score;
     }
 
-    public int getScore2() {
+    public String getScore2() {
         return score2;
     }
 
-    public void setScore2(int score2) {
+    public void setScore2(String score2) {
         this.score2 = score2;
     }
 
