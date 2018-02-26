@@ -63,9 +63,9 @@ public class GestionEquipeController implements Initializable {
     Services.serviceEquipe se = new serviceEquipe();
     Equipe e = new Equipe();
     ObservableList<String> listeequipe = FXCollections.observableArrayList(se.selectPays());
-    ObservableList<String> listegroupe = FXCollections.observableArrayList("","A", "B", "C", "D", "E", "F", "G", "H");
-    ObservableList<String> listeEtat = FXCollections.observableArrayList("","IN", "OUT");
-    ObservableList<String> listephase = FXCollections.observableArrayList("","groupe", "1/8", "1/4", "1/2", "finale");
+    ObservableList<String> listegroupe = FXCollections.observableArrayList("A", "B", "C", "D", "E", "F", "G", "H");
+    ObservableList<String> listeEtat = FXCollections.observableArrayList("IN", "OUT");
+    ObservableList<String> listephase = FXCollections.observableArrayList("groupe", "1/8", "1/4", "1/2", "finale");
     ObservableList<Equipe> listeEquipeInit = FXCollections.observableArrayList(se.selectEquipes());
 
     public ObservableList<Equipe> getEq() {

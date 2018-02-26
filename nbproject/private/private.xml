@@ -3,10 +3,20 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/GUI/FXMLC_Stade.fxml</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/GUI/FXMLConsulter_Match.fxml</file>
             <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Services/TicketDAO.java</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/GUI/FXMLGestion_Match.fxml</file>
             <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Controllers/Gestion_match.java</file>
-            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Controllers/Localisation.java</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Asset/fxml.css</file>
             <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Controllers/AfficherItineraireCovoiturageController.java</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Entities/match.java</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Services/MatchDAO.java</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Controllers/Localisation.java</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/GUI/Meteo.fxml</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Controllers/MeteoController.java</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/GUI/Profile.fxml</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Controllers/Consulter_Stades.java</file>
             <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Controllers/AjouterTicketController.java</file>
         </group>
     </open-files>

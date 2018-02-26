@@ -251,14 +251,14 @@ public class ListTicketsController implements Initializable {
                 labelequip1.setTextFill(labelEquipe1.getTextFill());
                 labelequip1.setLayoutX(labelEquipe1.getLayoutX());
                 labelequip1.setLayoutY(labelEquipe1.getLayoutY());
-              //  labelequip1.setText(ticket.getIdMatch().getEquipe1().getPays());
+              labelequip1.setText(ticket.getIdMatch().getEquipe1().getPays());
                 //labelEquipe2
                 Label labelequip2 = new Label();
                 labelequip2.setFont(labelEquipe2.getFont());
                 labelequip2.setTextFill(labelEquipe2.getTextFill());
                 labelequip2.setLayoutX(labelEquipe2.getLayoutX());
                 labelequip2.setLayoutY(labelEquipe2.getLayoutY());
-              //  labelequip2.setText(ticket.getIdMatch().getEquipe2().getPays());
+               labelequip2.setText(ticket.getIdMatch().getEquipe2().getPays());
 
                 //labelStade
                 Label labelStade = new Label();
@@ -266,7 +266,7 @@ public class ListTicketsController implements Initializable {
                 labelStade.setTextFill(LabelStade.getTextFill());
                 labelStade.setLayoutX(LabelStade.getLayoutX());
                 labelStade.setLayoutY(LabelStade.getLayoutY());
-//                labelStade.setText(ticket.getIdMatch().getStade().getNom_Stade());
+              labelStade.setText(ticket.getIdMatch().getStade().getNom_Stade());
 
                 //labelDate
                 Label labelDate = new Label();
@@ -289,7 +289,7 @@ public class ListTicketsController implements Initializable {
                 labelUser.setTextFill(LabelUser.getTextFill());
                 labelUser.setLayoutX(LabelUser.getLayoutX());
                 labelUser.setLayoutY(LabelUser.getLayoutY());
-                labelUser.setText(ticket.getIdUser().getUsername());
+               labelUser.setText(ticket.getIdUser().getUsername());
 
                 //labelvs
                 Label labelvs = new Label();
@@ -335,7 +335,7 @@ public class ListTicketsController implements Initializable {
                 //  System.out.println(ticket.getIdUser());
                 //   System.out.println(u);
 
-                if (ticket.getIdUser().getId() != u.getId()) {
+/*                if (ticket.getIdUser().getId() != u.getId()) {
                     System.out.println("t");
                     ModifierButton.setDisable(true);
                     SupprimerButton.setDisable(true);
@@ -343,7 +343,7 @@ public class ListTicketsController implements Initializable {
                     System.out.println("f");
                     ModifierButton.setDisable(false);
                     SupprimerButton.setDisable(false);
-                }
+                }*/
                 //SupprimerButton
                 JFXButton CommenterButton = new JFXButton();
                 CommenterButton.setFont(btnCommenter.getFont());

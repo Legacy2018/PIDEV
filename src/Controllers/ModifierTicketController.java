@@ -8,7 +8,6 @@ package Controllers;
 
 import IServices.IMatchDAO;
 import IServices.IStadeDAO;
-import IServices.ITicketDAO;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
@@ -28,7 +27,6 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
@@ -41,6 +39,7 @@ import Services.DAOStade;
 import Services.MatchDAO;
 import Services.serviceEquipe;
 import Services.TicketDAO;
+import javafx.beans.property.SimpleStringProperty;
 
 public class ModifierTicketController implements Initializable {
 
@@ -83,13 +82,13 @@ public class ModifierTicketController implements Initializable {
     private TableColumn<?, ?> id_matchht;
 
     @FXML
-    private TableColumn<?, ?> Equipe1;
+    private TableColumn<match, String> Equipe1;
 
     @FXML
-    private TableColumn<?, ?> Equipee2;
+    private TableColumn<match, String> Equipee2;
 
     @FXML
-    private TableColumn<?, ?> satades;
+    private TableColumn<match, String> satades;
 
     @FXML
     private TableColumn<?, ?> datematch;
@@ -119,13 +118,14 @@ public class ModifierTicketController implements Initializable {
         System.out.println(ticketSelectionne);
         id_categorie.setItems(lstcat);
         id_nbticket.setItems(lstnb);
-        id_equipe1.setText(ticketSelectionne.getIdMatch().getEquipe1().getPays());
-        id_equipe2.setText(ticketSelectionne.getIdMatch().getEquipe2().getPays());
+      id_equipe1.setText(ticketSelectionne.getIdMatch().getEquipe1().getPays());
+            id_equipe2.setText(ticketSelectionne.getIdMatch().getEquipe2().getPays());
+              id_stade.setText(ticketSelectionne.getIdMatch().getStade().getNom_Stade());
         id_heur.setText(ticketSelectionne.getIdMatch().getHeureMatch());
         id_date.setText(ticketSelectionne.getIdMatch().getDateMatch());
         id_nbticket.setValue(ticketSelectionne.getNbrTicket());
         id_prix.setText(Float.toString(ticketSelectionne.getPrix()));
-        id_stade.setText(ticketSelectionne.getIdMatch().getStade().getNom_Stade());
+       
         id_categorie.setValue(ticketSelectionne.getCategories());
 
         
@@ -140,11 +140,9 @@ public class ModifierTicketController implements Initializable {
        
        tableViws.setItems(data);
       //  txdann.setCellValueFactory(new PropertyValueFactory<>("id_ticket"));
-       Equipe1.setCellValueFactory(new PropertyValueFactory<>("equipe1"));
-       Equipee2.setCellValueFactory(new PropertyValueFactory<>("equipe2"));
-    //categories.setCellValueFactory(new PropertyValueFactory<>("categories"));
-     
-       satades.setCellValueFactory(new PropertyValueFactory<>("stade"));
+       Equipe1.setCellValueFactory(c-> new SimpleStringProperty(c.getValue().getEquipe1().getPays()));
+       Equipee2.setCellValueFactory(c-> new SimpleStringProperty(c.getValue().getEquipe2().getPays()));
+       satades.setCellValueFactory(c-> new SimpleStringProperty(c.getValue().getStade().getNom_Stade()));
 id_matchht.setCellValueFactory(new PropertyValueFactory<>("idMatch"));
        datematch.setCellValueFactory(new PropertyValueFactory<>("dateMatch"));
               heur.setCellValueFactory(new PropertyValueFactory<>("heureMatch"));

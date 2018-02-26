@@ -31,6 +31,7 @@ import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -96,13 +97,13 @@ public class AjouterTicketController extends Application implements Initializabl
     private TableColumn<?, ?> id_matchht;
 
     @FXML
-    private TableColumn<?, ?> Equipe1;
+    private TableColumn<match,String> Equipe1;
 
     @FXML
-    private TableColumn<?, ?> Equipee2;
+    private TableColumn<match, String> Equipee2;
 
     @FXML
-    private TableColumn<?, ?> satades;
+    private TableColumn<match, String> satades;
 
     @FXML
     private TableColumn<?, ?> datematch;
@@ -153,7 +154,7 @@ public class AjouterTicketController extends Application implements Initializabl
     @FXML
     void AjouterAchatTicket(ActionEvent event) throws IOException {
          test=Integer.parseInt(txdann.getText());
-        Ticket ticket = new Ticket(id_nbticket.getValue(), id_categorie.getValue(), Float.parseFloat(id_prix.getText()) ,new Fos_User(12),new match (test));
+        Ticket ticket = new Ticket(id_nbticket.getValue(), id_categorie.getValue(), Float.parseFloat(id_prix.getText()) ,new Fos_User(14),new match (test));
         TicketDAO tda = new TicketDAO();
         tda.ajouter_Ticket(ticket);
         System.out.println("to text field action " + event.toString());
@@ -167,7 +168,7 @@ public class AjouterTicketController extends Application implements Initializabl
 
     public AjouterTicketController() {
 
-      /*  eq1 = new ArrayList<>();
+    /*  eq1 = new ArrayList<>();
         eq2 = new ArrayList<>();
         s2 = new ArrayList<>();
         eq = m.afficherMatch();
@@ -179,8 +180,8 @@ public class AjouterTicketController extends Application implements Initializabl
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       // this.id_equipe1.getItems().addAll(eq1);
-       // this.id_equipe2.getItems().addAll(eq2);
+     //  this.id_equipe1.getItems().addAll(eq1);
+      // this.id_equipe2.getItems().addAll(eq2);
        // this.id_stade.getItems().addAll(s2);
         id_categorie.setValue(lstcat.get(0));
         id_categorie.setItems(lstcat);
@@ -200,11 +201,12 @@ public class AjouterTicketController extends Application implements Initializabl
        
        tableViws.setItems(data);
       //  txdann.setCellValueFactory(new PropertyValueFactory<>("id_ticket"));
-       Equipe1.setCellValueFactory(new PropertyValueFactory<>("equipe1"));
-       Equipee2.setCellValueFactory(new PropertyValueFactory<>("equipe2"));
+     //  Equipe1.setCellValueFactory(new PropertyValueFactory<>("equipe1"));
+     //  Equipee2.setCellValueFactory(new PropertyValueFactory<>("");
     //categories.setCellValueFactory(new PropertyValueFactory<>("categories"));
-     
-       satades.setCellValueFactory(new PropertyValueFactory<>("stade"));
+       Equipe1.setCellValueFactory(c-> new SimpleStringProperty(c.getValue().getEquipe1().getPays()));
+       Equipee2.setCellValueFactory(c-> new SimpleStringProperty(c.getValue().getEquipe2().getPays()));
+       satades.setCellValueFactory(c-> new SimpleStringProperty(c.getValue().getStade().getNom_Stade()));
 id_matchht.setCellValueFactory(new PropertyValueFactory<>("idMatch"));
        datematch.setCellValueFactory(new PropertyValueFactory<>("dateMatch"));
               heur.setCellValueFactory(new PropertyValueFactory<>("heureMatch"));

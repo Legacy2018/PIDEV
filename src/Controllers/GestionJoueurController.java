@@ -315,7 +315,7 @@ public class GestionJoueurController implements Initializable {
             ObservableList<Joueur> jEq = FXCollections.observableArrayList(sj.chercherParNom(txtsearch.getText()));
             lstjoueur.getItems().clear();
             lstjoueur.getItems().addAll(jEq);
-            id_joueur.setCellValueFactory(new PropertyValueFactory<>("id_joueur"));
+         //   id_joueur.setCellValueFactory(new PropertyValueFactory<>("id_joueur"));
             nom_joueur.setCellValueFactory(new PropertyValueFactory<>("nom_joueur"));
             pays.setCellValueFactory(e -> new SimpleStringProperty(e.getValue().getId_equipe().getPays()));
 
@@ -328,7 +328,7 @@ public class GestionJoueurController implements Initializable {
 
                 lstjoueur.getItems().clear();
                 lstjoueur.getItems().addAll(jEq);
-                id_joueur.setCellValueFactory(new PropertyValueFactory<>("id_joueur"));
+            //    id_joueur.setCellValueFactory(new PropertyValueFactory<>("id_joueur"));
                 nom_joueur.setCellValueFactory(new PropertyValueFactory<>("nom_joueur"));
                 pays.setCellValueFactory(e -> new SimpleStringProperty(e.getValue().getId_equipe().getPays()));
 
@@ -341,7 +341,7 @@ public class GestionJoueurController implements Initializable {
 
                 lstjoueur.getItems().clear();
                 lstjoueur.getItems().addAll(jEq);
-                id_joueur.setCellValueFactory(new PropertyValueFactory<>("id_joueur"));
+            //    id_joueur.setCellValueFactory(new PropertyValueFactory<>("id_joueur"));
                 nom_joueur.setCellValueFactory(new PropertyValueFactory<>("nom_joueur"));
                 pays.setCellValueFactory(e -> new SimpleStringProperty(e.getValue().getId_equipe().getPays()));
                 ;
@@ -353,7 +353,7 @@ public class GestionJoueurController implements Initializable {
 
                 lstjoueur.getItems().clear();
                 lstjoueur.getItems().addAll(jEq);
-                id_joueur.setCellValueFactory(new PropertyValueFactory<>("id_joueur"));
+             //id_joueur.setCellValueFactory(new PropertyValueFactory<>("id_joueur"));
                 nom_joueur.setCellValueFactory(new PropertyValueFactory<>("nom_joueur"));
                 pays.setCellValueFactory(e -> new SimpleStringProperty(e.getValue().getId_equipe().getPays()));
                 nbr_but.setCellValueFactory(new PropertyValueFactory<>("nbr_but"));
@@ -381,7 +381,7 @@ public class GestionJoueurController implements Initializable {
         pochoice.setItems(listepos);
         // lstjoueur.getItems().addAll(getJ());
         lstjoueur.getItems().addAll(getJ());
-        id_joueur.setCellValueFactory(new PropertyValueFactory<>("id_joueur"));
+    //    id_joueur.setCellValueFactory(new PropertyValueFactory<>("id_joueur"));
         nom_joueur.setCellValueFactory(new PropertyValueFactory<>("nom_joueur"));
         pays.setCellValueFactory(e -> new SimpleStringProperty(e.getValue().getId_equipe().getPays()));
 

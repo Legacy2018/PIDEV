@@ -11,6 +11,9 @@ import IServices.IStadeDAO;
 import com.jfoenix.controls.JFXButton;
 import Entities.match;
 import Entities.stade;
+import com.github.fedy2.weather.YahooWeatherService;
+import com.github.fedy2.weather.data.Channel;
+import com.github.fedy2.weather.data.unit.DegreeUnit;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
@@ -30,6 +33,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.web.WebEngine;
 import javafx.stage.Stage;
+import javax.xml.bind.JAXBException;
 import org.w3c.dom.NodeList;
 
 /**
@@ -41,7 +45,7 @@ public class Consulter_Stades implements Initializable {
 
     /**
      * Initializes the controller class.
-     */
+-     */
  IStadeDAO s= DAOStade.getInstance();
    @FXML
     private ImageView img;   
@@ -104,7 +108,15 @@ public class Consulter_Stades implements Initializable {
     }
 
     @FXML
-    void meteo(MouseEvent event)  {
+    void meteo(MouseEvent event) throws JAXBException, IOException  {
+         Parent creerGroupe = FXMLLoader.load(getClass().getResource("/GUI/Meteo.fxml"));
+        Scene sceneAffichage = new Scene(creerGroupe);
+        sceneAffichage.getStylesheets().add(getClass().getResource("../Asset/fxml.css").toExternalForm());
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(sceneAffichage);
+        stage.show();
+        
+       
         
     }
 

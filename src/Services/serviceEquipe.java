@@ -95,6 +95,25 @@ public class serviceEquipe implements IServices.IServiceGestionEquipe{
         }
         return resultat;
     }
+     @Override
+    public boolean modifierEquipescore(Equipe e, int id) {
+        boolean resultat = false;
+        try {
+
+            String req = "UPDATE `equipe` SET `point` = '" + e.getPoint() + "' WHERE "
+                    + "`equipe`.`id_equipe` = " + id + ";";
+            int count = st.executeUpdate(req);
+            if (count > 0) {
+                resultat = true;
+            } else {
+                resultat = false;
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(serviceEquipe.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return resultat;
+    }
 
     @Override
     public boolean supprimerEquipe(String pays) {
@@ -179,6 +198,41 @@ public class serviceEquipe implements IServices.IServiceGestionEquipe{
 
         return eq;
     }
+     @Override
+    public List<Equipe> AfficherEquipepargp(String group) {
+        List<Equipe> equipes = new ArrayList<>();
+        try {
+
+            ResultSet rest = st.executeQuery("select * from equipe where Groupe='" + group + "'");
+            if (!rest.next()) {
+                System.err.println("Resultat introuvable");
+            } else {
+                rest.beforeFirst();
+                while (rest.next()) {
+                    Equipe e = new Equipe();
+                    e.setIdEquipe(rest.getInt(1));
+                    e.setPays(rest.getString(2));
+                    e.setEtat(rest.getInt(3));
+                    e.setPhase(rest.getString(4));
+                    e.setGroupe(rest.getString(5));
+                    e.setSelecteur(rest.getString(6));
+
+                    equipes.add(e);
+
+                }
+                for (Equipe e : equipes) {
+                    System.out.println(e);
+                    //  return equipes;
+                }
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(serviceEquipe.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return equipes;
+    }
+
+    
 
     @Override
     public Equipe AfficherEquipe(Equipe e) {
@@ -198,6 +252,7 @@ public class serviceEquipe implements IServices.IServiceGestionEquipe{
                     eq.setPhase(rest.getString(4));
                     eq.setGroupe(rest.getString(5));
                     eq.setSelecteur(rest.getString(6));
+                    eq.setPoint(rest.getInt(7));
 
                 }
 
@@ -402,6 +457,33 @@ public class serviceEquipe implements IServices.IServiceGestionEquipe{
             Logger.getLogger(serviceEquipe.class.getName()).log(Level.SEVERE, null, ex);
         }
         return pays;
+    }
+      @Override
+    public int Consulterpoint(String pays) {
+     Equipe s = new Equipe();
+
+        String requete = "select * from equipe where pays='" + pays + "';";
+        try {
+            
+                    
+            ResultSet resultat = st.executeQuery(requete);
+
+            while (resultat.next()) {
+               
+               
+              s.setPoint(resultat.getInt(7));
+               
+
+               
+
+            }
+         return s.getPoint();
+        } catch (SQLException ex) {
+            //Logger.getLogger(PersonneDao.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("erreur " + ex.getMessage());
+          
+        }
+        return s.getPoint();
     }
       @Override
     public String ConsulterstadeNom(String pays) {
