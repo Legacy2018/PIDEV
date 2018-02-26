@@ -12,7 +12,7 @@ import IServices.Icommentaire;
 import com.mysql.jdbc.Statement;
 import Entities.Commentaire;
 import Entities.Fos_User;
-import entities.Ticket;
+import Entities.Ticket;
 import Entities.Utilisateur;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

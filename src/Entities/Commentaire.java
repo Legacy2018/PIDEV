@@ -6,7 +6,7 @@
 package Entities;
 
 import java.util.Objects;
-import entities.Ticket;
+import Entities.Ticket;
 import Entities.Fos_User;
 /**
  *

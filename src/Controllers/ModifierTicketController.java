@@ -6,6 +6,7 @@
 package Controllers;
 
 
+import static Controllers.ListTicketsController.ticketSelectionne;
 import IServices.IMatchDAO;
 import IServices.IStadeDAO;
 import com.jfoenix.controls.JFXButton;
@@ -13,7 +14,7 @@ import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import Entities.Fos_User;
 import Entities.match;
-import entities.Ticket;
+import Entities.Ticket;
 
 import java.io.IOException;
 import java.net.URL;
@@ -39,7 +40,11 @@ import Services.DAOStade;
 import Services.MatchDAO;
 import Services.serviceEquipe;
 import Services.TicketDAO;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.scene.Node;
+import org.controlsfx.control.Notifications;
 
 public class ModifierTicketController implements Initializable {
 
@@ -177,26 +182,25 @@ id_matchht.setCellValueFactory(new PropertyValueFactory<>("idMatch"));
 
     @FXML
     void ModifierTicket(ActionEvent event) throws IOException {
-        int s = Integer.parseInt(txdann.getText());
+      //  int s = Integer.parseInt(txdann.getText());
          int z = ticketSelectionne.getIdUser().getId();
-        Ticket x = new Ticket(ticketSelectionne.getIdTicket(), id_nbticket.getValue(), id_categorie.getValue(), Float.parseFloat(id_prix.getText()), new Fos_User(z), new match(s));
+        Ticket x = new Ticket(ticketSelectionne.getIdTicket(), id_nbticket.getValue(), id_categorie.getValue(), Float.parseFloat(id_prix.getText()), new Fos_User(z), new match(ticketSelectionne.getIdMatch().getIdMatch()));
 
         tda.modifierTicket(x);
-       // ((Node) (event.getSource())).getScene().getWindow().hide();
-Stage stage ;
+         Parent creerGroupe = FXMLLoader.load(getClass().getResource("/GUI/ListTickets.fxml"));
+        Scene sceneAffichage = new Scene(creerGroupe);
+       sceneAffichage.getStylesheets().add(getClass().getResource("/Asset/Style.css").toExternalForm());
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(sceneAffichage);
+        stage.show();
+       /* Stage stage ;
      
             FXMLLoader afficher = new FXMLLoader();
         afficher.setLocation(getClass().getResource("ListTickets.fxml"));
-         Parent  root2 = afficher.load();
-            stage =new Stage();
-    
-        stage.setScene(new Scene(root2));
-        stage.initModality(Modality.APPLICATION_MODAL);
-     //   stage.initOwner(btnInviterMembres.getScene().getWindow());
-        stage.showAndWait();
-        Scene scene =new Scene(root2);
-    stage.setScene(scene);
-    stage.show();
+         Parent  root = afficher.load();
+            stage =new Stage();*/
+         Notifications.create().title("Signaler").text("Ticket Modifié ").showConfirm();
+              
     }
 
     public ModifierTicketController() {

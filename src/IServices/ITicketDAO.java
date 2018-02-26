@@ -1,7 +1,7 @@
 package IServices;
 
 import Entities.match;
-import entities.Ticket;
+import Entities.Ticket;
 import java.util.List;
 
 public interface ITicketDAO {
@@ -17,7 +17,7 @@ public interface ITicketDAO {
     public Ticket chercherTicketParId(int id);
 
     public int nbTicketAcheteParMatch(match Matche);
-
+  public List<Ticket> chercherTicketMatch(match Match);
     public List<Ticket> chercherTicketParCategorie(String categorie);
-
+   public List<Ticket>  rechercherTicket  (String rechercher);
 }
