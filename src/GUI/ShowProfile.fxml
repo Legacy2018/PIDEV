@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane fx:id="rootPane" prefHeight="387.0" prefWidth="595.0" styleClass="gradient" stylesheets="@../Asset/MainFram.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ShowProfileController">
+   <children>
+      <AnchorPane layoutX="11.0" layoutY="10.0" prefHeight="366.0" prefWidth="567.0" style="-fx-background-color: rgba(236, 240, 241,0.4);" stylesheets="@../Asset/MainFram.css">
+         <children>
+            <ImageView fx:id="imgprofile" fitHeight="219.0" fitWidth="292.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Ressource/001_0071.jpg" />
+               </image>
+            </ImageView>
+            <AnchorPane layoutX="313.0" layoutY="14.0" prefHeight="187.0" prefWidth="237.0" style="-fx-background-color: rgba(236, 240, 241,0.4);">
+               <children>
+                  <Label fx:id="Nompnom" layoutX="11.0" layoutY="-4.0" prefHeight="35.0" prefWidth="206.0" text="nom et pnom">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="email" layoutX="31.0" layoutY="85.0" prefHeight="17.0" prefWidth="206.0" text="Email" />
+                  <Label fx:id="username" layoutX="31.0" layoutY="59.0" prefHeight="17.0" prefWidth="206.0" text="Usernam" />
+                  <Label fx:id="telephone" layoutX="31.0" layoutY="32.0" prefHeight="17.0" prefWidth="206.0" text="Téléphone" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

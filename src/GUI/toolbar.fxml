@@ -15,7 +15,7 @@
    <children>
       <BorderPane layoutX="47.0" layoutY="1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="602.0" prefWidth="1047.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <center>
-           <AnchorPane id="AnchorPane" fx:id="rootPane" prefHeight="603.0" prefWidth="895.0" styleClass="gradient">
+           <AnchorPane id="AnchorPane" fx:id="rootPane" prefHeight="603.0" prefWidth="895.0" styleClass="gradient" stylesheets="@../Asset/MainFram.css">
       <children>
       <Label layoutX="63.0" layoutY="34.0" prefHeight="103.0" prefWidth="686.0" text="Bienvenus ">
          <font>

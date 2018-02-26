@@ -105,14 +105,11 @@ public class Login_viewController implements Initializable {
     
     @FXML
     private void Sign(ActionEvent event) throws IOException {
-        
-        Parent root = FXMLLoader.load(getClass().getResource("/GUI/Sign_view.fxml"));
-        
-        Scene scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("/Asset/Style.css").toExternalForm());
         Stage stage = (Stage) submit.getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getResource("/GUI/Sign_view.fxml"));
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("/Asset/MainFram.css").toExternalForm());
         stage.setScene(scene);
-        
         stage.show();
     }
     

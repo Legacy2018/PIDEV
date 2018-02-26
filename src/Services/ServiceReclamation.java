@@ -8,7 +8,7 @@ package services;
 import DataSource.DataSource;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
-import entites.Reclamation;
+import Entities.Reclamation;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;

@@ -11,7 +11,7 @@ import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.transitions.hamburger.HamburgerSlideCloseTransition;
-import entites.Reclamation;
+import Entities.Reclamation;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;

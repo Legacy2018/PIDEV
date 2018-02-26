@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="521.0" prefWidth="131.0" style="-fx-background-color: #2C3E50;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.SidePannelController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="521.0" prefWidth="150.0" style="-fx-background-color: #2C3E50;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.SidePannelController">
    <children>
-      <VBox fx:id="pan" layoutX="-2.0" layoutY="126.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="135.0">
+      <VBox fx:id="pan" alignment="TOP_CENTER" layoutX="8.0" layoutY="126.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="135.0">
          <children>
-            <JFXButton fx:id="Home" contentDisplay="TOP" mnemonicParsing="false" onAction="#goHome" prefHeight="400.0" prefWidth="160.0" styleClass="toolbar-button" text="Acceuil" textAlignment="CENTER">
+            <JFXTextField id="pansearch" fx:id="search" alignment="CENTER" onKeyReleased="#chercher" prefHeight="25.0" prefWidth="113.0" promptText="Search" />
+            <JFXButton fx:id="Home" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#goHome" prefHeight="400.0" prefWidth="160.0" styleClass="toolbar-button" text="Acceuil" textAlignment="CENTER">
                <graphic>
                   <ImageView fitHeight="58.0" fitWidth="63.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -20,7 +22,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="Profil" contentDisplay="TOP" mnemonicParsing="false" onAction="#goProfil" prefHeight="400.0" prefWidth="160.0" styleClass="toolbar-button" text="Profil" textAlignment="CENTER">
+            <JFXButton fx:id="Profil" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#goProfil" prefHeight="400.0" prefWidth="160.0" styleClass="toolbar-button" text="Profil" textAlignment="CENTER">
                <graphic>
                   <ImageView fitHeight="61.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -29,7 +31,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="reclamation" contentDisplay="TOP" mnemonicParsing="false" onAction="#goreclamation" prefHeight="400.0" prefWidth="160.0" styleClass="toolbar-button" text="Réclamations" textAlignment="CENTER">
+            <JFXButton fx:id="reclamation" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#goreclamation" prefHeight="400.0" prefWidth="160.0" styleClass="toolbar-button" text="Réclamations" textAlignment="CENTER">
                <graphic>
                   <ImageView fitHeight="63.0" fitWidth="61.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -38,7 +40,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="logout" contentDisplay="TOP" mnemonicParsing="false" onAction="#logout" prefHeight="400.0" prefWidth="160.0" styleClass="toolbar-button" text="Logout" textAlignment="CENTER">
+            <JFXButton fx:id="logout" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#logout" prefHeight="400.0" prefWidth="160.0" styleClass="toolbar-button" text="Logout" textAlignment="CENTER">
                <graphic>
                   <ImageView fitHeight="61.0" fitWidth="61.0" pickOnBounds="true" preserveRatio="true">
                      <image>
