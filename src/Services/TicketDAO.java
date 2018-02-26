@@ -2,7 +2,7 @@ package Services;
 
 import IServices.ITicketDAO;
 import Entities.Fos_User;
-import entities.Ticket;
+import Entities.Ticket;
 import Entities.match;
 import com.sun.org.apache.xerces.internal.impl.xpath.regex.Match;
 import java.sql.Connection;
@@ -79,8 +79,8 @@ public class TicketDAO implements ITicketDAO {
                t.setIdMatch(new MatchDAO().chercherMatchParId(resultat.getInt(5)));
 
                // t.setIdMatch(new Match (resultSet2.getInt(1),resultSet2.getString(5),resultSet2.getString(7),resultSet2.getString(6),resultSet2.getString(3),resultSet2.getString(4)));
-                t.setIdUser(new ServiceUtilisateur().findUtilisateurbyID(resultat.getInt(6)));
-                System.out.println(t);
+                t.setIdUser(new services.ServiceFos_User().findFos_UserbyID(resultat.getInt(6)));
+                //System.out.println(t);
                 listTicket.add(t);
             }
             return listTicket;
@@ -140,6 +140,31 @@ public class TicketDAO implements ITicketDAO {
         }
         return ticket;
     }
+    
+    @Override
+    public List<Ticket> chercherTicketMatch(match Match) {
+        List<Ticket> listTicket = new ArrayList<>();
+        String requete = "select * from ticket where ticket.idMatch='" + Match.getIdMatch() + "';";
+        try {
+             ps = connection.prepareStatement(requete);
+       //  String recherche =null;
+           ps.setInt(1, Match.getIdMatch());
+          // s.setInt(2, i);
+            ResultSet resultSet = ps.executeQuery();   
+            
+            while (resultSet.next()) {
+               Ticket ticket = new Ticket(resultSet.getInt(1), resultSet.getInt(3), resultSet.getString(2), resultSet.getFloat(4), new Fos_User(resultSet.getInt(6)), new match((resultSet.getInt(5))));
+ 
+                listTicket.add(ticket);
+               // System.out.println(listTicket);
+            }
+            return listTicket;
+        } catch (SQLException ex) {
+            //Logger.getLogger(ProjetDao.class.getName()).log(Level.SEVERE, null, ex);
+           // System.out.println("erreur lors du chargement des stocks " + ex.getMessage());
+            return null;
+        }
+    }
 
     /*  @Override
     public int nbTicketAcheteParMatch(match Matche) {
@@ -184,7 +209,47 @@ public class TicketDAO implements ITicketDAO {
             return null;
         }
     }*/
-    public int nbTicketAcheteParMatch(Match matche) {
+   /* public int nbTicketAcheteParMatch(Match matche) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }*/
+
+    @Override
+      public List<Ticket>  rechercherTicket  (String rechercher) {
+     List<Ticket> listeTicket= new ArrayList<>();
+       List<Ticket> listeTicket2= new ArrayList<>();
+      // Ticket ticket=new Ticket();
+   listeTicket=afficher_Ticket();
+     for (Ticket gr: listeTicket){
+     //System.out.println(listeTicket);
+      String req ="select * from ticket t inner join matchs m where t.categories like '%"+rechercher+"%' or m.nom_equipe1 like '%"+rechercher+"%' or m.Nom_equipe2 like '%"+rechercher+"%' and t.id_ticket=? and m.id_match=?";  
+    //  String req ="select * from ticket t inner join  matchs m where t.prix like '%"+rechercher+"%' or t.categories like '%"+rechercher+"%'  and t.id_ticket=? and m.id_match=?";  
+  
+//or m.equipe1 like '%"+rechercher+"%' or m.equipe2 like '%"+rechercher+"%' or m.heure like '%"+rechercher+"%'
+        try {
+            ps = connection.prepareStatement(req);
+       //  String recherche =null;
+           ps.setInt(1, gr.getIdTicket());
+            ps.setInt(2, gr.getIdMatch().getIdMatch());
+            ResultSet resultSet = ps.executeQuery();
+            while (resultSet.next()) {
+ Ticket ticket = new Ticket(resultSet.getInt(1), resultSet.getInt(3), resultSet.getString(2), resultSet.getFloat(4), new Fos_User(resultSet.getInt(6)), new match((resultSet.getInt(5))));
+                listeTicket2.add(ticket);
+                
+                   //System.out.println(listeTicket2);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+          //System.out.println(listeTicket2);
+     } 
+      return listeTicket2;
+        
+     //  System.out.println(listeTicket);
+     
+      }
+
+    @Override
+    public int nbTicketAcheteParMatch(match Matche) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -193,9 +258,5 @@ public class TicketDAO implements ITicketDAO {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
-    public int nbTicketAcheteParMatch(match Matche) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
+  
 }

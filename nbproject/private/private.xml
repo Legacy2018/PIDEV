@@ -3,16 +3,20 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/GUI/toolbar.fxml</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/GUI/SidePannel.fxml</file>
             <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/GUI/FXMLGestion_Match.fxml</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Services/serviceJoueur.java</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Services/TicketDAO.java</file>
             <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Controllers/Gestion_match.java</file>
-            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Ressource/a.jpg</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Controllers/DashboardController.java</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/GUI/ModifierTicket.fxml</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/GUI/Dashboard.fxml</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Services/ServiceUtilisateur.java</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Controllers/ToolbarController.java</file>
             <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Services/MatchDAO.java</file>
-            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Controllers/Localisation.java</file>
-            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Controllers/MeteoController.java</file>
-            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Asset/fxml.css</file>
-            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/GUI/Meteo.fxml</file>
-            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Controllers/Consulter_Stades.java</file>
-            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/GUI/Login.fxml</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Services/metierequipe.java</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/nbproject/jfx-impl.xml</file>
         </group>
     </open-files>
 </project-private>

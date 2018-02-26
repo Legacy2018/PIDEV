@@ -1,4 +1,4 @@
-package entities;
+package Entities;
 
 import Entities.Fos_User;
 import java.sql.Date;
