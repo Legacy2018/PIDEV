@@ -297,12 +297,12 @@ public class Commentaire1Controller implements Initializable {
                         
                     }
                 });
-        /*
         
+        /*
        
         try {      
 			// Construct data
-                       // String user = "username=" + "anisalboudali@gmail.com";
+                    
 			String apiKey ="&apiKey="+"qMoZ9QsZja8-IOLDc1r6EVSWLoqUvgR8Ts7uuAvWmu";
 			String message = "&message="+"je veut reserver votre ticket";
 			String sender = "&sender="+ticketSelectionne.getIdUser().getUsername();
