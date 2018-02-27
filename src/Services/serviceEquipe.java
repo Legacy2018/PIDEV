@@ -350,7 +350,7 @@ public class serviceEquipe implements IServices.IServiceGestionEquipe{
                     e.setPhase(rest.getString(4));
                     e.setGroupe(rest.getString(5));
                     e.setSelecteur(rest.getString(6));
-
+                    e.setPoint(rest.getInt(7));
                     equipes.add(e);
 
                 }

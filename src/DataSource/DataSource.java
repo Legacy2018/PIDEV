@@ -25,7 +25,7 @@ public class DataSource {
                   //         Class.forName("com.mysql.jdbc.Driver");
 
 
-            con= DriverManager.getConnection("jdbc:mysql://localhost:3307/pidev_v2", "root","");
+            con= DriverManager.getConnection("jdbc:mysql://localhost:3306/pidev_v2", "root","");
         
 
             System.out.println("connexion Ok ! !");

@@ -57,6 +57,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.controlsfx.control.Notifications;
@@ -71,10 +73,6 @@ public class Gestion_match extends Application implements Initializable {
 
     @FXML
     private JFXComboBox<String> id_equipe;
-    @FXML
-    private JFXTextField heure;
-    @FXML
-    private JFXTextField phi;
    
 
    @FXML
@@ -115,8 +113,6 @@ public class Gestion_match extends Application implements Initializable {
    @FXML
     private JFXButton c_phase1;
 
-    @FXML
-    private JFXButton c_date;
     
     private ObservableList<match> data;
     
@@ -148,6 +144,23 @@ public class Gestion_match extends Application implements Initializable {
     List s2;
     List s3;
    match m ;
+    @FXML
+    private BorderPane border;
+    @FXML
+    private TableColumn<?, ?> vs;
+    @FXML
+    private JFXButton mo1;
+    @FXML
+    private JFXButton mo11;
+    @FXML
+    private JFXButton mo2;
+    @FXML
+    private JFXButton mo3;
+     @FXML
+    private JFXDrawer SidePannel;
+    @FXML
+    private JFXHamburger Sp;
+    
     
     /**
      * Initializes the controller class.
@@ -193,6 +206,15 @@ public class Gestion_match extends Application implements Initializable {
         s2.show();
 
     }
+    @FXML
+    void Classement(ActionEvent event) throws IOException {
+  Parent root = FXMLLoader.load(getClass().getResource("/Gui/Classement.fxml"));
+        Scene s = new Scene(root); 
+        s.getStylesheets().add(getClass().getResource("/Asset/fxml.css").toExternalForm());
+        Stage s2 =(Stage) ((Node)event.getSource()).getScene().getWindow();
+        s2.setScene(s);
+        s2.show();
+    }
 
     @FXML
     void Gerer_equipe(ActionEvent event) throws IOException {
@@ -203,6 +225,34 @@ public class Gestion_match extends Application implements Initializable {
         Stage s2 =(Stage) ((Node)event.getSource()).getScene().getWindow();
         s2.setScene(s);
         s2.show();
+    }
+
+     private void initDrawer() {
+        try {
+            AnchorPane SP = FXMLLoader.load(getClass().getResource("/GUI/SidePannel.fxml"));
+
+            
+            
+            SP.getStylesheets().add(getClass().getResource("/Asset/fxml.css").toExternalForm());
+            
+            SidePannel.setSidePane(SP);
+           
+        } catch (IOException ex) {
+           
+            System.out.println(ex.getMessage());
+        }
+        
+        HamburgerSlideCloseTransition task = new HamburgerSlideCloseTransition(Sp);
+        task.setRate(-1);
+        Sp.addEventHandler(MouseEvent.MOUSE_CLICKED, (Event event) -> {
+            task.setRate(task.getRate() * -1);
+            task.play();
+            if (SidePannel.isHidden()) {
+                SidePannel.open();
+            } else {
+                SidePannel.close();
+            }
+        });
     }
 
     
@@ -502,6 +552,7 @@ public class Gestion_match extends Application implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
       
+      
         this.gp.setDisable(true);
         
         this.Stades.getItems().addAll(s2);
@@ -527,7 +578,7 @@ public class Gestion_match extends Application implements Initializable {
        sc.setCellValueFactory(new PropertyValueFactory<>("score"));
        sc1.setCellValueFactory(new PropertyValueFactory<>("score2"));
        
-       
+         initDrawer();
        
      
         //TRAVEL TODO

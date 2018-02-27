@@ -71,7 +71,7 @@ TiTled pane Customusation
 
 .table-view .column-header .label,.table-view .column-drag-header .label
 {
-    -fx-alignment: CENTER_LEFT;
+    -fx-alignment: CENTER;
 }
 
 .table-view .column-header-background
