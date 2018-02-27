@@ -163,12 +163,13 @@ public class AjouterTicketController extends Application implements Initializabl
 
     @FXML
     void AjouterAchatTicket(ActionEvent event) throws IOException {
-          if(id_prix.getText() != null){
-             x = loginCQONTROLLER.u;
+        try{
+            Float.parseFloat(id_prix.getText());
+               x = loginCQONTROLLER.u;
            test=Integer.parseInt(txdann.getText());
             int s=x.getId();
            
-                           
+                          
    Ticket ticket = new Ticket(id_nbticket.getValue(), id_categorie.getValue(), Float.parseFloat(id_prix.getText()) ,new Fos_User(s),new match (test));
         TicketDAO tda = new TicketDAO();
         tda.ajouter_Ticket(ticket);
@@ -177,7 +178,7 @@ public class AjouterTicketController extends Application implements Initializabl
         fail.setHeaderText("Succés!");
         fail.setContentText("Votre Ticket est ajouté  ");
         fail.showAndWait();
-           Notifications.create().title("Succes").text("Rate ajoutee ").showConfirm();
+          
       
         Parent afficher ;
         Scene sceneAffichage;
@@ -187,18 +188,27 @@ public class AjouterTicketController extends Application implements Initializabl
      sceneAffichage = new Scene(afficher);
      sceneAffichage.getStylesheets().add(getClass().getResource("../Asset/MainFram.css").toExternalForm());
          stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-        stage.setScene(sceneAffichage);
+     stage.setScene(sceneAffichage);
         stage.show();
+         Notifications.create().title("Succes").text("Ticket ajouté ").showConfirm();
+        }catch(NumberFormatException ex){
+            Alert a = new Alert(AlertType.ERROR);
+            a.setTitle("error");
+            a.setHeaderText("prix invalid !");
+            a.setContentText("");
+            a.showAndWait();
+        }
+          
+          
                
-          } else{
+        
      
-           Alert fail= new Alert(Alert.AlertType.INFORMATION);
+         /*  Alert fail= new Alert(Alert.AlertType.INFORMATION);
         fail.setHeaderText("Attention!");
         fail.setContentText("vérifiez vos champs s'il vous plait ");
         fail.showAndWait();}
        
-       
+       */
             
           
     }
