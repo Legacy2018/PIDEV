@@ -77,6 +77,7 @@ public class Consulter_Match implements Initializable {
   @FXML
     private JFXDatePicker dta;
 
+  
     @FXML
     private JFXButton pha;
      @FXML
@@ -85,7 +86,9 @@ public class Consulter_Match implements Initializable {
 private JFXButton ac;
 @FXML
     private JFXComboBox<String> sa;
+
  List<Equipe>eq=new ArrayList<>();
+ List<String>eq2=new ArrayList<>();
  serviceEquipe e = new serviceEquipe();
   IMatchDAO Mat = MatchDAO.getInstance();
     List eq1;
@@ -177,6 +180,8 @@ void ac(MouseEvent event) throws IOException{
     eq1=e.selectEquipes().stream().map(e->e.getPays()).collect(Collectors.toList());
         System.out.print(eq1);
         this.sa.getItems().addAll(eq1);
+       
+      
         List<match> lsa=M.afficherMatch();
         data = FXCollections.observableArrayList();
        lsa.stream().forEach((e) -> {

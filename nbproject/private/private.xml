@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/GUI/Sign_view.fxml</file>
             <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Controllers/ConsulterAnnoncesCollocationsController.java</file>
             <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Controllers/ReclamationController.java</file>
@@ -24,6 +25,22 @@
             <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Entities/Reclamation.java</file>
             <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Controllers/DReclamationsController.java</file>
             <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Controllers/ProfileController.java</file>
+=======
+            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/GUI/toolbar.fxml</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/GUI/SidePannel.fxml</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/GUI/FXMLGestion_Match.fxml</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Services/serviceJoueur.java</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Services/TicketDAO.java</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Controllers/Gestion_match.java</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Controllers/DashboardController.java</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/GUI/ModifierTicket.fxml</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/GUI/Dashboard.fxml</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Services/ServiceUtilisateur.java</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Controllers/ToolbarController.java</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Services/MatchDAO.java</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Services/metierequipe.java</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/nbproject/jfx-impl.xml</file>
+>>>>>>> b26718fcd7a7cda6fb7cf8d9d7875ae1a58d7ab3
         </group>
     </open-files>
 </project-private>

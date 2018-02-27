@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="589.0" prefWidth="747.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ClassementController">
+   <top>
+      <Label prefHeight="65.0" prefWidth="751.0" text="Classement" textAlignment="CENTER" BorderPane.alignment="CENTER">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="36.0" />
+         </font>
+         <graphic>
+            <JFXButton prefHeight="45.0" prefWidth="86.0">
+               <graphic>
+                  <FontAwesomeIconView glyphName="HOME" size="25" />
+               </graphic>
+            </JFXButton>
+         </graphic>
+      </Label>
+   </top>
+   <center>
+      <TableView fx:id="t" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <columns>
+          <TableColumn prefWidth="75.0" />
+          <TableColumn fx:id="equipe" prefWidth="570.0" text="Equipe" />
+            <TableColumn fx:id="point" prefWidth="101.0" text="Point" />
+        </columns>
+      </TableView>
+   </center>
+   <bottom>
+      <JFXButton onAction="#Classement" prefHeight="41.0" prefWidth="443.0" text="Valider" BorderPane.alignment="CENTER">
+         <graphic>
+            <JFXComboBox fx:id="Gp" prefHeight="31.0" prefWidth="123.0" />
+         </graphic>
+      </JFXButton>
+   </bottom>
+</BorderPane>
