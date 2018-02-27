@@ -247,7 +247,7 @@ public class ListTicketsController implements Initializable {
         Scene sceneAffichage;
           Stage stage=new Stage();
         
-        afficher = FXMLLoader.load(getClass().getResource("../GUI/AjouterTicket.fxml"));
+        afficher = FXMLLoader.load(getClass().getResource("/GUI/AjouterTicket.fxml"));
      sceneAffichage = new Scene(afficher);
      sceneAffichage.getStylesheets().add(getClass().getResource("../Asset/MainFram.css").toExternalForm());
          stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -586,22 +586,24 @@ public class ListTicketsController implements Initializable {
 
                 ModifierButton.setOnMouseClicked(
                         e -> {
-                            Parent afficher;
-                            Scene sceneAffichage;
-                            Stage stage = new Stage();
+                          //  Parent afficher;
+                           // Scene sceneAffichage;
+                          //  Stage stage = new Stage();
 
                             // System.out.println(ticket);
                             ticketSelectionne = ticket;
                            try {
-                                afficher = FXMLLoader.load(getClass().getResource("/GUI/ModifierTicket.fxml"));
+  Parent afficher ;
+        Scene sceneAffichage;
+          Stage stage=new Stage();
+        
+        afficher = FXMLLoader.load(getClass().getResource("/GUI/ModifierTicket.fxml"));
+     sceneAffichage = new Scene(afficher);
+     sceneAffichage.getStylesheets().add(getClass().getResource("../Asset/MainFram.css").toExternalForm());
+         stage = (Stage) ModifierButton.getScene().getWindow();
 
-                                sceneAffichage = new Scene(afficher);
-                                //  stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-                                sceneAffichage.getStylesheets().add(getClass().getResource("../Asset/MainFram.css").toExternalForm());
-      
-
-                                stage.setScene(sceneAffichage);
-                                stage.show();
+        stage.setScene(sceneAffichage);
+        stage.show();
                             } catch (IOException ex) {
                                 Logger.getLogger(ListTicketsController.class.getName()).log(Level.SEVERE, null, ex);
                             }
@@ -636,7 +638,9 @@ public class ListTicketsController implements Initializable {
                     public void handle(ActionEvent event) {
                         
                     }
+                    
                     });
+           Notifications.create().title("Succes").text("Ticket supprimé ").showConfirm();
                   
            try {
                                 afficher = FXMLLoader.load(getClass().getResource("/GUI/ListTickets.fxml"));
@@ -707,7 +711,7 @@ public class ListTicketsController implements Initializable {
 
                                 sceneAffichage = new Scene(afficher);
                                 //  stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-                               // sceneAffichage.getStylesheets().add(getClass().getResource("../Asset/MainFram.css").toExternalForm());
+                               sceneAffichage.getStylesheets().add(getClass().getResource("../Asset/MainFram.css").toExternalForm());
       
 
                                 stage.setScene(sceneAffichage);

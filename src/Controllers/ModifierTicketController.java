@@ -6,7 +6,6 @@
 package Controllers;
 
 
-import static Controllers.ListTicketsController.ticketSelectionne;
 import IServices.IMatchDAO;
 import IServices.IStadeDAO;
 import com.jfoenix.controls.JFXButton;
@@ -28,22 +27,20 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import Services.DAOStade;
 import Services.MatchDAO;
 import Services.serviceEquipe;
 import Services.TicketDAO;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import org.controlsfx.control.Notifications;
 
 public class ModifierTicketController implements Initializable {
@@ -183,16 +180,34 @@ id_matchht.setCellValueFactory(new PropertyValueFactory<>("idMatch"));
     @FXML
     void ModifierTicket(ActionEvent event) throws IOException {
       //  int s = Integer.parseInt(txdann.getText());
+     try {
+         Float.parseFloat(id_prix.getText());
          int z = ticketSelectionne.getIdUser().getId();
         Ticket x = new Ticket(ticketSelectionne.getIdTicket(), id_nbticket.getValue(), id_categorie.getValue(), Float.parseFloat(id_prix.getText()), new Fos_User(z), new match(ticketSelectionne.getIdMatch().getIdMatch()));
 
         tda.modifierTicket(x);
-         Parent creerGroupe = FXMLLoader.load(getClass().getResource("/GUI/ListTickets.fxml"));
-        Scene sceneAffichage = new Scene(creerGroupe);
-       sceneAffichage.getStylesheets().add(getClass().getResource("/Asset/Style.css").toExternalForm());
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(sceneAffichage);
-        stage.show();
+           Alert fail= new Alert(Alert.AlertType.INFORMATION);
+        fail.setHeaderText("Succés!");
+        fail.setContentText("Votre Ticket a ete modifié  ");
+        fail.showAndWait();
+           Notifications.create().title("Succes").text("Ticket modifié ").showConfirm();
+           Parent afficher ;
+        Scene sceneAffichage;
+          Stage stage=new Stage();
+       afficher = FXMLLoader.load(getClass().getResource("../GUI/ListTickets.fxml"));
+     sceneAffichage = new Scene(afficher);
+     sceneAffichage.getStylesheets().add(getClass().getResource("../Asset/MainFram.css").toExternalForm());
+         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+     stage.setScene(sceneAffichage);
+        stage.show();}
+      catch(NumberFormatException ex){
+          
+           Alert a = new Alert(Alert.AlertType.ERROR);
+            a.setTitle("error");
+            a.setHeaderText("prix invalid !");
+            a.setContentText("");
+            a.showAndWait();
+          }
        /* Stage stage ;
      
             FXMLLoader afficher = new FXMLLoader();
