@@ -23,9 +23,12 @@ import javafx.scene.control.ListView;
 import Services.ServiceUtilisateur;
 import Services.TicketDAO;
 import Services.serviceCommentaire;
+import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 import java.util.List;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -40,6 +43,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import javax.swing.JOptionPane;
 import org.controlsfx.control.Notifications;
 import org.controlsfx.control.Rating;
 
@@ -77,7 +81,6 @@ public class Commentaire1Controller implements Initializable {
     @FXML
     private Separator Separator;
     
-    @FXML
     private ImageView IMageView;
     
     @FXML
@@ -139,8 +142,6 @@ public class Commentaire1Controller implements Initializable {
     
     @FXML
     private Rating rating;
-       @FXML
-    private JFXButton supprimercom;
           @FXML
     private JFXButton afficherprofil;
        Utilisateur uti;
@@ -227,6 +228,10 @@ public class Commentaire1Controller implements Initializable {
     @FXML
     void commenter(ActionEvent event) throws IOException {
         u = loginCQONTROLLER.u;
+         if (com.getText().isEmpty()) {
+            Notifications.create().title("Attention").text("Vous devez ecrire un commentaire ").showWarning();
+
+        } else {
         
         Commentaire c = new Commentaire(com.getText(), new Ticket(ticketSelectionne.getIdTicket()), new Fos_User(u.getId()));
         cs.add(c);
@@ -234,7 +239,7 @@ public class Commentaire1Controller implements Initializable {
        // System.out.println(u.getId());
       //  System.out.println(com.getText());
         
-        refresh();
+        refresh();}
         
         
     }
@@ -248,6 +253,7 @@ public class Commentaire1Controller implements Initializable {
        
          int s=u.getId();
         TicketRate R = new TicketRate();
+        
         TicketRate c = new TicketRate(rating.getRating(), new Fos_User(s), new Ticket(ticketSelectionne.getIdTicket()));
         note = rating.getRating();
         Rs.add(c);
@@ -269,7 +275,7 @@ public class Commentaire1Controller implements Initializable {
         Parent creerGroupe = FXMLLoader.load(getClass().getResource("/GUI/Commentaire1.fxml"));
         Scene sceneAffichage = new Scene(creerGroupe);
       //sceneAffichage = new Scene(afficher);
-     sceneAffichage.getStylesheets().add(getClass().getResource("../Asset/MainFram.css").toExternalForm());
+     sceneAffichage.getStylesheets().add(getClass().getResource("../Asset/MainFramsarra.css").toExternalForm());
        
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(sceneAffichage);
@@ -279,8 +285,7 @@ public class Commentaire1Controller implements Initializable {
     
     @FXML
     void reserverButton(MouseEvent event) throws IOException {
-   
-            ServiceUtilisateur x = new ServiceUtilisateur();
+     ServiceUtilisateur x = new ServiceUtilisateur();
          //  ServiceFos_User p= new ServiceFos_User();
           //Fos_User y=  ticketSelectionne.getIdUser();
         //  System.out.println(x.findUtilisateurbyID(ticketSelectionne.getIdUser().getId()).getTelephone());
@@ -325,8 +330,9 @@ public class Commentaire1Controller implements Initializable {
         */
         
      
-
    
+    
+    
     }
         @FXML
     void afficherprofil(ActionEvent event) throws IOException {
@@ -335,9 +341,10 @@ public class Commentaire1Controller implements Initializable {
             //System.out.println(x.findUtilisateurbyID(ticketSelectionne.getIdUser().getId()).getId());
         int y=x.findUtilisateurbyID(ticketSelectionne.getIdUser().getId()).getId();
         // List<Utilisateur> luti=new ArrayList<>();
-         Recherche_ProfileController.u.setId(y);
+System.out.println("id="+y);
+        Recherche_ProfileController.u.setId(y);
          
-        try
+      /*  try
         {
             
         Parent root = FXMLLoader.load(getClass().getResource("/GUI/ShowProfile.fxml"));
@@ -350,7 +357,7 @@ public class Commentaire1Controller implements Initializable {
         catch(IOException ex)
         {
             System.out.println(ex);
-        }
+        }*/
         /*
          Parent root = FXMLLoader.load(getClass().getResource("/GUI/ShowProfile.fxml"));
         Stage stage=new Stage();
