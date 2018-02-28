@@ -84,7 +84,7 @@ public class DProfilesController implements Initializable {
     }  
      private void initDrawer() {
         try {
-            AnchorPane SP = FXMLLoader.load(getClass().getResource("/GUI/SidePannel.fxml"));
+            AnchorPane SP = FXMLLoader.load(getClass().getResource("/GUI/SidePannel_1.fxml"));
 
             
             
