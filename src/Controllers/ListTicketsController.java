@@ -45,7 +45,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.util.Duration;
 import org.controlsfx.control.Notifications;
 import org.controlsfx.control.Rating;
-import services.ServiceUtilisateur;
+import Services.ServiceUtilisateur;
 
 /**
  * FXML Controller class

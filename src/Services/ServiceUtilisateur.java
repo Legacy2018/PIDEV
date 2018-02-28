@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package services;
+package Services;
 
 import DataSource.DataSource;
 import com.mysql.jdbc.Connection;
@@ -49,7 +49,7 @@ public class ServiceUtilisateur extends ServiceFos_User {
     public Utilisateur findUtilisateur(String login)
     {
         Fos_User fu=findFos_User(login);
-        System.out.println(fu);
+        System.out.println("fos_user  "+fu);
         if(fu==null)
         {
           
