@@ -185,7 +185,7 @@ public class Gestion_match extends Application implements Initializable {
     void Gere_Joueur(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/Gui/FXMLGestionJoueur.fxml"));
         Scene s = new Scene(root); 
-        s.getStylesheets().add(getClass().getResource("/Asset/fxml.css").toExternalForm());
+        s.getStylesheets().add(getClass().getResource("/Asset/MainFramemel.css").toExternalForm());
         Stage s2 =(Stage) ((Node)event.getSource()).getScene().getWindow();
         s2.setScene(s);
         s2.show();
@@ -211,7 +211,7 @@ public class Gestion_match extends Application implements Initializable {
 
           Parent root = FXMLLoader.load(getClass().getResource("/Gui/FXMLGestionEquipe.fxml"));
         Scene s = new Scene(root); 
-        s.getStylesheets().add(getClass().getResource("/Asset/fxml.css").toExternalForm());
+        s.getStylesheets().add(getClass().getResource("/Asset/MainFramemel.css").toExternalForm());
         Stage s2 =(Stage) ((Node)event.getSource()).getScene().getWindow();
         s2.setScene(s);
         s2.show();
@@ -427,8 +427,8 @@ public class Gestion_match extends Application implements Initializable {
         {if(c>c2){
            int z1= e.AfficherEquipe(e1).getIdEquipe();
            int score=e.Consulterpoint(e1);
-          Equipe ea=new Equipe(z1,3+score);
-         e.modifierEquipescore(ea, ea.idEquipe);
+          //Equipe ea=new Equipe(z1,3+score);
+         //e.modifierEquipescore(ea, ea.getIdEquipe());
          Notifications.create()
            .title("Changement du score")
               .text("l'equipe "+e1+" a gagné")
@@ -436,8 +436,8 @@ public class Gestion_match extends Application implements Initializable {
         else if (c<c2){
              int z1= e.AfficherEquipe(e2).getIdEquipe();
            int score=e.Consulterpoint(e2);
-          Equipe ea=new Equipe(z1,3+score);
-         e.modifierEquipescore(ea, ea.idEquipe);
+          //Equipe ea=new Equipe(z1,3+score);
+         //e.modifierEquipescore(ea, ea.idEquipe);
              Notifications.create()
            .title("Changement du score")
               .text("l'equipe "+e2+" a gagné")
@@ -446,12 +446,12 @@ public class Gestion_match extends Application implements Initializable {
         else {
              int z1= e.AfficherEquipe(e1).getIdEquipe();
            int score=e.Consulterpoint(e1);
-          Equipe ea=new Equipe(z1,1+score);
-         e.modifierEquipescore(ea, ea.idEquipe);
+          //Equipe ea=new Equipe(z1,1+score);
+         //e.modifierEquipescore(ea, ea.idEquipe);
           int z2= e.AfficherEquipe(e2).getIdEquipe();
            int score2=e.Consulterpoint(e2);
-          Equipe ea2=new Equipe(z2,1+score2);
-         e.modifierEquipescore(ea2, ea2.idEquipe);
+          //Equipe ea2=new Equipe(z2,1+score2);
+         //e.modifierEquipescore(ea2, ea2.getIdEquipe());
              Notifications.create()
            .title("Changement du score")
               .text("Null")
@@ -477,7 +477,7 @@ public class Gestion_match extends Application implements Initializable {
           
           Equipe ea=e.AfficherEquipe(z1);
           ea.setPhase("1/4");
-         e.modifierEquipescore(ea, z1);
+         //e.modifierEquipescore(ea, z1);
          
           int z2=e.AfficherEquipe(e1).getIdEquipe();
         Equipe eq2=e.AfficherEquipe(z2);
@@ -508,7 +508,7 @@ public class Gestion_match extends Application implements Initializable {
              int z1= e.AfficherEquipe(e2).getIdEquipe();
           Equipe ea=e.AfficherEquipe(z1);
           ea.setPhase("1/2");
-         e.modifierEquipescore(ea, z1);
+         //e.modifierEquipescore(ea, z1);
          
           int z2=e.AfficherEquipe(e1).getIdEquipe();
         Equipe eq2=e.AfficherEquipe(z2);
@@ -541,12 +541,12 @@ public class Gestion_match extends Application implements Initializable {
              int z1= e.AfficherEquipe(e2).getIdEquipe();
            Equipe ea=e.AfficherEquipe(z1);
           ea.setPhase("final");
-         e.modifierEquipescore(ea, z1);
+         //e.modifierEquipescore(ea, z1);
          
          int z2= e.AfficherEquipe(e1).getIdEquipe();
            Equipe ea1=e.AfficherEquipe(z2);
           ea.setPhase("3éme place");
-         e.modifierEquipescore(ea1, z2); 
+         //e.modifierEquipescore(ea1, z2); 
          
          Notifications.create()
            .title("Changement du score")
@@ -639,9 +639,9 @@ public class Gestion_match extends Application implements Initializable {
     void gp(ActionEvent event) {
         
         
-        e.AfficherEquipepargp(this.gp.getValue());
+       // e.AfficherEquipepargp(this.gp.getValue());
         List z = new ArrayList<>();
-        z=e.AfficherEquipepargp(this.gp.getValue()).stream().map(e->e.getPays()).collect(Collectors.toList());
+        //z=e.AfficherEquipepargp(this.gp.getValue()).stream().map(e->e.getPays()).collect(Collectors.toList());
         this.id_equipe.getItems().clear();
         this.id_equipe.getItems().addAll(z);
          this.id_equipe2.getItems().clear();
