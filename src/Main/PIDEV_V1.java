@@ -11,6 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import Services.ServiceUtilisateur;
 
 /**
  *
@@ -40,6 +41,7 @@ public class PIDEV_V1 extends Application {
      */
     public static void main(String[] args) {
         launch(args);
+        //System.out.println(new ServiceUtilisateur().getall());
     }
     
 }
