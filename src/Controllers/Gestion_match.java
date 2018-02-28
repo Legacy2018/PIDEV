@@ -60,6 +60,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.controlsfx.control.Notifications;
 
@@ -144,6 +145,8 @@ public class Gestion_match extends Application implements Initializable {
     List s2;
     List s3;
    match m ;
+     @FXML
+    private Label ha;
     @FXML
     private BorderPane border;
     @FXML
@@ -208,12 +211,17 @@ public class Gestion_match extends Application implements Initializable {
     }
     @FXML
     void Classement(ActionEvent event) throws IOException {
-  Parent root = FXMLLoader.load(getClass().getResource("/Gui/Classement.fxml"));
+        
+       
+        Parent root = FXMLLoader.load(getClass().getResource("/Gui/Classement.fxml"));
         Scene s = new Scene(root); 
         s.getStylesheets().add(getClass().getResource("/Asset/fxml.css").toExternalForm());
-        Stage s2 =(Stage) ((Node)event.getSource()).getScene().getWindow();
+         Stage s2 =(Stage) ((Node)event.getSource()).getScene().getWindow();
+       
         s2.setScene(s);
-        s2.show();
+      
+       
+          s2.show();
     }
 
     @FXML
@@ -266,7 +274,7 @@ public class Gestion_match extends Application implements Initializable {
         stade saa = new stade();
         saa =s.Consulterstade(Stades.getValue());
          
-    m = new match(date.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")),ta.getValue().format(DateTimeFormatter.ofPattern("hh:mm")),eqa,saa,eqb,phase.getValue());
+   
      
     List<match> sda= M.chercherMatchParDate(date.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
    List sda1=sda.stream().map(e->e.getStade()).collect(Collectors.toList());
@@ -282,7 +290,7 @@ public class Gestion_match extends Application implements Initializable {
        Alert alert = new Alert(AlertType.ERROR);
          alert.setTitle("Equipe !!!");
          alert.setHeaderText(null);
-        alert.setContentText("l'equipe"+id_equipe.getValue()+"dèja a un match");
+        alert.setContentText("l'equipe "+id_equipe.getValue()+" dèja a un match");
         alert.showAndWait();
    }
    else if ((sda.stream().anyMatch(e->e.getEquipe1().getPays().contains(id_equipe2.getValue())))||
@@ -291,7 +299,7 @@ public class Gestion_match extends Application implements Initializable {
         Alert alert = new Alert(AlertType.ERROR);
          alert.setTitle("Equipe !!!");
          alert.setHeaderText(null);
-        alert.setContentText("l'equipe"+id_equipe2.getValue()+ "dèja a un match");
+        alert.setContentText("l'equipe "+id_equipe2.getValue()+" dèja a un match");
         alert.showAndWait();
    }
        else
@@ -312,7 +320,7 @@ public class Gestion_match extends Application implements Initializable {
         alert.showAndWait();
          
      }
-     else if (id_equipe.getValue().isEmpty()||id_equipe2.getValue().isEmpty()||Stades.getValue().isEmpty()||phase.getValue().isEmpty()){
+     else if (id_equipe.getSelectionModel().isEmpty() || id_equipe2.getValue().isEmpty()){
          Alert alert = new Alert(AlertType.ERROR);
          alert.setTitle("remplir info");
          alert.setHeaderText(null);
@@ -321,7 +329,9 @@ public class Gestion_match extends Application implements Initializable {
      }
              
              
-            else {  M.ajouterMatch(m);
+            else {
+          m = new match(date.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")),ta.getValue().format(DateTimeFormatter.ofPattern("hh:mm")),eqa,saa,eqb,phase.getValue());
+         M.ajouterMatch(m);
           Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle("Match ajouté");
          alert.setHeaderText(null);
@@ -388,14 +398,21 @@ public class Gestion_match extends Application implements Initializable {
             match  m6 =  t.getSelectionModel().getSelectedItem();
             LocalDate d = date1.getValue();
             
-        
+        if(date1.getValue().isAfter(LocalDate.now())){
         String s = date1.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
     
        M.modifierDateMatch(s, m6);
        Notifications.create()
            .title("Changement du date")
               .text("le match est reporté pour "+s)
-             .showWarning();
+             .showWarning();}
+        else {
+            Alert alert = new Alert(AlertType.ERROR);
+         alert.setTitle("Date!!");
+         alert.setHeaderText(null);
+        alert.setContentText("Date non acceptable !");
+        alert.showAndWait();
+        }
       
        t.refresh();
        
@@ -447,14 +464,90 @@ public class Gestion_match extends Application implements Initializable {
           Equipe ea=new Equipe(z1,1+score);
          e.modifierEquipescore(ea, ea.idEquipe);
           int z2= e.AfficherEquipe(e2).getIdEquipe();
-           int score2=e.Consulterpoint(e1);
+           int score2=e.Consulterpoint(e2);
           Equipe ea2=new Equipe(z2,1+score2);
-         e.modifierEquipescore(ea, ea.idEquipe);
+         e.modifierEquipescore(ea2, ea2.idEquipe);
              Notifications.create()
            .title("Changement du score")
               .text("Null")
              .showInformation();
         }}
+        if(t.getSelectionModel().getSelectedItem().getPhase().equals("1/8")){
+            {
+                if(c>c2){
+           int z1= e.AfficherEquipe(e1).getIdEquipe();
+        Equipe eqa = e.AfficherEquipe(z1);
+        eqa.setPhase("1/4");
+        e.modifierEquipe(eqa, z1);
+        
+         Notifications.create()
+           .title("Changement du score")
+              .text("l'equipe "+e1+" a gagné")
+             .showInformation();}
+        else if (c<c2){
+             int z1= e.AfficherEquipe(e2).getIdEquipe();
+          
+          Equipe ea=e.AfficherEquipe(z1);
+          ea.setPhase("1/4");
+         e.modifierEquipescore(ea, z1);
+             Notifications.create()
+           .title("Changement du score")
+              .text("l'equipe "+e2+" a gagné")
+             .showInformation();
+        }}
+        }
+        if(t.getSelectionModel().getSelectedItem().getPhase().equals("1/4")){
+           {
+                if(c>c2){
+           int z1= e.AfficherEquipe(e1).getIdEquipe();
+        Equipe eqa = e.AfficherEquipe(z1);
+        eqa.setPhase("1/2");
+        e.modifierEquipe(eqa, z1);
+        
+         Notifications.create()
+           .title("Changement du score")
+              .text("l'equipe "+e1+" a gagné")
+             .showInformation();}
+        else if (c<c2){
+             int z1= e.AfficherEquipe(e2).getIdEquipe();
+          
+          Equipe ea=e.AfficherEquipe(z1);
+          ea.setPhase("1/2");
+         e.modifierEquipescore(ea, z1);
+             Notifications.create()
+           .title("Changement du score")
+              .text("l'equipe "+e2+" a gagné")
+             .showInformation();
+        }} 
+        }
+         if(t.getSelectionModel().getSelectedItem().getPhase().equals("1/2")){
+           {
+                if(c>c2){
+           int z1= e.AfficherEquipe(e1).getIdEquipe();
+           int z2=e.AfficherEquipe(e2).getIdEquipe();
+           Equipe eq2 = e.AfficherEquipe(z2);
+        Equipe eqa = e.AfficherEquipe(z1);
+        eqa.setPhase("final");
+        eq2.setPhase("3éme place");
+        e.modifierEquipe(eqa, z2);
+        e.modifierEquipe(eqa, z1);
+        
+         Notifications.create()
+           .title("Changement du score")
+              .text("l'equipe "+e1+" a gagné")
+             .showInformation();}
+        else if (c<c2){
+             int z1= e.AfficherEquipe(e2).getIdEquipe();
+          
+          Equipe ea=e.AfficherEquipe(z1);
+          ea.setPhase("final");
+         e.modifierEquipescore(ea, z1);
+             Notifications.create()
+           .title("Changement du score")
+              .text("l'equipe "+e2+" a gagné")
+             .showInformation();
+        }} 
+        }
         t.refresh();
        
        
@@ -479,6 +572,7 @@ public class Gestion_match extends Application implements Initializable {
     else  if(this.phase.getValue().equals("1/4"))
     {
         this.gp.setDisable(true);
+        this.ha.setVisible(false);
         List z = new ArrayList<>();
        z= e.chercherParPhase("1/4").stream().map(e->e.getPays()).collect(Collectors.toList());
         this.id_equipe.getItems().clear();
@@ -489,6 +583,7 @@ public class Gestion_match extends Application implements Initializable {
    else  if(this.phase.getValue().equals("1/8"))
     {
         this.gp.setDisable(true);
+        this.ha.setVisible(false);
         List z = new ArrayList<>();
        z= e.chercherParPhase("1/8").stream().map(e->e.getPays()).collect(Collectors.toList());
         this.id_equipe.getItems().clear();
@@ -499,6 +594,7 @@ public class Gestion_match extends Application implements Initializable {
    else  if(this.phase.getValue().equals("1/2"))
     {
         this.gp.setDisable(true);
+        this.ha.setVisible(false);
         List z = new ArrayList<>();
        z= e.chercherParPhase("1/2").stream().map(e->e.getPays()).collect(Collectors.toList());
         this.id_equipe.getItems().clear();
@@ -510,6 +606,7 @@ public class Gestion_match extends Application implements Initializable {
     else  if(this.phase.getValue().equals("final"))
     {
         this.gp.setDisable(true);
+        this.ha.setVisible(false);
         List z = new ArrayList<>();
        z= e.chercherParPhase("final").stream().map(e->e.getPays()).collect(Collectors.toList());
         this.id_equipe.getItems().clear();
@@ -521,8 +618,6 @@ public class Gestion_match extends Application implements Initializable {
     }
      @FXML
     void modifier_Ca(ActionEvent event) throws IOException {
-      
-       
        
        Parent creerGroupe = FXMLLoader.load(getClass().getResource("/Gui/FXMLC_Stade.fxml"));
         Scene sceneAffichage = new Scene(creerGroupe);
@@ -557,8 +652,8 @@ public class Gestion_match extends Application implements Initializable {
         
         this.Stades.getItems().addAll(s2);
         this.phase.getItems().addAll("Premier Tour","1/8","1/4","1/2","Final","3éme place");
-      this.score1.getItems().addAll("1","2","3","4","5","6","7","8","9","10");
-      this.score2.getItems().addAll("1","2","3","4","5","6","7","8","9","10");
+      this.score1.getItems().addAll("0","1","2","3","4","5","6","7","8","9","10");
+      this.score2.getItems().addAll("0","1","2","3","4","5","6","7","8","9","10");
       this.gp.getItems().addAll("A","B","C","D","E","F","G","H");
        date.setValue(LocalDate.now());
      

@@ -19,7 +19,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="border" prefHeight="602.0" prefWidth="1047.0" style="-fx-background-image: ..\Ressource\thumb2-2018-fifa-world-cup-4k-russia-2018-soccer-fifa.jpg;" styleClass="mainFxmlClass" stylesheets="@../Asset/fxml.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Gestion_match">
+<BorderPane fx:id="border" prefHeight="602.0" prefWidth="1047.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Gestion_match">
 
     <top>
       <HBox prefHeight="103.0" prefWidth="498.0" BorderPane.alignment="CENTER">
@@ -81,6 +81,15 @@
                   </ImageView>
                </graphic>
             </JFXButton>
+            <JFXButton fx:id="mo31" contentDisplay="TOP" mnemonicParsing="false" onAction="#Classement" prefHeight="102.0" prefWidth="206.0" styleClass="toolbar-button" text="Classement" textAlignment="CENTER">
+               <graphic>
+                  <ImageView fitHeight="45.0" fitWidth="102.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Ressource/gestPoules.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
             <JFXButton fx:id="mo2" contentDisplay="TOP" mnemonicParsing="false" onAction="#Gere_Joueur" prefHeight="112.0" prefWidth="206.0" styleClass="toolbar-button" textAlignment="CENTER">
                <graphic>
                   <ImageView fitHeight="32.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
@@ -91,15 +100,6 @@
                </graphic>
             </JFXButton>
             <JFXButton fx:id="mo3" contentDisplay="TOP" mnemonicParsing="false" onAction="#Gerer_equipe" prefHeight="102.0" prefWidth="206.0" styleClass="toolbar-button" textAlignment="CENTER">
-               <graphic>
-                  <ImageView fitHeight="45.0" fitWidth="102.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../Ressource/gestEquipes.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </JFXButton>
-            <JFXButton fx:id="mo31" contentDisplay="TOP" mnemonicParsing="false" onAction="#Classement" prefHeight="102.0" prefWidth="206.0" styleClass="toolbar-button" textAlignment="CENTER">
                <graphic>
                   <ImageView fitHeight="45.0" fitWidth="102.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -120,19 +120,19 @@
       </AnchorPane>
    </left>
    <center>
-      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="716.0" prefWidth="868.0" BorderPane.alignment="CENTER">
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="716.0" prefWidth="881.0">
          <children>
-            <TableView fx:id="t" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="373.0" prefWidth="868.0">
+            <TableView fx:id="t" layoutX="-3.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="373.0" prefWidth="884.0">
                <columns>
                   <TableColumn fx:id="Equipe1" prefWidth="99.0" text="Equipe1" />
-                  <TableColumn fx:id="sc" prefWidth="135.0" text="Score1" />
-                  <TableColumn fx:id="vs" prefWidth="83.0" text="vs" />
-                  <TableColumn fx:id="sc1" prefWidth="149.0" text="Score2" />
-                  <TableColumn fx:id="Equipe2" prefWidth="143.0" text="Equipe 2" />
-                  <TableColumn fx:id="Stade" prefWidth="126.0" text="Stade" />
-                  <TableColumn fx:id="ph" prefWidth="91.0" text="phase" />
-                  <TableColumn fx:id="dt" prefWidth="133.0" text="date" />
-                  <TableColumn fx:id="h" prefWidth="192.0" text="heure" />
+                  <TableColumn fx:id="sc" prefWidth="41.0" resizable="false" />
+                  <TableColumn fx:id="vs" prefWidth="65.0" resizable="false" text="vs" />
+                  <TableColumn fx:id="sc1" prefWidth="47.0" resizable="false" />
+                  <TableColumn fx:id="Equipe2" prefWidth="94.0" resizable="false" text="Equipe 2" />
+                  <TableColumn fx:id="Stade" prefWidth="172.0" resizable="false" text="Stade" />
+                  <TableColumn fx:id="ph" prefWidth="141.0" resizable="false" text="phase" />
+                  <TableColumn fx:id="dt" prefWidth="144.0" resizable="false" text="date" />
+                  <TableColumn fx:id="h" minWidth="2.0" resizable="false" text="heure" />
                </columns>
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -167,7 +167,7 @@
                      </graphic>
                   </JFXButton>
                   <JFXComboBox fx:id="gp" disable="true" layoutX="733.0" layoutY="150.0" onAction="#gp" />
-                  <Label layoutX="687.0" layoutY="155.0" text="Group" textFill="#f5eeee" />
+                  <Label fx:id="ha" layoutX="687.0" layoutY="155.0" text="Group" textFill="#f5eeee" />
                </children>
             </Pane>
          </children>

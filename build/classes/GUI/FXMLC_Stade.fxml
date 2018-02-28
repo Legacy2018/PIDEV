@@ -9,21 +9,25 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
 
 <BorderPane prefHeight="691.0" prefWidth="1066.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Consulter_Stades">
    <top>
-      <Label prefHeight="44.0" prefWidth="194.0" text="Consulter Stades" textFill="WHITE" BorderPane.alignment="CENTER">
+      <Label prefHeight="61.0" prefWidth="423.0" text="Consulter Stades" textFill="WHITE" BorderPane.alignment="CENTER">
          <graphic>
-            <ImageView fx:id="img" fitHeight="61.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="img" fitHeight="61.0" fitWidth="83.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Ressource/gestStades.png" />
                </image>
             </ImageView>
          </graphic>
+         <font>
+            <Font size="29.0" />
+         </font>
       </Label>
    </top>
    <center>
-      <TableView fx:id="t" prefHeight="355.0" prefWidth="1066.0" BorderPane.alignment="CENTER">
+      <TableView fx:id="t" prefHeight="546.0" prefWidth="999.0" BorderPane.alignment="CENTER">
          <columns>
             <TableColumn fx:id="Nom_Stade" prefWidth="99.0" text="Nom Stade" />
             <TableColumn fx:id="Pays" prefWidth="143.0" text="Pays" />
@@ -35,19 +39,19 @@
       </TableView>
    </center>
    <bottom>
-      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <HBox prefHeight="84.0" prefWidth="255.0" BorderPane.alignment="CENTER">
          <children>
-            <JFXButton fx:id="meteo" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#meteo" prefHeight="72.0" prefWidth="333.0" styleClass="toolbar-button" textAlignment="CENTER">
+            <JFXButton fx:id="meteo" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#meteo" prefHeight="84.0" prefWidth="329.0" styleClass="toolbar-button" textAlignment="CENTER">
                <graphic>
                   <FontAwesomeIconView fill="#f5f3f3" glyphName="UMBRELLA" size="25" />
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="loca" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#loca" prefHeight="72.0" prefWidth="333.0" styleClass="toolbar-button" textAlignment="CENTER">
+            <JFXButton fx:id="loca" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#loca" prefHeight="84.0" prefWidth="366.0" styleClass="toolbar-button" textAlignment="CENTER">
                <graphic>
                   <FontAwesomeIconView fill="#fcf9f9" glyphName="MAP" size="25" />
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="acceuil" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#accueil" prefHeight="72.0" prefWidth="400.0" styleClass="toolbar-button" textAlignment="CENTER">
+            <JFXButton fx:id="acceuil" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#accueil" prefHeight="84.0" prefWidth="431.0" styleClass="toolbar-button" textAlignment="CENTER">
                <graphic>
                   <FontAwesomeIconView fill="#f2ecec" glyphName="HOME" size="25" />
                </graphic>
