@@ -64,8 +64,8 @@ public class AjouterTicketController extends Application implements Initializabl
 
     public Utilisateur user ;
     public match mat ;
-    ObservableList<String> lstcat = FXCollections.observableArrayList("pelouse", "virage");
-    ObservableList<Integer> lstnb = FXCollections.observableArrayList(1, 2, 3, 4);
+    ObservableList<String> lstcat = FXCollections.observableArrayList("pelouse", "virage","tribune");
+    ObservableList<Integer> lstnb = FXCollections.observableArrayList(1, 2, 3, 4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30);
     @FXML
 
     private JFXTextField id_prix;
@@ -163,21 +163,28 @@ public class AjouterTicketController extends Application implements Initializabl
 
     @FXML
     void AjouterAchatTicket(ActionEvent event) throws IOException {
-          if(id_prix.getText() != null){
-             x = loginCQONTROLLER.u;
+       
+        
+       
+                 
+        try{
+          
+
+            Float.parseFloat(id_prix.getText());
+               x = loginCQONTROLLER.u;
            test=Integer.parseInt(txdann.getText());
             int s=x.getId();
            
-                           
+                          
    Ticket ticket = new Ticket(id_nbticket.getValue(), id_categorie.getValue(), Float.parseFloat(id_prix.getText()) ,new Fos_User(s),new match (test));
         TicketDAO tda = new TicketDAO();
         tda.ajouter_Ticket(ticket);
-        System.out.println("to text field action " + event.toString());
+       // System.out.println("to text field action " + event.toString());
            Alert fail= new Alert(AlertType.INFORMATION);
         fail.setHeaderText("Succés!");
         fail.setContentText("Votre Ticket est ajouté  ");
         fail.showAndWait();
-           Notifications.create().title("Succes").text("Rate ajoutee ").showConfirm();
+          
       
         Parent afficher ;
         Scene sceneAffichage;
@@ -187,18 +194,27 @@ public class AjouterTicketController extends Application implements Initializabl
      sceneAffichage = new Scene(afficher);
      sceneAffichage.getStylesheets().add(getClass().getResource("../Asset/MainFram.css").toExternalForm());
          stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-        stage.setScene(sceneAffichage);
+     stage.setScene(sceneAffichage);
         stage.show();
+         Notifications.create().title("Succes").text("Ticket ajouté ").showConfirm();
+        }catch(NumberFormatException ex){
+            Alert a = new Alert(AlertType.ERROR);
+            a.setTitle("error");
+            a.setHeaderText("prix invalid !");
+            a.setContentText("");
+            a.showAndWait();
+        }
+          
+          
                
-          } else{
+         
      
-           Alert fail= new Alert(Alert.AlertType.INFORMATION);
+         /*  Alert fail= new Alert(Alert.AlertType.INFORMATION);
         fail.setHeaderText("Attention!");
         fail.setContentText("vérifiez vos champs s'il vous plait ");
         fail.showAndWait();}
        
-       
+       */
             
           
     }
@@ -229,7 +245,7 @@ public class AjouterTicketController extends Application implements Initializabl
         data = FXCollections.observableArrayList();
        lsa.stream().forEach((e) -> {
             data.add(e);
-            System.out.println(e);
+         //   System.out.println(e);
         });
        
        tableViws.setItems(data);
@@ -252,15 +268,15 @@ id_matchht.setCellValueFactory(new PropertyValueFactory<>("idMatch"));
     }
       private void setCellValueFromTableToText() {
          
-        System.out.println("messageee");
+     //   System.out.println("messageee");
         tableViws.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
 
               match   gr = (match) tableViws.getItems().get(tableViws.getSelectionModel().getSelectedIndex());
-                System.out.println(gr);
+               // System.out.println(gr);
                 int s = tableViws.getSelectionModel().getSelectedIndex();
-                System.out.println(s);
+               // System.out.println(s);
              id_matchht.setText(Integer.toString(gr.getIdMatch()));
                id_equipe1.setText(gr.getEquipe1().getPays());
                id_equipe2.setText(gr.getEquipe2().getPays());

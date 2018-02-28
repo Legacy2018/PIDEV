@@ -10,6 +10,7 @@ import Entities.Commentaire;
 import Entities.Fos_User;
 import Entities.Ticket;
 import Entities.TicketRate;
+import Entities.Utilisateur;
 import Services.ServiceRate;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -24,6 +25,7 @@ import Services.TicketDAO;
 import Services.serviceCommentaire;
 import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -137,6 +139,11 @@ public class Commentaire1Controller implements Initializable {
     
     @FXML
     private Rating rating;
+       @FXML
+    private JFXButton supprimercom;
+          @FXML
+    private JFXButton afficherprofil;
+       Utilisateur uti;
     
     Double note;
     ServiceRate Rs = new ServiceRate();
@@ -170,10 +177,15 @@ public class Commentaire1Controller implements Initializable {
         idnbticket.setText(Integer.toString(ticketSelectionne.getNbrTicket()));
         idprix.setText(Float.toString(ticketSelectionne.getPrix()));
         LabelStade.setText(ticketSelectionne.getIdMatch().getStade().getNom_Stade());
-        
+        heurAjout.setText(ticketSelectionne.getHeurAjout().toString());
+        LabelUser.setText(ticketSelectionne.getIdUser().getUsername());
+           ServiceUtilisateur uti=new ServiceUtilisateur();
+         IMageView=new ImageView(uti.findUtilisateurbyID(ticketSelectionne.getIdUser().getId()).getImg_profile());
+               
+                
         Ticket ticket = new Ticket();
         TicketDAO tda = new TicketDAO();
-        System.out.println(ticketSelectionne.getIdMatch().getEquipe1().getPays());
+       // System.out.println(ticketSelectionne.getIdMatch().getEquipe1().getPays());
         // tickets = tda.afficher_Ticket();
         
         serviceCommentaire cs = new serviceCommentaire();
@@ -182,9 +194,9 @@ public class Commentaire1Controller implements Initializable {
         cs.getAll(ticketSelectionne.getIdTicket());
         //String s =
         for (int i = 0; i < cs.getAll(ticketSelectionne.getIdTicket()).size(); i++) {
-            msg = x.findUtilisateurbyID(cs.getAll(ticketSelectionne.getIdTicket()).get(i).getIdUser().getId()).getUsername() + "   " + cs.getAll(ticketSelectionne.getIdTicket()).get(i).getDescription();
+            msg ="  "+ x.findUtilisateurbyID(cs.getAll(ticketSelectionne.getIdTicket()).get(i).getIdUser().getId()).getUsername() + "         | " + cs.getAll(ticketSelectionne.getIdTicket()).get(i).getDescription();
             listcomment.getItems().add(i, msg);
-            System.out.println(msg);
+          // System.out.println(msg);
             
         }
         
@@ -200,7 +212,7 @@ public class Commentaire1Controller implements Initializable {
         int s = u.getId();
         ServiceUtilisateur x = new ServiceUtilisateur();
         for (int i = 0; i < cs.getAll(ticketSelectionne.getIdTicket()).size(); i++) {
-            msg = x.findUtilisateurbyID(cs.getAll(ticketSelectionne.getIdTicket()).get(i).getIdUser().getId()).getUsername() + "   " + cs.getAll(ticketSelectionne.getIdTicket()).get(i).getDescription();
+            msg = "  "+x.findUtilisateurbyID(cs.getAll(ticketSelectionne.getIdTicket()).get(i).getIdUser().getId()).getUsername() + "         | "+ cs.getAll(ticketSelectionne.getIdTicket()).get(i).getDescription();
             listcomment.getItems().add(i, msg);
              
         //Parent creerGroupe = FXMLLoader.load(getClass().getResource("/GUI/Commentaire1.fxml"));
@@ -218,9 +230,9 @@ public class Commentaire1Controller implements Initializable {
         
         Commentaire c = new Commentaire(com.getText(), new Ticket(ticketSelectionne.getIdTicket()), new Fos_User(u.getId()));
         cs.add(c);
-        System.out.println(ticketSelectionne.getIdTicket());
-        System.out.println(u.getId());
-        System.out.println(com.getText());
+       // System.out.println(ticketSelectionne.getIdTicket());
+       // System.out.println(u.getId());
+      //  System.out.println(com.getText());
         
         refresh();
         
@@ -262,12 +274,92 @@ public class Commentaire1Controller implements Initializable {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(sceneAffichage);
         stage.show();
-        
+      
     }
     
     @FXML
-    void reserverButton(MouseEvent event) {
-        //  new SmService().sendSms(new Sms("+21625093776", "You have been signaled please check your account. CovoiturageInjection.com"));
+    void reserverButton(MouseEvent event) throws IOException {
+   
+            ServiceUtilisateur x = new ServiceUtilisateur();
+         //  ServiceFos_User p= new ServiceFos_User();
+          //Fos_User y=  ticketSelectionne.getIdUser();
+        //  System.out.println(x.findUtilisateurbyID(ticketSelectionne.getIdUser().getId()).getTelephone());
+          //  x.findFos_UserbyID(0)
+       // System.out.println("+216"+s.getTelephone());
+        
+        /*
+       
+        try {      
+			// Construct data
+                    
+			String apiKey ="&apiKey="+"qMoZ9QsZja8-IOLDc1r6EVSWLoqUvgR8Ts7uuAvWmu";
+			String message = "&message="+"je souhaite réserver votre ticket";
+			String sender = "&sender="+ticketSelectionne.getIdUser().getUsername();
+			String numbers = "&numbers=" +"+216"+x.findUtilisateurbyID(ticketSelectionne.getIdUser().getId()).getTelephone();
+			
+			// Send data
+			HttpURLConnection conn = (HttpURLConnection) new URL("https://api.txtlocal.com/send/?").openConnection();
+			String data = apiKey + numbers + message + sender;
+			conn.setDoOutput(true);
+			conn.setRequestMethod("POST"); 
+			conn.setRequestProperty("Content-Length", Integer.toString(data.length()));
+			conn.getOutputStream().write(data.getBytes("UTF-8"));
+			final BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+			final StringBuffer stringBuffer = new StringBuffer();
+			String line;
+			while ((line = rd.readLine()) != null) {
+//				stringBuffer.append(line);
+                            JOptionPane.showMessageDialog(null,"message"+line);
+			}
+			rd.close();
+			
+//			return stringBuffer.toString();
+		} catch (Exception e) {
+//			System.out.println("Error SMS "+e);
+                    JOptionPane.showMessageDialog(null,e);
+//			return "Error "+e;
+		}
+        
+     
+        
+        */
+        
+     
+
+   
     }
+        @FXML
+    void afficherprofil(ActionEvent event) throws IOException {
+        ServiceUtilisateur x = new ServiceUtilisateur();
+       
+            //System.out.println(x.findUtilisateurbyID(ticketSelectionne.getIdUser().getId()).getId());
+        int y=x.findUtilisateurbyID(ticketSelectionne.getIdUser().getId()).getId();
+        // List<Utilisateur> luti=new ArrayList<>();
+         Recherche_ProfileController.u.setId(y);
+         
+        try
+        {
+            
+        Parent root = FXMLLoader.load(getClass().getResource("/GUI/ShowProfile.fxml"));
+        Stage stage=new Stage();
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("/Asset/MainFram.css").toExternalForm());
+        stage.setScene(scene);
+        stage.show();
+        }
+        catch(IOException ex)
+        {
+            System.out.println(ex);
+        }
+        /*
+         Parent root = FXMLLoader.load(getClass().getResource("/GUI/ShowProfile.fxml"));
+        Stage stage=new Stage();
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("/Asset/MainFram.css").toExternalForm());
+        stage.setScene(scene);
+        stage.show();*/
+         //luti1=recherche.AfficherUtilisateur(u.getId);
+    }
+    
     
 }

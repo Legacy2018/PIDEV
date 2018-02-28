@@ -13,6 +13,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import services.ServiceUtilisateur;
 
 /**
  * FXML Controller class
@@ -39,6 +40,8 @@ public class ShowProfileController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        Recherche_ProfileController.u=new ServiceUtilisateur().findUtilisateurbyID(Recherche_ProfileController.u.getId_user());
        Nompnom.setText(Recherche_ProfileController.u.getNom()+" "+Recherche_ProfileController.u.getPnom());
        email.setText(Recherche_ProfileController.u.getEmail());
        telephone.setText(Recherche_ProfileController.u.getTelephone());

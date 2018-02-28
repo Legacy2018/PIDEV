@@ -2,7 +2,7 @@
 .root{
   
 
-
+-fx-background-image:  url("../Ressource/bg.png");
 }
 .jfx-hamburger StackPane {
 	-fx-background-color: white;
@@ -137,7 +137,7 @@ TiTled pane Customusation
 
 
 
-.button{
+/*.button{
     -fx-text-fill: -fx-primarytext;
     -fx-background-color: -fx-primary;
     -fx-border-color: -fx-primary;
@@ -151,7 +151,7 @@ TiTled pane Customusation
     -fx-background-color: transparent;
     -fx-text-fill: -fx-primarytext;
 }
-
+*/
 .text-field
 {
     -fx-text-fill: -fx-primarytext;

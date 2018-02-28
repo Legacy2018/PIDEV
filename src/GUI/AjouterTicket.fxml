@@ -27,11 +27,11 @@
             <Label layoutX="340.0" layoutY="14.0" prefHeight="25.0" prefWidth="30.0" text="VS" textAlignment="CENTER" />
             <JFXComboBox fx:id="id_categorie" layoutX="536.0" layoutY="70.0" prefHeight="25.0" prefWidth="169.0" promptText="Categories" />
             <JFXComboBox fx:id="id_nbticket" layoutX="536.0" layoutY="114.0" prefHeight="25.0" prefWidth="169.0" promptText="Nbr Tickets" />
-            <JFXTextField fx:id="id_equipe1" layoutX="161.0" layoutY="14.0" promptText="Equipe1" />
-            <JFXTextField fx:id="id_equipe2" layoutX="420.0" layoutY="14.0" promptText="Equipe2" />
-            <JFXTextField fx:id="id_stade" layoutX="34.0" layoutY="70.0" prefHeight="25.0" prefWidth="169.0" promptText="Stade" />
-            <JFXTextField fx:id="id_heur" layoutX="34.0" layoutY="119.0" prefHeight="25.0" prefWidth="169.0" promptText="Heur du Match" />
-            <JFXTextField fx:id="id_date" layoutX="34.0" layoutY="170.0" prefHeight="25.0" prefWidth="169.0" promptText="Date du  Matche" />
+            <JFXTextField fx:id="id_equipe1" editable="false" layoutX="161.0" layoutY="14.0" promptText="Equipe1" />
+            <JFXTextField fx:id="id_equipe2" editable="false" layoutX="420.0" layoutY="14.0" promptText="Equipe2" />
+            <JFXTextField fx:id="id_stade" editable="false" layoutX="34.0" layoutY="70.0" prefHeight="25.0" prefWidth="169.0" promptText="Stade" />
+            <JFXTextField fx:id="id_heur" editable="false" layoutX="34.0" layoutY="119.0" prefHeight="25.0" prefWidth="169.0" promptText="Heur du Match" />
+            <JFXTextField fx:id="id_date" editable="false" layoutX="34.0" layoutY="170.0" prefHeight="25.0" prefWidth="169.0" promptText="Date du  Matche" />
             <JFXTextField fx:id="txdann" disable="true" layoutX="197.0" layoutY="119.0" visible="false" />
             <JFXButton fx:id="AjouterAchatTicket" buttonType="RAISED" layoutX="328.0" layoutY="224.0" onAction="#AjouterAchatTicket" ripplerFill="#686565" text="Ajouter" />
             <ImageView fx:id="image1" fitHeight="113.0" fitWidth="135.0" layoutX="296.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true" />

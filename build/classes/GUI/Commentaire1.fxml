@@ -8,7 +8,6 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import org.controlsfx.control.Rating?>
 
@@ -30,8 +29,7 @@
             <Label fx:id="sataicEquipe1" layoutX="219.0" layoutY="18.0" text="Equipe1" />
             <Label fx:id="LabelVS" layoutX="365.0" layoutY="18.0" text="VS" />
             <Separator fx:id="Separator" layoutX="167.0" layoutY="16.0" orientation="VERTICAL" prefHeight="117.0" prefWidth="7.0" />
-            <ImageView fx:id="IMageView" fitHeight="78.0" fitWidth="113.0" layoutX="30.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true" />
-            <Label fx:id="LabelUser" layoutX="30.0" layoutY="103.0" prefHeight="17.0" prefWidth="124.0" text="Label" />
+            <Label fx:id="LabelUser" layoutX="18.0" layoutY="18.0" prefHeight="17.0" prefWidth="124.0" text="Label" />
             <Label fx:id="heurAjout" layoutX="80.0" layoutY="128.0" text="heurAjout" />
             <Label fx:id="sataticEquipe2" layoutX="406.0" layoutY="18.0" text="Equipe2" />
             <Label fx:id="saticstade" layoutX="183.0" layoutY="52.0" text="A :" />
@@ -50,6 +48,7 @@
             <Label fx:id="idprix" layoutX="486.0" layoutY="95.0" text="label" />
             <Label fx:id="idnbticket" layoutX="358.0" layoutY="95.0" text="label" />
             <Label fx:id="idcategorie" layoutX="264.0" layoutY="95.0" text="Label" />
+            <JFXButton fx:id="afficherprofil" layoutX="54.0" layoutY="62.0" onAction="#afficherprofil" />
          </children>
       </AnchorPane>
       <Rating fx:id="rating" layoutX="447.0" layoutY="214.0" onMouseClicked="#ajouterRate" />
