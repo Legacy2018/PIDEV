@@ -1,5 +1,6 @@
 
 .root{
+  
 
 -fx-background-image:  url("../Ressource/bg.png");
 }
@@ -376,4 +377,18 @@ TiTled pane Customusation
     -fx-background-color: transparent;
     -fx-border-color:transparent;
     -fx-background-image: url("../Ressource/arrow123.png");
+}
+.button{
+    -fx-text-fill: -fx-primarytext;
+    -fx-background-color: -fx-primary;
+    -fx-border-color: -fx-primary;
+    -fx-border-radius: 2px;
+    -fx-background-radius: 2px;
+    -fx-font-size: 13pt;
+}
+
+.button:hover{
+    -fx-border-color: -fx-secondary;
+    -fx-background-color: transparent;
+    -fx-text-fill: -fx-primarytext;
 }

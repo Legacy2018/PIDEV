@@ -13,7 +13,14 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import services.ServiceUtilisateur;
+import Services.ServiceUtilisateur;
+import com.jfoenix.controls.JFXButton;
+import java.io.IOException;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -34,6 +41,8 @@ public class ShowProfileController implements Initializable {
     private Label username;
     @FXML
     private AnchorPane rootPane;
+    @FXML
+    private JFXButton descussion;
 
     /**
      * Initializes the controller class.
@@ -50,5 +59,15 @@ public class ShowProfileController implements Initializable {
         imgprofile.setImage(new Image(getClass().getResource(Recherche_ProfileController.u.getImg_profile()).toString(), true));
         
     }    
+
+    @FXML
+    private void oppenMessages(ActionEvent event) throws IOException {
+        Stage stage=(Stage) Nompnom.getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getResource("/GUI/FenetreMessagerie.fxml"));
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("/Asset/MainFram.css").toExternalForm());
+        stage.setScene(scene);
+        stage.show();
+    }
     
 }

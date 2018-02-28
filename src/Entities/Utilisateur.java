@@ -170,7 +170,7 @@ public class Utilisateur extends Fos_User{
 
     @Override
     public String toString() {
-        return super.toString()+"User(id "+id_user+" nom"+nom+" prenom "+pnom+"\n";
+        return this.getUsername();
     }
     
    

@@ -111,7 +111,7 @@ public class ToolbarController implements Initializable {
         Parent root = FXMLLoader.load(getClass().getResource("/GUI/FXMLGestion_Match.fxml"));
         
         Scene scene2 = new Scene(root);
-         scene2.getStylesheets().add(getClass().getResource("/Asset/MainFram.css").toExternalForm());
+         scene2.getStylesheets().add(getClass().getResource("/Asset/fxml.css").toExternalForm());
         
         stage.setScene(scene2);
         stage.show();

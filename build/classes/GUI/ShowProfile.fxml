@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-
 
 <AnchorPane fx:id="rootPane" prefHeight="387.0" prefWidth="595.0" styleClass="gradient" stylesheets="@../Asset/MainFram.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ShowProfileController">
    <children>
@@ -28,6 +28,7 @@
                   <Label fx:id="telephone" layoutX="31.0" layoutY="32.0" prefHeight="17.0" prefWidth="206.0" text="Téléphone" />
                </children>
             </AnchorPane>
+            <JFXButton fx:id="descussion" layoutX="313.0" layoutY="225.0" onAction="#oppenMessages" prefHeight="25.0" prefWidth="120.0" text="Contacter" />
          </children>
       </AnchorPane>
    </children>
