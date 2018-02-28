@@ -19,7 +19,7 @@
    <content>
       <AnchorPane id="AnchorPane" fx:id="anchro" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0">
           <stylesheets>
-              <URL value="@/Assets/MainFram.css" />
+              
           </stylesheets>   
           <children>
               <ChoiceBox fx:id="eqchoice" layoutX="140.0" layoutY="177.0" prefHeight="25.0" prefWidth="213.0" />
