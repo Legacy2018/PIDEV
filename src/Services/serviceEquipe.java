@@ -533,6 +533,7 @@ public class serviceEquipe implements IServices.IServiceGestionEquipe {
         return equipes;
     }
 
+
     public List<String> selectPays() {
         List<String> pays = new ArrayList<>();
 
@@ -558,6 +559,7 @@ public class serviceEquipe implements IServices.IServiceGestionEquipe {
         }
         return pays;
     }
+
 
     @Override
     public Equipe AfficherEquipe(int id) { 
