@@ -33,7 +33,7 @@ public class ServiceMessage {
         }
         
     }
-    public Messages getNewMessages(int sender,int recever){
+    public Messages getNewMessages(int recever){
         Messages m=null;
          try {
             ResultSet res= st.executeQuery("Select * from Messages where id_recever="+recever+" and afficher=1 ;");

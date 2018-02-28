@@ -29,6 +29,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import javax.mail.Message;
 import Services.ServiceUtilisateur;
+import javafx.scene.control.SelectionMode;
 
 
 /**
@@ -60,8 +61,8 @@ public class FenetreMessagerieController extends Thread implements Initializable
         ListContacts.add(Recherche_ProfileController.u);
         System.out.println("Id user Connecter"+Login_viewController.u);
         ListMessages=new ServiceMessage().getAllMessages(Login_viewController.u.getId());
-        System.out.println(Login_viewController.u.getId());
-        System.out.println(ListMessages);
+       
+        
         ListMessages.stream().filter(m -> m.getSender()!=Login_viewController.u.getId()).forEach(m -> updateListContacts(m.getSender()));
         if(!ListContacts.isEmpty())
         afficherMessage(ListContacts.get(0).getId());
@@ -81,17 +82,17 @@ public class FenetreMessagerieController extends Thread implements Initializable
     public void afficherMessage(int Contact){
         allmessages.clear();
         if(!ListMessages.isEmpty())
-        ListMessages.stream().filter(m -> m.getSender()==Contact||m.getRecever()==Contact).sorted((m1,m2)->m1.getDatemsg().compareTo(m2.getDatemsg())).forEach(
+        ListMessages.stream().filter(m -> m.getSender()==Contact||m.getRecever()==Contact).forEach(
         
                 m -> {
-                
+                    System.out.println("msg lbara"+m+"\n");
                 if(m.getSender()==Contact)
                 {
-                    allmessages.appendText(new ServiceUtilisateur().findUtilisateurbyID(Contact).getNom()+" : "+m.toString());
+                    allmessages.appendText(new ServiceUtilisateur().findUtilisateurbyID(Contact).getNom()+" : "+m.getMessage()+"\n");
                 }
                 else
                 {
-                    allmessages.appendText(Login_viewController.u.getNom()+" : "+m.toString());
+                    allmessages.appendText(Login_viewController.u.getNom()+" : "+m.getMessage()+"\n");
                 }
                 
                 }
@@ -103,10 +104,14 @@ public class FenetreMessagerieController extends Thread implements Initializable
         Messages m=null;
        while(true)
         {
-            m=new ServiceMessage().getNewMessages(0, Login_viewController.u.getId());
+            m=new ServiceMessage().getNewMessages(Login_viewController.u.getId());
             if(m!=null)
             {
+                
                 ListMessages.add(m);
+                System.out.println(m);
+                System.out.println("fil run "+ListMessages);
+                
                 updateListContacts(m.getSender());
                 afficherMessage(m.getSender());
             }
@@ -124,11 +129,14 @@ public class FenetreMessagerieController extends Thread implements Initializable
     private void send(KeyEvent event) {
         if(event.getCode().getName().equals("Enter"))
         {
-            if(sender.getText()!="")
-            new ServiceMessage().sendMessage(new Messages(Login_viewController.u.getId(), contacts.selectionModelProperty().get().getSelectedItem().getId(),sender.getText() , 0, true,null));
-            ListMessages.add(new Messages(Login_viewController.u.getId(), contacts.selectionModelProperty().get().getSelectedItem().getId(),sender.getText() , 0, true,null));
+            
+            if(sender.getText()!=""){
+                Messages m=new Messages(Login_viewController.u.getId(), contacts.selectionModelProperty().get().getSelectedItem().getId(),sender.getText() , 0, true,null);
+            new ServiceMessage().sendMessage(m);
+            ListMessages.add(m);
             allmessages.appendText(Login_viewController.u.getNom()+" : "+sender.getText()+"\n");
             sender.clear();
+            }
         }
     }
 }

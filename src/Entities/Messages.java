@@ -80,7 +80,7 @@ public class Messages {
 
     @Override
     public String toString() {
-        return message+" \n";
+        return sender+" "+message+" "+recever;
     }
     
 }
