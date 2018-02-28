@@ -337,7 +337,7 @@ public class serviceEquipe implements IServices.IServiceGestionEquipe{
 
         try {
 
-            ResultSet rest = st.executeQuery("select * from Equipe where groupe='" + groupe + "'");
+            ResultSet rest = st.executeQuery("select * from Equipe where groupe='" + groupe + "'order by point DESC ");
             if (!rest.next()) {
                 System.err.println("Resultat introuvable");
             } else {
@@ -462,7 +462,7 @@ public class serviceEquipe implements IServices.IServiceGestionEquipe{
     public int Consulterpoint(String pays) {
      Equipe s = new Equipe();
 
-        String requete = "select * from equipe where pays='" + pays + "';";
+        String requete = "select point from equipe where pays='" + pays + "';";
         try {
             
                     

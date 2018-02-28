@@ -81,8 +81,7 @@ public class Gestion_match extends Application implements Initializable {
 
     @FXML
     private TableView<match> t;
-     @FXML
-    private JFXButton mo;
+     
 
     @FXML
     private TableColumn<match, String> Equipe1;
@@ -111,16 +110,10 @@ public class Gestion_match extends Application implements Initializable {
     private JFXComboBox<String> Stades;
       @FXML
     private JFXTimePicker ta;
-   @FXML
-    private JFXButton c_phase1;
-
-    
+  
     private ObservableList<match> data;
     
-    @FXML
-    private JFXButton btn_ajouter;
-    @FXML
-    private JFXButton Supprimer;
+    
 @FXML
     private JFXComboBox<String> gp;
     @FXML
@@ -134,7 +127,7 @@ public class Gestion_match extends Application implements Initializable {
     private JFXComboBox<String> score2;
 
   SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-   private  Date dateUtil;
+  
     serviceEquipe e = new serviceEquipe(); 
     IStadeDAO s= DAOStade.getInstance();
     IMatchDAO M = MatchDAO.getInstance();
@@ -147,18 +140,7 @@ public class Gestion_match extends Application implements Initializable {
    match m ;
      @FXML
     private Label ha;
-    @FXML
-    private BorderPane border;
-    @FXML
-    private TableColumn<?, ?> vs;
-    @FXML
-    private JFXButton mo1;
-    @FXML
-    private JFXButton mo11;
-    @FXML
-    private JFXButton mo2;
-    @FXML
-    private JFXButton mo3;
+    
      @FXML
     private JFXDrawer SidePannel;
     @FXML
@@ -336,8 +318,11 @@ public class Gestion_match extends Application implements Initializable {
         alert.setTitle("Match ajouté");
          alert.setHeaderText(null);
         alert.setContentText("vous avez ajouté le match !");
-        alert.showAndWait();}
-   
+        alert.showAndWait();
+         id_equipe.getItems().remove(eqa.getPays());
+    
+     }
+      id_equipe.getItems().remove(eqa.getPays());
        Parent creerGroupe = FXMLLoader.load(getClass().getResource("/Gui/FXMLGestion_Match.fxml"));
         Scene sceneAffichage = new Scene(creerGroupe);
         sceneAffichage.getStylesheets().add(getClass().getResource("/Asset/fxml.css").toExternalForm());
@@ -472,17 +457,20 @@ public class Gestion_match extends Application implements Initializable {
               .text("Null")
              .showInformation();
         }}
-        if(t.getSelectionModel().getSelectedItem().getPhase().equals("1/8")){
+        else  if(t.getSelectionModel().getSelectedItem().getPhase().equals("1/8")){
             {
                 if(c>c2){
            int z1= e.AfficherEquipe(e1).getIdEquipe();
         Equipe eqa = e.AfficherEquipe(z1);
         eqa.setPhase("1/4");
         e.modifierEquipe(eqa, z1);
-        
+         int z2=e.AfficherEquipe(e2).getIdEquipe();
+        Equipe eq2=e.AfficherEquipe(z2);
+        eq2.setPhase("Eliminée");
+        e.modifierEquipe(eq2, z2);
          Notifications.create()
            .title("Changement du score")
-              .text("l'equipe "+e1+" a gagné")
+              .text("l'equipe "+e1+" a gagné et passe au 1/4")
              .showInformation();}
         else if (c<c2){
              int z1= e.AfficherEquipe(e2).getIdEquipe();
@@ -490,35 +478,48 @@ public class Gestion_match extends Application implements Initializable {
           Equipe ea=e.AfficherEquipe(z1);
           ea.setPhase("1/4");
          e.modifierEquipescore(ea, z1);
+         
+          int z2=e.AfficherEquipe(e1).getIdEquipe();
+        Equipe eq2=e.AfficherEquipe(z2);
+        eq2.setPhase("Eliminée");
+        e.modifierEquipe(eq2, z2);
              Notifications.create()
            .title("Changement du score")
               .text("l'equipe "+e2+" a gagné")
              .showInformation();
         }}
         }
-        if(t.getSelectionModel().getSelectedItem().getPhase().equals("1/4")){
+       else if(t.getSelectionModel().getSelectedItem().getPhase().equals("1/4")){
            {
                 if(c>c2){
            int z1= e.AfficherEquipe(e1).getIdEquipe();
         Equipe eqa = e.AfficherEquipe(z1);
         eqa.setPhase("1/2");
         e.modifierEquipe(eqa, z1);
-        
+         int z2=e.AfficherEquipe(e2).getIdEquipe();
+        Equipe eq2=e.AfficherEquipe(z2);
+        eq2.setPhase("Eliminée");
+        e.modifierEquipe(eq2, z2);
          Notifications.create()
            .title("Changement du score")
-              .text("l'equipe "+e1+" a gagné")
+              .text("l'equipe "+e1+" a gagné et passe au 1/2")
              .showInformation();}
         else if (c<c2){
              int z1= e.AfficherEquipe(e2).getIdEquipe();
-          
           Equipe ea=e.AfficherEquipe(z1);
           ea.setPhase("1/2");
          e.modifierEquipescore(ea, z1);
+         
+          int z2=e.AfficherEquipe(e1).getIdEquipe();
+        Equipe eq2=e.AfficherEquipe(z2);
+        eq2.setPhase("Eliminée");
+        e.modifierEquipe(eq2, z2);
+        
              Notifications.create()
            .title("Changement du score")
-              .text("l'equipe "+e2+" a gagné")
+              .text("l'equipe "+e2+" a gagné passe au 1/2")
              .showInformation();
-        }} 
+        }}
         }
          if(t.getSelectionModel().getSelectedItem().getPhase().equals("1/2")){
            {
@@ -529,7 +530,7 @@ public class Gestion_match extends Application implements Initializable {
         Equipe eqa = e.AfficherEquipe(z1);
         eqa.setPhase("final");
         eq2.setPhase("3éme place");
-        e.modifierEquipe(eqa, z2);
+        e.modifierEquipe(eq2, z2);
         e.modifierEquipe(eqa, z1);
         
          Notifications.create()
@@ -538,11 +539,16 @@ public class Gestion_match extends Application implements Initializable {
              .showInformation();}
         else if (c<c2){
              int z1= e.AfficherEquipe(e2).getIdEquipe();
-          
-          Equipe ea=e.AfficherEquipe(z1);
+           Equipe ea=e.AfficherEquipe(z1);
           ea.setPhase("final");
          e.modifierEquipescore(ea, z1);
-             Notifications.create()
+         
+         int z2= e.AfficherEquipe(e1).getIdEquipe();
+           Equipe ea1=e.AfficherEquipe(z2);
+          ea.setPhase("3éme place");
+         e.modifierEquipescore(ea1, z2); 
+         
+         Notifications.create()
            .title("Changement du score")
               .text("l'equipe "+e2+" a gagné")
              .showInformation();

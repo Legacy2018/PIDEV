@@ -4,13 +4,26 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
 <<<<<<< HEAD
+            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Services/DAOStade.java</file>
+=======
+<<<<<<< HEAD
             <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Controllers/FenetreMessagerieController.java</file>
 =======
 <<<<<<< HEAD
+>>>>>>> 93a76c870f6bb2b9304245f33969ff4216ba4dcc
             <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Controllers/ClassementController.java</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Entities/Equipe.java</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/DataSource/DataSource.java</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Services/serviceEquipe.java</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Services/TicketDAO.java</file>
             <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Controllers/Gestion_match.java</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Services/MatchDAO.java</file>
             <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Controllers/MeteoController.java</file>
             <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Asset/fxml.css</file>
+<<<<<<< HEAD
+            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Main/PIDEV_V1.java</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Controllers/Consulter_Stades.java</file>
+=======
 =======
 <<<<<<< HEAD
             <file>file:/C:/Users/BSS/Documents/GitHub/Pidevsara/pi/PIDEV/src/Controllers/Gestion_match.java</file>
@@ -53,6 +66,7 @@
 >>>>>>> b43c7576b6b0af47616338eeb143297220085d40
 >>>>>>> f5ad7ed65898d117e5421b14bd6449829cfa0185
 >>>>>>> 81f39f9e371b319fd8564715af9d5002b0db2baa
+>>>>>>> 93a76c870f6bb2b9304245f33969ff4216ba4dcc
         </group>
     </open-files>
 </project-private>
