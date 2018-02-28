@@ -168,6 +168,9 @@ public class ListTicketsController implements Initializable {
     private JFXHamburger Sp;
     @FXML
     private ImageView retour;
+       @FXML
+    private ImageView imageticket;
+
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -250,7 +253,7 @@ public class ListTicketsController implements Initializable {
         
         afficher = FXMLLoader.load(getClass().getResource("/GUI/AjouterTicket.fxml"));
      sceneAffichage = new Scene(afficher);
-     sceneAffichage.getStylesheets().add(getClass().getResource("../Asset/MainFram.css").toExternalForm());
+     sceneAffichage.getStylesheets().add(getClass().getResource("../Asset/MainFramsarra.css").toExternalForm());
          stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
         stage.setScene(sceneAffichage);
@@ -436,10 +439,22 @@ public class ListTicketsController implements Initializable {
                 IMageView = new ImageView(uti.findUtilisateurbyID(ticket.getIdUser().getId()).getImg_profile());
                 IMageView.setFitHeight(80);
                 IMageView.setFitWidth(70);
+                IMageView.setLayoutX(45);
+                IMageView.setLayoutY(30);
                
                 //image3=new ImageView("Ressource/téléchargement.png");
                //image3.setFitHeight(30);
               // image3.setFitWidth(30);
+              
+              //IMAGEVIEW
+                ImageView ImageViewticket = new ImageView();
+
+                ImageViewticket.setImage(imageticket.getImage());
+                ImageViewticket.setLayoutX(imageticket.getLayoutX());
+                ImageViewticket.setLayoutY(imageticket.getLayoutY());
+                ImageViewticket.setStyle(imageticket.getStyle());
+                ImageViewticket.setFitWidth(imageticket.getFitWidth());
+                ImageViewticket.setFitHeight(imageticket.getFitHeight());
                 //SupprimerButton
                 JFXButton SupprimerButton = new JFXButton();
                 SupprimerButton.setFont(BtnSupp.getFont());
@@ -591,7 +606,7 @@ public class ListTicketsController implements Initializable {
                  */
                 VBOXTicket.getChildren().add(newTicketAnchorPane);
 
-                newTicketAnchorPane.getChildren().addAll(labelequip1,labelheurajout,ImageViewlogodetails ,ImageViewlogosmodif,ImageViewlogosupp,labeleNbTicket, labelstaticPrix, labeleprix, labeleCategorie, labelstaticDateAjout, labelstaticNBR, labelstaticCategorie, labelstatichheur, labelstaticdate, labelstaticstade, labelequip2, labelHeure, labelDate, labelStade, ImageViewUser2, labelUser, labelvs, separator1, SupprimerButton, CommenterButton, ModifierButton, labelHeurAjout, labelstaticEquipe1, labelstaticEquipe2);
+                newTicketAnchorPane.getChildren().addAll(labelequip1,labelheurajout,ImageViewticket,ImageViewlogodetails ,ImageViewlogosmodif,ImageViewlogosupp,labeleNbTicket, labelstaticPrix, labeleprix, labeleCategorie, labelstaticDateAjout, labelstaticNBR, labelstaticCategorie, labelstatichheur, labelstaticdate, labelstaticstade, labelequip2, labelHeure, labelDate, labelStade, ImageViewUser2, labelUser, labelvs, separator1, SupprimerButton, CommenterButton, ModifierButton, labelHeurAjout, labelstaticEquipe1, labelstaticEquipe2);
 
                 ModifierButton.setOnMouseClicked(
                         e -> {
@@ -608,7 +623,7 @@ public class ListTicketsController implements Initializable {
         
         afficher = FXMLLoader.load(getClass().getResource("/GUI/ModifierTicket.fxml"));
      sceneAffichage = new Scene(afficher);
-     sceneAffichage.getStylesheets().add(getClass().getResource("../Asset/MainFram.css").toExternalForm());
+     sceneAffichage.getStylesheets().add(getClass().getResource("../Asset/MainFramsarra.css").toExternalForm());
          stage = (Stage) ModifierButton.getScene().getWindow();
 
         stage.setScene(sceneAffichage);
@@ -656,7 +671,7 @@ public class ListTicketsController implements Initializable {
 
                                sceneAffichage = new Scene(afficher);
                                   stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-                              // sceneAffichage.getStylesheets().add(getClass().getResource("../Asset/MainFram.css").toExternalForm());
+                               sceneAffichage.getStylesheets().add(getClass().getResource("../Asset/MainFramsarra.css").toExternalForm());
       
 
                                 stage.setScene(sceneAffichage);
@@ -720,7 +735,7 @@ public class ListTicketsController implements Initializable {
 
                                 sceneAffichage = new Scene(afficher);
                                 //  stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-                               sceneAffichage.getStylesheets().add(getClass().getResource("../Asset/MainFram.css").toExternalForm());
+                               sceneAffichage.getStylesheets().add(getClass().getResource("../Asset/MainFramsarra.css").toExternalForm());
       
 
                                 stage.setScene(sceneAffichage);

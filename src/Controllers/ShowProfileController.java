@@ -15,11 +15,16 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import Services.ServiceUtilisateur;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXDrawer;
+import com.jfoenix.controls.JFXHamburger;
+import com.jfoenix.transitions.hamburger.HamburgerSlideCloseTransition;
 import java.io.IOException;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 /**
@@ -40,9 +45,11 @@ public class ShowProfileController implements Initializable {
     @FXML
     private Label username;
     @FXML
-    private AnchorPane rootPane;
-    @FXML
     private JFXButton descussion;
+    @FXML
+    private JFXDrawer SidePannel;
+    @FXML
+    private JFXHamburger Sp;
 
     /**
      * Initializes the controller class.
@@ -58,8 +65,35 @@ public class ShowProfileController implements Initializable {
         if(( Recherche_ProfileController.u.getImg_profile()!=null)&&(Recherche_ProfileController.u.getImg_profile()!="null"))
         imgprofile.setImage(new Image(getClass().getResource(Recherche_ProfileController.u.getImg_profile()).toString(), true));
         
+      initDrawer();
     }    
+    private void initDrawer() {
+        try {
+            AnchorPane SP = FXMLLoader.load(getClass().getResource("/GUI/SidePannel.fxml"));
 
+            
+            
+            SP.getStylesheets().add(getClass().getResource("/Asset/Style.css").toExternalForm());
+            
+            SidePannel.setSidePane(SP);
+
+        } catch (IOException ex) {
+           
+            System.out.println(ex.getMessage());
+        }
+        
+        HamburgerSlideCloseTransition task = new HamburgerSlideCloseTransition(Sp);
+        task.setRate(-1);
+        Sp.addEventHandler(MouseEvent.MOUSE_CLICKED, (Event event) -> {
+            task.setRate(task.getRate() * -1);
+            task.play();
+            if (SidePannel.isHidden()) {
+                SidePannel.open();
+            } else {
+                SidePannel.close();
+            }
+        });
+    }
     @FXML
     private void oppenMessages(ActionEvent event) throws IOException {
         Stage stage=(Stage) Nompnom.getScene().getWindow();

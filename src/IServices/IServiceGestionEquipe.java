@@ -18,16 +18,14 @@ public interface IServiceGestionEquipe {
 
     public boolean modifierEquipe(Equipe e, int id);
 
-    public boolean supprimerEquipe(String pays);
-    
-    public List<Equipe> AfficherEquipepargp(String group);
+    public boolean supprimerEquipe(Equipe pays);
 
     public List<Equipe> chercherParPays(String pays);
-    
-     public Equipe AfficherEquipe(int id);
-    
+
     public Equipe AfficherEquipe(String pays);
     
+       public Equipe AfficherEquipe(int id);
+       
     public Equipe AfficherEquipe(Equipe e);
     
     public List<Equipe> EquipeEnCompetition();
@@ -41,9 +39,5 @@ public interface IServiceGestionEquipe {
     public List<String> selectPays();
 
     public List<Equipe> selectEquipes();
- public String ConsulterstadeNom(String pays);
- 
-  public boolean modifierEquipescore(Equipe e, int id);
-  
-   public int Consulterpoint(String pays);
+
 }

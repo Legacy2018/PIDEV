@@ -108,7 +108,7 @@ public class Login_viewController implements Initializable {
         Stage stage = (Stage) submit.getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("/GUI/Sign_view.fxml"));
         Scene scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("/Asset/MainFram.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/Asset/Style.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
     }
