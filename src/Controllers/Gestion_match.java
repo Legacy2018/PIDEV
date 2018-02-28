@@ -346,7 +346,7 @@ public class Gestion_match extends Application implements Initializable {
          if (option.get() == ButtonType.OK){
               M.supprimerMatch(s);
          }else if(option.get()==ButtonType.CANCEL){
-             t.refresh();
+            t.refresh();
          }
          
 

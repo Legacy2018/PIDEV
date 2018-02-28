@@ -9,6 +9,7 @@ import DataSource.DataSource;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
 import Entities.Equipe;
+import Entities.Imagedrapeau;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -49,13 +50,10 @@ public class metierequipe {
         }
         return somme;
     }
-    
-    public void AtribuerPoint
-            (
-            //match m
-            )
-            {
-            /*
+
+    public void AtribuerPoint( //match m
+            ) {
+        /*
                 
                 if (m.getScore1== m.getScore2)
                 {
@@ -65,7 +63,88 @@ public class metierequipe {
                 
                 }
                 else if (m.getSCORE1 < M.GETsCORE°
-              */  
-                
-            }
+         */
+
+    }
+
+    public int getTotal(Equipe e) {
+        int resultat = 0;
+
+        try {
+
+            ResultSet rest = st.executeQuery("SELECT count(`joueur`.`id_joueur`) FROM joueur , equipe WHERE equipe.id_equipe= joueur.id_equipe and joueur.id_equipe=" + e.getIdEquipe());
+            rest.next();
+            resultat = rest.getInt(1);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(serviceEquipe.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return resultat;
+    }
+
+    public int getRouge(Equipe e) {
+        int resultat = 0;
+
+        try {
+
+            ResultSet rest = st.executeQuery(" SELECT SUM(`cartrouge`) FROM joueur , equipe WHERE equipe.id_equipe= joueur.id_equipe and joueur.id_equipe=" + e.getIdEquipe());
+            rest.next();
+            resultat = rest.getInt(1);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(serviceEquipe.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return resultat;
+    }
+
+    public int getTotalRouge() {
+        int resultat = 0;
+
+        try {
+
+            ResultSet rest = st.executeQuery("SELECT SUM(`cartrouge`) FROM joueur , equipe WHERE equipe.id_equipe= joueur.id_equipe");
+            rest.next();
+            resultat = rest.getInt(1);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(serviceEquipe.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return resultat;
+    }
+
+    public int getJaune(Equipe e) {
+        int resultat = 0;
+
+        try {
+
+            ResultSet rest = st.executeQuery(" SELECT SUM(`cartjaune`) FROM joueur , equipe WHERE equipe.id_equipe= joueur.id_equipe and joueur.id_equipe=" + e.getIdEquipe());
+            rest.next();
+            resultat = rest.getInt(1);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(serviceEquipe.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return resultat;
+    }
+
+    public int getTotalJaune() {
+        int resultat = 0;
+
+        try {
+
+            ResultSet rest = st.executeQuery("SELECT SUM(`cartjaune`) FROM joueur , equipe WHERE equipe.id_equipe= joueur.id_equipe");
+            rest.next();
+            resultat = rest.getInt(1);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(serviceEquipe.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return resultat;
+    }
+
 }
