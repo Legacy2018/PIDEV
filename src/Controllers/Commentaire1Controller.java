@@ -4,12 +4,6 @@
  * and open the template in the editor.
  */
 package Controllers;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.net.URL;
-import java.net.URLConnection;
-import java.net.URLEncoder;
 
 import com.jfoenix.controls.JFXButton;
 import Entities.Commentaire;
@@ -30,10 +24,8 @@ import Services.ServiceUtilisateur;
 import Services.TicketDAO;
 import Services.serviceCommentaire;
 import com.jfoenix.controls.JFXTextField;
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
+import java.util.ArrayList;
 import java.util.List;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -48,7 +40,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import javax.swing.JOptionPane;
 import org.controlsfx.control.Notifications;
 import org.controlsfx.control.Rating;
 
@@ -150,6 +141,8 @@ public class Commentaire1Controller implements Initializable {
     private Rating rating;
        @FXML
     private JFXButton supprimercom;
+          @FXML
+    private JFXButton afficherprofil;
        Utilisateur uti;
     
     Double note;
@@ -184,10 +177,15 @@ public class Commentaire1Controller implements Initializable {
         idnbticket.setText(Integer.toString(ticketSelectionne.getNbrTicket()));
         idprix.setText(Float.toString(ticketSelectionne.getPrix()));
         LabelStade.setText(ticketSelectionne.getIdMatch().getStade().getNom_Stade());
-        
+        heurAjout.setText(ticketSelectionne.getHeurAjout().toString());
+        LabelUser.setText(ticketSelectionne.getIdUser().getUsername());
+           ServiceUtilisateur uti=new ServiceUtilisateur();
+         IMageView=new ImageView(uti.findUtilisateurbyID(ticketSelectionne.getIdUser().getId()).getImg_profile());
+               
+                
         Ticket ticket = new Ticket();
         TicketDAO tda = new TicketDAO();
-        System.out.println(ticketSelectionne.getIdMatch().getEquipe1().getPays());
+       // System.out.println(ticketSelectionne.getIdMatch().getEquipe1().getPays());
         // tickets = tda.afficher_Ticket();
         
         serviceCommentaire cs = new serviceCommentaire();
@@ -198,7 +196,7 @@ public class Commentaire1Controller implements Initializable {
         for (int i = 0; i < cs.getAll(ticketSelectionne.getIdTicket()).size(); i++) {
             msg ="  "+ x.findUtilisateurbyID(cs.getAll(ticketSelectionne.getIdTicket()).get(i).getIdUser().getId()).getUsername() + "         | " + cs.getAll(ticketSelectionne.getIdTicket()).get(i).getDescription();
             listcomment.getItems().add(i, msg);
-            System.out.println(msg);
+          // System.out.println(msg);
             
         }
         
@@ -232,9 +230,9 @@ public class Commentaire1Controller implements Initializable {
         
         Commentaire c = new Commentaire(com.getText(), new Ticket(ticketSelectionne.getIdTicket()), new Fos_User(u.getId()));
         cs.add(c);
-        System.out.println(ticketSelectionne.getIdTicket());
-        System.out.println(u.getId());
-        System.out.println(com.getText());
+       // System.out.println(ticketSelectionne.getIdTicket());
+       // System.out.println(u.getId());
+      //  System.out.println(com.getText());
         
         refresh();
         
@@ -283,20 +281,11 @@ public class Commentaire1Controller implements Initializable {
     void reserverButton(MouseEvent event) throws IOException {
    
             ServiceUtilisateur x = new ServiceUtilisateur();
+         //  ServiceFos_User p= new ServiceFos_User();
+          //Fos_User y=  ticketSelectionne.getIdUser();
+        //  System.out.println(x.findUtilisateurbyID(ticketSelectionne.getIdUser().getId()).getTelephone());
           //  x.findFos_UserbyID(0)
-            
-         Notifications notificationBuilder = Notifications.create()
-                .title("Alerte!!!")
-               // .text("The Rate Of the Ticket: " +)
-                .graphic(null)
-                .hideAfter(Duration.seconds(5))
-                .position(Pos.BOTTOM_RIGHT)
-                .onAction(new EventHandler<ActionEvent>() {
-                    @Override
-                    public void handle(ActionEvent event) {
-                        
-                    }
-                });
+       // System.out.println("+216"+s.getTelephone());
         
         /*
        
@@ -304,9 +293,9 @@ public class Commentaire1Controller implements Initializable {
 			// Construct data
                     
 			String apiKey ="&apiKey="+"qMoZ9QsZja8-IOLDc1r6EVSWLoqUvgR8Ts7uuAvWmu";
-			String message = "&message="+"je veut reserver votre ticket";
+			String message = "&message="+"je souhaite réserver votre ticket";
 			String sender = "&sender="+ticketSelectionne.getIdUser().getUsername();
-			String numbers = "&numbers=" +"+21654242472" ;
+			String numbers = "&numbers=" +"+216"+x.findUtilisateurbyID(ticketSelectionne.getIdUser().getId()).getTelephone();
 			
 			// Send data
 			HttpURLConnection conn = (HttpURLConnection) new URL("https://api.txtlocal.com/send/?").openConnection();
@@ -331,12 +320,45 @@ public class Commentaire1Controller implements Initializable {
 //			return "Error "+e;
 		}
         
+     
+        
         */
         
-        
-        
      
+
    
+    }
+        @FXML
+    void afficherprofil(ActionEvent event) throws IOException {
+        ServiceUtilisateur x = new ServiceUtilisateur();
+       
+            //System.out.println(x.findUtilisateurbyID(ticketSelectionne.getIdUser().getId()).getId());
+        int y=x.findUtilisateurbyID(ticketSelectionne.getIdUser().getId()).getId();
+        // List<Utilisateur> luti=new ArrayList<>();
+         Recherche_ProfileController.u.setId(y);
+         
+        try
+        {
+            
+        Parent root = FXMLLoader.load(getClass().getResource("/GUI/ShowProfile.fxml"));
+        Stage stage=new Stage();
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("/Asset/MainFram.css").toExternalForm());
+        stage.setScene(scene);
+        stage.show();
+        }
+        catch(IOException ex)
+        {
+            System.out.println(ex);
+        }
+        /*
+         Parent root = FXMLLoader.load(getClass().getResource("/GUI/ShowProfile.fxml"));
+        Stage stage=new Stage();
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("/Asset/MainFram.css").toExternalForm());
+        stage.setScene(scene);
+        stage.show();*/
+         //luti1=recherche.AfficherUtilisateur(u.getId);
     }
     
     

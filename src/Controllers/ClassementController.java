@@ -12,19 +12,27 @@ import Services.DAOStade;
 import Services.MatchDAO;
 import Services.serviceEquipe;
 import com.jfoenix.controls.*;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.beans.binding.Bindings;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -66,11 +74,23 @@ public class ClassementController implements Initializable {
     
        point.setCellValueFactory(new PropertyValueFactory<>("point"));
     }
+      @FXML
+    void accueil(MouseEvent event) throws IOException {
+         Parent creerGroupe = FXMLLoader.load(getClass().getResource("/GUI/FXMLGestion_Match.fxml"));
+        Scene sceneAffichage = new Scene(creerGroupe);
+        sceneAffichage.getStylesheets().add(getClass().getResource("../Asset/fxml.css").toExternalForm());
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(sceneAffichage);
+        stage.show();
+
+
+    }
+
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         this.Gp.getItems().addAll("A","B","C","D","E","F","G");
-           System.out.print(eq);
+        System.out.print(eq);
         // TODO
     }    
     

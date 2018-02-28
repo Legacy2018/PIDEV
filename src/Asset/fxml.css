@@ -1,6 +1,7 @@
 .root{
 
 -fx-background-image:  url("../Ressource/a.PNG");
+
 }
 .jfx-hamburger StackPane {
 	-fx-background-color: white;
@@ -63,6 +64,12 @@ TiTled pane Customusation
     -fx-border-color: rgb(200.0, 200.0, 200.0);
     -fx-border-width: 0 0 1 0;
     -fx-background-color: transparent;
+}
+.table-row-cell:empty {
+    -fx-background-color: transparent;
+}
+.table-row-cell:empty .table-cell {
+    -fx-border-width: 0px;
 }
 .table-view .show-hide-columns-button
 {
