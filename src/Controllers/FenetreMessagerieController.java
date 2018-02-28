@@ -29,7 +29,14 @@ import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import javax.mail.Message;
 import Services.ServiceUtilisateur;
+import com.jfoenix.controls.JFXDrawer;
+import com.jfoenix.controls.JFXHamburger;
+import com.jfoenix.transitions.hamburger.HamburgerSlideCloseTransition;
+import java.io.IOException;
+import javafx.event.Event;
 import javafx.scene.control.SelectionMode;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 
 
 /**
@@ -49,6 +56,12 @@ public class FenetreMessagerieController extends Thread implements Initializable
     private ObservableList<String> nomContacts=FXCollections.observableArrayList();
     @FXML
     private JFXTextArea allmessages;
+    @FXML
+    private AnchorPane rootPane;
+    @FXML
+    private JFXDrawer SidePannel;
+    @FXML
+    private JFXHamburger Sp;
     /**
      * Initializes the controller class.
      */
@@ -68,7 +81,35 @@ public class FenetreMessagerieController extends Thread implements Initializable
         afficherMessage(ListContacts.get(0).getId());
         this.start();
         
+     initDrawer();
     }    
+    private void initDrawer() {
+        try {
+            AnchorPane SP = FXMLLoader.load(getClass().getResource("/GUI/SidePannel.fxml"));
+
+            
+            
+            SP.getStylesheets().add(getClass().getResource("/Asset/Style.css").toExternalForm());
+            
+            SidePannel.setSidePane(SP);
+
+        } catch (IOException ex) {
+           
+            System.out.println(ex.getMessage());
+        }
+        
+        HamburgerSlideCloseTransition task = new HamburgerSlideCloseTransition(Sp);
+        task.setRate(-1);
+        Sp.addEventHandler(MouseEvent.MOUSE_CLICKED, (Event event) -> {
+            task.setRate(task.getRate() * -1);
+            task.play();
+            if (SidePannel.isHidden()) {
+                SidePannel.open();
+            } else {
+                SidePannel.close();
+            }
+        });
+    } 
     public void updateListContacts(int sender){
         if(!ListContacts.stream().anyMatch(c -> c.getId()==sender) )
         {
