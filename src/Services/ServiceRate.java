@@ -107,7 +107,6 @@ public class ServiceRate implements ITicketRate {
             ps.setInt(1, idTicket);
             ResultSet resultSet = ps.executeQuery();
             if (resultSet.next()) {
-                // rate= new Rate( resultSet.getInt(1),resultSet.getDouble(2), new User(resultSet.getInt(4)),new Annonce(resultSet.getInt(3)));
                 return resultSet.getDouble(1);
             }
         } catch (SQLException e) {
