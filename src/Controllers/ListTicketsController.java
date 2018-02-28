@@ -141,10 +141,8 @@ public class ListTicketsController implements Initializable {
     private JFXButton AjouterUnTicketBT;
        @FXML
     private ImageView image3;
-      
-    
-  
-
+           @FXML
+    private ImageView image5;
     public String s;
     private Fos_User u;
 
@@ -168,6 +166,8 @@ public class ListTicketsController implements Initializable {
     private JFXDrawer SidePannel;
     @FXML
     private JFXHamburger Sp;
+    @FXML
+    private ImageView retour;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -179,6 +179,7 @@ public class ListTicketsController implements Initializable {
         initDrawer();
    BtnSupp.setVisible(false);
    BtnModif.setVisible(false);
+   btnCommenter.setVisible(false);
            
         
         
@@ -223,7 +224,7 @@ public class ListTicketsController implements Initializable {
 
         } catch (IOException ex) {
            
-            System.out.println(ex.getMessage());
+            //tem.out.println(ex.getMessage());
         }
         
         HamburgerSlideCloseTransition task = new HamburgerSlideCloseTransition(Sp);
@@ -456,6 +457,14 @@ public class ListTicketsController implements Initializable {
                 ImageViewlogosupp.setStyle(image3.getStyle());
                 ImageViewlogosupp.setFitWidth(image3.getFitWidth());
                 ImageViewlogosupp.setFitHeight(image3.getFitHeight());
+                 //logo
+                ImageView ImageViewlogodetails = new ImageView();
+                ImageViewlogodetails.setImage(image5.getImage());
+                ImageViewlogodetails.setLayoutX(image5.getLayoutX());
+                ImageViewlogodetails.setLayoutY(image5.getLayoutY());
+                ImageViewlogodetails.setStyle(image5.getStyle());
+                ImageViewlogodetails.setFitWidth(image5.getFitWidth());
+                ImageViewlogodetails.setFitHeight(image5.getFitHeight());
                   //logo
                 ImageView ImageViewlogosmodif = new ImageView();
                 ImageViewlogosmodif.setImage(imagemodif.getImage());
@@ -582,7 +591,7 @@ public class ListTicketsController implements Initializable {
                  */
                 VBOXTicket.getChildren().add(newTicketAnchorPane);
 
-                newTicketAnchorPane.getChildren().addAll(labelequip1,labelheurajout, ImageViewlogosmodif,ImageViewlogosupp,labeleNbTicket, labelstaticPrix, labeleprix, labeleCategorie, labelstaticDateAjout, labelstaticNBR, labelstaticCategorie, labelstatichheur, labelstaticdate, labelstaticstade, labelequip2, labelHeure, labelDate, labelStade, ImageViewUser2, labelUser, labelvs, separator1, SupprimerButton, CommenterButton, ModifierButton, labelHeurAjout, labelstaticEquipe1, labelstaticEquipe2);
+                newTicketAnchorPane.getChildren().addAll(labelequip1,labelheurajout,ImageViewlogodetails ,ImageViewlogosmodif,ImageViewlogosupp,labeleNbTicket, labelstaticPrix, labeleprix, labeleCategorie, labelstaticDateAjout, labelstaticNBR, labelstaticCategorie, labelstatichheur, labelstaticdate, labelstaticstade, labelequip2, labelHeure, labelDate, labelStade, ImageViewUser2, labelUser, labelvs, separator1, SupprimerButton, CommenterButton, ModifierButton, labelHeurAjout, labelstaticEquipe1, labelstaticEquipe2);
 
                 ModifierButton.setOnMouseClicked(
                         e -> {
@@ -612,7 +621,7 @@ public class ListTicketsController implements Initializable {
                         e -> {
                             
                              ticketSelectionne = ticket;
-                             System.out.println(ticketSelectionne.getIdTicket());
+                            // System.out.println(ticketSelectionne.getIdTicket());
                             TicketDAO aa = new TicketDAO();
                             int x = ticketSelectionne.getIdTicket();    
                                     Alert fail= new Alert(Alert.AlertType.INFORMATION);
@@ -621,7 +630,7 @@ public class ListTicketsController implements Initializable {
         fail.showAndWait();
                            
                             aa.supprimerTicket(x);
-                            System.out.println("ticket supprieme");
+                          //  System.out.println("ticket supprieme");
                          
                             Parent afficher;
                             Scene sceneAffichage;
@@ -703,7 +712,7 @@ public class ListTicketsController implements Initializable {
                             Scene sceneAffichage;
                             Stage stage = new Stage();
 
-                            System.out.println(ticket);
+                          //  System.out.println(ticket);
                             ticketSelectionne = ticket;
 
                              try {
@@ -748,5 +757,20 @@ public class ListTicketsController implements Initializable {
     void BtnSupp(ActionEvent event) throws IOException {
        
     }
+  void deconnection(ActionEvent event) throws IOException {
+      
+        /*
+           Parent afficher ;
+        Scene sceneAffichage;
+          Stage stage=new Stage();
+        
+        afficher = FXMLLoader.load(getClass().getResource("/GUI/toolbar.fxml"));
+     sceneAffichage = new Scene(afficher);
+     sceneAffichage.getStylesheets().add(getClass().getResource("/Asset/Style.css").toExternalForm());
+         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
+        stage.setScene(sceneAffichage);
+        stage.show();
+*/
+    }
 }

@@ -117,7 +117,7 @@ public class ModifierTicketController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         ticketSelectionne = listTichetController.getTicketSelectionne();
-        System.out.println(ticketSelectionne);
+       // System.out.println(ticketSelectionne);
         id_categorie.setItems(lstcat);
         id_nbticket.setItems(lstnb);
       id_equipe1.setText(ticketSelectionne.getIdMatch().getEquipe1().getPays());
@@ -137,7 +137,7 @@ public class ModifierTicketController implements Initializable {
         data = FXCollections.observableArrayList();
        lsa.stream().forEach((e) -> {
             data.add(e);
-            System.out.println(e);
+          //  System.out.println(e);
         });
        
        tableViws.setItems(data);
@@ -155,15 +155,15 @@ id_matchht.setCellValueFactory(new PropertyValueFactory<>("idMatch"));
     }
            private void setCellValueFromTableToText() {
          
-        System.out.println("messageee");
+       // System.out.println("messageee");
         tableViws.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
 
               match   gr = (match) tableViws.getItems().get(tableViws.getSelectionModel().getSelectedIndex());
-                System.out.println(gr);
+               // System.out.println(gr);
                 int s = tableViws.getSelectionModel().getSelectedIndex();
-                System.out.println(s);
+              //  System.out.println(s);
              id_matchht.setText(Integer.toString(gr.getIdMatch()));
                id_equipe1.setText(gr.getEquipe1().getPays());
                id_equipe2.setText(gr.getEquipe2().getPays());
