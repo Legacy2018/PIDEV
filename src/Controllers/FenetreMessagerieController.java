@@ -57,9 +57,9 @@ public class FenetreMessagerieController extends Thread implements Initializable
         // TODO
         
         contacts.getSelectionModel().selectedItemProperty().addListener((a,b,c)-> afficherMessage(c.getId()));
+        
         if(Recherche_ProfileController.u!=null)
-        ListContacts.add(Recherche_ProfileController.u);
-        System.out.println("Id user Connecter"+Login_viewController.u);
+        updateListContacts(Recherche_ProfileController.u.getId());
         ListMessages=new ServiceMessage().getAllMessages(Login_viewController.u.getId());
        
         
@@ -92,7 +92,7 @@ public class FenetreMessagerieController extends Thread implements Initializable
                 }
                 else
                 {
-                    allmessages.appendText(Login_viewController.u.getNom()+" : "+m.getMessage()+"\n");
+                    allmessages.appendText("Vous : "+m.getMessage()+"\n");
                 }
                 
                 }
@@ -134,7 +134,7 @@ public class FenetreMessagerieController extends Thread implements Initializable
                 Messages m=new Messages(Login_viewController.u.getId(), contacts.selectionModelProperty().get().getSelectedItem().getId(),sender.getText() , 0, true,null);
             new ServiceMessage().sendMessage(m);
             ListMessages.add(m);
-            allmessages.appendText(Login_viewController.u.getNom()+" : "+sender.getText()+"\n");
+            allmessages.appendText("Vous : "+sender.getText()+"\n");
             sender.clear();
             }
         }
