@@ -15,21 +15,77 @@ public class Joueur implements Comparable<Joueur>{
 
     int idJoueur;
     String nomJoueur;
-    String nationalite;
+  //  String nationalite;
     int nbrBut;
     String position;
-   
+    int nbrCartRouge;
+    int nbrCartJaune;
+    int NumMaillot;
     Equipe idEquipe;
      
-    public Joueur(String nom_joueur, String nationalite, int nbr_but, String position, Equipe id_equipe) {
-        this.nomJoueur = nom_joueur;
-        this.nationalite = nationalite;
-        this.nbrBut = nbr_but;
-        this.position = position;
-        this.idEquipe = id_equipe;
-          // this.pays = pays;
+   
+
+    public Joueur(int idJoueur) {
+        this.idJoueur = idJoueur;
     }
 
+    public int getIdJoueur() {
+        return idJoueur;
+    }
+
+    public void setIdJoueur(int idJoueur) {
+        this.idJoueur = idJoueur;
+    }
+
+    public String getNomJoueur() {
+        return nomJoueur;
+    }
+
+    public void setNomJoueur(String nomJoueur) {
+        this.nomJoueur = nomJoueur;
+    }
+
+    public int getNbrBut() {
+        return nbrBut;
+    }
+
+    public void setNbrBut(int nbrBut) {
+        this.nbrBut = nbrBut;
+    }
+
+    public int getNbrCartRouge() {
+        return nbrCartRouge;
+    }
+
+    public void setNbrCartRouge(int nbrCartRouge) {
+        this.nbrCartRouge = nbrCartRouge;
+    }
+
+    public int getNbrCartJaune() {
+        return nbrCartJaune;
+    }
+
+    public void setNbrCartJaune(int nbrCartJaune) {
+        this.nbrCartJaune = nbrCartJaune;
+    }
+
+    public int getNumMaillot() {
+        return NumMaillot;
+    }
+
+    public void setNumMaillot(int NumMaillot) {
+        this.NumMaillot = NumMaillot;
+    }
+
+    public Equipe getIdEquipe() {
+        return idEquipe;
+    }
+
+    public void setIdEquipe(Equipe idEquipe) {
+        this.idEquipe = idEquipe;
+    }
+
+    
   /*  public String getPays() {
         return pays;
     }
@@ -39,15 +95,7 @@ public class Joueur implements Comparable<Joueur>{
     }
     
     */
-    public Joueur(int id_joueur, String nom_joueur, String nationalite, int nbr_but, String position, Equipe id_equipe ) {
-        this.idJoueur = id_joueur;
-        this.nomJoueur = nom_joueur;
-        this.nationalite = nationalite;
-        this.nbrBut = nbr_but;
-        this.position = position;
-        this.idEquipe = id_equipe;
-//         this.pays = pays;
-    }
+ 
     
 
     public int getId_joueur() {
@@ -66,14 +114,8 @@ public class Joueur implements Comparable<Joueur>{
         this.nomJoueur = nom_joueur;
     }
 
-    public String getNationalite() {
-        return nationalite;
-    }
-
-    public void setNationalite(String nationalite) {
-        this.nationalite = nationalite;
-    }
-
+  
+   
     public int getNbr_but() {
         return nbrBut;
     }
@@ -100,10 +142,21 @@ public class Joueur implements Comparable<Joueur>{
 
     @Override
     public String toString() {
-        return "Joueur{" + "idJoueur=" + idJoueur + ", nomJoueur=" + nomJoueur + 
-                ", nationalite=" + nationalite + ", nbrBut=" + nbrBut +
-                ", position=" + position + ", idEquipe=" + idEquipe + '}';
+        return "Joueur{" + "idJoueur=" + idJoueur + ", nomJoueur=" + nomJoueur + " , nbrBut=" + nbrBut + ", position=" + position + ", nbrCartRouge=" + nbrCartRouge + ", nbrCartJaune=" + nbrCartJaune + ", NumMaillot=" + NumMaillot + ", idEquipe=" + idEquipe + '}';
     }
+
+    public Joueur( String nomJoueur, int nbrBut, String position, int nbrCartRouge, int nbrCartJaune, int NumMaillot, Equipe idEquipe) {
+     
+        this.nomJoueur = nomJoueur;
+        this.nbrBut = nbrBut;
+        this.position = position;
+        this.nbrCartRouge = nbrCartRouge;
+        this.nbrCartJaune = nbrCartJaune;
+        this.NumMaillot = NumMaillot;
+        this.idEquipe = idEquipe;
+    }
+
+   
 
    
 

@@ -24,8 +24,7 @@ public interface IServiceGestionJoueur {
 
     public List<Joueur> chercherParNom(String nom);
 
-    public List<Joueur> chercherParNationalite(String natio);
-
+  
     public List<Joueur> chercherParPosition(String pos);
 
     public List<Joueur> chercherParEquipe(String pays);
