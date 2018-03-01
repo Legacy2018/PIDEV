@@ -37,13 +37,19 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import Services.serviceEquipe;
 import Services.serviceJoueur;
+import com.jfoenix.controls.JFXDrawer;
+import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.controls.JFXSlider;
+import com.jfoenix.transitions.hamburger.HamburgerSlideCloseTransition;
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.event.Event;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.chart.PieChart;
 import javafx.scene.image.Image;
 import javafx.stage.FileChooser;
@@ -124,6 +130,12 @@ public class GestionJoueurController implements Initializable {
 
     @FXML
     private ChoiceBox cheq;
+    @FXML
+    private JFXButton filter;
+    @FXML
+    private JFXDrawer SidePannel;
+    @FXML
+    private JFXHamburger Sp;
 
     @FXML
     void search(ActionEvent event) {
@@ -221,23 +233,45 @@ public class GestionJoueurController implements Initializable {
         btAjouter.setDisable(false
         );
 
+         initDrawer();
+    }    
+    private void initDrawer() {
+        try {
+            AnchorPane SP = FXMLLoader.load(getClass().getResource("/GUI/SidePannel.fxml"));
+
+            
+            
+            SP.getStylesheets().add(getClass().getResource("/Asset/Style.css").toExternalForm());
+            
+            SidePannel.setSidePane(SP);
+
+        } catch (IOException ex) {
+           
+            System.out.println(ex.getMessage());
+        }
+        
+        HamburgerSlideCloseTransition task = new HamburgerSlideCloseTransition(Sp);
+        task.setRate(-1);
+        Sp.addEventHandler(MouseEvent.MOUSE_CLICKED, (Event event) -> {
+            task.setRate(task.getRate() * -1);
+            task.play();
+            if (SidePannel.isHidden()) {
+                SidePannel.open();
+            } else {
+                SidePannel.close();
+            }
+        });
     }
 
-    @FXML
     void viderchampscrtrou(KeyEvent event) {
         lblr.setVisible(false);
     }
 
-    @FXML
     void viderchampcrtyjau(KeyEvent event) {
         lblnj.setVisible(false);
     }
     @FXML
-    private ImageView imgdr;
-    @FXML
     private Label lblr;
-    @FXML
-    private JFXButton btImpIm;
 
     @FXML
     private Label lblnj;
@@ -538,7 +572,6 @@ public class GestionJoueurController implements Initializable {
         lblb.setVisible(false);
     }
 
-    @FXML
     void verifnum(KeyEvent event) {
 
         txtbut.textProperty().addListener(new ChangeListener<String>() {
@@ -569,8 +602,6 @@ public class GestionJoueurController implements Initializable {
 
     }
 
-    @FXML
-    private JFXSlider but;
 
     @FXML
     void veriftxt(KeyEvent event) {
