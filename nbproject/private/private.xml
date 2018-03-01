@@ -4,6 +4,18 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
 <<<<<<< HEAD
+            <file>file:/C:/Users/medma/Documents/NetBeansProjects/GitProject/PIDEV/src/Controllers/ConsulterAnnoncesCollocationsController.java</file>
+            <file>file:/C:/Users/medma/Documents/NetBeansProjects/GitProject/PIDEV/src/Controllers/GestionCollocationController.java</file>
+            <file>file:/C:/Users/medma/Documents/NetBeansProjects/GitProject/PIDEV/src/GUI/ConsulterAnnoncesCollocations.fxml</file>
+            <file>file:/C:/Users/medma/Documents/NetBeansProjects/GitProject/PIDEV/src/Asset/MainFram.css</file>
+            <file>file:/C:/Users/medma/Documents/NetBeansProjects/GitProject/PIDEV/src/Controllers/GestionCovoiturageController.java</file>
+            <file>file:/C:/Users/medma/Documents/NetBeansProjects/GitProject/PIDEV/src/Asset/accueilannonces.css</file>
+            <file>file:/C:/Users/medma/Documents/NetBeansProjects/GitProject/PIDEV/src/Main/PIDEV_V1.java</file>
+            <file>file:/C:/Users/medma/Documents/NetBeansProjects/GitProject/PIDEV/src/GUI/AccueilAnnonces.fxml</file>
+            <file>file:/C:/Users/medma/Documents/NetBeansProjects/GitProject/PIDEV/src/Controllers/ConsulterAnnoncesCovoiturageController.java</file>
+            <file>file:/C:/Users/medma/Documents/NetBeansProjects/GitProject/PIDEV/src/Services/CovoiturageService.java</file>
+=======
+<<<<<<< HEAD
             <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Controllers/ListTicketsController.java</file>
             <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Controllers/ClassementController.java</file>
             <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Entities/Equipe.java</file>
@@ -27,6 +39,7 @@
             <file>file:/C:/Users/Emel/Documents/javaproject/PIDEV1/src/Controllers/DisplayEquipeJoueurController.java</file>
 >>>>>>> 6716bbc3a78d2b7e468335d771ce13a856b874da
 >>>>>>> 33ac5287755f2f6ebd8a6d44be5bad186ca1b59f
+>>>>>>> 4df0fd73bafd56ecef847cbe12942e2ae3ae506c
         </group>
     </open-files>
 </project-private>

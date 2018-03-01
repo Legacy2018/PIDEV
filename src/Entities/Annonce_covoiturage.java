@@ -12,7 +12,7 @@ import java.sql.Date;
  * @author medma
  */
 public class Annonce_covoiturage {
-    private int id_annonceur;
+    private Utilisateur user;
     private int id_annonce;
     private Date date_depart;
     private Date Date_arrivee;
@@ -21,11 +21,6 @@ public class Annonce_covoiturage {
     private float tarif;
 
     public Annonce_covoiturage() {
-    }
-
-    @Override
-    public String toString() {
-        return "Annonce_covoiturage{" + "id_annonceur=" + id_annonceur + ", id_annonce=" + id_annonce + ", date_depart=" + date_depart + ", Date_arrivee=" + Date_arrivee + ", adresse_depart=" + adresse_depart + ", adresse_arrivee=" + adresse_arrivee + ", tarif=" + tarif + '}';
     }
 
     public Annonce_covoiturage(int id_annonce, Date date_depart, Date Date_arrivee, String adresse_depart, String adresse_arrivee, float tarif) {
@@ -37,8 +32,8 @@ public class Annonce_covoiturage {
         this.tarif = tarif;
     }
 
-    public Annonce_covoiturage(int id_annonceur, int id_annonce, Date date_depart, Date Date_arrivee, String adresse_depart, String adresse_arrivee, float tarif) {
-        this.id_annonceur = id_annonceur;
+    public Annonce_covoiturage(Utilisateur user, int id_annonce, Date date_depart, Date Date_arrivee, String adresse_depart, String adresse_arrivee, float tarif) {
+        this.user = user;
         this.id_annonce = id_annonce;
         this.date_depart = date_depart;
         this.Date_arrivee = Date_arrivee;
@@ -47,12 +42,17 @@ public class Annonce_covoiturage {
         this.tarif = tarif;
     }
 
-    public int getId_annonceur() {
-        return id_annonceur;
+    @Override
+    public String toString() {
+        return "Annonce_covoiturage{" + "user=" + user + ", id_annonce=" + id_annonce + ", date_depart=" + date_depart + ", Date_arrivee=" + Date_arrivee + ", adresse_depart=" + adresse_depart + ", adresse_arrivee=" + adresse_arrivee + ", tarif=" + tarif + '}';
     }
 
-    public void setId_annonceur(int id_annonceur) {
-        this.id_annonceur = id_annonceur;
+    public Utilisateur getUser() {
+        return user;
+    }
+
+    public void setUser(Utilisateur user) {
+        this.user = user;
     }
 
     public int getId_annonce() {
@@ -103,4 +103,5 @@ public class Annonce_covoiturage {
         this.tarif = tarif;
     }
 
+    
 }

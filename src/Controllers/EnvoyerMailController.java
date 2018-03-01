@@ -6,6 +6,7 @@
 package Controllers;
 
 import static Controllers.ConsulterAnnoncesCollocationsController.isConsulterAnnoncesCollocaionsController;
+import static Controllers.Login_viewController.u;
 import com.jfoenix.controls.JFXTextArea;
 import java.net.URL;
 import java.util.Properties;
@@ -62,13 +63,13 @@ public class EnvoyerMailController implements Initializable {
             String from = "jouinimohamedmalek@gmail.com";
             String subject = "Demande de participation au traget"; 
             String messageText;
-            if (isConsulterAnnoncesCollocaionsController==0){
-           messageText = "je suis"/*session.nom+emailvers emailannonceur*/+" ce mail concerne votre anonces de covoiturage allant de \n"+
-                    ConsulterAnnoncesCovoiturageController.AdrDepart+ " vers "+ConsulterAnnoncesCovoiturageController.AdrArrivee+ " \n \n";
-                EmailBody.getText();
-            }
-            else {messageText="je suis"/*session.nom*/+" ce mail concerne votre anonces de collocation" 
-                +EmailBody.getText();}
+     
+           messageText = "je suis "+u.getNom() + " "+u.getPnom()+"\n Ce mail concerne votre anonce de covoiturage"
+                    +"allant de+"+ConsulterAnnoncesCovoiturageController.AdrDepart+" vers "+ConsulterAnnoncesCovoiturageController.AdrArrivee
+                    + "Mon E-mail Vérifié est "+u.getEmail()+"\n "+
+                    "le contenu de mmon mail est le suivant: \n"+EmailBody.getText();
+            
+       
             boolean sessionDebug = false;
 
             Properties props = System.getProperties();

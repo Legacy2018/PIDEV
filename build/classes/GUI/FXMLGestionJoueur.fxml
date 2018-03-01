@@ -67,7 +67,7 @@
                   </columns>
               </TableView>
               <JFXTextField fx:id="txtnom" layoutX="140.0" layoutY="96.0" onKeyPressed="#verifnom" onKeyTyped="#viderchampsnom" prefHeight="38.0" prefWidth="213.0" />
-              <JFXTextField fx:id="txtsearch" layoutX="999.0" layoutY="381.0" onKeyPressed="#veriftxt" prefHeight="38.0" prefWidth="201.0" promptText="Tapez votre recherche.." />
+              <JFXTextField fx:id="txtsearch" layoutX="797.0" layoutY="271.0" onKeyPressed="#veriftxt" prefHeight="38.0" prefWidth="201.0" promptText="Tapez votre recherche.." unFocusColor="#26698d" />
               <JFXButton fx:id="btsearch" layoutX="1022.0" layoutY="263.0" onAction="#search" prefHeight="54.0" prefWidth="168.0" text="Recherche">
                <graphic>
                     <ImageView fx:id="RECHIC" fitHeight="40.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">

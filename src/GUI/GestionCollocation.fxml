@@ -12,56 +12,64 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="744.0" prefWidth="964.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.GestionCollocationController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="727.0" prefWidth="1193.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.GestionCollocationController">
     <stylesheets>
         <URL value="@/Asset/ajoutercollocation.css" />
     </stylesheets>
    <children>
-      <Label layoutX="324.0" layoutY="6.0" text="Gérer Annonce de Collocation">
-         <font>
-            <Font size="19.0" />
-         </font>
-      </Label>
-      <JFXTextField fx:id="titre" layoutX="83.0" layoutY="102.0" promptText="Titre de l'annonce" />
-      <JFXTextArea fx:id="description" focusColor="#e0a206" layoutX="83.0" layoutY="140.0" prefHeight="45.0" prefWidth="287.0" promptText="&#10;Description de propriété" />
-      <DatePicker fx:id="debut" layoutX="83.0" layoutY="214.0" promptText="première date disponible" />
-      <DatePicker fx:id="fin" layoutX="83.0" layoutY="255.0" promptText="Derniere deate de l'offere" />
-      <JFXTextField fx:id="tarif" layoutX="83.0" layoutY="296.0" prefHeight="25.0" prefWidth="82.0" promptText="tarif par nuité" />
-      <JFXTextField fx:id="adresse" layoutX="83.0" layoutY="349.0" prefHeight="25.0" prefWidth="265.0" promptText="Adresse" />
-      <Button fx:id="btn_ajout" layoutX="216.0" layoutY="398.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="28.0" prefWidth="160.0" text="Fin de l'ajout" />
-      <JFXListView fx:id="ListeImages" layoutX="584.0" layoutY="122.0" prefHeight="152.0" prefWidth="203.0" />
-      <Button fx:id="btn_ajouter_photo" layoutX="613.0" layoutY="360.0" mnemonicParsing="false" onAction="#MultipleFileChooser" prefHeight="25.0" prefWidth="152.0" text="Ajouter photo" />
-      <Button fx:id="btn_supprimer_photo" layoutX="611.0" layoutY="295.0" mnemonicParsing="false" onAction="#DeleteFile" prefHeight="25.0" prefWidth="152.0" text="Supprimer photo" />
-      <TableView fx:id="Tab" layoutX="100.0" layoutY="458.0" prefHeight="190.0" prefWidth="712.0">
+      <JFXTextField fx:id="titre" layoutX="69.0" layoutY="135.0" promptText="Titre de l'annonce" />
+      <JFXTextArea fx:id="description" focusColor="#e0a206" layoutX="66.0" layoutY="168.0" prefHeight="41.0" prefWidth="174.0" promptText="&#10;Description de propriété" />
+      <DatePicker fx:id="debut" layoutX="66.0" layoutY="222.0" promptText="première date disponible" />
+      <DatePicker fx:id="fin" layoutX="66.0" layoutY="269.0" promptText="Derniere deate de l'offere" />
+      <JFXTextField fx:id="tarif" layoutX="66.0" layoutY="305.0" prefHeight="25.0" prefWidth="135.0" promptText="tarif par nuité" />
+      <JFXTextField fx:id="adresse" layoutX="66.0" layoutY="343.0" prefHeight="25.0" prefWidth="265.0" promptText="Adresse" />
+      <Button fx:id="btn_ajout" layoutX="215.0" layoutY="679.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="28.0" prefWidth="199.0" text="Fin de l'ajout" />
+      <JFXListView fx:id="ListeImages" layoutX="223.0" layoutY="248.0" prefHeight="94.0" prefWidth="141.0" visible="false" />
+      <Button fx:id="btn_ajouter_photo" layoutX="13.0" layoutY="390.0" mnemonicParsing="false" onAction="#MultipleFileChooser" prefHeight="32.0" prefWidth="171.0" text="Ajouter photo" />
+      <Button fx:id="btn_supprimer_photo" layoutX="234.0" layoutY="387.0" mnemonicParsing="false" onAction="#DeleteFile" prefHeight="34.0" prefWidth="182.0" text="Supprimer photo" />
+      <TableView fx:id="Tab" layoutX="439.0" layoutY="155.0" prefHeight="470.0" prefWidth="712.0">
         <columns>
-          <TableColumn fx:id="TabTitre" prefWidth="139.0" text="Titre" />
-          <TableColumn fx:id="TabDescription" minWidth="0.0" prefWidth="144.0" text="Description" />
-            <TableColumn fx:id="TabDebut" prefWidth="133.0" text="Date Debut " />
-            <TableColumn fx:id="Tabfin" prefWidth="201.66668701171875" text="Date Fin" />
-            <TableColumn fx:id="TabTarif" prefWidth="85.33331298828125" text="Tarif" />
+          <TableColumn fx:id="TabTitre" prefWidth="116.33331298828125" text="Titre" />
+          <TableColumn fx:id="TabDescription" minWidth="0.0" prefWidth="141.6666259765625" text="Description" />
+            <TableColumn fx:id="TabDebut" prefWidth="117.0" text="Date Debut " />
+            <TableColumn fx:id="Tabfin" prefWidth="232.0" text="Date Fin" />
+            <TableColumn fx:id="TabTarif" prefWidth="101.0" text="Tarif" />
             <TableColumn fx:id="TabAnnonce" prefWidth="151.0" text="Column X" visible="false" />
             <TableColumn fx:id="TabAnnonceur" prefWidth="75.0" text="Column X" visible="false" />
         </columns>
       </TableView>
-      <JFXTextField fx:id="IdAnn" layoutX="57.0" layoutY="8.0" visible="false" />
-      <Button fx:id="btn_modifierAnnonce" layoutX="308.0" layoutY="677.0" mnemonicParsing="false" onAction="#ModifierAnnonce" text="Confirmer Modification " />
-      <Button fx:id="Btn_SupprimerAnnonce" layoutX="544.0" layoutY="677.0" mnemonicParsing="false" onAction="#SupprimerAnnonce" prefHeight="25.0" prefWidth="135.0" text="Supprimer Annonce" />
-      <Separator layoutX="445.0" layoutY="75.0" orientation="VERTICAL" prefHeight="319.0" prefWidth="13.0" />
-      <Text layoutX="83.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Remplissage des informations" wrappingWidth="242.13671875">
+      <JFXTextField fx:id="IdAnn" layoutX="57.0" layoutY="50.0" visible="false" />
+      <Button fx:id="btn_modifierAnnonce" layoutX="510.0" layoutY="637.0" mnemonicParsing="false" onAction="#ModifierAnnonce" prefHeight="34.0" prefWidth="174.0" text="Confirmer Modification " />
+      <Button fx:id="Btn_SupprimerAnnonce" layoutX="879.0" layoutY="637.0" mnemonicParsing="false" onAction="#SupprimerAnnonce" prefHeight="34.0" prefWidth="171.0" text="Supprimer Annonce" />
+      <Separator layoutX="418.0" layoutY="91.0" orientation="VERTICAL" prefHeight="644.0" prefWidth="11.0" />
+      <Button fx:id="btn_retour" layoutX="1050.0" layoutY="679.0" mnemonicParsing="false" onAction="#Retour" prefHeight="32.0" prefWidth="130.0" text="Retour" />
+      <ImageView fx:id="Img1" fitHeight="119.0" fitWidth="149.0" layoutX="21.0" layoutY="430.0" onMouseClicked="#Img1Click" pickOnBounds="true" preserveRatio="true">
+             
+                  
+              </ImageView>
+      <ImageView fx:id="Img2" fitHeight="119.0" fitWidth="149.0" layoutX="262.0" layoutY="430.0" onMouseClicked="#Img2Click" pickOnBounds="true" preserveRatio="true">
+               </ImageView>
+      <ImageView fx:id="Img3" fitHeight="119.0" fitWidth="149.0" layoutX="21.0" layoutY="560.0" onMouseClicked="#Img3Click" pickOnBounds="true" preserveRatio="true">
+              </ImageView>
+      <ImageView fx:id="Img4" fitHeight="119.0" fitWidth="149.0" layoutX="262.0" layoutY="560.0" onMouseClicked="#Img4Click" pickOnBounds="true" preserveRatio="true">
+               
+            </ImageView>
+      <Button fx:id="btn_Vder" layoutX="215.0" layoutY="679.0" mnemonicParsing="false" onAction="#Vider" prefHeight="25.0" prefWidth="199.0" text="Annuler" />
+      <Label layoutX="51.0" layoutY="11.0" prefHeight="103.0" prefWidth="686.0" text="Support Logistique">
          <font>
-            <Font size="17.0" />
+            <Font size="70.0" />
          </font>
-      </Text>
-      <Text layoutX="522.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Charger les photos" textAlignment="CENTER" wrappingWidth="242.13671875">
+      </Label>
+      <Label layoutX="51.0" layoutY="89.0" prefHeight="51.0" prefWidth="605.0" text="Gérer Mes Annonces de Collocation" textAlignment="CENTER" wrapText="true">
          <font>
-            <Font size="17.0" />
+            <Font size="27.0" />
          </font>
-      </Text>
-      <JFXDrawer fx:id="drawer" layoutX="964.0" layoutY="65.0" prefHeight="590.0" prefWidth="252.0" style="-fx-background-color: #2A2E37;" />
-      <JFXHamburger fx:id="hamburger" layoutX="920.0" layoutY="38.0" />
+      </Label>
+      <JFXDrawer fx:id="SidePannel" layoutX="-5.0" layoutY="79.0" prefHeight="521.0" prefWidth="135.0" />
+      <JFXHamburger fx:id="Sp" alignment="CENTER_RIGHT" layoutX="19.0" layoutY="17.0" />
    </children>
 </AnchorPane>
