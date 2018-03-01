@@ -7,6 +7,7 @@
 <?import com.jfoenix.controls.JFXHamburger?>
 <?import com.jfoenix.controls.JFXTimePicker?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.net.URL?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -20,7 +21,9 @@
 <?import javafx.scene.text.Font?>
 
 <BorderPane fx:id="border" prefHeight="602.0" prefWidth="1047.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Gestion_match">
-
+ <stylesheets>
+        <URL value="@/Asset/fxml.css" />
+    </stylesheets>
     <top>
       <HBox prefHeight="103.0" prefWidth="498.0" BorderPane.alignment="CENTER">
          <children>
@@ -90,20 +93,20 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="mo3" contentDisplay="TOP" mnemonicParsing="false" onAction="#Gerer_equipe" prefHeight="102.0" prefWidth="206.0" styleClass="toolbar-button" textAlignment="CENTER">
-               <graphic>
-                  <ImageView fitHeight="45.0" fitWidth="102.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../Ressource/gestEquipes.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </JFXButton>
             <JFXButton fx:id="mo2" contentDisplay="TOP" mnemonicParsing="false" onAction="#Gere_Joueur" prefHeight="112.0" prefWidth="206.0" styleClass="toolbar-button" textAlignment="CENTER">
                <graphic>
                   <ImageView fitHeight="32.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Ressource/gestMatch.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="mo3" contentDisplay="TOP" mnemonicParsing="false" onAction="#Gerer_equipe" prefHeight="102.0" prefWidth="206.0" styleClass="toolbar-button" textAlignment="CENTER">
+               <graphic>
+                  <ImageView fitHeight="45.0" fitWidth="102.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Ressource/gestEquipes.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -138,7 +141,7 @@
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
             </TableView>
-            <Pane layoutX="20.0" layoutY="385.0" prefHeight="280.0" prefWidth="729.0">
+            <Pane layoutX="38.0" layoutY="392.0" prefHeight="280.0" prefWidth="729.0">
                <children>
                   <Label layoutX="47.0" layoutY="28.0" text="Ajouter match" textAlignment="CENTER" textFill="#fcf6f6" textOverrun="CENTER_ELLIPSIS">
                      <font>
@@ -148,12 +151,12 @@
                   <Label layoutX="46.0" layoutY="85.0" text="Equipe1" textFill="#f8f4f4" />
                   <Label layoutX="42.0" layoutY="137.0" prefHeight="21.0" prefWidth="70.0" text="Equipe2" textFill="#fcf7f7" />
                   <Label layoutX="345.0" layoutY="75.0" prefHeight="21.0" prefWidth="53.0" text="Stades" textFill="#eeeded" />
-                  <Label layoutX="350.0" layoutY="137.0" prefHeight="21.0" prefWidth="53.0" text="Phase" textFill="#f5eeee" />
-                  <Label layoutX="32.0" layoutY="234.0" prefHeight="21.0" prefWidth="53.0" text="date" textFill="#fcf8f8" />
-                  <Label layoutX="325.0" layoutY="214.0" prefHeight="21.0" prefWidth="53.0" text="heure" textFill="#f8f5f5" />
-                  <JFXDatePicker fx:id="date" layoutX="141.0" layoutY="211.0" prefHeight="38.0" prefWidth="132.0" />
+                  <Label layoutX="59.0" layoutY="214.0" prefHeight="21.0" prefWidth="53.0" text="Phase" textFill="#f5eeee" />
+                  <Label layoutX="417.0" layoutY="155.0" prefHeight="21.0" prefWidth="53.0" text="date" textFill="#fcf8f8" />
+                  <Label layoutX="391.0" layoutY="233.0" prefHeight="21.0" prefWidth="53.0" text="heure" textFill="#f8f5f5" />
+                  <JFXDatePicker fx:id="date" layoutX="527.0" layoutY="140.0" prefHeight="38.0" prefWidth="132.0" />
                   <JFXTimePicker fx:id="ta" layoutX="485.0" layoutY="206.0" prefHeight="38.0" prefWidth="174.0" />
-                  <JFXComboBox fx:id="phase" editable="true" layoutX="491.0" layoutY="141.0" onAction="#p" prefHeight="34.0" prefWidth="168.0" />
+                  <JFXComboBox fx:id="phase" editable="true" layoutX="123.0" layoutY="197.0" onAction="#p" prefHeight="34.0" prefWidth="168.0" />
                   <JFXComboBox fx:id="Stades" editable="true" layoutX="500.0" layoutY="79.0" prefHeight="34.0" prefWidth="159.0" />
                   <JFXComboBox fx:id="id_equipe" editable="true" layoutX="141.0" layoutY="69.0" prefHeight="34.0" prefWidth="132.0" />
                   <JFXComboBox fx:id="id_equipe2" editable="true" layoutX="141.0" layoutY="131.0" prefHeight="34.0" prefWidth="132.0" />
@@ -166,10 +169,10 @@
                         </ImageView>
                      </graphic>
                   </JFXButton>
-                  <JFXComboBox fx:id="gp" disable="true" layoutX="733.0" layoutY="150.0" onAction="#gp" />
-                  <Label fx:id="ha" layoutX="687.0" layoutY="155.0" text="Group" textFill="#f5eeee" />
                </children>
             </Pane>
+            <JFXComboBox fx:id="gp" disable="true" layoutX="175.0" layoutY="663.0" onAction="#gp" />
+            <Label fx:id="ha" layoutX="102.0" layoutY="666.0" text="Group" textFill="#f5eeee" />
          </children>
       </AnchorPane>
    </center>

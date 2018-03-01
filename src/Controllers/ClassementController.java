@@ -89,7 +89,7 @@ public class ClassementController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        this.Gp.getItems().addAll("A","B","C","D","E","F","G");
+        this.Gp.getItems().addAll("A","B","C","D","E","F","G","H");
         System.out.print(eq);
         // TODO
     }    
