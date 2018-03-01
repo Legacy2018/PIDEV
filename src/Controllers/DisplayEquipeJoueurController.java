@@ -138,89 +138,7 @@ public class DisplayEquipeJoueurController implements Initializable {
         return chart;
     }
 
-    // open file.
-    /*   public PdfDecoder openPdf(String filename) {
-        PdfDecoder pdf = new PdfDecoder();
-        try {
-            pdf.openPdfFile(filename);
-        } catch (PdfException ex) {
-            Logger.getLogger(DisplayEquipeJoueurController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        showPage(1);
-        pdf.closePdfFile();
-        return pdf;
-    }
-     */
-    /**
-     * Update the GUI to show a specified page.
-     *
-     * @param page
-     */
-    /*   private void showPage(int page) {
-
-        //Check in range
-        PdfDecoder pdf = openPdf("Formation.pdf");
-        if (page > pdf.getPageCount()) {
-            return;
-        }
-        if (page < 1) {
-            return;
-        }
-
-        //Store
-        int pageNumber = page;
-
-      
-        //Calculate scale
-        int pW = pdf.getPdfPageData().getCropBoxWidth(page);
-        int pH = pdf.getPdfPageData().getCropBoxHeight(page);
-
-        Dimension s = Toolkit.getDefaultToolkit().getScreenSize();
-
-        s.width -= 100;
-        s.height -= 100;
-
-        double xScale = (double) s.width / pW;
-        double yScale = (double) s.height / pH;
-        double scale = xScale < yScale ? xScale : yScale;
-
-        //Work out target size
-        pW *= scale;
-        pH *= scale;
-
-        //Get image and set
-        Image i = getPageAsImage(pdf ,page, pW, pH);
-       // ImageView.setImage(i);
-
-        //Set size of components
-       /* ImageView.setFitWidth(pW);
-        imageView.setFitHeight(pH);
-
-        stage.setWidth(imageView.getFitWidth() + 2);
-        stage.setHeight(imageView.getFitHeight() + 2);
-        stage.centerOnScreen();*/
-    // }
-//
-    /* private Image getPageAsImage(PdfDecoder pdf,int page, int width, int height) {
-
-        BufferedImage img;
-        try {
-            
-            img = pdf.getPageAsImage(page);
-
-            //Use deprecated method since there's no real alternative 
-            //(for JavaFX 2.2+ can use SwingFXUtils instead).
-          //  if (Image.impl_isExternalFormatSupported(BufferedImage.class)) {
-                return javafx.scene.image.Image.impl_fromPlatformImage(img);
-           // } else {
-           // }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return null;
-    }*/
+    
     @FXML
     void Print(ActionEvent event) throws DocumentException, IOException {
         Document doc = new Document();
@@ -341,7 +259,7 @@ public class DisplayEquipeJoueurController implements Initializable {
                 alert.setHeaderText(null);
                 alert.setContentText("Le fichier PDF est téléchargé!");
                 alert.showAndWait();
-                Desktop.getDesktop().open(new File("C:\\Users\\Emel\\Documents\\javaproject\\pidevproject\\PIDEV\\" + nomchfich));
+                Desktop.getDesktop().open(new File("C:\\Users\\Emel\\Documents\\javaproject\\PIDEV1\\" + nomchfich));
                 /*
                 DialogPane dialogPane = alert.getDialogPane();
                 dialogPane.getStylesheets().add(
