@@ -190,7 +190,7 @@ public class sign implements Initializable {
         Files.copy(from, to, options);
         
         
-        imgpath.setText("../Ressource/"+file.getName());
+        imgpath.setText(""+file.getName());
         profile.setImage(new Image(getClass().getResource("../Ressource/"+file.getName()).toString(), true));
 
     }

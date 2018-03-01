@@ -15,7 +15,7 @@
          <center>
             <AnchorPane id="AnchorPane" fx:id="rootPane" prefHeight="603.0" prefWidth="895.0" styleClass="gradient">
                <children>
-                  <JFXButton fx:id="sup" layoutX="242.0" layoutY="539.0" onAction="#suprec" prefHeight="46.0" prefWidth="126.0" text="Supprimer" />
+                  <JFXButton fx:id="sup" layoutX="242.0" layoutY="507.0" onAction="#suprec" prefHeight="81.0" prefWidth="126.0" text="Supprimer" />
                   <TableView fx:id="tabview" layoutX="242.0" layoutY="40.0" prefHeight="431.0" prefWidth="727.0">
                      <columns>
                         <TableColumn fx:id="id" prefWidth="54.0" text="id" />
@@ -27,8 +27,8 @@
                         <TableColumn fx:id="activated" prefWidth="95.0" text="activated" />
                      </columns>
                   </TableView>
-                  <JFXButton layoutX="368.0" layoutY="539.0" onAction="#afficher" prefHeight="47.0" prefWidth="126.0" text="Afficher" />
-                  <JFXTextField fx:id="username" layoutX="242.0" layoutY="491.0" onKeyReleased="#filtre" prefHeight="25.0" prefWidth="210.0" promptText="Chercher par Username.." />
+                  <JFXButton layoutX="368.0" layoutY="507.0" onAction="#afficher" prefHeight="81.0" prefWidth="126.0" text="Afficher" />
+                  <JFXTextField fx:id="username" layoutX="242.0" layoutY="471.0" onKeyReleased="#filtre" />
                </children>
             </AnchorPane>
          </center>
