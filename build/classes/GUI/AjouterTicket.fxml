@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="603.0" prefWidth="1018.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AjouterTicketController">
+   <children>
+      <TableView fx:id="tableViws" layoutX="78.0" layoutY="5.0" prefHeight="294.0" prefWidth="866.0">
+         <columns>
+            <TableColumn fx:id="id_matchht" prefWidth="75.0" text="id_ticket" visible="false" />
+            <TableColumn fx:id="Equipe1" prefWidth="179.3333282470703" text="Equipe1" />
+            <TableColumn fx:id="Equipee2" prefWidth="175.6666717529297" text="Equipe2" />
+            <TableColumn fx:id="satades" prefWidth="185.33334350585938" text="Stades" />
+            <TableColumn fx:id="datematch" prefWidth="174.33331298828125" text="Date Matche" />
+            <TableColumn fx:id="heur" prefWidth="151.66668701171875" text="Heur" />
+         </columns>
+      </TableView>
+      <AnchorPane layoutY="316.0" minHeight="0.0" minWidth="0.0" prefHeight="267.0" prefWidth="1019.0">
+         <children>
+            <JFXTextField fx:id="id_prix" layoutX="650.0" layoutY="190.0" prefHeight="25.0" prefWidth="169.0" promptText="Prix ( $)" unFocusColor="#2b0f90" />
+            <Label layoutX="462.0" layoutY="27.0" prefHeight="25.0" prefWidth="30.0" text="VS" textAlignment="CENTER" textFill="#d03d20">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="18.0" />
+               </font></Label>
+            <JFXComboBox fx:id="id_categorie" layoutX="652.0" layoutY="79.0" prefHeight="25.0" prefWidth="169.0" styleClass="jfx-combo" stylesheets="@../Asset/MainFram.css" unFocusColor="#21118a" />
+            <JFXComboBox fx:id="id_nbticket" layoutX="651.0" layoutY="131.0" prefHeight="25.0" prefWidth="169.0" styleClass="jfx-combo" stylesheets="@../Asset/MainFram.css" unFocusColor="#21118a" visibleRowCount="5" />
+            <JFXTextField fx:id="id_equipe1" editable="false" layoutX="236.0" layoutY="27.0" promptText="Equipe1" unFocusColor="#4f17ae" />
+            <JFXTextField fx:id="id_equipe2" editable="false" layoutX="575.0" layoutY="26.0" promptText="Equipe2" unFocusColor="#5016bc" />
+            <JFXTextField fx:id="id_stade" editable="false" layoutX="134.0" layoutY="81.0" prefHeight="25.0" prefWidth="169.0" promptText="Stade" unFocusColor="#4f17ae" />
+            <JFXTextField fx:id="id_heur" editable="false" layoutX="134.0" layoutY="135.0" prefHeight="25.0" prefWidth="169.0" promptText="Heur du Match" unFocusColor="#4f17ae" />
+            <JFXTextField fx:id="id_date" editable="false" layoutX="134.0" layoutY="192.0" prefHeight="25.0" prefWidth="169.0" promptText="Date du  Matche" unFocusColor="#3c0d8d" />
+            <JFXTextField fx:id="txdann" disable="true" layoutX="197.0" layoutY="119.0" visible="false" />
+            <JFXButton fx:id="AjouterAchatTicket" buttonType="RAISED" layoutX="890.0" layoutY="225.0" onAction="#AjouterAchatTicket" prefHeight="50.0" prefWidth="102.0" ripplerFill="#686565">
+               <graphic>
+                  <ImageView fitHeight="56.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Ressource/done%20(1).png" />
+                     </image>
+                  </ImageView>
+               </graphic></JFXButton>
+            <ImageView fx:id="image1" fitHeight="113.0" fitWidth="135.0" layoutX="391.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

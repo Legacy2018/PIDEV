@@ -26,40 +26,23 @@ public class DataSource {
                   //         Class.forName("com.mysql.jdbc.Driver");
 
 
-<<<<<<< HEAD
-
-           
-
-=======
-<<<<<<< HEAD
-
-=======
-<<<<<<< HEAD
-          
-=======
-<<<<<<< HEAD
->>>>>>> 2d988acd322c59772e3eb310985fbe884c26ac41
             con= DriverManager.getConnection("jdbc:mysql://localhost:3306/pidev_v4", "root","");
 
             con= DriverManager.getConnection("jdbc:mysql://localhost:3306/pidev_v2", "root","");
->>>>>>> 5ef7fc540d90676a41dd4a6cf84e60367fde330f
-        
 
-
->>>>>>> 33ac5287755f2f6ebd8a6d44be5bad186ca1b59f
             
 //         Class.forName("com.mysql.jdbc.Driver");
-<<<<<<< HEAD
+
 
             //con= DriverManager.getConnection("jdbc:mysql://localhost:3306/pidev_v4", "root","");
             con= DriverManager.getConnection("jdbc:mysql://localhost:3306/pidev_v4", "root","");
             //con= DriverManager.getConnection("jdbc:mysql://localhost:3306/pidev_v2", "root","");
 
-=======
+
             con= DriverManager.getConnection("jdbc:mysql://localhost:3306/pidev_v4", "root","");
 
-            con= DriverManager.getConnection("jdbc:mysql://localhost:3306/pidev_v2", "root","");
->>>>>>> 5ef7fc540d90676a41dd4a6cf84e60367fde330f
+            con= DriverManager.getConnection("jdbc:mysql://localhost:3306/pidev_v4", "root","");
+
 
             System.out.println("connexion Ok ! !");
         } catch (SQLException x) {

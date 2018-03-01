@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox prefHeight="486.0" prefWidth="236.0" spacing="20.0" style="-fx-background-color: #2A2E37;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.SidePanelContentController">
+   <children>
+      <JFXButton fx:id="btn_Ticket" buttonType="RAISED" onAction="#GetName" prefHeight="71.0" prefWidth="237.0" text="Gestion Tickets" textFill="#fff600">
+         <font>
+            <Font name="Agency FB" size="14.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="btn_Logistique" buttonType="RAISED" onAction="#GetName" prefHeight="69.0" prefWidth="240.0" text="Gestion Logistique" textFill="#ddff00">
+         <font>
+            <Font name="Agency FB" size="14.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="btn_Match" buttonType="RAISED" onAction="#GetName" prefHeight="72.0" prefWidth="239.0" text="Gestion Matches" textFill="#fff600">
+         <font>
+            <Font name="Agency FB" size="14.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="btn_Utilisateur" buttonType="RAISED" onAction="#GetName" prefHeight="71.0" prefWidth="245.0" ripplerFill="#790404" text="Gestion Utilisateurs" textFill="#fff200">
+         <font>
+            <Font name="Agency FB" size="14.0" />
+         </font>
+      </JFXButton>
+   </children>
+</VBox>

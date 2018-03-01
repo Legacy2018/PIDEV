@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="AnchorPane" prefHeight="728.0" prefWidth="1015.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Consulter_Match">
+    <stylesheets>
+        
+    </stylesheets>
+   <children>
+      <HBox prefHeight="100.0" prefWidth="1015.0">
+         <children>
+            <JFXButton fx:id="pha1" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#ac" prefHeight="61.0" prefWidth="241.0" styleClass="toolbar-button" textAlignment="CENTER">
+               <graphic>
+                  <ImageView fitHeight="32.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Ressource/back.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <VBox prefHeight="103.0" prefWidth="237.0">
+               <children>
+                  <JFXButton fx:id="pha" contentDisplay="TOP" mnemonicParsing="false" onAction="#pha" prefHeight="72.0" prefWidth="241.0" styleClass="toolbar-button" text=" phase" textAlignment="CENTER">
+                     <graphic>
+                        <FontAwesomeIconView fill="#fcf6f6" glyphName="MAP" size="25" />
+                     </graphic>
+                  </JFXButton>
+                  <JFXTextField fx:id="phs" onAction="#pha" prefHeight="32.0" prefWidth="170.0" />
+               </children>
+            </VBox>
+            <VBox prefHeight="108.0" prefWidth="268.0">
+               <children>
+                  <JFXButton fx:id="d" contentDisplay="TOP" mnemonicParsing="false" onAction="#d" prefHeight="75.0" prefWidth="268.0" styleClass="toolbar-button" text="Date" textAlignment="CENTER">
+                     <graphic>
+                        <FontAwesomeIconView fill="#f5f3f3" glyphName="CALENDAR_ALT" size="25" />
+                     </graphic>
+                  </JFXButton>
+                  <JFXDatePicker fx:id="dta" prefHeight="24.0" prefWidth="262.0" />
+               </children>
+            </VBox>
+            <VBox prefHeight="103.0" prefWidth="237.0">
+               <children>
+                  <JFXButton contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#par" prefHeight="69.0" prefWidth="237.0" styleClass="toolbar-button" text="Equipe" textAlignment="CENTER">
+                     <graphic>
+                        <ImageView fitHeight="23.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Ressource/gestEquipes.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXComboBox fx:id="sa" editable="true" prefHeight="29.0" prefWidth="255.0" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   
+<TableView fx:id="t" layoutX="-2.0" layoutY="142.0" prefHeight="587.0" prefWidth="1015.0">
+        
+<columns>
+      <TableColumn fx:id="Equipe1_2" prefWidth="129.0" text="Equipe1" />
+      <TableColumn fx:id="sc_2" prefWidth="83.0" />
+      <TableColumn fx:id="sc_21" prefWidth="99.0" />
+      <TableColumn fx:id="Equipe2_2" prefWidth="170.0" text="Equipe 2" />
+      <TableColumn fx:id="st_2" prefWidth="187.0" text="Stade" />
+      <TableColumn fx:id="ph_2" prefWidth="142.0" text="phase" />
+      <TableColumn fx:id="dt_2" prefWidth="107.0" text="date" />
+      <TableColumn fx:id="h_2" prefWidth="97.0" text="heure" />
+   </columns></TableView>
+   </children>
+</AnchorPane>
