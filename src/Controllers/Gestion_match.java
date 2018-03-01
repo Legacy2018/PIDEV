@@ -351,7 +351,7 @@ public class Gestion_match extends Application implements Initializable {
          
 
         
-    t.refresh();
+     t.refresh();
        
        
        Parent creerGroupe = FXMLLoader.load(getClass().getResource("/Gui/FXMLGestion_Match.fxml"));

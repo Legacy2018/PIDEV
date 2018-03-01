@@ -138,7 +138,6 @@ public class DisplayEquipeJoueurController implements Initializable {
         return chart;
     }
 
-    
     @FXML
     void Print(ActionEvent event) throws DocumentException, IOException {
         Document doc = new Document();
@@ -158,7 +157,7 @@ public class DisplayEquipeJoueurController implements Initializable {
                 Paragraph titre = new Paragraph("Fiche Recapitulative ", Bold);
                 titre.setAlignment(Paragraph.ALIGN_CENTER);
                 doc.add(titre);
-              
+
                 Paragraph p = new Paragraph("" + e.getPays(), Bold);
                 p.setAlignment(Paragraph.ALIGN_CENTER);
                 doc.add(p);
@@ -405,9 +404,8 @@ public class DisplayEquipeJoueurController implements Initializable {
         phase.setText(e.getPhase());
         nbrbuteq.setText(String.valueOf(me.afficherNombreButParEquipe(e.getIdequipe())));
         select.setText(e.getSelecteur());
-        File file = new File(e.getImg().getLink());
+        File file = new File(e.getImg().getLink().replace("file:/C", "C"));
         Image image = new Image(file.toURI().toString());
-
         drapeau.setImage(image);
         System.out.println("equipe " + e);
         ObservableList<Joueur> jEq = FXCollections.observableArrayList(sj.chercherParEquipe(e.getPays()));
