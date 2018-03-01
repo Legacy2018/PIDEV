@@ -63,7 +63,7 @@ public class MatchDAO implements IMatchDAO {
             ps.executeUpdate();
          
         } catch (SQLException ex) {
-            Logger.getLogger(MatchDAO.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.print("remplir info");
         }
     }
 

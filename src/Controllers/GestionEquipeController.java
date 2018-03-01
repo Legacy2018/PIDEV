@@ -6,14 +6,11 @@
 package Controllers;
 //import com.itextpdf.text;
 
-import com.itextpdf.text.Document;
-import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.pdf.PdfWriter;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextField;
 import Entities.Equipe;
+import Entities.Imagedrapeau;
 import Entities.Joueur;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -47,12 +44,16 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.transform.Translate;
 import Services.serviceEquipe;
+import java.io.File;
+import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.List;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.scene.image.Image;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.FileChooser;
 
 /**
  *
@@ -67,12 +68,17 @@ public class GestionEquipeController implements Initializable {
     ObservableList<String> listeEtat = FXCollections.observableArrayList("IN", "OUT");
     ObservableList<String> listephase = FXCollections.observableArrayList("groupe", "1/8", "1/4", "1/2", "finale");
     ObservableList<Equipe> listeEquipeInit = FXCollections.observableArrayList(se.selectEquipes());
+    ObservableList<String> listegroupe1 = FXCollections.observableArrayList("A", "B", "C", "D", "E", "F", "G", "H");
+    ObservableList<String> listeEtat1 = FXCollections.observableArrayList("IN", "OUT");
+    ObservableList<String> listephase1 = FXCollections.observableArrayList("groupe", "1/8", "1/4", "1/2", "finale");
 
     public ObservableList<Equipe> getEq() {
         ObservableList<Equipe> p = FXCollections.observableArrayList(se.selectEquipes());
         return p;
     }
 
+    public static Imagedrapeau img;
+    public static boolean verifimg = false;
     @FXML
     private JFXButton btfiltre;
 
@@ -84,9 +90,8 @@ public class GestionEquipeController implements Initializable {
     @FXML
     private Label label;
 
-    @FXML
-    private ChoiceBox eqchoice;
-
+    // @FXML
+    // private ChoiceBox eqchoice;
     @FXML
     private Button btSupp;
 
@@ -166,20 +171,23 @@ public class GestionEquipeController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
 
         // TODO
-        eqchoice.setValue(listeequipe.get(0));
-        eqchoice.setItems(listeequipe);
+        // eqchoice.setValue(listeequipe.get(1));
+        //      eqchoice.setItems(listeequipe);
         cbgroupe.setValue(listegroupe.get(0));
         cbgroupe.setItems(listegroupe);
         cbetat.setValue(listeEtat.get(0));
         cbetat.setItems(listeEtat);
         cbpahse.setValue(listephase.get(0));
         cbpahse.setItems(listephase);
-        // cbgroupe1.setValue(listegroupe.get(0));
-        cbgroupe1.setItems(listegroupe);
-        //  cbetat1.setValue(listeEtat.get(0));
-        cbetat1.setItems(listeEtat);
-        // cbpahse1.setValue(listephase.get(0));
-        cbpahse1.setItems(listephase);
+        listegroupe1.add(0, "");
+        cbgroupe1.setValue(listegroupe1.get(0));
+        cbgroupe1.setItems(listegroupe1);
+        listeEtat1.add(0, "");
+        cbetat1.setValue(listeEtat1.get(0));
+        cbetat1.setItems(listeEtat1);
+        listephase1.add(0, "");
+        cbpahse1.setValue(listephase1.get(0));
+        cbpahse1.setItems(listephase1);
         lstequipe.getItems().addAll(getEq());
         pays.setCellValueFactory(new PropertyValueFactory<>("pays"));
         groupe.setCellValueFactory(new PropertyValueFactory<>("Groupe"));
@@ -191,11 +199,13 @@ public class GestionEquipeController implements Initializable {
 
     @FXML
     void chargerEquipe(MouseEvent event) {
-        Equipe e = new Equipe(eqchoice.getSelectionModel().selectedItemProperty().getValue().toString(), "", "");
-        Equipe eq = se.AfficherEquipe(e);
-        txtpays.setText(eq.getPays().toString());
-        txtselect.setText(eq.getPays().toString());
-
+        Equipe eq = se.AfficherEquipe(lstequipe.getSelectionModel().selectedItemProperty().getValue());
+        txtpays.setText(eq.getPays());
+        txtselect.setText(eq.getSelecteur());
+        txtPoint.setText(String.valueOf(eq.getPoint()));
+        btModif.setDisable(false);
+        btSupp.setDisable(false);
+        btAjouter.setDisable(true);
         cbgroupe.setValue(eq.getGroupe());
         if (eq.getEtat() == 0) {
             cbetat.setValue("OUT");
@@ -203,14 +213,52 @@ public class GestionEquipeController implements Initializable {
             cbetat.setValue("IN");
         }
         cbpahse.setValue(eq.getPhase());
-        //      System.out.println("select      :"+e.getSelecteur());
-        //    txtselect.setText(eq.getSelecteur().toString());
+          File file = new File(e.getImg().getLink());
+        Image image = new Image(e.getImg().getLink(),true);
+         imgdr.setImage(image);
+       // File file = new File(eq.getImg().getLink().replace("file:/C", "C"));
+      //  Image image = new Image(file.toURI().toString());
+      //  imgdr.setImage(image);
+        btAjouter.setDisable(true);
     }
+
+    @FXML
+    private ImageView imgdr;
+    @FXML
+    private Label lblr;
+    @FXML
+    private JFXButton btImpIm;
+    @FXML
+    private BorderPane Paneimage;
+
+    @FXML
+    private Imagedrapeau importerImage() {
+        FileChooser fc = new FileChooser();
+        String link = null;
+        //   FileChooser.ExtensionFilter extFilterJPG = new FileChooser.ExtensionFilter("JPG files (*.jpg)", "*.JPG");
+        FileChooser.ExtensionFilter extFilterPNG = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.PNG");
+        fc.getExtensionFilters().addAll(
+                //extFilterJPG, 
+                extFilterPNG);
+
+        File file = fc.showOpenDialog(null);
+        Image image = new Image(file.toURI().toString());
+
+        imgdr.setImage(image);
+        link = file.toURI().toString();
+
+        img = new Imagedrapeau(link, null);
+        verifimg = true;
+        return img;
+    }
+
+    @FXML
+    private JFXTextField txtPoint;
 
     @FXML
     void SupprimerEq(ActionEvent event) {
         boolean choix = true;
-        if ("".equals(eqchoice.getSelectionModel().selectedItemProperty().getValue().toString())) {
+        if ("".equals(lstequipe.getSelectionModel().selectedItemProperty().getValue().toString())) {
             choix = false;
 
         }
@@ -221,22 +269,26 @@ public class GestionEquipeController implements Initializable {
         alerte.setContentText("OK : Pour supprimer , Annuler : Si non");
         Optional<ButtonType> result = alerte.showAndWait();
         if (result.get() == ButtonType.OK) {
-            Equipe eq = new Equipe(eqchoice.getSelectionModel().selectedItemProperty().getValue().toString(), "", "");
-
-            if ((se.supprimerEquipe(eq.getPays())) == true) {
-
+            Equipe eq = se.AfficherEquipe(lstequipe.getSelectionModel().selectedItemProperty().getValue());
+            boolean supprimer = (se.supprimerEquipe(eq));
+            if (supprimer == true) {
+                System.out.println("choix --" + eq.getPays());
                 Alert alert = new Alert(AlertType.INFORMATION);
                 alert.setTitle("Suppression effectuée !");
                 alert.setHeaderText("Equipe supprimée avec succès !");
                 //   alert.setContentText("GOOOD");
+                btSupp.setDisable(true);
+                btModif.setDisable(true);
+                btAjouter.setDisable(false);
                 alert.showAndWait();
                 //recharger la liste
                 ObservableList<String> listeequipe = FXCollections.observableArrayList(se.selectPays());
                 lstequipe.getItems().clear();
                 lstequipe.getItems().addAll(getEq());
-                eqchoice.setItems(listeequipe);
-                eqchoice.setValue(listeequipe.get(0));
-            } else if ((se.supprimerEquipe(eq.getPays())) == false) {
+                //  eqchoice.setItems(listeequipe);
+                //   eqchoice.setValue(listeequipe.get(0));
+                viderForm();
+            } else if (supprimer == false) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Suppression echouée !");
                 alert.setHeaderText("");
@@ -245,21 +297,10 @@ public class GestionEquipeController implements Initializable {
             }
         } else {
             ObservableList<String> listeequipe = FXCollections.observableArrayList(se.selectPays());
-            eqchoice.setItems(listeequipe);
-            eqchoice.setValue(listeequipe.get(0));
+//            eqchoice.setItems(listeequipe);
+//            eqchoice.setValue(listeequipe.get(0));
 
         }
-
-    }
-    @FXML
-    void accueil(MouseEvent event) throws IOException {
-         Parent creerGroupe = FXMLLoader.load(getClass().getResource("/Gui/FXMLGestion_Match.fxml"));
-        Scene sceneAffichage = new Scene(creerGroupe);
-        sceneAffichage.getStylesheets().add(getClass().getResource("../Asset/fxml.css").toExternalForm());
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(sceneAffichage);
-        stage.show();
-
 
     }
 
@@ -270,120 +311,156 @@ public class GestionEquipeController implements Initializable {
         String selec = txtselect.getText();
         Services.serviceEquipe se = new Services.serviceEquipe();
         Equipe e = new Equipe();
-        e.setPays(pays);
-        e.setGroupe(groupe);
-        e.setSelecteur(selec);
-        Document doc = new Document();
-        try {
-            //choisir le nom 
-            //alert nekhou menha essm w nhot fell fos
-            PdfWriter.getInstance(doc, new FileOutputStream("rapport.pdf"));
-            doc.open();
-            doc.add(new Paragraph(txtpays.getText() + "\n" + txtselect.getText() + e));
-            doc.close();
-            // lstequipe.getItems().addAll(getEq());*/
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(GestionEquipeController.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (DocumentException ex) {
-            Logger.getLogger(GestionEquipeController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        // se.ajouterEquipe(e);
-        if ((txtpays.getText().length() != 0) && (txtselect.getText().length() != 0)) {
-            if (se.ajouterEquipe(e) == false) {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Ajout echoué !");
-                alert.setHeaderText("Pays deja existant et/ou groupe Saturé !");
-                alert.setContentText(" Veuillez verifier vos choix !");
-                alert.showAndWait();
+        if (!txtpays.getText().isEmpty() && !txtPoint.getText().isEmpty() && !txtselect.getText().isEmpty()) {
+            obpays.setVisible(false);
+            obphase.setVisible(false);
+            obsel.setVisible(false);
+            obsetat.setVisible(false);
+            obgroupe.setVisible(false);
+            obpoint.setVisible(false);
+            if (verifimg == true) {
+                e.setPays(pays);
+                e.setGroupe(groupe);
+                e.setSelecteur(selec);
+                e.setEtat(0);
+                e.setPhase("groupe");
+                e.setPoint(0);
+                e.setImg(img);
+                System.out.println("image ajout -------------------" + img);
+                boolean ajout = se.ajouterEquipe(e);
+                //  boolean test = verifform();
+
+                if (ajout == false) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Ajout echoué !");
+                    alert.setHeaderText("Pays deja existant et/ou groupe Saturé !");
+                    alert.setContentText(" Veuillez verifier vos choix !");
+                    alert.showAndWait();
+                } else {
+                    Alert alert = new Alert(AlertType.INFORMATION);
+                    alert.setTitle("Ajout effectué !");
+                    alert.setHeaderText("Equipe ajoutée avec succès!");
+                    //  alert.setContentText("GOOOD");
+                    alert.showAndWait();
+                    ObservableList<String> listeequipe = FXCollections.observableArrayList(se.selectPays());
+                    lstequipe.getItems().clear();
+                    lstequipe.getItems().addAll(getEq());
+                    System.err.println("image" + img);
+                    System.err.println("equipe ac image" + e);
+
+                    viderForm();
+
+                }
             } else {
-                Alert alert = new Alert(AlertType.INFORMATION);
-                alert.setTitle("Ajout effectué !");
-                alert.setHeaderText("Equipe ajoutée avec succès!");
-                //  alert.setContentText("GOOOD");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Erreur !");
+                alert.setHeaderText("Tous les champs sont obligatoirs !");
+                alert.setContentText(" Veuillez importet un drapeau !");
                 alert.showAndWait();
-                ObservableList<String> listeequipe = FXCollections.observableArrayList(se.selectPays());
-                lstequipe.getItems().clear();
-                lstequipe.getItems().addAll(getEq());
-                eqchoice.setItems(listeequipe);
-                eqchoice.setValue(listeequipe.get(0));
 
             }
         } else {
+            verifform();
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur !");
             alert.setHeaderText("Tous les champs sont obligatoirs !");
             alert.setContentText(" Veuillez verifier vos choix !");
             alert.showAndWait();
         }
+
     }
 
     @FXML
     void modifEq(ActionEvent event) {
-        /*     Equipe eq = se.AfficherEquipe(eqchoice.getSelectionModel().selectedItemProperty().getValue().toString());
-        int id=eq.getId_equipe();
-        int etat = 2;
-        if ("OUT".equals(cbgroupe.getSelectionModel().selectedItemProperty().getValue().toString()) ) {
-            etat = 0;
-        } else if ("IN".equals(cbgroupe.getSelectionModel().selectedItemProperty().getValue().toString())) {
-            etat = 1;
-        }
-        Equipe e = new Equipe(txtpays.getText(),
-                etat,
-                cbpahse.getSelectionModel().selectedItemProperty().getValue().toString(),
-                cbgroupe.getSelectionModel().selectedItemProperty().getValue().toString());
-        System.out.println("Equipe a modifier ");
-        se.modifierEquipe(e ,id);
-        
-             ObservableList<String> listeequipe = FXCollections.observableArrayList(se.selectPays());
-                eqchoice.setItems(listeequipe);*/
+
         int etat = 5;
-        Alert alerte = new Alert(AlertType.CONFIRMATION);
-        alerte.setTitle("Confirmation ");
-        alerte.setHeaderText("Etes vous certain de vouloir modifier cette equipe ?");
-        alerte.setContentText("OK : Pour modifier , Annuler : Si non");
-        Optional<ButtonType> result = alerte.showAndWait();
-        if (result.get() == ButtonType.OK) {
-            if ("OUT".equals(cbetat.getSelectionModel().selectedItemProperty().getValue().toString())) {
-                etat = 0;
-                System.out.println("out");
-            } else if ("IN".equals(cbetat.getSelectionModel().selectedItemProperty().getValue().toString())) {
-                etat = 1;
-                System.out.println("IN");
-            }
-            Equipe eq = se.AfficherEquipe(eqchoice.getSelectionModel().selectedItemProperty().getValue().toString());
-            int id = eq.getIdEquipe();
-            Equipe e = new Equipe(txtpays.getText(),
-                    etat,
-                    cbpahse.getSelectionModel().selectedItemProperty().getValue().toString(),
-                    cbgroupe.getSelectionModel().selectedItemProperty().getValue().toString(),
-                    txtselect.getText().toString());
+        if (!txtpays.getText().isEmpty() && !txtPoint.getText().isEmpty() && !txtselect.getText().isEmpty()) {
+            obpays.setVisible(false);
+            obphase.setVisible(false);
+            obsel.setVisible(false);
+            obsetat.setVisible(false);
+            obgroupe.setVisible(false);
+            obpoint.setVisible(false);
+            Image i = imgdr.getImage();
+            boolean test = (i == null || i.isError());
+            if (verifimg == true || test == false) {
+                Alert alerte = new Alert(AlertType.CONFIRMATION);
+                alerte.setTitle("Confirmation ");
+                alerte.setHeaderText("Etes vous certain de vouloir modifier cette equipe ?");
+                alerte.setContentText("OK : Pour modifier , Annuler : Si non");
+                Optional<ButtonType> result = alerte.showAndWait();
+                if (result.get() == ButtonType.OK) {
+                    if ("OUT".equals(cbetat.getSelectionModel().selectedItemProperty().getValue().toString())) {
+                        etat = 0;
+                        System.out.println("out");
+                    } else if ("IN".equals(cbetat.getSelectionModel().selectedItemProperty().getValue().toString())) {
+                        etat = 1;
+                        System.out.println("IN");
+                    }
+                    Equipe eq = se.AfficherEquipe(lstequipe.getSelectionModel().selectedItemProperty().getValue().getPays().toString());
+                    int id = eq.getIdequipe();
+                    Imagedrapeau imagequipe;
+                    if (verifimg == false) {
+                        imagequipe = eq.getImg();
+                    } else {
+                        imagequipe = img;
+                    }
+                    Equipe e = new Equipe(txtpays.getText(),
+                            etat,
+                            cbpahse.getSelectionModel().selectedItemProperty().getValue().toString(),
+                            cbgroupe.getSelectionModel().selectedItemProperty().getValue().toString(),
+                            Integer.parseInt(txtPoint.getText()),
+                            txtselect.getText(),
+                            imagequipe
+                    );
 
-            // Equipe eq = new Equipe(eqchoice.getSelectionModel().selectedItemProperty().getValue().toString(), "");
-            if (se.modifierEquipe(e, id) == true) {
+//            System.out.println("image modif" + img.getLink());
+                    System.out.println("id " + id);
+                    System.out.println("euiope " + e);
 
-                Alert alert = new Alert(AlertType.INFORMATION);
-                alert.setTitle("Modification effectuée !");
-                alert.setHeaderText("Equipe modifiée avec succès !");
-                // alert.setContentText("GOOOD");
-                alert.showAndWait();
-                //recharger la liste
-                ObservableList<String> listeequipe = FXCollections.observableArrayList(se.selectPays());
-                lstequipe.getItems().clear();
-                lstequipe.getItems().addAll(getEq());
-                eqchoice.setItems(listeequipe);
-                eqchoice.setValue(listeequipe.get(0));
-            } else if (se.modifierEquipe(e, id) == false) {
+                    // Equipe eq = new Equipe(eqchoice.getSelectionModel().selectedItemProperty().getValue().toString(), "");
+                    boolean modif = se.modifierEquipe(e, id);
+                    if (modif == true) {
+
+                        Alert alert = new Alert(AlertType.INFORMATION);
+                        alert.setTitle("Modification effectuée !");
+                        alert.setHeaderText("Equipe modifiée avec succès !");
+                        alert.showAndWait();
+                        viderForm();
+                        btSupp.setDisable(true);
+                        btModif.setDisable(true);
+                        btAjouter.setDisable(false);
+                        //recharger la liste
+                        //   ObservableList<String> listeequipe = FXCollections.observableArrayList(se.selectPays());
+                        lstequipe.getItems().clear();
+                        lstequipe.getItems().addAll(getEq());
+                    } else if (modif == false) {
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setTitle("Modification echouée !");
+                        alert.setHeaderText("Veuillez verifier les données sasies !");
+                        //   alert.setContentText(" faux");
+                        alert.showAndWait();
+                    }
+                } else {
+                    ObservableList<String> listeequipe = FXCollections.observableArrayList(se.selectPays());
+                    lstequipe.getItems().addAll(getEq());
+
+                }
+            } else {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Modification echouée !");
-                alert.setHeaderText("Veuillez verifier les données sasies !");
-                //   alert.setContentText(" faux");
+                alert.setTitle("Erreur !");
+                alert.setHeaderText("Tous les champs sont obligatoirs !");
+                alert.setContentText(" Veuillez importer un drapeau !");
                 alert.showAndWait();
+
             }
         } else {
-            ObservableList<String> listeequipe = FXCollections.observableArrayList(se.selectPays());
-            eqchoice.setItems(listeequipe);
-            eqchoice.setValue(listeequipe.get(0));
-
+            verifform();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur !");
+            alert.setHeaderText("Tous les champs sont obligatoirs !");
+            alert.setContentText(" Veuillez verifier vos choix !");
+            alert.showAndWait();
         }
 
     }
@@ -408,16 +485,12 @@ public class GestionEquipeController implements Initializable {
             phase.setCellValueFactory(new PropertyValueFactory<>("Phase"));
             etat.setCellValueFactory(new PropertyValueFactory<>("Etat"));
             selecteur.setCellValueFactory(new PropertyValueFactory<>("selecteur"));
-
-            // System.out.println("aaaaaaaaaaaaaa");
-            //    System.out.println(getRes());
             lstequipe.getItems().clear();
             lstequipe.getItems().addAll(getRes());
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Errer !");
             alert.setHeaderText("Veuillez Saisir un nom d'equipe !");
-            //  alert.setContentText(" faux");
             alert.showAndWait();
         }
     }
@@ -430,95 +503,213 @@ public class GestionEquipeController implements Initializable {
     void rechraff(MouseDragEvent event) {
 
         chkPos.setVisible(true);
-        btAjouter.setVisible(false);
+        btAjouter.setDisable(true);
     }
 
     @FXML
     void filtrerliste(ActionEvent event) {
 
-        String etat = cbetat1.getSelectionModel().selectedItemProperty().getValue().toString();
-        String phase = cbpahse1.getSelectionModel().selectedItemProperty().getValue().toString();
-        String groupe = cbgroupe1.getSelectionModel().selectedItemProperty().getValue().toString();
-        ObservableList<Equipe> list = FXCollections.observableArrayList(se.selectEquipes());
-        List<Equipe> newList = new ArrayList<>();
-        for (Equipe e : list) {
-            int et = e.getEtat();
-            if (et == 0) {
-                          
-                String etatn = "OUT";
-                //filtre sur 3 parties 
-                if ((etatn.equals(etat)) && (e.getGroupe().equals(groupe))&&(e.getPhase().equals(phase))) {
-                    newList.add(e);
-                }
-            }
-            else if (et == 1) {
-                String etatn = "IN";
-                if ((etatn.equals(etat)) && (e.getGroupe().equals(groupe))&&(e.getPhase().equals(phase))) {
-                    newList.add(e);
-                }
-            }
+        String etatF = cbetat1.getSelectionModel().selectedItemProperty().getValue().toString();
+        String phaseF = cbpahse1.getSelectionModel().selectedItemProperty().getValue().toString();
+        String groupeF = cbgroupe1.getSelectionModel().selectedItemProperty().getValue().toString();
+        List<Equipe> list = se.selectEquipes();
+        List<Equipe> listf = new ArrayList<>();
+        System.out.println("etat  ==" + etatF);
+        System.out.println("phase  ==" + phaseF);
+        System.out.println("groupe  ==" + groupeF);
+        System.out.println("liste initiale " + list);
+        boolean chnged = false;
 
+        if (!etatF.equals("")) {
+            chnged = true;
+            list.forEach((eq) -> {
+                int et = eq.getEtat();
+                if (et == 0) {
+                    String etatn = "OUT";
+                    if ((etatn.equals(etatF))) {
+                        listf.add(eq);
+                    }
+                } else if (et == 1) {
+                    String etatn = "IN";
+
+                    if ((etatn.equals(etatF))) {
+                        listf.add(eq);
+
+                    }
+                }
+            });
+            list.clear();
+            listf.forEach((e) -> {
+                list.add(e);
+            });
+
+            listf.clear();
         }
-        lstequipe.getItems().clear();
-        lstequipe.getItems().addAll(newList);
+        if (!phaseF.equals("")) {
+            chnged = true;
+            list.stream().filter((e) -> (e.getPhase().equals(phaseF))).map((e) -> {
+                return e;
+            }).forEachOrdered((e) -> {
+                listf.add(e);
+            });
+            list.clear();
+            listf.forEach((e) -> {
+                list.add(e);
+            });
 
-    }
-      @FXML
-    void chercherparEtat(MouseEvent event) {
+            listf.clear();
+        }
+        if (!groupeF.equals("")) {
+            chnged = true;
 
-        String e = cbetat1.getSelectionModel().selectedItemProperty().getValue().toString();
-        if (e.equals("IN")) {
-            ObservableList<Equipe> eq = FXCollections.observableArrayList(se.EquipeEnCompetition());
+            list.stream().filter((e) -> (e.getGroupe().equals(groupeF))).map((e) -> {
 
+                return e;
+            }).forEachOrdered((e) -> {
+                listf.add(e);
+            });
+            list.clear();
+            for (Equipe e : listf) {
+                list.add(e);
+            }
+
+            listf.clear();
+        }
+
+        if (chnged == true) {
+
+            System.out.println("change true list.size() element" + list);
+            System.out.println("list.size()" + list.size());
+            chnged = true;
+            ObservableList<Equipe> lstf = FXCollections.observableArrayList(list);
             lstequipe.getItems().clear();
-            lstequipe.getItems().addAll(eq);
+            lstequipe.getItems().addAll(lstf);
+            System.out.println("listffff.size() element" + lstf);
+            System.out.println("listf.size()" + lstf.size());
             pays.setCellValueFactory(new PropertyValueFactory<>("pays"));
             groupe.setCellValueFactory(new PropertyValueFactory<>("Groupe"));
             phase.setCellValueFactory(new PropertyValueFactory<>("Phase"));
             etat.setCellValueFactory(new PropertyValueFactory<>("Etat"));
-            selecteur.setCellValueFactory(new PropertyValueFactory<>("selecteur"));
-
-        } else {
-            ObservableList<Equipe> eq = FXCollections.observableArrayList(se.EquipeEliminee());
-
+            selecteur.setCellValueFactory(new PropertyValueFactory<>("Selecteur"));
+        }
+        if (chnged == false || list.size() == 0) {
             lstequipe.getItems().clear();
-            lstequipe.getItems().addAll(eq);
+            lstequipe.getItems().addAll(getEq());
+            System.out.println("changd 0");
+            //   System.out.println("list.size()" +list.size() );
             pays.setCellValueFactory(new PropertyValueFactory<>("pays"));
             groupe.setCellValueFactory(new PropertyValueFactory<>("Groupe"));
             phase.setCellValueFactory(new PropertyValueFactory<>("Phase"));
             etat.setCellValueFactory(new PropertyValueFactory<>("Etat"));
-            selecteur.setCellValueFactory(new PropertyValueFactory<>("selecteur"));
+            selecteur.setCellValueFactory(new PropertyValueFactory<>("Selecteur"));
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Aucun resultat !");
+            alert.setHeaderText("Veuillez reajuster les filtres !");
+            alert.showAndWait();
+        }
+
+    }
+
+    @FXML
+    void verifnum(KeyEvent event) {
+
+        txtPoint.textProperty().addListener((ObservableValue<? extends String> observable, String oldValue, String newValue) -> {
+            if (!newValue.matches("\\d*")) {
+                txtPoint.setText(newValue.replaceAll("[^\\d]", ""));
+            }
+        });
+
+        obpoint.setVisible(false);
+    }
+
+    @FXML
+    void verifselect(KeyEvent event) {
+        txtselect.textProperty().addListener((ObservableValue<? extends String> observable, String oldValue, String newValue) -> {
+            if (!newValue.matches("\\sa-zA-Z*")) {
+                txtselect.setText(newValue.replaceAll("[^\\sa-zA-Z]", ""));
+            }
+        });
+        obsel.setVisible(false);
+    }
+
+    @FXML
+    void veriftxt(KeyEvent event) {
+        txtsearch.textProperty().addListener((ObservableValue<? extends String> observable, String oldValue, String newValue) -> {
+            if (!newValue.matches("\\sa-zA-Z*")) {
+                txtsearch.setText(newValue.replaceAll("[^\\sa-zA-Z]", ""));
+            }
+        });
+
+    }
+
+    @FXML
+    void verifpays(KeyEvent event) {
+        txtpays.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue,
+                    String newValue) {
+                if (!newValue.matches("\\sa-zA-Z*")) {
+                    txtpays.setText(newValue.replaceAll("[^\\sa-zA-Z]", ""));
+                }
+            }
+        });
+        obpays.setVisible(false);
+
+    }
+    @FXML
+    private Label obpays;
+
+    @FXML
+    private Label obsel;
+
+    @FXML
+    private Label obphase;
+
+    @FXML
+    private Label obsetat;
+
+    @FXML
+    private Label obgroupe;
+
+    @FXML
+    private Label obpoint;
+
+    public void verifform() {
+        boolean ok = true;
+        if (txtpays.getText().equals("")) {
+            obpays.setVisible(true);
+            ok = false;
 
         }
-    }
+        if (txtselect.getText().equals("")) {
+            obsel.setVisible(true);
+            ok = false;
 
-    @FXML
-    void chercherparPhase(MouseEvent event) {
-        ObservableList<Equipe> eq = FXCollections.observableArrayList(se.chercherParPhase(cbpahse1.getSelectionModel().selectedItemProperty().getValue().toString()));
+        }
+        if (txtPoint.getText().equals("")) {
+            ok = false;
 
-        lstequipe.getItems().clear();
-        lstequipe.getItems().addAll(eq);
-        pays.setCellValueFactory(new PropertyValueFactory<>("pays"));
-        groupe.setCellValueFactory(new PropertyValueFactory<>("Groupe"));
-        phase.setCellValueFactory(new PropertyValueFactory<>("Phase"));
-        etat.setCellValueFactory(new PropertyValueFactory<>("Etat"));
-        selecteur.setCellValueFactory(new PropertyValueFactory<>("selecteur"));
+            obpoint.setVisible(true);
+        }
 
     }
 
-    @FXML
-    void chercherpargroupe(MouseEvent event) {
-
-        ObservableList<Equipe> eq = FXCollections.observableArrayList(se.chercherParGroupe(cbgroupe1.getSelectionModel().selectedItemProperty().getValue().toString()));
-
-        lstequipe.getItems().clear();
-        lstequipe.getItems().addAll(eq);
-        pays.setCellValueFactory(new PropertyValueFactory<>("pays"));
-        groupe.setCellValueFactory(new PropertyValueFactory<>("Groupe"));
-        phase.setCellValueFactory(new PropertyValueFactory<>("Phase"));
-        etat.setCellValueFactory(new PropertyValueFactory<>("Etat"));
-        selecteur.setCellValueFactory(new PropertyValueFactory<>("selecteur"));
+    public void viderForm() {
+        txtPoint.setText("");
+        txtselect.setText("");
+        txtpays.setText("");
+        cbgroupe.setValue(listegroupe.get(0));
+        cbetat.setValue(listeEtat.get(0));
+        cbpahse.setValue(listephase.get(0));
+        imgdr.setImage(null);
+//     Image image2 = new Image(":/Ressource/flag.png");
+        // imgdr.setImage(null);
+        obpays.setVisible(false);
+        obphase.setVisible(false);
+        obsel.setVisible(false);
+        obsetat.setVisible(false);
+        obgroupe.setVisible(false);
+        obpoint.setVisible(false);
 
     }
-
 }

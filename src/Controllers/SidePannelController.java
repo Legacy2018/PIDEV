@@ -58,7 +58,7 @@ public class SidePannelController implements Initializable {
         // TODO
         name.setText(Login_viewController.u.getNom());
         if(( Login_viewController.u.getImg_profile()!=null)&&(Login_viewController.u.getImg_profile()!="null"))
-        imgprofile.setImage(new Image(getClass().getResource(Login_viewController.u.getImg_profile()).toString(), true));
+        imgprofile.setImage(new Image(Login_viewController.u.getImg_profile(), true));
         else
         {
          imgprofile.setImage(new Image(getClass().getResource("../Ressource/a.jpg").toString(), true));
@@ -125,8 +125,8 @@ public class SidePannelController implements Initializable {
     private void chercher(KeyEvent event) throws IOException {
         System.out.println(event.getCode().getName());
         srch=search.getText();
-        if(event.getCode().getName().equals("Enter"))
-        {Stage stage = (Stage) search.getScene().getWindow();
+        if(event.getCode().getName().equals("Enter")){
+        Stage stage = (Stage) search.getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("/GUI/Recherche_Profile.fxml"));
         Scene scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("/Asset/MainFram.css").toExternalForm());

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" stylesheets="@../Assets/MainFram.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.StatistiqueController">
+
+   <children>
+      <ImageView fx:id="ymg1" fitHeight="45.0" fitWidth="45.0" layoutX="83.0" layoutY="475.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="65.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="870.0" AnchorPane.topAnchor="475.0">
+         <image>
+            <Image url="@../Ressource/red-card.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="img2" fitHeight="45.0" fitWidth="45.0" layoutX="876.0" layoutY="498.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="65.0" AnchorPane.leftAnchor="870.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="475.0">
+         <image>
+            <Image url="@../Ressource/yellow-card.png" />
+         </image>
+      </ImageView>
+      <PieChart fx:id="statjaune" layoutX="492.0" layoutY="14.0" legendVisible="false" title="Possesion de carton Jaune" AnchorPane.bottomAnchor="140.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="450.0" AnchorPane.topAnchor="45.0" />
+      <Label fx:id="lblro" layoutX="137.0" layoutY="485.0" text="Label" textFill="WHITE" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="137.0" AnchorPane.rightAnchor="813.0" AnchorPane.topAnchor="485.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbljau" layoutX="915.0" layoutY="485.0" text="Label" textFill="WHITE" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="915.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="485.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="225.0" layoutY="475.0" prefHeight="15.0" prefWidth="55.0" text="Total" textFill="#1ec940" AnchorPane.bottomAnchor="65.0" AnchorPane.leftAnchor="470.0" AnchorPane.rightAnchor="470.0" AnchorPane.topAnchor="475.0">
+         <font>
+            <Font name="Arial Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbltot" layoutX="518.0" layoutY="485.0" text="Label" textFill="WHITE" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="518.0" AnchorPane.rightAnchor="422.0" AnchorPane.topAnchor="485.0">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <PieChart fx:id="statrouge" layoutX="458.0" layoutY="45.0" legendVisible="false" title="Possesion de carton Rouge" AnchorPane.bottomAnchor="140.0" AnchorPane.leftAnchor="450.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="45.0" />
+   </children>
+</AnchorPane>

@@ -8,16 +8,16 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="521.0" prefWidth="150.0" style="-fx-background-color: #2C3E50;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.SidePannelController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="535.0" prefWidth="129.0" style="-fx-background-color: #2C3E50;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.SidePannelController">
    <children>
-      <VBox fx:id="pan" alignment="TOP_CENTER" layoutX="8.0" layoutY="126.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="135.0">
+      <VBox fx:id="pan" alignment="TOP_CENTER" layoutX="-3.0" layoutY="126.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="408.0" prefWidth="129.0">
          <children>
-            <JFXTextField id="pansearch" fx:id="search" alignment="CENTER" onKeyReleased="#chercher" prefHeight="25.0" prefWidth="113.0" promptText="Search" />
+            <JFXTextField id="pansearch" fx:id="search" alignment="CENTER" onKeyReleased="#chercher" prefHeight="31.0" prefWidth="124.0" promptText="Search" />
             <JFXButton fx:id="Home" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#goHome" prefHeight="400.0" prefWidth="160.0" styleClass="toolbar-button" text="Acceuil" textAlignment="CENTER">
                <graphic>
                   <ImageView fitHeight="58.0" fitWidth="63.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../Ressource/home.png" />
+                        <Image url="@../Ressource/Home2.png" />
                      </image>
                   </ImageView>
                </graphic>

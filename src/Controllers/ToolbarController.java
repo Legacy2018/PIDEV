@@ -99,7 +99,7 @@ public class ToolbarController implements Initializable {
          Stage stage=(Stage) paneDeconnection.getScene().getWindow();
          Parent root = FXMLLoader.load(getClass().getResource("/GUI/ListTickets.fxml"));
         Scene scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("/Asset/accueilannonces.css").toExternalForm());
+     //   scene.getStylesheets().add(getClass().getResource("/Asset/MainFramsarra.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
         
@@ -133,10 +133,10 @@ public class ToolbarController implements Initializable {
     private void Logout(MouseEvent event) throws IOException {
         Stage stage=(Stage) paneDeconnection.getScene().getWindow();
         Login_viewController.u=null;
-        Parent root = FXMLLoader.load(getClass().getResource("/GUI/Login.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/GUI/FXMLDisplayEquipeJoueur.fxml"));
         
         Scene scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("/Asset/Style.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/Asset/mainframemel.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
     }

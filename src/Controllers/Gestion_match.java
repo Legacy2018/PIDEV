@@ -57,7 +57,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.controlsfx.control.Notifications;
 
@@ -71,10 +74,6 @@ public class Gestion_match extends Application implements Initializable {
 
     @FXML
     private JFXComboBox<String> id_equipe;
-    @FXML
-    private JFXTextField heure;
-    @FXML
-    private JFXTextField phi;
    
 
    @FXML
@@ -82,8 +81,7 @@ public class Gestion_match extends Application implements Initializable {
 
     @FXML
     private TableView<match> t;
-     @FXML
-    private JFXButton mo;
+     
 
     @FXML
     private TableColumn<match, String> Equipe1;
@@ -112,18 +110,10 @@ public class Gestion_match extends Application implements Initializable {
     private JFXComboBox<String> Stades;
       @FXML
     private JFXTimePicker ta;
-   @FXML
-    private JFXButton c_phase1;
-
-    @FXML
-    private JFXButton c_date;
-    
+  
     private ObservableList<match> data;
     
-    @FXML
-    private JFXButton btn_ajouter;
-    @FXML
-    private JFXButton Supprimer;
+    
 @FXML
     private JFXComboBox<String> gp;
     @FXML
@@ -137,7 +127,7 @@ public class Gestion_match extends Application implements Initializable {
     private JFXComboBox<String> score2;
 
   SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-   private  Date dateUtil;
+  
     serviceEquipe e = new serviceEquipe(); 
     IStadeDAO s= DAOStade.getInstance();
     IMatchDAO M = MatchDAO.getInstance();
@@ -148,6 +138,14 @@ public class Gestion_match extends Application implements Initializable {
     List s2;
     List s3;
    match m ;
+     @FXML
+    private Label ha;
+    
+     @FXML
+    private JFXDrawer SidePannel;
+    @FXML
+    private JFXHamburger Sp;
+    
     
     /**
      * Initializes the controller class.
@@ -158,7 +156,7 @@ public class Gestion_match extends Application implements Initializable {
     
        eq1 = new ArrayList<>();       
        eq2 = new ArrayList<>();
-      
+     
        s2 = new ArrayList<>();
        s1=s.ConsulterStadeList();
       eq = e.selectEquipes();
@@ -187,11 +185,25 @@ public class Gestion_match extends Application implements Initializable {
     void Gere_Joueur(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/Gui/FXMLGestionJoueur.fxml"));
         Scene s = new Scene(root); 
-        s.getStylesheets().add(getClass().getResource("/Asset/fxml.css").toExternalForm());
+        s.getStylesheets().add(getClass().getResource("/Asset/MainFramemel.css").toExternalForm());
         Stage s2 =(Stage) ((Node)event.getSource()).getScene().getWindow();
         s2.setScene(s);
         s2.show();
 
+    }
+    @FXML
+    void Classement(ActionEvent event) throws IOException {
+        
+       
+        Parent root = FXMLLoader.load(getClass().getResource("/Gui/Classement.fxml"));
+        Scene s = new Scene(root); 
+        s.getStylesheets().add(getClass().getResource("/Asset/fxml.css").toExternalForm());
+         Stage s2 =(Stage) ((Node)event.getSource()).getScene().getWindow();
+       
+        s2.setScene(s);
+      
+       
+          s2.show();
     }
 
     @FXML
@@ -199,10 +211,38 @@ public class Gestion_match extends Application implements Initializable {
 
           Parent root = FXMLLoader.load(getClass().getResource("/Gui/FXMLGestionEquipe.fxml"));
         Scene s = new Scene(root); 
-        s.getStylesheets().add(getClass().getResource("/Asset/fxml.css").toExternalForm());
+        s.getStylesheets().add(getClass().getResource("/Asset/MainFramemel.css").toExternalForm());
         Stage s2 =(Stage) ((Node)event.getSource()).getScene().getWindow();
         s2.setScene(s);
         s2.show();
+    }
+
+     private void initDrawer() {
+        try {
+            AnchorPane SP = FXMLLoader.load(getClass().getResource("/GUI/SidePannel.fxml"));
+
+            
+            
+            SP.getStylesheets().add(getClass().getResource("/Asset/fxml.css").toExternalForm());
+            
+            SidePannel.setSidePane(SP);
+           
+        } catch (IOException ex) {
+           
+            System.out.println(ex.getMessage());
+        }
+        
+        HamburgerSlideCloseTransition task = new HamburgerSlideCloseTransition(Sp);
+        task.setRate(-1);
+        Sp.addEventHandler(MouseEvent.MOUSE_CLICKED, (Event event) -> {
+            task.setRate(task.getRate() * -1);
+            task.play();
+            if (SidePannel.isHidden()) {
+                SidePannel.open();
+            } else {
+                SidePannel.close();
+            }
+        });
     }
 
     
@@ -216,7 +256,7 @@ public class Gestion_match extends Application implements Initializable {
         stade saa = new stade();
         saa =s.Consulterstade(Stades.getValue());
          
-    m = new match(date.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")),ta.getValue().format(DateTimeFormatter.ofPattern("hh:mm")),eqa,saa,eqb,phase.getValue());
+   
      
     List<match> sda= M.chercherMatchParDate(date.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
    List sda1=sda.stream().map(e->e.getStade()).collect(Collectors.toList());
@@ -232,7 +272,7 @@ public class Gestion_match extends Application implements Initializable {
        Alert alert = new Alert(AlertType.ERROR);
          alert.setTitle("Equipe !!!");
          alert.setHeaderText(null);
-        alert.setContentText("l'equipe"+id_equipe.getValue()+"dèja a un match");
+        alert.setContentText("l'equipe "+id_equipe.getValue()+" dèja a un match");
         alert.showAndWait();
    }
    else if ((sda.stream().anyMatch(e->e.getEquipe1().getPays().contains(id_equipe2.getValue())))||
@@ -241,7 +281,7 @@ public class Gestion_match extends Application implements Initializable {
         Alert alert = new Alert(AlertType.ERROR);
          alert.setTitle("Equipe !!!");
          alert.setHeaderText(null);
-        alert.setContentText("l'equipe"+id_equipe2.getValue()+ "dèja a un match");
+        alert.setContentText("l'equipe "+id_equipe2.getValue()+" dèja a un match");
         alert.showAndWait();
    }
        else
@@ -262,7 +302,7 @@ public class Gestion_match extends Application implements Initializable {
         alert.showAndWait();
          
      }
-     else if (id_equipe.getValue().isEmpty()||id_equipe2.getValue().isEmpty()||Stades.getValue().isEmpty()||phase.getValue().isEmpty()){
+     else if (id_equipe.getSelectionModel().isEmpty() || id_equipe2.getValue().isEmpty()){
          Alert alert = new Alert(AlertType.ERROR);
          alert.setTitle("remplir info");
          alert.setHeaderText(null);
@@ -271,13 +311,18 @@ public class Gestion_match extends Application implements Initializable {
      }
              
              
-            else {  M.ajouterMatch(m);
+            else {
+          m = new match(date.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")),ta.getValue().format(DateTimeFormatter.ofPattern("hh:mm")),eqa,saa,eqb,phase.getValue());
+         M.ajouterMatch(m);
           Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle("Match ajouté");
          alert.setHeaderText(null);
         alert.setContentText("vous avez ajouté le match !");
-        alert.showAndWait();}
-   
+        alert.showAndWait();
+         id_equipe.getItems().remove(eqa.getPays());
+    
+     }
+      id_equipe.getItems().remove(eqa.getPays());
        Parent creerGroupe = FXMLLoader.load(getClass().getResource("/Gui/FXMLGestion_Match.fxml"));
         Scene sceneAffichage = new Scene(creerGroupe);
         sceneAffichage.getStylesheets().add(getClass().getResource("/Asset/fxml.css").toExternalForm());
@@ -301,12 +346,12 @@ public class Gestion_match extends Application implements Initializable {
          if (option.get() == ButtonType.OK){
               M.supprimerMatch(s);
          }else if(option.get()==ButtonType.CANCEL){
-             t.refresh();
+       t.refresh();
          }
          
 
         
-        t.refresh();
+   t.refresh();
        
        
        Parent creerGroupe = FXMLLoader.load(getClass().getResource("/Gui/FXMLGestion_Match.fxml"));
@@ -338,16 +383,23 @@ public class Gestion_match extends Application implements Initializable {
             match  m6 =  t.getSelectionModel().getSelectedItem();
             LocalDate d = date1.getValue();
             
-        
+        if(date1.getValue().isAfter(LocalDate.now())){
         String s = date1.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
     
        M.modifierDateMatch(s, m6);
        Notifications.create()
            .title("Changement du date")
               .text("le match est reporté pour "+s)
-             .showWarning();
+             .showWarning();}
+        else {
+            Alert alert = new Alert(AlertType.ERROR);
+         alert.setTitle("Date!!");
+         alert.setHeaderText(null);
+        alert.setContentText("Date non acceptable !");
+        alert.showAndWait();
+        }
       
-       t.refresh();
+     t.refresh();
        
        
        Parent creerGroupe = FXMLLoader.load(getClass().getResource("/Gui/FXMLGestion_Match.fxml"));
@@ -375,8 +427,12 @@ public class Gestion_match extends Application implements Initializable {
         {if(c>c2){
            int z1= e.AfficherEquipe(e1).getIdEquipe();
            int score=e.Consulterpoint(e1);
+
           Equipe ea=new Equipe(z1,3+score);
-         e.modifierEquipescore(ea, ea.idEquipe);
+         e.modifierEquipe(ea, ea.idEquipe);
+
+          //Equipe ea=new Equipe(z1,3+score);
+         //e.modifierEquipescore(ea, ea.getIdEquipe());
          Notifications.create()
            .title("Changement du score")
               .text("l'equipe "+e1+" a gagné")
@@ -385,7 +441,9 @@ public class Gestion_match extends Application implements Initializable {
              int z1= e.AfficherEquipe(e2).getIdEquipe();
            int score=e.Consulterpoint(e2);
           Equipe ea=new Equipe(z1,3+score);
-         e.modifierEquipescore(ea, ea.idEquipe);
+         e.modifierEquipe(ea, ea.idEquipe);
+          //Equipe ea=new Equipe(z1,3+score);
+         //e.modifierEquipescore(ea, ea.idEquipe);
              Notifications.create()
            .title("Changement du score")
               .text("l'equipe "+e2+" a gagné")
@@ -395,17 +453,129 @@ public class Gestion_match extends Application implements Initializable {
              int z1= e.AfficherEquipe(e1).getIdEquipe();
            int score=e.Consulterpoint(e1);
           Equipe ea=new Equipe(z1,1+score);
-         e.modifierEquipescore(ea, ea.idEquipe);
+         e.modifierEquipe(ea, ea.idEquipe);
           int z2= e.AfficherEquipe(e2).getIdEquipe();
-           int score2=e.Consulterpoint(e1);
+           int score2=e.Consulterpoint(e2);
           Equipe ea2=new Equipe(z2,1+score2);
-         e.modifierEquipescore(ea, ea.idEquipe);
+         e.modifierEquipe(ea2, ea2.idEquipe);
+          //Equipe ea=new Equipe(z1,1+score);
+         //e.modifierEquipescore(ea, ea.idEquipe);
+       //   int z2= e.AfficherEquipe(e2).getIdEquipe();
+        //   int score2=e.Consulterpoint(e2);
+          //Equipe ea2=new Equipe(z2,1+score2);
+         //e.modifierEquipescore(ea2, ea2.getIdEquipe());
              Notifications.create()
            .title("Changement du score")
               .text("Null")
              .showInformation();
         }}
-        t.refresh();
+        else  if(t.getSelectionModel().getSelectedItem().getPhase().equals("1/8")){
+            {
+                if(c>c2){
+           int z1= e.AfficherEquipe(e1).getIdEquipe();
+        Equipe eqa = e.AfficherEquipe(z1);
+        eqa.setPhase("1/4");
+        e.modifierEquipe(eqa, z1);
+         int z2=e.AfficherEquipe(e2).getIdEquipe();
+        Equipe eq2=e.AfficherEquipe(z2);
+        eq2.setPhase("Eliminée");
+        e.modifierEquipe(eq2, z2);
+         Notifications.create()
+           .title("Changement du score")
+              .text("l'equipe "+e1+" a gagné et passe au 1/4")
+             .showInformation();}
+        else if (c<c2){
+             int z1= e.AfficherEquipe(e2).getIdEquipe();
+          
+          Equipe ea=e.AfficherEquipe(z1);
+          ea.setPhase("1/4");
+         e.modifierEquipe(ea, z1);
+
+         //e.modifierEquipescore(ea, z1);
+         
+          int z2=e.AfficherEquipe(e1).getIdEquipe();
+        Equipe eq2=e.AfficherEquipe(z2);
+        eq2.setPhase("Eliminée");
+        e.modifierEquipe(eq2, z2);
+             Notifications.create()
+           .title("Changement du score")
+              .text("l'equipe "+e2+" a gagné")
+             .showInformation();
+        }}
+        }
+       else if(t.getSelectionModel().getSelectedItem().getPhase().equals("1/4")){
+           {
+                if(c>c2){
+           int z1= e.AfficherEquipe(e1).getIdEquipe();
+        Equipe eqa = e.AfficherEquipe(z1);
+        eqa.setPhase("1/2");
+        e.modifierEquipe(eqa, z1);
+         int z2=e.AfficherEquipe(e2).getIdEquipe();
+        Equipe eq2=e.AfficherEquipe(z2);
+        eq2.setPhase("Eliminée");
+        e.modifierEquipe(eq2, z2);
+         Notifications.create()
+           .title("Changement du score")
+              .text("l'equipe "+e1+" a gagné et passe au 1/2")
+             .showInformation();}
+        else if (c<c2){
+             int z1= e.AfficherEquipe(e2).getIdEquipe();
+          Equipe ea=e.AfficherEquipe(z1);
+          ea.setPhase("1/2");
+         e.modifierEquipe(ea, z1);
+         //e.modifierEquipescore(ea, z1);
+         
+          int z2=e.AfficherEquipe(e1).getIdEquipe();
+        Equipe eq2=e.AfficherEquipe(z2);
+        eq2.setPhase("Eliminée");
+        e.modifierEquipe(eq2, z2);
+        
+             Notifications.create()
+           .title("Changement du score")
+              .text("l'equipe "+e2+" a gagné passe au 1/2")
+             .showInformation();
+        }}
+        }
+         if(t.getSelectionModel().getSelectedItem().getPhase().equals("1/2")){
+           {
+                if(c>c2){
+           int z1= e.AfficherEquipe(e1).getIdEquipe();
+           int z2=e.AfficherEquipe(e2).getIdEquipe();
+           Equipe eq2 = e.AfficherEquipe(z2);
+        Equipe eqa = e.AfficherEquipe(z1);
+        eqa.setPhase("final");
+        eq2.setPhase("3éme place");
+        e.modifierEquipe(eq2, z2);
+        e.modifierEquipe(eqa, z1);
+        
+         Notifications.create()
+           .title("Changement du score")
+              .text("l'equipe "+e1+" a gagné")
+             .showInformation();}
+        else if (c<c2){
+             int z1= e.AfficherEquipe(e2).getIdEquipe();
+           Equipe ea=e.AfficherEquipe(z1);
+          ea.setPhase("final");
+
+         e.modifierEquipe(ea, z1);
+
+         //e.modifierEquipescore(ea, z1);
+
+         
+         int z2= e.AfficherEquipe(e1).getIdEquipe();
+           Equipe ea1=e.AfficherEquipe(z2);
+          ea.setPhase("3éme place");
+         e.modifierEquipe(ea1, z2); 
+
+         //e.modifierEquipescore(ea1, z2); 
+         
+         Notifications.create()
+           .title("Changement du score")
+              .text("l'equipe "+e2+" a gagné")
+             .showInformation();
+        }} 
+        }
+    t.refresh();
        
        
        Parent creerGroupe = FXMLLoader.load(getClass().getResource("/Gui/FXMLGestion_Match.fxml"));
@@ -429,6 +599,7 @@ public class Gestion_match extends Application implements Initializable {
     else  if(this.phase.getValue().equals("1/4"))
     {
         this.gp.setDisable(true);
+        this.ha.setVisible(false);
         List z = new ArrayList<>();
        z= e.chercherParPhase("1/4").stream().map(e->e.getPays()).collect(Collectors.toList());
         this.id_equipe.getItems().clear();
@@ -439,6 +610,7 @@ public class Gestion_match extends Application implements Initializable {
    else  if(this.phase.getValue().equals("1/8"))
     {
         this.gp.setDisable(true);
+        this.ha.setVisible(false);
         List z = new ArrayList<>();
        z= e.chercherParPhase("1/8").stream().map(e->e.getPays()).collect(Collectors.toList());
         this.id_equipe.getItems().clear();
@@ -449,6 +621,7 @@ public class Gestion_match extends Application implements Initializable {
    else  if(this.phase.getValue().equals("1/2"))
     {
         this.gp.setDisable(true);
+        this.ha.setVisible(false);
         List z = new ArrayList<>();
        z= e.chercherParPhase("1/2").stream().map(e->e.getPays()).collect(Collectors.toList());
         this.id_equipe.getItems().clear();
@@ -460,6 +633,7 @@ public class Gestion_match extends Application implements Initializable {
     else  if(this.phase.getValue().equals("final"))
     {
         this.gp.setDisable(true);
+        this.ha.setVisible(false);
         List z = new ArrayList<>();
        z= e.chercherParPhase("final").stream().map(e->e.getPays()).collect(Collectors.toList());
         this.id_equipe.getItems().clear();
@@ -471,8 +645,6 @@ public class Gestion_match extends Application implements Initializable {
     }
      @FXML
     void modifier_Ca(ActionEvent event) throws IOException {
-      
-       
        
        Parent creerGroupe = FXMLLoader.load(getClass().getResource("/Gui/FXMLC_Stade.fxml"));
         Scene sceneAffichage = new Scene(creerGroupe);
@@ -487,10 +659,13 @@ public class Gestion_match extends Application implements Initializable {
     @FXML
     void gp(ActionEvent event) {
         
-        
-        e.AfficherEquipepargp(this.gp.getValue());
+                e.chercherParGroupe(this.gp.getValue());
         List z = new ArrayList<>();
-        z=e.AfficherEquipepargp(this.gp.getValue()).stream().map(e->e.getPays()).collect(Collectors.toList());
+        z=e.chercherParGroupe(this.gp.getValue()).stream().map(e->e.getPays()).collect(Collectors.toList());
+
+       // e.AfficherEquipepargp(this.gp.getValue());
+//        List z = new ArrayList<>();
+        //z=e.AfficherEquipepargp(this.gp.getValue()).stream().map(e->e.getPays()).collect(Collectors.toList());
         this.id_equipe.getItems().clear();
         this.id_equipe.getItems().addAll(z);
          this.id_equipe2.getItems().clear();
@@ -502,12 +677,13 @@ public class Gestion_match extends Application implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
       
+      
         this.gp.setDisable(true);
         
         this.Stades.getItems().addAll(s2);
         this.phase.getItems().addAll("Premier Tour","1/8","1/4","1/2","Final","3éme place");
-      this.score1.getItems().addAll("1","2","3","4","5","6","7","8","9","10");
-      this.score2.getItems().addAll("1","2","3","4","5","6","7","8","9","10");
+      this.score1.getItems().addAll("0","1","2","3","4","5","6","7","8","9","10");
+      this.score2.getItems().addAll("0","1","2","3","4","5","6","7","8","9","10");
       this.gp.getItems().addAll("A","B","C","D","E","F","G","H");
        date.setValue(LocalDate.now());
      
@@ -527,7 +703,7 @@ public class Gestion_match extends Application implements Initializable {
        sc.setCellValueFactory(new PropertyValueFactory<>("score"));
        sc1.setCellValueFactory(new PropertyValueFactory<>("score2"));
        
-       
+         initDrawer();
        
      
         //TRAVEL TODO

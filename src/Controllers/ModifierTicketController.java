@@ -13,7 +13,7 @@ import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import Entities.Fos_User;
 import Entities.match;
-import entities.Ticket;
+import Entities.Ticket;
 
 import java.io.IOException;
 import java.net.URL;
@@ -27,19 +27,21 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import Services.DAOStade;
 import Services.MatchDAO;
 import Services.serviceEquipe;
 import Services.TicketDAO;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.control.Alert;
+import org.controlsfx.control.Notifications;
 
 public class ModifierTicketController implements Initializable {
 
@@ -115,7 +117,7 @@ public class ModifierTicketController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         ticketSelectionne = listTichetController.getTicketSelectionne();
-        System.out.println(ticketSelectionne);
+       // System.out.println(ticketSelectionne);
         id_categorie.setItems(lstcat);
         id_nbticket.setItems(lstnb);
       id_equipe1.setText(ticketSelectionne.getIdMatch().getEquipe1().getPays());
@@ -135,7 +137,7 @@ public class ModifierTicketController implements Initializable {
         data = FXCollections.observableArrayList();
        lsa.stream().forEach((e) -> {
             data.add(e);
-            System.out.println(e);
+          //  System.out.println(e);
         });
        
        tableViws.setItems(data);
@@ -153,15 +155,15 @@ id_matchht.setCellValueFactory(new PropertyValueFactory<>("idMatch"));
     }
            private void setCellValueFromTableToText() {
          
-        System.out.println("messageee");
+       // System.out.println("messageee");
         tableViws.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
 
               match   gr = (match) tableViws.getItems().get(tableViws.getSelectionModel().getSelectedIndex());
-                System.out.println(gr);
+               // System.out.println(gr);
                 int s = tableViws.getSelectionModel().getSelectedIndex();
-                System.out.println(s);
+              //  System.out.println(s);
              id_matchht.setText(Integer.toString(gr.getIdMatch()));
                id_equipe1.setText(gr.getEquipe1().getPays());
                id_equipe2.setText(gr.getEquipe2().getPays());
@@ -177,26 +179,43 @@ id_matchht.setCellValueFactory(new PropertyValueFactory<>("idMatch"));
 
     @FXML
     void ModifierTicket(ActionEvent event) throws IOException {
-        int s = Integer.parseInt(txdann.getText());
+      //  int s = Integer.parseInt(txdann.getText());
+     try {
+         Float.parseFloat(id_prix.getText());
          int z = ticketSelectionne.getIdUser().getId();
-        Ticket x = new Ticket(ticketSelectionne.getIdTicket(), id_nbticket.getValue(), id_categorie.getValue(), Float.parseFloat(id_prix.getText()), new Fos_User(z), new match(s));
+        Ticket x = new Ticket(ticketSelectionne.getIdTicket(), id_nbticket.getValue(), id_categorie.getValue(), Float.parseFloat(id_prix.getText()), new Fos_User(z), new match(ticketSelectionne.getIdMatch().getIdMatch()));
 
         tda.modifierTicket(x);
-       // ((Node) (event.getSource())).getScene().getWindow().hide();
-Stage stage ;
+           Alert fail= new Alert(Alert.AlertType.INFORMATION);
+        fail.setHeaderText("Succés!");
+        fail.setContentText("Votre Ticket a ete modifié  ");
+        fail.showAndWait();
+           Notifications.create().title("Succes").text("Ticket modifié ").showConfirm();
+           Parent afficher ;
+        Scene sceneAffichage;
+          Stage stage=new Stage();
+       afficher = FXMLLoader.load(getClass().getResource("../GUI/ListTickets.fxml"));
+     sceneAffichage = new Scene(afficher);
+     sceneAffichage.getStylesheets().add(getClass().getResource("../Asset/MainFram.css").toExternalForm());
+         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+     stage.setScene(sceneAffichage);
+        stage.show();}
+      catch(NumberFormatException ex){
+          
+           Alert a = new Alert(Alert.AlertType.ERROR);
+            a.setTitle("error");
+            a.setHeaderText("prix invalid !");
+            a.setContentText("");
+            a.showAndWait();
+          }
+       /* Stage stage ;
      
             FXMLLoader afficher = new FXMLLoader();
         afficher.setLocation(getClass().getResource("ListTickets.fxml"));
-         Parent  root2 = afficher.load();
-            stage =new Stage();
-    
-        stage.setScene(new Scene(root2));
-        stage.initModality(Modality.APPLICATION_MODAL);
-     //   stage.initOwner(btnInviterMembres.getScene().getWindow());
-        stage.showAndWait();
-        Scene scene =new Scene(root2);
-    stage.setScene(scene);
-    stage.show();
+         Parent  root = afficher.load();
+            stage =new Stage();*/
+         Notifications.create().title("Signaler").text("Ticket Modifié ").showConfirm();
+              
     }
 
     public ModifierTicketController() {

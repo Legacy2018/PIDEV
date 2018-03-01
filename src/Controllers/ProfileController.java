@@ -29,7 +29,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import services.ServiceUtilisateur;
+import Services.ServiceUtilisateur;
 
 /**
  * FXML Controller class
@@ -79,7 +79,7 @@ public class ProfileController implements Initializable {
         Email.setText(Login_viewController.u.getEmail());
         Telephone.setText(Login_viewController.u.getEmail());
         if(( Login_viewController.u.getImg_profile()!=null)&&(Login_viewController.u.getImg_profile()!="null"))
-        imgprofil.setImage(new Image(getClass().getResource(Login_viewController.u.getImg_profile()).toString(), true));
+        imgprofil.setImage(new Image(Login_viewController.u.getImg_profile(), true));
         
     }
     private void initDrawer() {

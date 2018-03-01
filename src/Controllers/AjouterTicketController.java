@@ -20,7 +20,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import Entities.Fos_User;
-import entities.Ticket;
+import Entities.Ticket;
 import Entities.Utilisateur;
 import Entities.match;
 import java.io.IOException;
@@ -28,7 +28,6 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.stream.Collectors;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.beans.property.SimpleStringProperty;
@@ -41,15 +40,20 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import org.controlsfx.control.Notifications;
 
 /**
  * FXML Controller class
@@ -60,8 +64,8 @@ public class AjouterTicketController extends Application implements Initializabl
 
     public Utilisateur user ;
     public match mat ;
-    ObservableList<String> lstcat = FXCollections.observableArrayList("pelouse", "virage");
-    ObservableList<Integer> lstnb = FXCollections.observableArrayList(1, 2, 3, 4);
+    ObservableList<String> lstcat = FXCollections.observableArrayList("pelouse", "virage","tribune");
+    ObservableList<Integer> lstnb = FXCollections.observableArrayList(1, 2, 3, 4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30);
     @FXML
 
     private JFXTextField id_prix;
@@ -112,8 +116,12 @@ public class AjouterTicketController extends Application implements Initializabl
     private TableColumn<?, ?> heur;
     @FXML
     public JFXTextField txdann;
-     private ObservableList<match> data;
+       @FXML
+    private ImageView image1;
 
+     private ObservableList<match> data;
+ ListTicketsController listTichetController = new ListTicketsController();
+    Login_viewController loginCQONTROLLER = new Login_viewController();
     TicketDAO tdao = new TicketDAO();
     MatchDAO m = new MatchDAO();
 
@@ -124,21 +132,23 @@ public class AjouterTicketController extends Application implements Initializabl
     List eq1;
     List eq2;
     List s2;
+    Fos_User x;
+    
  static public int test;
  @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("../GUI/AjouterTicket.fxml"));
+      /*  Parent root = FXMLLoader.load(getClass().getResource("../GUI/AjouterTicket.fxml"));
         Scene scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("../Asset/fxml.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
-        stage.getIcons().add(new Image("/Ressource/fa.png"));
+        stage.getIcons().add(new Image("/Ressource/fa.png"));*/
     }
 
     public static void main(String[] args) {
         launch(args);
     }
-    @FXML
+   /* @FXML
     void verifnum(KeyEvent event) {
         id_prix.textProperty().addListener(new ChangeListener<String>() {
             @Override
@@ -149,54 +159,93 @@ public class AjouterTicketController extends Application implements Initializabl
                 }
             }
         });
-    }
+    }*/
 
     @FXML
     void AjouterAchatTicket(ActionEvent event) throws IOException {
-         test=Integer.parseInt(txdann.getText());
-        Ticket ticket = new Ticket(id_nbticket.getValue(), id_categorie.getValue(), Float.parseFloat(id_prix.getText()) ,new Fos_User(14),new match (test));
+       
+        
+       
+                 
+        try{
+          
+
+            Float.parseFloat(id_prix.getText());
+               x = loginCQONTROLLER.u;
+           test=Integer.parseInt(txdann.getText());
+            int s=x.getId();
+           
+                          
+   Ticket ticket = new Ticket(id_nbticket.getValue(), id_categorie.getValue(), Float.parseFloat(id_prix.getText()) ,new Fos_User(s),new match (test));
         TicketDAO tda = new TicketDAO();
         tda.ajouter_Ticket(ticket);
-        System.out.println("to text field action " + event.toString());
-
-        /*FXMLLoader fxmlLoader = new FXMLLoader(Pi_Gestion_Ticket.class.getResource("/views/AfficherListeTicketController.fxml"));
-        Parent root2 = (Parent) fxmlLoader.load();
-        Stage stage = new Stage();
-        stage.setScene(new Scene(root2));
-        stage.show();*/
+       // System.out.println("to text field action " + event.toString());
+           Alert fail= new Alert(AlertType.INFORMATION);
+        fail.setHeaderText("Succés!");
+        fail.setContentText("Votre Ticket est ajouté  ");
+        fail.showAndWait();
+          
+      
+        Parent afficher ;
+        Scene sceneAffichage;
+          Stage stage=new Stage();
+        
+        afficher = FXMLLoader.load(getClass().getResource("../GUI/ListTickets.fxml"));
+     sceneAffichage = new Scene(afficher);
+     sceneAffichage.getStylesheets().add(getClass().getResource("../Asset/MainFram.css").toExternalForm());
+         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+     stage.setScene(sceneAffichage);
+        stage.show();
+         Notifications.create().title("Succes").text("Ticket ajouté ").showConfirm();
+        }catch(NumberFormatException ex){
+            Alert a = new Alert(AlertType.ERROR);
+            a.setTitle("error");
+            a.setHeaderText("prix invalid !");
+            a.setContentText("");
+            a.showAndWait();
+        }
+          
+          
+               
+         
+     
+         /*  Alert fail= new Alert(Alert.AlertType.INFORMATION);
+        fail.setHeaderText("Attention!");
+        fail.setContentText("vérifiez vos champs s'il vous plait ");
+        fail.showAndWait();}
+       
+       */
+            
+          
     }
+          
+       
+          
 
     public AjouterTicketController() {
 
-    /*  eq1 = new ArrayList<>();
-        eq2 = new ArrayList<>();
-        s2 = new ArrayList<>();
-        eq = m.afficherMatch();
-        eq1 = eq.stream().map(e -> mat.getEquipe1()).collect(Collectors.toList());
-        eq2 = eq.stream().map(e -> mat.getEquipe2()).collect(Collectors.toList());
-        s2 = eq.stream().map(e -> mat.getStade()).collect(Collectors.toList());*/
+
     }
     
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-     //  this.id_equipe1.getItems().addAll(eq1);
-      // this.id_equipe2.getItems().addAll(eq2);
-       // this.id_stade.getItems().addAll(s2);
+   
         id_categorie.setValue(lstcat.get(0));
         id_categorie.setItems(lstcat);
         id_nbticket.setValue(lstnb.get(0));
         id_nbticket.setItems(lstnb);
-        
-        
-     //    this.id_equipe1.getItems().addAll(eq1);
-     //   this.id_equipe2.getItems().addAll(eq1);
+        AjouterAchatTicket.setDisable(true);
+       image1.setImage(new Image("Ressource/2018_FIFA_World_Cup.png"));
+ // image1=new ImageView("Ressource/Dmd.jpg");
+  image1.setFitHeight(100);
+  image1.setFitWidth(900);
     
   List<match> lsa=m.afficherMatch();
         data = FXCollections.observableArrayList();
        lsa.stream().forEach((e) -> {
             data.add(e);
-            System.out.println(e);
+         //   System.out.println(e);
         });
        
        tableViws.setItems(data);
@@ -219,15 +268,15 @@ id_matchht.setCellValueFactory(new PropertyValueFactory<>("idMatch"));
     }
       private void setCellValueFromTableToText() {
          
-        System.out.println("messageee");
+     //   System.out.println("messageee");
         tableViws.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
 
               match   gr = (match) tableViws.getItems().get(tableViws.getSelectionModel().getSelectedIndex());
-                System.out.println(gr);
+               // System.out.println(gr);
                 int s = tableViws.getSelectionModel().getSelectedIndex();
-                System.out.println(s);
+               // System.out.println(s);
              id_matchht.setText(Integer.toString(gr.getIdMatch()));
                id_equipe1.setText(gr.getEquipe1().getPays());
                id_equipe2.setText(gr.getEquipe2().getPays());
@@ -237,7 +286,8 @@ id_matchht.setCellValueFactory(new PropertyValueFactory<>("idMatch"));
                 id_date.setText(gr.getDateMatch());
                 id_heur.setText(gr.getHeureMatch());
                   txdann.setText(Integer.toString(gr.getIdMatch()));
-            }
+                AjouterAchatTicket.setDisable(false);
+                              }
         });
     }
 

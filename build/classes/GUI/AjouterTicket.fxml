@@ -6,46 +6,48 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AjouterTicketController">
+<AnchorPane id="AnchorPane" prefHeight="603.0" prefWidth="1018.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AjouterTicketController">
    <children>
-      <TitledPane animated="false" layoutX="31.0" layoutY="14.0" prefHeight="263.0" prefWidth="559.0" text="untitled">
-         <content>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="245.0" prefWidth="524.0">
-               <children>
-                  <Label layoutX="14.0" layoutY="19.0" text="Equipe1" />
-                  <Label layoutX="279.0" layoutY="19.0" text="Equipe2" />
-                  <Label layoutX="14.0" layoutY="172.0" text="prix" />
-                  <JFXTextField fx:id="id_prix" layoutX="71.0" layoutY="168.0" onKeyPressed="#verifnum" />
-                  <Label layoutX="14.0" layoutY="128.0" text="nbticket" />
-                  <Label layoutX="14.0" layoutY="58.0" prefHeight="34.0" prefWidth="61.0" text="categorie" />
-                  <JFXButton fx:id="AjouterAchatTicket" buttonType="RAISED" layoutX="488.0" layoutY="106.0" onAction="#AjouterAchatTicket" ripplerFill="#686565" text="Ajouter" />
-                  <Label layoutX="220.0" layoutY="32.0" text="VS" />
-                  <Label layoutX="286.0" layoutY="83.0" text="Stade" />
-                  <JFXComboBox fx:id="id_categorie" layoutX="93.0" layoutY="79.0" />
-                  <JFXComboBox fx:id="id_nbticket" layoutX="101.0" layoutY="125.0" />
-                  <JFXTextField fx:id="id_equipe1" layoutX="62.0" layoutY="20.0" />
-                  <JFXTextField fx:id="id_equipe2" layoutX="346.0" layoutY="28.0" />
-                  <JFXTextField fx:id="id_stade" layoutX="353.0" layoutY="92.0" />
-                  <JFXTextField fx:id="id_heur" layoutX="353.0" layoutY="181.0" />
-                  <JFXTextField fx:id="id_date" layoutX="353.0" layoutY="138.0" />
-                  <JFXTextField fx:id="txdann" layoutX="197.0" layoutY="119.0" />
-               </children>
-            </AnchorPane>
-         </content>
-      </TitledPane>
-      <TableView fx:id="tableViws" layoutX="38.0" layoutY="295.0" prefHeight="200.0" prefWidth="545.0">
+      <TableView fx:id="tableViws" layoutX="78.0" layoutY="5.0" prefHeight="294.0" prefWidth="866.0">
          <columns>
-            <TableColumn fx:id="id_matchht" prefWidth="75.0" text="id_ticket" />
-            <TableColumn fx:id="Equipe1" prefWidth="75.0" text="Equipe1" />
-            <TableColumn fx:id="Equipee2" prefWidth="75.0" text="Equipe2" />
-            <TableColumn fx:id="categories" prefWidth="75.0" text="categories" />
-            <TableColumn fx:id="satades" prefWidth="75.0" text="Stades" />
-            <TableColumn fx:id="datematch" prefWidth="94.0" text="Date Matche" />
-            <TableColumn fx:id="heur" prefWidth="78.0" text="Heur" />
+            <TableColumn fx:id="id_matchht" prefWidth="75.0" text="id_ticket" visible="false" />
+            <TableColumn fx:id="Equipe1" prefWidth="179.3333282470703" text="Equipe1" />
+            <TableColumn fx:id="Equipee2" prefWidth="175.6666717529297" text="Equipe2" />
+            <TableColumn fx:id="satades" prefWidth="185.33334350585938" text="Stades" />
+            <TableColumn fx:id="datematch" prefWidth="174.33331298828125" text="Date Matche" />
+            <TableColumn fx:id="heur" prefWidth="151.66668701171875" text="Heur" />
          </columns>
       </TableView>
+      <AnchorPane layoutY="316.0" minHeight="0.0" minWidth="0.0" prefHeight="267.0" prefWidth="1019.0">
+         <children>
+            <JFXTextField fx:id="id_prix" layoutX="650.0" layoutY="190.0" prefHeight="25.0" prefWidth="169.0" promptText="Prix ( $)" unFocusColor="#2b0f90" />
+            <Label layoutX="462.0" layoutY="27.0" prefHeight="25.0" prefWidth="30.0" text="VS" textAlignment="CENTER" textFill="#d03d20">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="18.0" />
+               </font></Label>
+            <JFXComboBox fx:id="id_categorie" layoutX="652.0" layoutY="79.0" prefHeight="25.0" prefWidth="169.0" styleClass="jfx-combo" stylesheets="@../Asset/MainFram.css" unFocusColor="#21118a" />
+            <JFXComboBox fx:id="id_nbticket" layoutX="651.0" layoutY="131.0" prefHeight="25.0" prefWidth="169.0" styleClass="jfx-combo" stylesheets="@../Asset/MainFram.css" unFocusColor="#21118a" visibleRowCount="5" />
+            <JFXTextField fx:id="id_equipe1" editable="false" layoutX="236.0" layoutY="27.0" promptText="Equipe1" unFocusColor="#4f17ae" />
+            <JFXTextField fx:id="id_equipe2" editable="false" layoutX="575.0" layoutY="26.0" promptText="Equipe2" unFocusColor="#5016bc" />
+            <JFXTextField fx:id="id_stade" editable="false" layoutX="134.0" layoutY="81.0" prefHeight="25.0" prefWidth="169.0" promptText="Stade" unFocusColor="#4f17ae" />
+            <JFXTextField fx:id="id_heur" editable="false" layoutX="134.0" layoutY="135.0" prefHeight="25.0" prefWidth="169.0" promptText="Heur du Match" unFocusColor="#4f17ae" />
+            <JFXTextField fx:id="id_date" editable="false" layoutX="134.0" layoutY="192.0" prefHeight="25.0" prefWidth="169.0" promptText="Date du  Matche" unFocusColor="#3c0d8d" />
+            <JFXTextField fx:id="txdann" disable="true" layoutX="197.0" layoutY="119.0" visible="false" />
+            <JFXButton fx:id="AjouterAchatTicket" buttonType="RAISED" layoutX="890.0" layoutY="225.0" onAction="#AjouterAchatTicket" prefHeight="50.0" prefWidth="102.0" ripplerFill="#686565">
+               <graphic>
+                  <ImageView fitHeight="56.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Ressource/done%20(1).png" />
+                     </image>
+                  </ImageView>
+               </graphic></JFXButton>
+            <ImageView fx:id="image1" fitHeight="113.0" fitWidth="135.0" layoutX="391.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

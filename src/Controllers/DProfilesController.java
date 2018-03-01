@@ -28,7 +28,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import services.ServiceUtilisateur;
+import Services.ServiceUtilisateur;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -81,11 +84,12 @@ public class DProfilesController implements Initializable {
         new ServiceUtilisateur().getall().stream().filter( t -> t.getRole().equals("user")).forEach(t ->Us.add(t));
         tabview.setItems(Us);
         initDrawer();
+        
     }  
      private void initDrawer() {
         try {
-            AnchorPane SP = FXMLLoader.load(getClass().getResource("/GUI/SidePannel.fxml"));
-
+            AnchorPane SP = FXMLLoader.load(getClass().getResource("/GUI/SidePannel_1.fxml"));
+            
             
             
             SP.getStylesheets().add(getClass().getResource("/Asset/Style.css").toExternalForm());
@@ -124,6 +128,25 @@ public class DProfilesController implements Initializable {
          Us.clear();
         new ServiceUtilisateur().getallfiltred(((TextField)event.getSource()).getId(), ((TextField)event.getSource()).getText()).stream().filter( t -> t.getRole().equals("user")).forEach(t ->Us.add(t));
          tabview.setItems(Us);
+    }
+
+    @FXML
+    private void afficher(ActionEvent event) {
+        Recherche_ProfileController.u=tabview.getSelectionModel().getSelectedItem();
+        try
+        {
+            
+        Parent root = FXMLLoader.load(getClass().getResource("/GUI/ShowProfile.fxml"));
+        Stage stage=new Stage();
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("/Asset/MainFram.css").toExternalForm());
+        stage.setScene(scene);
+        stage.show();
+        }
+        catch(IOException ex)
+        {
+            System.out.println(ex);
+        }
     }
     
 }

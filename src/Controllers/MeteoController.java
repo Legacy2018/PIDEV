@@ -65,7 +65,7 @@ public class MeteoController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        boxLoca.getItems().addAll("Moscow","Saint-Pétersbourg","kazan","Samara","Iekaterinbourg","Tunisie");
+        boxLoca.getItems().addAll("Moscow","Saint-Pétersbourg","kazan","Samara","Iekaterinbourg","Rostov","Volgograd","sotchi","Saransk","Kaliningrad");
        
         // TODO
     } 
@@ -205,9 +205,9 @@ public class MeteoController implements Initializable {
         );  
        
     }
-              if (boxLoca.getValue().equals("Tunisie")){
+              if (boxLoca.getValue().equals("Rostov")){
             YahooWeatherService service = new YahooWeatherService();
-        Channel channel = service.getForecast("2347237", DegreeUnit.CELSIUS);
+        Channel channel = service.getForecast("2123177", DegreeUnit.CELSIUS);
         if(channel.getItem().getCondition().getTemp()<0)
         {
            image.setImage(berda.getImage());
@@ -230,6 +230,118 @@ public class MeteoController implements Initializable {
        
     }
             
+    
+
+
+              if (boxLoca.getValue().equals("Volgograd")){
+            YahooWeatherService service = new YahooWeatherService();
+        Channel channel = service.getForecast("2124298", DegreeUnit.CELSIUS);
+        if(channel.getItem().getCondition().getTemp()<0)
+        {
+           image.setImage(berda.getImage());
+        }
+        else if(channel.getItem().getCondition().getTemp()>0 && channel.getItem().getCondition().getTemp()<15){
+             image.setImage(nos.getImage());
+        }
+        else{
+             image.setImage(sunny.getImage());
+        }
+        txtResult.setText("La ville "+channel.getLocation().getCity()+
+                "\n visibilté est "+channel.getAtmosphere().getVisibility()
+                 +"\n température est "+channel.getItem().getCondition().getTemp()+"°C"
+                 +"\n vent "+channel.getWind().getSpeed()+"km/h"
+                 +"\n"+channel.getLastBuildDate()
+                
+        
+        
+        );  
+       
+    
+            
 
 }
+              
+              if (boxLoca.getValue().equals("sotchi")){
+            YahooWeatherService service = new YahooWeatherService();
+        Channel channel = service.getForecast("2086230", DegreeUnit.CELSIUS);
+        if(channel.getItem().getCondition().getTemp()<0)
+        {
+           image.setImage(berda.getImage());
+        }
+        else if(channel.getItem().getCondition().getTemp()>0 && channel.getItem().getCondition().getTemp()<15){
+             image.setImage(nos.getImage());
+        }
+        else{
+             image.setImage(sunny.getImage());
+        }
+        txtResult.setText("La ville "+channel.getLocation().getCity()+
+                "\n visibilté est "+channel.getAtmosphere().getVisibility()
+                 +"\n température est "+channel.getItem().getCondition().getTemp()+"°C"
+                 +"\n vent "+channel.getWind().getSpeed()+"km/h"
+                 +"\n"+channel.getLastBuildDate()
+                
+        
+        
+        );  
+       
+    
+            
+
 }
+                
+              if (boxLoca.getValue().equals("Kaliningrad")){
+            YahooWeatherService service = new YahooWeatherService();
+        Channel channel = service.getForecast("7224124", DegreeUnit.CELSIUS);
+        if(channel.getItem().getCondition().getTemp()<0)
+        {
+           image.setImage(berda.getImage());
+        }
+        else if(channel.getItem().getCondition().getTemp()>0 && channel.getItem().getCondition().getTemp()<15){
+             image.setImage(nos.getImage());
+        }
+        else{
+             image.setImage(sunny.getImage());
+        }
+        txtResult.setText("La ville "+channel.getLocation().getCity()+
+                "\n visibilté est "+channel.getAtmosphere().getVisibility()
+                 +"\n température est "+channel.getItem().getCondition().getTemp()+"°C"
+                 +"\n vent "+channel.getWind().getSpeed()+"km/h"
+                 +"\n"+channel.getLastBuildDate()
+                
+        
+        
+        );  
+       
+    
+            
+
+}
+                if (boxLoca.getValue().equals("Saransk")){
+            YahooWeatherService service = new YahooWeatherService();
+        Channel channel = service.getForecast("12597502", DegreeUnit.CELSIUS);
+        if(channel.getItem().getCondition().getTemp()<0)
+        {
+           image.setImage(berda.getImage());
+        }
+        else if(channel.getItem().getCondition().getTemp()>0 && channel.getItem().getCondition().getTemp()<15){
+             image.setImage(nos.getImage());
+        }
+        else{
+             image.setImage(sunny.getImage());
+        }
+        txtResult.setText("La ville "+channel.getLocation().getCity()+
+                "\n visibilté est "+channel.getAtmosphere().getVisibility()
+                 +"\n température est "+channel.getItem().getCondition().getTemp()+"°C"
+                 +"\n vent "+channel.getWind().getSpeed()+"km/h"
+                 +"\n"+channel.getLastBuildDate()
+                
+        
+        
+        );  
+       
+    
+            
+
+}
+              
+}}

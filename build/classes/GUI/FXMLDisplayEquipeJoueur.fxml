@@ -1,89 +1,111 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-<?import java.net.URL?>
 
-<AnchorPane id="AnchorPane" fx:id="anch" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/9.0.1" fx:controller="Controllers.DisplayEquipeJoueurController">
-    <stylesheets>
-        <URL value="@/Asset/fxml.css" />
-    </stylesheets>
-    <children>
-        <ScrollPane fx:id="scr1" prefHeight="800.0" prefWidth="241.0">
-            <content>
-                <AnchorPane fx:id="anch1" minHeight="0.0" minWidth="0.0" prefHeight="799.0" prefWidth="226.0">
-                    <children>
-                        <TableView fx:id="lsteq" layoutY="-1.0" onMousePressed="#Afficherdetails" prefHeight="787.0" prefWidth="220.0">
-                            <columns>
-                                <TableColumn fx:id="eq" prefWidth="212.0" text="Equipe" />
-                            </columns>
+<ScrollPane stylesheets="@../Asset/MainFramemel.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.DisplayEquipeJoueurController">
+   <content>
+      <AnchorPane id="AnchorPane" fx:id="anch" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0">
+        
+          <children>
+              <ScrollPane fx:id="scr1" prefHeight="800.0" prefWidth="241.0">
+                  <content>
+                      <AnchorPane fx:id="anch1" minHeight="0.0" minWidth="0.0" prefHeight="799.0" prefWidth="226.0">
+                          <children>
+                              <TableView fx:id="lsteq" layoutY="-1.0" onMousePressed="#Afficherdetails" prefHeight="787.0" prefWidth="220.0">
+                                  <columns>
+                                      <TableColumn fx:id="eq" prefWidth="212.0" text="Equipe" />
+                                  </columns>
+                              </TableView>
+                          </children>
+                      </AnchorPane>
+                  </content>
+              </ScrollPane>
+              <ScrollPane fx:id="scr2" layoutX="240.0" layoutY="328.0" prefHeight="471.0" prefWidth="1039.0">
+                  <content>
+                      <AnchorPane fx:id="anch2" minHeight="0.0" minWidth="0.0" prefHeight="492.0" prefWidth="1073.0">
+                     <children>
+                        <TableView fx:id="lstjou" layoutX="4.0" prefHeight="440.0" prefWidth="1016.0">
+                           <columns>
+                              <TableColumn fx:id="num" prefWidth="138.0" text="Maillot" />
+                              <TableColumn fx:id="nom_joueur" prefWidth="197.0" text="Nom et Prenom" />
+                              <TableColumn fx:id="nbr_but" prefWidth="137.0" text="Nombre de but" />
+                              <TableColumn fx:id="position" minWidth="0.0" prefWidth="153.0" text="Poste" />
+                              <TableColumn fx:id="crtRouge" prefWidth="114.0" text="Carton Rouge" />
+                              <TableColumn fx:id="crtJaune" prefWidth="124.0" text="Carton Jaune" />
+                           </columns>
                         </TableView>
-                    </children>
-                </AnchorPane>
-            </content>
-        </ScrollPane>
-        <ScrollPane fx:id="scr2" layoutX="240.0" layoutY="328.0" prefHeight="471.0" prefWidth="1039.0">
-            <content>
-                <AnchorPane fx:id="anch2" minHeight="0.0" minWidth="0.0" prefHeight="468.0" prefWidth="1038.0">
-                    <children>
-                        <TableView fx:id="lstjou" prefHeight="459.0" prefWidth="1039.0">
-                            <columns>
-                                <TableColumn fx:id="id_joueur" prefWidth="159.0" text="Identifiant" />
-                                <TableColumn fx:id="nom_joueur" minWidth="3.0" prefWidth="187.0" text="Nom et Prenom" />
-                                <TableColumn fx:id="nbr_but" prefWidth="179.0" text="Nombre de But" />
-                                <TableColumn fx:id="position" prefWidth="156.0" text="Position" />
-                                <TableColumn fx:id="nationalite" prefWidth="160.0" text="Nationalité" />
-                            </columns>
-                        </TableView>
-                    </children>
-                </AnchorPane>
-            </content>
-        </ScrollPane>
-        <Label fx:id="lblent" layoutX="264.0" layoutY="51.0" prefHeight="21.0" prefWidth="141.0" text="Selectionneur" textFill="WHITE" visible="false">
-            <font>
-                <Font name="Arial Bold" size="18.0" />
-            </font>
-        </Label>
-        <Label fx:id="select" layoutX="440.0" layoutY="53.0" prefHeight="17.0" prefWidth="100.0" textFill="WHITE">
-            <font>
-                <Font size="16.0" />
-            </font>
-        </Label>
-        <Label fx:id="lblent1" layoutX="265.0" layoutY="93.0" prefHeight="21.0" prefWidth="193.0" text="Nombre de But total" textFill="WHITE" visible="false">
-            <font>
-                <Font name="Arial Bold" size="18.0" />
-            </font>
-        </Label>
-        <Label fx:id="nbrbuteq" layoutX="462.0" layoutY="95.0" prefHeight="21.0" prefWidth="100.0" textFill="WHITE">
-            <font>
-                <Font size="15.0" />
-            </font>
-        </Label>
-        <Label fx:id="lblent2" layoutX="265.0" layoutY="137.0" prefHeight="21.0" prefWidth="141.0" text="Phase" textFill="WHITE" visible="false">
-            <font>
-                <Font name="Arial Bold" size="18.0" />
-            </font>
-        </Label>
-        <Label fx:id="phase" layoutX="450.0" layoutY="141.0" prefHeight="17.0" prefWidth="100.0" textFill="WHITE">
-            <font>
-                <Font size="16.0" />
-            </font>
-        </Label>
-        <Label fx:id="lblent21" layoutX="266.0" layoutY="177.0" prefHeight="21.0" prefWidth="141.0" text="Etat" textFill="WHITE" visible="false">
-            <font>
-                <Font name="Arial Bold" size="18.0" />
-            </font>
-        </Label>
-        <Label fx:id="etat" layoutX="453.0" layoutY="172.0" prefHeight="25.0" prefWidth="266.0" textFill="RED">
-            <font>
-                <Font size="16.0" />
-            </font>
-        </Label>
-        <ImageView fx:id="drapeau" fitHeight="239.0" fitWidth="283.0" layoutX="849.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true" />
-    </children>
-</AnchorPane>
+                     </children>
+                      </AnchorPane>
+                  </content>
+              </ScrollPane>
+              <Label fx:id="lblent" layoutX="264.0" layoutY="51.0" prefHeight="21.0" prefWidth="141.0" text="Selectionneur" textFill="WHITE" visible="false">
+                  <font>
+                      <Font name="Arial Bold" size="18.0" />
+                  </font>
+              </Label>
+              <Label fx:id="select" layoutX="440.0" layoutY="53.0" prefHeight="17.0" prefWidth="100.0" textFill="WHITE">
+                  <font>
+                      <Font size="16.0" />
+                  </font>
+              </Label>
+              <Label fx:id="lblent1" layoutX="265.0" layoutY="93.0" prefHeight="21.0" prefWidth="193.0" text="Nombre de But total" textFill="WHITE" visible="false">
+                  <font>
+                      <Font name="Arial Bold" size="18.0" />
+                  </font>
+              </Label>
+              <Label fx:id="nbrbuteq" layoutX="462.0" layoutY="95.0" prefHeight="21.0" prefWidth="100.0" textFill="WHITE">
+                  <font>
+                      <Font size="15.0" />
+                  </font>
+              </Label>
+              <Label fx:id="lblent2" layoutX="265.0" layoutY="137.0" prefHeight="21.0" prefWidth="141.0" text="Phase" textFill="WHITE" visible="false">
+                  <font>
+                      <Font name="Arial Bold" size="18.0" />
+                  </font>
+              </Label>
+              <Label fx:id="phase" layoutX="450.0" layoutY="141.0" prefHeight="17.0" prefWidth="100.0" textFill="WHITE">
+                  <font>
+                      <Font size="16.0" />
+                  </font>
+              </Label>
+              <Label fx:id="lblent21" layoutX="266.0" layoutY="177.0" prefHeight="21.0" prefWidth="141.0" text="Etat" textFill="WHITE" visible="false">
+                  <font>
+                      <Font name="Arial Bold" size="18.0" />
+                  </font>
+              </Label>
+              <Label fx:id="etat" layoutX="453.0" layoutY="172.0" prefHeight="25.0" prefWidth="266.0" textFill="RED" visible="false">
+                  <font>
+                      <Font size="16.0" />
+                  </font>
+              </Label>
+              <ImageView fx:id="drapeau" fitHeight="239.0" fitWidth="359.0" layoutX="740.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true" />
+            <JFXButton fx:id="imprim" layoutX="1106.0" layoutY="104.0" onAction="#Print" prefHeight="44.0" prefWidth="9.0">
+               <graphic>
+                  <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Ressource/pdf.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="Stat" layoutX="1106.0" layoutY="177.0" onAction="#goToStat" prefHeight="72.0" prefWidth="66.0">
+               <graphic>
+                  <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Ressource/piechart.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+          </children>
+      </AnchorPane>
+   </content>
+</ScrollPane>

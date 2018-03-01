@@ -10,6 +10,7 @@ import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.transitions.hamburger.HamburgerSlideCloseTransition;
 import Entities.Reclamation;
+import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -23,6 +24,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -56,6 +58,10 @@ public class DReclamationsController implements Initializable {
     private JFXHamburger Sp;
     @FXML
     private CheckBox Vlu;
+    @FXML
+    private JFXTextField sujet;
+    @FXML
+    private TextArea message;
 
     /**
      * Initializes the controller class.
@@ -70,6 +76,7 @@ public class DReclamationsController implements Initializable {
         rlu.setCellValueFactory(new PropertyValueFactory<>("lu"));
         new ServiceReclamation().getAllRec().stream().forEach(t -> rs.add(t) );
         rectab.setItems(rs);
+        rectab.getSelectionModel().selectedItemProperty().addListener((a,b,c)->{message.setText(c.getMessage());sujet.setText(c.getSujet());} );
     }    
      private void initDrawer() {
         try {

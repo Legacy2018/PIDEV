@@ -70,10 +70,10 @@
         
 <columns>
       <TableColumn fx:id="Equipe1_2" prefWidth="129.0" text="Equipe1" />
-      <TableColumn fx:id="sc_2" prefWidth="122.0" text="score" />
-      <TableColumn fx:id="sc_21" prefWidth="122.0" text="score2" />
-      <TableColumn fx:id="Equipe2_2" prefWidth="139.0" text="Equipe 2" />
-      <TableColumn fx:id="st_2" prefWidth="156.0" text="Stade" />
+      <TableColumn fx:id="sc_2" prefWidth="83.0" />
+      <TableColumn fx:id="sc_21" prefWidth="99.0" />
+      <TableColumn fx:id="Equipe2_2" prefWidth="170.0" text="Equipe 2" />
+      <TableColumn fx:id="st_2" prefWidth="187.0" text="Stade" />
       <TableColumn fx:id="ph_2" prefWidth="142.0" text="phase" />
       <TableColumn fx:id="dt_2" prefWidth="107.0" text="date" />
       <TableColumn fx:id="h_2" prefWidth="97.0" text="heure" />
