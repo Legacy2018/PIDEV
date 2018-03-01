@@ -93,20 +93,20 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="mo2" contentDisplay="TOP" mnemonicParsing="false" onAction="#Gere_Joueur" prefHeight="112.0" prefWidth="206.0" styleClass="toolbar-button" textAlignment="CENTER">
-               <graphic>
-                  <ImageView fitHeight="32.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../Ressource/gestMatch.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </JFXButton>
             <JFXButton fx:id="mo3" contentDisplay="TOP" mnemonicParsing="false" onAction="#Gerer_equipe" prefHeight="102.0" prefWidth="206.0" styleClass="toolbar-button" textAlignment="CENTER">
                <graphic>
                   <ImageView fitHeight="45.0" fitWidth="102.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Ressource/gestEquipes.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="mo2" contentDisplay="TOP" mnemonicParsing="false" onAction="#Gere_Joueur" prefHeight="112.0" prefWidth="206.0" styleClass="toolbar-button" textAlignment="CENTER">
+               <graphic>
+                  <ImageView fitHeight="32.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Ressource/gestMatch.png" />
                      </image>
                   </ImageView>
                </graphic>

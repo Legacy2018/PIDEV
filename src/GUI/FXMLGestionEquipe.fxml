@@ -13,13 +13,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
 
-<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" stylesheets="@../Assets/MainFram.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.GestionEquipeController">
+<ScrollPane stylesheets="@../Assets/MainFramemel.css" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.GestionEquipeController">
    <content>
       <AnchorPane id="AnchorPane" fx:id="anchro" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0">   
           <children>
             <Line endX="100.0" layoutX="248.0" layoutY="292.0" startX="-100.0" stroke="WHITE" AnchorPane.bottomAnchor="507.5" AnchorPane.leftAnchor="147.5" AnchorPane.topAnchor="291.5" />
             <JFXButton fx:id="btImpIm" layoutX="148.0" layoutY="318.0" onAction="#importerImage" prefHeight="40.0" prefWidth="201.0" text="Importer un  drapeau" />
-            <Button fx:id="btSupp" layoutX="571.0" layoutY="715.0" mnemonicParsing="false" onAction="#SupprimerEq" prefHeight="40.0" prefWidth="190.0" text="Supprimer">
+            <Button fx:id="btSupp" disable="true" layoutX="571.0" layoutY="715.0" mnemonicParsing="false" onAction="#SupprimerEq" prefHeight="40.0" prefWidth="190.0" text="Supprimer">
                <graphic>
                   <ImageView fitHeight="50.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -31,7 +31,7 @@
             <ChoiceBox fx:id="cbgroupe" layoutX="151.0" layoutY="453.0" prefHeight="25.0" prefWidth="195.0" AnchorPane.leftAnchor="151.0" AnchorPane.topAnchor="453.0" />
             <ChoiceBox fx:id="cbetat" layoutX="150.0" layoutY="513.0" prefHeight="25.0" prefWidth="195.0" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="513.0" />
             <ChoiceBox fx:id="cbpahse" layoutX="150.0" layoutY="575.0" prefHeight="25.0" prefWidth="195.0" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="575.0" />
-            <Button fx:id="btModif" layoutX="571.0" layoutY="635.0" mnemonicParsing="false" onAction="#modifEq" prefHeight="40.0" prefWidth="190.0" text="Modifier">
+            <Button fx:id="btModif" disable="true" layoutX="571.0" layoutY="635.0" mnemonicParsing="false" onAction="#modifEq" prefHeight="40.0" prefWidth="190.0" text="Modifier">
                <graphic>
                   <ImageView fitHeight="50.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -96,15 +96,6 @@
             <JFXTextField fx:id="txtPoint" layoutX="150.0" layoutY="659.0" onKeyPressed="#verifnum" prefHeight="9.0" prefWidth="195.0" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="659.0" />
             <Label layoutX="72.0" layoutY="663.0" text="Point" textFill="WHITE" AnchorPane.leftAnchor="72.0" AnchorPane.topAnchor="663.0" />
             <Line endX="100.0" layoutX="248.0" layoutY="106.0" startX="-100.0" stroke="WHITE" AnchorPane.bottomAnchor="693.5" AnchorPane.leftAnchor="147.5" AnchorPane.topAnchor="105.5" />
-            <JFXButton fx:id="home" layoutX="571.0" layoutY="554.0" prefHeight="46.0" prefWidth="190.0" text="Home">
-               <graphic>
-                  <ImageView fitHeight="50.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../Ressource/home.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </JFXButton>
             <Label fx:id="obpays" layoutX="385.0" layoutY="411.0" text="*Le champs pays est obligatoire" textFill="#c51818" visible="false" />
             <Label fx:id="obsel" layoutX="379.0" layoutY="627.0" text="*Le champs pays est obligatoire" textFill="#c51818" visible="false" />
             <Label fx:id="obphase" layoutX="379.0" layoutY="579.0" text="*Le champs pays est obligatoire" textFill="#c51818" visible="false" />

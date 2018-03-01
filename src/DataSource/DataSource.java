@@ -26,10 +26,25 @@ public class DataSource {
                   //         Class.forName("com.mysql.jdbc.Driver");
 
 
+<<<<<<< HEAD
           
+=======
+<<<<<<< HEAD
+            con= DriverManager.getConnection("jdbc:mysql://localhost:3306/pidev_v4", "root","");
+=======
+            con= DriverManager.getConnection("jdbc:mysql://localhost:3306/pidev_v2", "root","");
+>>>>>>> 6716bbc3a78d2b7e468335d771ce13a856b874da
+        
+
+
+>>>>>>> 33ac5287755f2f6ebd8a6d44be5bad186ca1b59f
             
 //         Class.forName("com.mysql.jdbc.Driver");
+<<<<<<< HEAD
+            con= DriverManager.getConnection("jdbc:mysql://localhost:3306/pidev_v4", "root","");
+=======
             con= DriverManager.getConnection("jdbc:mysql://localhost:3306/pidev_v2", "root","");
+>>>>>>> 6716bbc3a78d2b7e468335d771ce13a856b874da
 
             System.out.println("connexion Ok ! !");
         } catch (SQLException x) {

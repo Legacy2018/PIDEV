@@ -216,6 +216,7 @@ public class GestionEquipeController implements Initializable {
         File file = new File(eq.getImg().getLink().replace("file:/C", "C"));
         Image image = new Image(file.toURI().toString());
         imgdr.setImage(image);
+        btAjouter.setDisable(true);
     }
 
     @FXML
@@ -231,9 +232,11 @@ public class GestionEquipeController implements Initializable {
     private Imagedrapeau importerImage() {
         FileChooser fc = new FileChooser();
         String link = null;
-        FileChooser.ExtensionFilter extFilterJPG = new FileChooser.ExtensionFilter("JPG files (*.jpg)", "*.JPG");
+        //   FileChooser.ExtensionFilter extFilterJPG = new FileChooser.ExtensionFilter("JPG files (*.jpg)", "*.JPG");
         FileChooser.ExtensionFilter extFilterPNG = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.PNG");
-        fc.getExtensionFilters().addAll(extFilterJPG, extFilterPNG);
+        fc.getExtensionFilters().addAll(
+                //extFilterJPG, 
+                extFilterPNG);
 
         File file = fc.showOpenDialog(null);
         Image image = new Image(file.toURI().toString());
@@ -271,7 +274,8 @@ public class GestionEquipeController implements Initializable {
                 alert.setTitle("Suppression effectuée !");
                 alert.setHeaderText("Equipe supprimée avec succès !");
                 //   alert.setContentText("GOOOD");
-              
+                btSupp.setDisable(true);
+                btModif.setDisable(true);
                 btAjouter.setDisable(false);
                 alert.showAndWait();
                 //recharger la liste
@@ -280,7 +284,7 @@ public class GestionEquipeController implements Initializable {
                 lstequipe.getItems().addAll(getEq());
                 //  eqchoice.setItems(listeequipe);
                 //   eqchoice.setValue(listeequipe.get(0));
-                  viderForm();
+                viderForm();
             } else if (supprimer == false) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Suppression echouée !");
@@ -420,6 +424,8 @@ public class GestionEquipeController implements Initializable {
                         alert.setHeaderText("Equipe modifiée avec succès !");
                         alert.showAndWait();
                         viderForm();
+                        btSupp.setDisable(true);
+                        btModif.setDisable(true);
                         btAjouter.setDisable(false);
                         //recharger la liste
                         //   ObservableList<String> listeequipe = FXCollections.observableArrayList(se.selectPays());
@@ -694,7 +700,7 @@ public class GestionEquipeController implements Initializable {
         cbpahse.setValue(listephase.get(0));
         imgdr.setImage(null);
 //     Image image2 = new Image(":/Ressource/flag.png");
-    // imgdr.setImage(null);
+        // imgdr.setImage(null);
         obpays.setVisible(false);
         obphase.setVisible(false);
         obsel.setVisible(false);

@@ -63,7 +63,7 @@ public class ShowProfileController implements Initializable {
        telephone.setText(Recherche_ProfileController.u.getTelephone());
        username.setText(Recherche_ProfileController.u.getUsername());
         if(( Recherche_ProfileController.u.getImg_profile()!=null)&&(Recherche_ProfileController.u.getImg_profile()!="null"))
-        imgprofile.setImage(new Image(getClass().getResource(Recherche_ProfileController.u.getImg_profile()).toString(), true));
+        imgprofile.setImage(new Image(Login_viewController.u.getImg_profile(), true));
         
       initDrawer();
     }    
