@@ -1,153 +1,39 @@
-.root{
-
--fx-background-image:  url("../Ressource/a.PNG");
-}
-.jfx-hamburger StackPane {
-	-fx-background-color: white;
-}
-.gradient{
-    /*-fx-background-color: linear-gradient( from 50% 0% to 50% 100%,#000000,#2C3E50);*/
-      -fx-background-image:  url("../Ressource/a.PNG");
-}
-.gradient-light{
-    /*-fx-background-color: linear-gradient( from 50% 0% to 50% 100%,#000000,#22313F);*/
-    -fx-background-image:  url("../Ressource/a.PNG");
-}
-
-.menus{
-    -fx-background-color: rgb(49, 68, 90,0.6);    
-}
-
-.menus:hover{
-    -fx-background-color: rgb(49, 68, 90,0.8);
-}
-/*Tabpane header */
-.jfx-tab-pane .headers-region{
-    -fx-background-color:transparent;
-}
-.jfx-tab-pane .tab-header-background{
-    -fx-background-color: transparent;
-}
-.jfx-tab-pane .tab-selected-line{
-    -fx-stroke: #FFFFFF;
-    -fx-stroke-width: 3pt;
-}
-/*
-TiTled pane Customusation
-*/
-.titledPane{
-    -fx-text-fill: white;
-    -fx-text-alignment: center;
-
-
-}
-.titledPane>.title{
-    -fx-background-color: #31445A;
-    -fx-font-family:'Roboto medium' ;
-    -fx-font-size:13;
-}
-.titledPane> .title> .arrow-button .arrow{
-    -fx-background-color: white;
-}
-/*Material look tableview*/
-.table-view {
-    -fx-table-header-border-color: transparent;
-    -fx-table-cell-border-color: -fx-box-border;  
-    -fx-background-color: transparent;
-}
-
-.table-view .filler, .table-view .column-header
-{
-    -fx-size: 40;
-    -fx-border-style: null;
-    -fx-border-color: rgb(200.0, 200.0, 200.0);
-    -fx-border-width: 0 0 1 0;
-    -fx-background-color: transparent;
-}
-.table-view .show-hide-columns-button
-{
-    -fx-background-color: transparent;
-}
-
-.table-view .column-header .label,.table-view .column-drag-header .label
-{
-    -fx-alignment: CENTER_LEFT;
-}
-
-.table-view .column-header-background
-{
-    -fx-background-color: #00C0EF;
-}
-
-.table-row-cell {
-    -fx-cell-size: 30px;
-}
-
-.table-cell {
-    -fx-border-color: transparent; 
-    -fx-border-width: 1;
-}
-
-.card{
-    -fx-background-color: white;
-    -fx-border-radius: 5px;
-    -fx-background-radius: 5px;
-    -fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 6.0, 0.7, 0.0,1.5);    
-}
-.fab{
-    -fx-pref-height:50px;   
-    -fx-pref-width:50px;
-    -fx-background-color: rgb(248, 142, 29,0.7);
-    -fx-background-radius: 50px;
-    -fx-border-radius: 50px;
-    -fx-alignment: CENTER;    
-}
-
-.jfx-combo{
-    -jfx-label-float:true;
-}
-.btn-default{
-    -fx-background-color: #FFFFFF;
-    -fx-border-color: #cccccc;
-    -fx-border-radius: 4px;
-    -fx-background-radius: 4px;
-    -fx-border-width: 1px;    
-}
-
-.jfx-snackbar-content{
-    -fx-background-color:#00A65A;
-}
-.jfx-snackbar-toast{
-    -fx-text-fill:white;
-    -fx-font-size:14;
-}
-* {
-    -fx-primary : #2C3E50;
-    -fx-secondary : #22313F;
-    -fx-primarytext : #ecf0f1;
-    -fx-secondarytext : #ecf0f1;
-    -fx-blue: #1976D2;
-    -fx-red: #FF0000;
+.date-picker .text-field {
+    -fx-control-inner-background:linear-gradient( from 50% 0% to 50% 100%,#2A2E37,#454c5b); ;
+    -fx-color: #2A2E37 ;
     
 }
+* {
+    -fx-primary : #2A2E37;
+    -fx-secondary : #1976D2;
+    -fx-primarytext : #B2B2B2;
+    -fx-blue: #1976D2;
+    -fx-red: #FF0000;
+}
 
+.root{
+    /*-fx-background-color: linear-gradient( from 50% 0% to 50% 100%,#31445A,#298DC5);*/
+    -fx-background-image:  url("../Ressource/bg.png");
+}
 
-
-
+.glyph-icon
+{
+    -fx-fill: -fx-primarytext;
+}
 
 .button{
     -fx-text-fill: -fx-primarytext;
     -fx-background-color: -fx-primary;
-    -fx-border-color: -fx-primary;
-    -fx-border-radius: 2px;
-    -fx-background-radius: 2px;
+    -fx-border-color: -fx-secondary;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
     -fx-font-size: 13pt;
 }
 
 .button:hover{
     -fx-border-color: -fx-secondary;
-    -fx-background-color: transparent;
-    -fx-text-fill: -fx-primarytext;
+    -fx-background-color: -fx-secondary;
+    -fx-text-fill: -fx-primary;
 }
 
 .text-field
@@ -155,20 +41,8 @@ TiTled pane Customusation
     -fx-text-fill: -fx-primarytext;
     -fx-font-size : 13pt;
     -jfx-focus-color: -fx-secondary;
-    -fx-text-fill: derive(-fx-primarytext, 20%);
-    -fx-background-color: rgba(44, 62, 80,0.7);
-    
+    -fx-text-fill: derive(-fx-secondary, 20%);
 }
-.text-area
-{
-    -fx-text-fill: -fx-primarytext;
-    -fx-font-size : 13pt;
-    -jfx-focus-color: -fx-secondary;
-    -fx-text-fill: derive(-fx-primarytext, 20%);
-    -fx-background-color: rgba(44, 62, 80,0.7);
-    
-}
-
 
 /*Login Screen Specific*/
 
@@ -365,4 +239,18 @@ TiTled pane Customusation
 .table-context
 {
     -fx-base: -fx-primary;
+}
+.button{
+    -fx-text-fill: -fx-primarytext;
+    -fx-background-color: -fx-primary;
+    -fx-border-color: -fx-primary;
+    -fx-border-radius: 2px;
+    -fx-background-radius: 2px;
+    -fx-font-size: 13pt;
+}
+
+.button:hover{
+    -fx-border-color: -fx-secondary;
+    -fx-background-color: transparent;
+    -fx-text-fill: -fx-primarytext;
 }

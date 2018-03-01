@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.JFXDrawer?>
+<?import com.jfoenix.controls.JFXHamburger?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -14,7 +10,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="539.0" prefWidth="1025.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AccueilAnnoncesController">
+<AnchorPane id="AnchorPane" prefHeight="539.0" prefWidth="1025.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AccueilAnnoncesController">
    <children>
       <StackPane fx:id="fabsContainer" layoutX="903.0" layoutY="439.0" prefHeight="100.0" prefWidth="45.0" />
       <HBox fx:id="boxMenus" layoutX="52.0" layoutY="196.0" prefHeight="227.0" prefWidth="921.0" spacing="20.0">
@@ -23,7 +19,7 @@
                <children>
                   <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="54.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../Ressource/Man-Face.png" />
+                        <Image url="@../Ressource/list.png" />
                      </image>
                   </ImageView>
                   <Label alignment="CENTER" layoutX="20.0" layoutY="133.0" text="Offres Covoiturage" textAlignment="CENTER" textFill="WHITE">
@@ -42,7 +38,7 @@
                <children>
                   <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="54.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../Ressource/Ticket.png" />
+                        <Image url="@../Ressource/taxi.png" />
                      </image>
                   </ImageView>
                   <Label alignment="CENTER" layoutX="50.0" layoutY="133.0" text="Mes Tragets" textAlignment="CENTER" textFill="WHITE">
@@ -61,7 +57,7 @@
                <children>
                   <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="54.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../Ressource/Van-02-WF.png" />
+                        <Image url="@../Ressource/house.png" />
                      </image>
                   </ImageView>
                   <Label alignment="CENTER" layoutX="24.0" layoutY="133.0" text="Offres Collocation" textAlignment="CENTER" textFill="WHITE">
@@ -80,7 +76,7 @@
                <children>
                   <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="61.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../Ressource/Driver-WF.png" />
+                        <Image url="@../Ressource/list.png" />
                      </image>
                   </ImageView>
                   <Label alignment="CENTER" layoutX="39.0" layoutY="133.0" text="Mes Proporiétés" textAlignment="CENTER" textFill="WHITE">
@@ -97,14 +93,16 @@
             </AnchorPane>
          </children>
       </HBox>
-      <Label layoutX="314.0" layoutY="29.0" prefHeight="42.0" prefWidth="432.0" text="PLATEFORME D4ANNONCES DE COVOUITURAGE ET DE COLLOCATION" textFill="WHITE">
+      <JFXDrawer fx:id="SidePannel" layoutY="34.0" prefHeight="497.0" prefWidth="135.0" />
+      <JFXHamburger fx:id="Sp" alignment="CENTER_RIGHT" />
+      <Label layoutX="73.0" layoutY="44.0" prefHeight="103.0" prefWidth="790.0" text="Votre Support Logistique">
          <font>
-            <Font name="Roboto Medium" size="23.0" />
+            <Font size="70.0" />
          </font>
       </Label>
-      <Label layoutX="293.0" layoutY="71.0" prefHeight="51.0" prefWidth="474.0" text="C'est un module de depot det de gestion des annonces de collocation et de covoiturage" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+      <Label layoutX="73.0" layoutY="122.0" prefHeight="51.0" prefWidth="605.0" text="Gestion de Covoiturage et  de Collocation" textAlignment="CENTER" wrapText="true">
          <font>
-            <Font name="Roboto Medium" size="14.0" />
+            <Font size="27.0" />
          </font>
       </Label>
    </children>

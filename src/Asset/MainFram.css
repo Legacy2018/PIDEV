@@ -8,7 +8,7 @@
 }
 .gradient{
     /*-fx-background-color: linear-gradient( from 50% 0% to 50% 100%,#000000,#2C3E50);*/
-      -fx-background-image:  url("../Ressource/bg.png");
+            -fx-background-image:  url("../Ressource/bg.png");
 }
 .gradient-light{
     /*-fx-background-color: linear-gradient( from 50% 0% to 50% 100%,#000000,#22313F);*/

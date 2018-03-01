@@ -5,12 +5,19 @@
  */
 package Controllers;
 
+import static Controllers.ConsulterAnnoncesCollocationsController.signs;
+import Services.CollocationService;
+import Services.CovoiturageService;
+import static Services.CovoiturageService.DeletedAnnonce;
+import com.jfoenix.controls.JFXDrawer;
+import com.jfoenix.controls.JFXHamburger;
+import com.jfoenix.transitions.hamburger.HamburgerSlideCloseTransition;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
-import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -22,6 +29,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 /**
  * FXML Controller class
@@ -50,6 +60,12 @@ public class AccueilAnnoncesController extends Application implements Initializa
 
     @FXML
     private AnchorPane paneUsers;
+    
+    @FXML
+    private JFXDrawer SidePannel;
+    @FXML
+    private JFXHamburger Sp;
+    
 
     @FXML
     void AnnoncesCovoiturage(MouseEvent event) throws IOException {
@@ -65,6 +81,33 @@ public class AccueilAnnoncesController extends Application implements Initializa
 
         stage.setScene(sceneAffichage);
         stage.show();
+    }
+     private void initDrawer() {
+        try {
+            AnchorPane SP = FXMLLoader.load(getClass().getResource("/GUI/SidePannel.fxml"));
+
+            
+            
+            SP.getStylesheets().add(getClass().getResource("/Asset/Style.css").toExternalForm());
+            
+            SidePannel.setSidePane(SP);
+
+        } catch (IOException ex) {
+           
+            System.out.println(ex.getMessage());
+        }
+        
+        HamburgerSlideCloseTransition task = new HamburgerSlideCloseTransition(Sp);
+        task.setRate(-1);
+        Sp.addEventHandler(MouseEvent.MOUSE_CLICKED, (Event event) -> {
+            task.setRate(task.getRate() * -1);
+            task.play();
+            if (SidePannel.isHidden()) {
+                SidePannel.open();
+            } else {
+                SidePannel.close();
+            }
+        });
     }
 
     @FXML
@@ -115,6 +158,23 @@ public class AccueilAnnoncesController extends Application implements Initializa
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        signs=-1;
+        initDrawer();
+        CollocationService ColSer= new CollocationService();
+        ColSer.SuppressionAutomatique();
+        ColSer.Trigger();
+        CovoiturageService CovSer=new CovoiturageService();
+        CovSer.Trigger();
+        System.out.println("supppriméééeee"+DeletedAnnonce);
+        if(DeletedAnnonce!=null){
+         TrayNotification tray = new TrayNotification();
+                            NotificationType type = NotificationType.INFORMATION;
+                            tray.showAndDismiss(Duration.seconds(5));
+              tray.setTitle("Annonce signalé"  );
+              tray.setMessage("Votre Annonce '"+CovoiturageService.DeletedAnnonce.getAdresse_depart()
+              +"' et comme andresse d'arrivée '"+CovoiturageService.DeletedAnnonce.getAdresse_arrivee()+"a été signalée et supprimée");
+           tray.setNotificationType(type.INFORMATION);
+        }
     }    
 
     @Override

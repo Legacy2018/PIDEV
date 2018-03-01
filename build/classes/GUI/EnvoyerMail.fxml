@@ -21,7 +21,6 @@
       </JFXTextArea>
       <Label layoutX="263.0" layoutY="27.0" text="Envoyer Email" />
       <Button fx:id="btn_envoyer" layoutX="246.0" layoutY="335.0" mnemonicParsing="false" onAction="#EnvoyerMail" prefHeight="25.0" prefWidth="108.0" text="Envoyer" />
-      <Button fx:id="btn_retour" layoutX="455.0" layoutY="335.0" mnemonicParsing="false" onAction="#retour" prefHeight="25.0" prefWidth="108.0" text="Retour" />
       <Button fx:id="btn_itineraire" layoutX="37.0" layoutY="335.0" mnemonicParsing="false" onAction="#SetMarker" prefHeight="25.0" prefWidth="108.0" text="Afficher Position" />
    </children>
 </AnchorPane>

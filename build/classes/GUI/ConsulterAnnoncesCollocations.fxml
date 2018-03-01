@@ -1,41 +1,129 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.image.*?>
-<?import com.jfoenix.controls.*?>
-<?import java.lang.*?>
-<?import java.net.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDrawer?>
+<?import com.jfoenix.controls.JFXHamburger?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.lynden.gmapsfx.GoogleMapView?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="597.0" prefWidth="696.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ConsulterAnnoncesCollocationsController">
+<AnchorPane id="AnchorPane" prefHeight="596.0" prefWidth="1074.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ConsulterAnnoncesCollocationsController">
     <stylesheets>
         <URL value="@/Asset/consulterannoncescollocaions.css" />
     </stylesheets>
    <children>
-      <ScrollPane prefHeight="597.0" prefWidth="771.0">
-         <content>
-            <VBox fx:id="annoncesVBox" opacity="0.5" prefHeight="589.0" prefWidth="696.0" />
-         </content>
-      </ScrollPane>
-      <AnchorPane fx:id="annoncesAnchorPane" layoutX="7.0" layoutY="-267.0" prefHeight="259.0" prefWidth="756.0" scaleZ="5.0">
+      <BorderPane prefHeight="596.0" prefWidth="1249.0" style="-fx-background-color: trasparent;" stylesheets="@../Asset/consulterannoncescollocaions.css">
+         <center>
+            <ScrollPane prefHeight="596.0" prefWidth="545.0" stylesheets="@../Asset/consulterannoncescollocaions.css" BorderPane.alignment="CENTER">
+               <content>
+                  <VBox fx:id="annoncesVBox" opacity="0.5" prefHeight="596.0" prefWidth="586.0" stylesheets="@../Asset/consulterannoncescollocaions.css" />
+               </content>
+            </ScrollPane>
+         </center>
+         <left>
+            <AnchorPane prefHeight="596.0" prefWidth="383.0" style="-fx-background-color: rgba(127, 140, 141,1.0);" stylesheets="@../Asset/consulterannoncescollocaions.css" BorderPane.alignment="CENTER">
+               <children>
+                  <Label layoutX="14.0" layoutY="406.0" prefHeight="23.0" prefWidth="163.0" text="Recherche Par Tarrif Maximal" />
+                  <JFXTextField fx:id="Ftarif" layoutX="181.0" layoutY="409.0" prefHeight="38.0" prefWidth="187.0" />
+                  <Label fx:id="FAdresse" layoutX="15.0" layoutY="451.0" prefHeight="17.0" prefWidth="161.0" text="Rechercher Par Adresse" textAlignment="RIGHT" />
+                  <JFXTextField fx:id="Fadresse" layoutX="181.0" layoutY="451.0" prefHeight="25.0" prefWidth="188.0" />
+                  <Label layoutX="15.0" layoutY="490.0" prefHeight="17.0" prefWidth="129.0" text="Rechercher Par Date Max" />
+                  <DatePicker fx:id="Fdate" layoutX="181.0" layoutY="490.0" prefHeight="25.0" prefWidth="189.0" />
+                  <Button fx:id="Btn_Filtrer" layoutX="10.0" layoutY="542.0" mnemonicParsing="false" onAction="#Filtrer" prefHeight="40.0" prefWidth="159.0" text="Filtrer" />
+                  <Button fx:id="btn_Filter_Annuler" layoutX="221.0" layoutY="542.0" mnemonicParsing="false" onAction="#AnnulerFiltres" prefHeight="40.0" prefWidth="150.0" text="Annuler Filtres" />
+                  <TextArea fx:id="MailBody" layoutX="10.0" layoutY="259.0" prefHeight="78.0" prefWidth="358.0" promptText="Crops Du mail" style="-fx-border-color: transparent; -fx-background-color: transparent;" stylesheets="@../Asset/consulterannoncescollocaions.css">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" />
+                     </padding>
+                  </TextArea>
+                  <Button fx:id="btn_Signaler" layoutX="164.0" layoutY="344.0" mnemonicParsing="false" onAction="#SignalerAnnonce" prefHeight="40.0" prefWidth="111.0" text="Signaler">
+                     <padding>
+                        <Insets left="10.0" right="10.0" />
+                     </padding>
+                  </Button>
+                  <Button fx:id="btnEnvoyerMail" layoutX="14.0" layoutY="344.0" mnemonicParsing="false" onAction="#EnvoyerMail" prefHeight="40.0" prefWidth="148.0" text="Envoyer Mail">
+                     <padding>
+                        <Insets left="10.0" right="10.0" />
+                     </padding>
+                  </Button>
+                  <GoogleMapView fx:id="mapView" layoutX="4.0" layoutY="49.0" prefHeight="209.0" prefWidth="363.0">
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" />
+                     </padding>
+                  </GoogleMapView>
+                  <JFXDrawer fx:id="SidePannel" layoutX="8.0" layoutY="-113.0" prefHeight="521.0" prefWidth="135.0" />
+                  <JFXHamburger fx:id="Sp" alignment="CENTER_RIGHT" layoutX="8.0" layoutY="-113.0" />
+               </children>
+            </AnchorPane>
+         </left>
+         <top>
+            <AnchorPane prefHeight="131.0" prefWidth="1249.0" style="-fx-background-color: rgba(127, 140, 141,1.0);" BorderPane.alignment="CENTER">
+               <children>
+                  <Label layoutX="52.0" layoutY="-11.0" prefHeight="103.0" prefWidth="686.0" text="Support Logistique">
+                     <font>
+                        <Font size="70.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="57.0" layoutY="78.0" prefHeight="51.0" prefWidth="605.0" text="Choisir et Contacter les Annonceurs" textAlignment="CENTER" wrapText="true">
+                     <font>
+                        <Font size="27.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="btn_retour" layoutX="1101.0" layoutY="53.0" mnemonicParsing="false" onAction="#Retour" text="Retour" />
+               </children>
+            </AnchorPane>
+         </top>
+      </BorderPane>
+      <AnchorPane fx:id="annoncesAnchorPane" layoutX="169.0" layoutY="-149.0" prefHeight="260.0" prefWidth="575.0" scaleZ="5.0" stylesheets="@../Asset/consulterannoncescollocaions.css" visible="false">
          <children>
-            <Label fx:id="titre" layoutX="35.0" layoutY="21.0" prefHeight="17.0" prefWidth="76.0" textFill="#cadb0d" />
-            <Label fx:id="DateDepart" layoutX="35.0" layoutY="87.0" prefHeight="17.0" prefWidth="76.0" textFill="#cadb0d" />
-            <Label fx:id="DateArivee" layoutX="35.0" layoutY="120.0" prefHeight="17.0" prefWidth="76.0" textFill="#cadb0d" />
-            <ImageView fx:id="Image1" fitHeight="92.0" fitWidth="101.0" layoutX="380.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="Adresse" text="Label" />
+            <Label fx:id="titre" layoutX="35.0" layoutY="21.0" prefHeight="17.0" prefWidth="76.0" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="DateDepart" layoutX="35.0" layoutY="87.0" prefHeight="17.0" prefWidth="76.0" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="DateArivee" layoutX="35.0" layoutY="120.0" prefHeight="17.0" prefWidth="76.0" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="Image1" fitHeight="92.0" fitWidth="101.0" layoutX="376.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="Image2" fitHeight="92.0" fitWidth="101.0" layoutX="549.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="Image4" fitHeight="92.0" fitWidth="101.0" layoutX="549.0" layoutY="148.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="Image3" fitHeight="92.0" fitWidth="101.0" layoutX="380.0" layoutY="157.0" pickOnBounds="true" preserveRatio="true" />
-            <Label fx:id="Description" layoutX="35.0" layoutY="58.0" prefHeight="17.0" prefWidth="76.0" textFill="#cadb0d" />
+            <Label fx:id="Description" layoutX="32.0" layoutY="171.0" prefHeight="20.0" prefWidth="76.0" text="Label" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
             <Separator fx:id="separator" layoutX="3.0" layoutY="254.0" prefHeight="6.0" prefWidth="756.0" style="-fx-border-color: black;" />
-            <JFXButton fx:id="btn_mail" layoutX="82.0" layoutY="203.0" onAction="#ShowMap" text="Position" />
-            <JFXButton fx:id="btn_position" layoutX="227.0" layoutY="203.0" onAction="#SendMail" text="Envoyer Mail" />
-            <Label fx:id="Tarif" layoutX="35.0" layoutY="148.0" prefHeight="17.0" prefWidth="76.0" textFill="#cadb0d" />
-            <TextField fx:id="idAnnonce" layoutX="260.0" layoutY="92.0" prefHeight="25.0" prefWidth="69.0" />
-            <TextField fx:id="IdAnnonceur" layoutX="255.0" layoutY="144.0" prefHeight="25.0" prefWidth="76.0" />
+            <JFXButton fx:id="btn_position" layoutX="82.0" layoutY="203.0" text="Position" />
+            <JFXButton fx:id="btn_mail" layoutX="227.0" layoutY="203.0" text="Envoyer Mail" />
+            <Label fx:id="Tarif" layoutX="35.0" layoutY="148.0" prefHeight="17.0" prefWidth="76.0" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="idAnnonce" layoutX="260.0" layoutY="92.0" prefHeight="25.0" prefWidth="69.0" visible="false" />
+            <TextField fx:id="IdAnnonceur" layoutX="255.0" layoutY="144.0" prefHeight="25.0" prefWidth="76.0" visible="false" />
          </children>
       </AnchorPane>
    </children>

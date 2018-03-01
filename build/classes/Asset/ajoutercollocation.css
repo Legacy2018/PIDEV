@@ -1,3 +1,8 @@
+.date-picker .text-field {
+    -fx-control-inner-background:linear-gradient( from 50% 0% to 50% 100%,#2A2E37,#454c5b); ;
+    -fx-color: #2A2E37 ;
+    
+}
 * {
     -fx-primary : #2A2E37;
     -fx-secondary : #1976D2;
@@ -7,7 +12,8 @@
 }
 
 .root{
-    -fx-background-color: -fx-primary;
+    /*-fx-background-color: linear-gradient( from 50% 0% to 50% 100%,#31445A,#298DC5);*/
+    -fx-background-image:  url("../Ressource/bg.png");
 }
 
 .glyph-icon
@@ -233,4 +239,18 @@
 .table-context
 {
     -fx-base: -fx-primary;
+}
+.button{
+    -fx-text-fill: -fx-primarytext;
+    -fx-background-color: -fx-primary;
+    -fx-border-color: -fx-primary;
+    -fx-border-radius: 2px;
+    -fx-background-radius: 2px;
+    -fx-font-size: 13pt;
+}
+
+.button:hover{
+    -fx-border-color: -fx-secondary;
+    -fx-background-color: transparent;
+    -fx-text-fill: -fx-primarytext;
 }
