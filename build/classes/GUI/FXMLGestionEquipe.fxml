@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" stylesheets="@../Assets/MainFram.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.GestionEquipeController">
+   <content>
+      <AnchorPane id="AnchorPane" fx:id="anchro" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0">   
+          <children>
+            <Line endX="100.0" layoutX="248.0" layoutY="292.0" startX="-100.0" stroke="WHITE" AnchorPane.bottomAnchor="507.5" AnchorPane.leftAnchor="147.5" AnchorPane.topAnchor="291.5" />
+            <JFXButton fx:id="btImpIm" layoutX="148.0" layoutY="318.0" onAction="#importerImage" prefHeight="40.0" prefWidth="201.0" text="Importer un  drapeau" />
+            <Button fx:id="btSupp" layoutX="571.0" layoutY="715.0" mnemonicParsing="false" onAction="#SupprimerEq" prefHeight="40.0" prefWidth="190.0" text="Supprimer">
+               <graphic>
+                  <ImageView fitHeight="50.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Ressource/delete.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <ChoiceBox fx:id="cbgroupe" layoutX="151.0" layoutY="453.0" prefHeight="25.0" prefWidth="195.0" AnchorPane.leftAnchor="151.0" AnchorPane.topAnchor="453.0" />
+            <ChoiceBox fx:id="cbetat" layoutX="150.0" layoutY="513.0" prefHeight="25.0" prefWidth="195.0" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="513.0" />
+            <ChoiceBox fx:id="cbpahse" layoutX="150.0" layoutY="575.0" prefHeight="25.0" prefWidth="195.0" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="575.0" />
+            <Button fx:id="btModif" layoutX="571.0" layoutY="635.0" mnemonicParsing="false" onAction="#modifEq" prefHeight="40.0" prefWidth="190.0" text="Modifier">
+               <graphic>
+                  <ImageView fitHeight="50.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Ressource/refresh%20(1).png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="btAjouter" layoutX="150.0" layoutY="714.0" mnemonicParsing="false" onAction="#AjouterEq" prefHeight="40.0" prefWidth="190.0" text="Ajouter" textOverrun="LEADING_ELLIPSIS">
+               <graphic>
+                  <ImageView fitHeight="50.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Ressource/plus.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Label layoutX="72.0" layoutY="411.0" text="Pays" textFill="WHITE" AnchorPane.leftAnchor="72.0" AnchorPane.topAnchor="411.0" />
+            <Label layoutX="64.0" layoutY="445.0" text="Groupe" textFill="WHITE" AnchorPane.leftAnchor="64.0" AnchorPane.topAnchor="445.0" />
+            <Label layoutX="73.0" layoutY="517.0" text="Etat" textFill="WHITE" AnchorPane.leftAnchor="73.0" AnchorPane.topAnchor="517.0" />
+            <Label layoutX="71.0" layoutY="579.0" text="Phase" textFill="WHITE" AnchorPane.leftAnchor="71.0" AnchorPane.topAnchor="579.0" />
+            <TableView fx:id="lstequipe" layoutX="585.0" layoutY="143.0" onMousePressed="#chargerEquipe" prefHeight="379.0" prefWidth="693.0">
+               <columns>
+                  <TableColumn fx:id="pays" prefWidth="146.0" text="pays" />
+                  <TableColumn fx:id="groupe" minWidth="3.0" prefWidth="92.0" text="Groupe" />
+                  <TableColumn fx:id="phase" prefWidth="110.0" text="Phase" />
+                  <TableColumn fx:id="etat" prefWidth="152.0" text="Etat" />
+                  <TableColumn fx:id="selecteur" prefWidth="190.0" text="Selectionneur" />
+               </columns>
+            </TableView>
+            <JFXTextField fx:id="txtpays" layoutX="151.0" layoutY="394.0" onKeyReleased="#verifpays" prefHeight="25.0" prefWidth="195.0" AnchorPane.leftAnchor="151.0" AnchorPane.topAnchor="394.0" />
+            <JFXButton fx:id="btsearch" layoutX="1093.0" layoutY="48.0" onAction="#search" prefHeight="64.0" prefWidth="165.0" text="Chercher">
+               <graphic>
+                  <ImageView fitHeight="50.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Ressource/research.png" />
+                     </image>
+                  </ImageView>
+               </graphic></JFXButton>
+            <JFXTextField fx:id="txtsearch" layoutX="869.0" layoutY="61.0" onKeyPressed="#veriftxt" prefHeight="25.0" prefWidth="201.0" promptText="Tapez votre recherche" />
+            <ChoiceBox fx:id="cbgroupe1" layoutX="986.0" layoutY="630.0" prefHeight="25.0" prefWidth="264.0" AnchorPane.bottomAnchor="145.0" AnchorPane.leftAnchor="986.0" />
+            <ChoiceBox fx:id="cbetat1" layoutX="986.0" layoutY="680.0" prefHeight="25.0" prefWidth="264.0" AnchorPane.bottomAnchor="95.0" AnchorPane.leftAnchor="986.0" />
+            <ChoiceBox fx:id="cbpahse1" layoutX="986.0" layoutY="734.0" prefHeight="25.0" prefWidth="265.0" AnchorPane.bottomAnchor="41.0" AnchorPane.leftAnchor="986.0" />
+            <Label layoutX="869.0" layoutY="632.0" text="Groupe" textFill="WHITE" />
+            <Label layoutX="879.0" layoutY="684.0" text="Etat" textFill="WHITE" />
+            <Label layoutX="874.0" layoutY="735.0" text="Phase" textFill="WHITE" />
+            <Label layoutX="47.0" layoutY="625.0" text="Selectionneur" textFill="WHITE" AnchorPane.leftAnchor="47.0" AnchorPane.topAnchor="625.0" />
+            <JFXTextField fx:id="txtselect" layoutX="150.0" layoutY="610.0" onKeyPressed="#verifselect" prefHeight="17.0" prefWidth="195.0" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="610.0" />
+            <JFXButton fx:id="btfiltre" layoutX="1087.0" layoutY="537.0" onAction="#filtrerliste" prefHeight="64.0" prefWidth="162.0" text="filtrer">
+               <graphic>
+                  <ImageView fitHeight="50.0" fitWidth="123.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Ressource/funnel.png" />
+                     </image>
+                  </ImageView>
+               </graphic></JFXButton>
+            <ImageView fx:id="imgdr" fitHeight="140.0" fitWidth="144.0" layoutX="178.0" layoutY="143.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="517.0" AnchorPane.leftAnchor="178.0" AnchorPane.topAnchor="143.0">
+               <image>
+                  <Image url="@../Ressource/flag.png" />
+               </image>
+            </ImageView>
+            <JFXTextField fx:id="txtPoint" layoutX="150.0" layoutY="659.0" onKeyPressed="#verifnum" prefHeight="9.0" prefWidth="195.0" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="659.0" />
+            <Label layoutX="72.0" layoutY="663.0" text="Point" textFill="WHITE" AnchorPane.leftAnchor="72.0" AnchorPane.topAnchor="663.0" />
+            <Line endX="100.0" layoutX="248.0" layoutY="106.0" startX="-100.0" stroke="WHITE" AnchorPane.bottomAnchor="693.5" AnchorPane.leftAnchor="147.5" AnchorPane.topAnchor="105.5" />
+            <JFXButton fx:id="home" layoutX="571.0" layoutY="554.0" prefHeight="46.0" prefWidth="190.0" text="Home">
+               <graphic>
+                  <ImageView fitHeight="50.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Ressource/home.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <Label fx:id="obpays" layoutX="385.0" layoutY="411.0" text="*Le champs pays est obligatoire" textFill="#c51818" visible="false" />
+            <Label fx:id="obsel" layoutX="379.0" layoutY="627.0" text="*Le champs pays est obligatoire" textFill="#c51818" visible="false" />
+            <Label fx:id="obphase" layoutX="379.0" layoutY="579.0" text="*Le champs pays est obligatoire" textFill="#c51818" visible="false" />
+            <Label fx:id="obsetat" layoutX="379.0" layoutY="521.0" text="*Le champs pays est obligatoire" textFill="#c51818" visible="false" />
+            <Label fx:id="obgroupe" layoutX="385.0" layoutY="464.0" text="*Le champs pays est obligatoire" textFill="#c51818" visible="false" />
+            <Label fx:id="obpoint" layoutX="379.0" layoutY="676.0" text="*Le champs pays est obligatoire" textFill="#c51818" visible="false" />
+          </children>
+      </AnchorPane>
+   </content>
+</ScrollPane>
