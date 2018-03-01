@@ -3,6 +3,11 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXDrawer?>
 <?import com.jfoenix.controls.JFXHamburger?>
+<<<<<<< HEAD
+=======
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+>>>>>>> b24e2d3c3080ad597ee137ba5a2836569a51539a
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -25,6 +30,11 @@
                   </TableView>
                   <JFXButton fx:id="sup" layoutX="892.0" layoutY="25.0" onAction="#suprec" prefHeight="81.0" prefWidth="126.0" text="Marqué Lue" />
                   <CheckBox fx:id="Vlu" layoutX="870.0" layoutY="106.0" mnemonicParsing="false" onAction="#change" text="Voir que les message non lu" />
+<<<<<<< HEAD
+=======
+                  <JFXTextField fx:id="sujet" editable="false" layoutX="165.0" layoutY="356.0" prefHeight="25.0" prefWidth="295.0" />
+                  <JFXTextArea fx:id="message" layoutX="165.0" layoutY="403.0" prefHeight="185.0" prefWidth="297.0" />
+>>>>>>> b24e2d3c3080ad597ee137ba5a2836569a51539a
                </children>
             </AnchorPane>
          </center>
