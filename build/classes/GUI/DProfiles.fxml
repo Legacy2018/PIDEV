@@ -27,8 +27,7 @@
                         <TableColumn fx:id="activated" prefWidth="95.0" text="activated" />
                      </columns>
                   </TableView>
-                  <JFXButton layoutX="368.0" layoutY="507.0" prefHeight="81.0" prefWidth="126.0" text="Bannir" />
-                  <JFXButton layoutX="494.0" layoutY="507.0" prefHeight="81.0" prefWidth="126.0" text="Changer en admin" />
+                  <JFXButton layoutX="368.0" layoutY="507.0" onAction="#afficher" prefHeight="81.0" prefWidth="126.0" text="Afficher" />
                   <JFXTextField fx:id="username" layoutX="242.0" layoutY="471.0" onKeyReleased="#filtre" />
                </children>
             </AnchorPane>

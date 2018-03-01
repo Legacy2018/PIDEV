@@ -123,8 +123,9 @@ public class Recherche_ProfileController extends Application implements Initiali
 
     public void AfficherUtilisateur(List <Utilisateur> Users)
     {
-       Users.stream().forEach( u ->{
-            AnchorPane newProfile = new AnchorPane();
+        if(!Users.isEmpty())
+       Users.stream().filter(u -> u!=null).forEach( u ->{
+        AnchorPane newProfile = new AnchorPane();
         newProfile.setStyle(Profile.getStyle());
         newProfile.setEffect(Profile.getEffect());
         
@@ -140,7 +141,7 @@ public class Recherche_ProfileController extends Application implements Initiali
         ImageView imgprof;
         if(( u.getImg_profile()!=null)&&(u.getImg_profile()!="null"))
         {
-        imgprof=new ImageView(new Image(getClass().getResource(u.getImg_profile()).toString(), true));
+        imgprof=new ImageView(new Image(u.getImg_profile(), true));
         
         }
         else

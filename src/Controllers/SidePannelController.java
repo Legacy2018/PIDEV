@@ -125,8 +125,8 @@ public class SidePannelController implements Initializable {
     private void chercher(KeyEvent event) throws IOException {
         System.out.println(event.getCode().getName());
         srch=search.getText();
-        if(event.getCode().getName().equals("Enter"))
-        {Stage stage = (Stage) search.getScene().getWindow();
+        if(event.getCode().getName().equals("Enter")){
+        Stage stage = (Stage) search.getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("/GUI/Recherche_Profile.fxml"));
         Scene scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("/Asset/MainFram.css").toExternalForm());

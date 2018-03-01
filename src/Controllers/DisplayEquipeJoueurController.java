@@ -488,7 +488,7 @@ public class DisplayEquipeJoueurController implements Initializable {
         nbrbuteq.setText(String.valueOf(me.afficherNombreButParEquipe(e.getIdequipe())));
         select.setText(e.getSelecteur());
         File file = new File(e.getImg().getLink());
-        Image image = new Image(file.toURI().toString());
+        Image image = new Image(e.getImg().getLink(),true);
 
         drapeau.setImage(image);
         System.out.println("equipe " + e);
