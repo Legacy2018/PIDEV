@@ -70,6 +70,7 @@ public class DReclamationsController implements Initializable {
         rlu.setCellValueFactory(new PropertyValueFactory<>("lu"));
         new ServiceReclamation().getAllRec().stream().forEach(t -> rs.add(t) );
         rectab.setItems(rs);
+        
     }    
      private void initDrawer() {
         try {
