@@ -156,7 +156,7 @@ public class Gestion_match extends Application implements Initializable {
     
        eq1 = new ArrayList<>();       
        eq2 = new ArrayList<>();
-      
+     
        s2 = new ArrayList<>();
        s1=s.ConsulterStadeList();
       eq = e.selectEquipes();
@@ -428,7 +428,7 @@ public class Gestion_match extends Application implements Initializable {
            int z1= e.AfficherEquipe(e1).getIdEquipe();
            int score=e.Consulterpoint(e1);
           Equipe ea=new Equipe(z1,3+score);
-         e.modifierEquipescore(ea, ea.idEquipe);
+         e.modifierEquipe(ea, ea.idEquipe);
          Notifications.create()
            .title("Changement du score")
               .text("l'equipe "+e1+" a gagné")
@@ -437,7 +437,7 @@ public class Gestion_match extends Application implements Initializable {
              int z1= e.AfficherEquipe(e2).getIdEquipe();
            int score=e.Consulterpoint(e2);
           Equipe ea=new Equipe(z1,3+score);
-         e.modifierEquipescore(ea, ea.idEquipe);
+         e.modifierEquipe(ea, ea.idEquipe);
              Notifications.create()
            .title("Changement du score")
               .text("l'equipe "+e2+" a gagné")
@@ -447,11 +447,11 @@ public class Gestion_match extends Application implements Initializable {
              int z1= e.AfficherEquipe(e1).getIdEquipe();
            int score=e.Consulterpoint(e1);
           Equipe ea=new Equipe(z1,1+score);
-         e.modifierEquipescore(ea, ea.idEquipe);
+         e.modifierEquipe(ea, ea.idEquipe);
           int z2= e.AfficherEquipe(e2).getIdEquipe();
            int score2=e.Consulterpoint(e2);
           Equipe ea2=new Equipe(z2,1+score2);
-         e.modifierEquipescore(ea2, ea2.idEquipe);
+         e.modifierEquipe(ea2, ea2.idEquipe);
              Notifications.create()
            .title("Changement du score")
               .text("Null")
@@ -477,7 +477,7 @@ public class Gestion_match extends Application implements Initializable {
           
           Equipe ea=e.AfficherEquipe(z1);
           ea.setPhase("1/4");
-         e.modifierEquipescore(ea, z1);
+         e.modifierEquipe(ea, z1);
          
           int z2=e.AfficherEquipe(e1).getIdEquipe();
         Equipe eq2=e.AfficherEquipe(z2);
@@ -508,7 +508,7 @@ public class Gestion_match extends Application implements Initializable {
              int z1= e.AfficherEquipe(e2).getIdEquipe();
           Equipe ea=e.AfficherEquipe(z1);
           ea.setPhase("1/2");
-         e.modifierEquipescore(ea, z1);
+         e.modifierEquipe(ea, z1);
          
           int z2=e.AfficherEquipe(e1).getIdEquipe();
         Equipe eq2=e.AfficherEquipe(z2);
@@ -541,12 +541,12 @@ public class Gestion_match extends Application implements Initializable {
              int z1= e.AfficherEquipe(e2).getIdEquipe();
            Equipe ea=e.AfficherEquipe(z1);
           ea.setPhase("final");
-         e.modifierEquipescore(ea, z1);
+         e.modifierEquipe(ea, z1);
          
          int z2= e.AfficherEquipe(e1).getIdEquipe();
            Equipe ea1=e.AfficherEquipe(z2);
           ea.setPhase("3éme place");
-         e.modifierEquipescore(ea1, z2); 
+         e.modifierEquipe(ea1, z2); 
          
          Notifications.create()
            .title("Changement du score")
@@ -639,9 +639,9 @@ public class Gestion_match extends Application implements Initializable {
     void gp(ActionEvent event) {
         
         
-        e.AfficherEquipepargp(this.gp.getValue());
+        e.chercherParGroupe(this.gp.getValue());
         List z = new ArrayList<>();
-        z=e.AfficherEquipepargp(this.gp.getValue()).stream().map(e->e.getPays()).collect(Collectors.toList());
+        z=e.chercherParGroupe(this.gp.getValue()).stream().map(e->e.getPays()).collect(Collectors.toList());
         this.id_equipe.getItems().clear();
         this.id_equipe.getItems().addAll(z);
          this.id_equipe2.getItems().clear();

@@ -414,11 +414,11 @@ public class serviceEquipe implements IServices.IServiceGestionEquipe {
 
         try {
 
-            ResultSet rest = st.executeQuery("SELECT equipe.`id_equipe`, `pays`, `etat`, `Phase`, `Groupe`, `Selecteur`, `point`, "
-                    + "imagedrapeau.lien"
-                    + " from equipe , imagedrapeau"
-                    + " WHERE equipe.id_equipe=imagedrapeau.id_equipe and "
-                    + "groupe='"+groupe+"'");
+            ResultSet rest = st.executeQuery("SELECT `id_equipe`, `pays`, `etat`, `Phase`, `Groupe`, `Selecteur`, `point` "
+                 
+                    + " from equipe "
+                   
+                    + "where groupe='"+groupe+"'");
             if (!rest.next()) {
                 System.err.println("Resultat introuvable");
             } else {
@@ -432,7 +432,7 @@ public class serviceEquipe implements IServices.IServiceGestionEquipe {
                     e.setGroupe(rest.getString(5));
                     e.setSelecteur(rest.getString(6));
                     e.setPoint(rest.getInt(7));
-                    e.setImg(new Imagedrapeau(rest.getString(8), null));
+               
 
                     equipes.add(e);
 
@@ -498,14 +498,13 @@ public class serviceEquipe implements IServices.IServiceGestionEquipe {
 
         try {
 
-            ResultSet rest = st.executeQuery("SELECT DISTINCT(equipe.`id_equipe`) ,"
-                    + " `pays`, `etat`, `Phase`, `Groupe`, `Selecteur`, `point`, imagedrapeau.lien "
+            ResultSet rest = st.executeQuery("SELECT equipe.`id_equipe`, `pays`, `etat`, `Phase`, `Groupe`, `Selecteur`, `point`,  imagedrapeau.lien "
                     + "from equipe ,imagedrapeau "
                     + "where equipe.id_equipe = imagedrapeau.id_equipe");
             if (!rest.next()) {
                 System.err.println("Resultat introuvable");
             } else {
-                rest.beforeFirst();
+              
                 while (rest.next()) {
                     Equipe e = new Equipe();
                     e.setIdequipe(rest.getInt(1));
@@ -515,7 +514,7 @@ public class serviceEquipe implements IServices.IServiceGestionEquipe {
                     e.setGroupe(rest.getString(5));
                     e.setSelecteur(rest.getString(6));
                     e.setPoint(rest.getInt(7));
-                    e.setImg(new Imagedrapeau(rest.getString(8), null));
+                  
 
                     equipes.add(e);
 
@@ -533,8 +532,7 @@ public class serviceEquipe implements IServices.IServiceGestionEquipe {
         return equipes;
     }
 
-<<<<<<< HEAD
-=======
+
     public List<String> selectPays() {
         List<String> pays = new ArrayList<>();
 
@@ -561,7 +559,7 @@ public class serviceEquipe implements IServices.IServiceGestionEquipe {
         return pays;
     }
 
->>>>>>> 36b551a034568fea6e8c443735db52fae0547fed
+
     @Override
     public Equipe AfficherEquipe(int id) { 
         Equipe e = new Equipe();

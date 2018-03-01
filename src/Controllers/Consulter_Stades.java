@@ -14,12 +14,16 @@ import Entities.stade;
 import com.github.fedy2.weather.YahooWeatherService;
 import com.github.fedy2.weather.data.Channel;
 import com.github.fedy2.weather.data.unit.DegreeUnit;
+import com.jfoenix.controls.JFXDrawer;
+import com.jfoenix.controls.JFXHamburger;
+import com.jfoenix.transitions.hamburger.HamburgerSlideCloseTransition;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -31,6 +35,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.web.WebEngine;
 import javafx.stage.Stage;
 import javax.xml.bind.JAXBException;
@@ -72,6 +77,10 @@ public class Consulter_Stades implements Initializable {
      private ObservableList<stade> data;
      
      public static stade recu;
+      @FXML
+    private JFXDrawer SidePannel;
+    @FXML
+    private JFXHamburger Sp;
 
     public static stade getRecu() {
         return recu;
@@ -119,7 +128,33 @@ public class Consulter_Stades implements Initializable {
        
         
     }
+ private void initDrawer() {
+        try {
+            AnchorPane SP = FXMLLoader.load(getClass().getResource("/GUI/SidePannel.fxml"));
 
+            
+            
+            SP.getStylesheets().add(getClass().getResource("../Asset/fxml.css").toExternalForm());
+            
+            SidePannel.setSidePane(SP);
+           
+        } catch (IOException ex) {
+           
+            System.out.println(ex.getMessage());
+        }
+        
+        HamburgerSlideCloseTransition task = new HamburgerSlideCloseTransition(Sp);
+        task.setRate(-1);
+        Sp.addEventHandler(MouseEvent.MOUSE_CLICKED, (Event event) -> {
+            task.setRate(task.getRate() * -1);
+            task.play();
+            if (SidePannel.isHidden()) {
+                SidePannel.open();
+            } else {
+                SidePannel.close();
+            }
+        });
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -135,7 +170,7 @@ public class Consulter_Stades implements Initializable {
        Pays.setCellValueFactory(new PropertyValueFactory<>("Ville"));
        //mchkla lehna
        capacite.setCellValueFactory(new PropertyValueFactory<>("Capacité"));
-      
+      initDrawer() ;
     }    
     
 }
