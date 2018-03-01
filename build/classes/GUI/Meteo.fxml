@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="555.0" prefWidth="632.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.MeteoController">
+  <!-- TODO Add Nodes -->
+  <center>
+    <VBox prefHeight="-1.0" prefWidth="-1.0" spacing="5.0">
+      <children>
+        <HBox prefHeight="-1.0" prefWidth="-1.0" spacing="10.0">
+          <children>
+                  <FontAwesomeIconView fill="#f2eeee" glyphName="LOCATION_ARROW" size="25" wrappingWidth="30.0" />
+                  <JFXComboBox fx:id="boxLoca" editable="true" prefHeight="22.0" prefWidth="210.0" />
+          </children>
+        </HBox>
+        <HBox prefHeight="-1.0" prefWidth="-1.0" spacing="10.0">
+          <children>
+                  <JFXButton fx:id="btnCalcola" onAction="#meteo" prefHeight="41.0" prefWidth="109.0">
+                     <graphic>
+                        <FontAwesomeIconView fill="#f8f6f6" glyphName="CHECK" size="25" />
+                     </graphic></JFXButton>
+                  <JFXButton fx:id="ac" onMouseClicked="#ac" prefHeight="43.0" prefWidth="91.0">
+                     <graphic>
+                        <FontAwesomeIconView fill="#fffdfd" glyphName="HOME" size="25" wrappingWidth="22.0" />
+                     </graphic>
+                  </JFXButton>
+          </children>
+        </HBox>
+            <ImageView fx:id="image" fitHeight="68.0" fitWidth="81.0" layoutX="10.0" layoutY="85.0" pickOnBounds="true" preserveRatio="true" />
+            <JFXTextArea fx:id="txtResult" />
+      </children>
+      <BorderPane.margin>
+        <Insets bottom="5.0" left="5.0" right="5.0" />
+      </BorderPane.margin>
+    </VBox>
+  </center>
+  <top>
+    <Label prefHeight="52.0" prefWidth="239.0" text="Meteo" textFill="#f8f6f6">
+      <font>
+        <Font name="Times New Roman Bold" size="41.0" />
+      </font>
+      <BorderPane.margin>
+        <Insets bottom="10.0" />
+      </BorderPane.margin>
+    </Label>
+  </top>
+   <bottom>
+      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fx:id="berda" fitHeight="54.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Ressource/nt_snow.gif" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="nos" fitHeight="61.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Ressource/partlycloudy.gif" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="sunny" fitHeight="49.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Ressource/sunny.gif" />
+               </image>
+            </ImageView>
+         </children>
+      </HBox>
+   </bottom>
+</BorderPane>

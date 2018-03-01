@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import java.net.URL?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
@@ -11,12 +10,10 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane stylesheets="@../Assets/MainFram.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.DisplayEquipeJoueurController">
+<ScrollPane stylesheets="@../Asset/MainFramemel.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.DisplayEquipeJoueurController">
    <content>
       <AnchorPane id="AnchorPane" fx:id="anch" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0">
-          <stylesheets>
-              <URL value="@/Assets/MainFram.css" />
-          </stylesheets>
+        
           <children>
               <ScrollPane fx:id="scr1" prefHeight="800.0" prefWidth="241.0">
                   <content>
