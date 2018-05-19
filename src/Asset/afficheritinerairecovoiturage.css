@@ -1,25 +1,14 @@
-/*
- * Empty Stylesheet file.
- */
-.date-picker .text-field {
-    -fx-control-inner-background:linear-gradient( from 50% 0% to 50% 100%,#2A2E37,#454c5b); ;
-    -fx-color: #2A2E37 ;
-    
-}
-
-.text-field {
-    -fx-control-inner-background: #2A2E37 ;
-}
 * {
-    -fx-primary : linear-gradient( from 50% 0% to 50% 100%,#2A2E37,#454c5b);
-    -fx-secondary : #e0a206;
-    -fx-primarytext : #e0a206;
+    -fx-primary : #2A2E37;
+    -fx-secondary : #1976D2;
+    -fx-primarytext : #B2B2B2;
     -fx-blue: #1976D2;
     -fx-red: #FF0000;
 }
 
 .root{
-    -fx-background-color: -fx-primary;
+  /*-fx-background-color: linear-gradient( from 50% 0% to 50% 100%,#31445A,#298DC5);*/
+    -fx-background-image:  url("../Ressource/bg.png");
 }
 
 .glyph-icon
@@ -117,7 +106,7 @@
 .main-text
 {
     -fx-fill: -fx-secondary;
-    -fx-font-size: 12pt;
+    -fx-font-size: 14pt;
     -fx-text-alignment: center;
 }
 
@@ -174,13 +163,13 @@
 /*TableView Default*/
 .table-view{
     -fx-background-color: derive(-fx-primary, 10%);
-    -fx-font-size: 14px; 
+    -fx-font-size: 16px; 
 }
 .table-view:focused{
     -fx-background-color: derive(-fx-primary, 20%);
 }
 .table-row-cell {
-    -fx-cell-size: 30px;
+    -fx-cell-size: 40px;
 }
 .table-view .column-header-background{
     -fx-background-color: -fx-primary;
@@ -245,4 +234,18 @@
 .table-context
 {
     -fx-base: -fx-primary;
+}
+.button{
+    -fx-text-fill: -fx-primarytext;
+    -fx-background-color: -fx-primary;
+    -fx-border-color: -fx-primary;
+    -fx-border-radius: 2px;
+    -fx-background-radius: 2px;
+    -fx-font-size: 13pt;
+}
+
+.button:hover{
+    -fx-border-color: -fx-secondary;
+    -fx-background-color: transparent;
+    -fx-text-fill: -fx-primarytext;
 }

@@ -5,12 +5,16 @@
  */
 package Services;
 
+import static Controllers.Login_viewController.u;
 import Iservices.IService;
-import Entities.Annonce_collocation;
 import Entities.Annonce_covoiturage;
+import Entities.Utilisateur;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,8 +26,63 @@ public class CovoiturageService implements IService<Annonce_covoiturage,Integer>
 
     private Connection connection;
     private PreparedStatement ps;
+    public static Annonce_covoiturage DeletedAnnonce = null;
     public CovoiturageService() {
         connection=DataSource.DataSource.getInstance().getConnection();
+    }
+     public void Signaler(int Annonce){
+         String req = "update Annonce_Covoiturage set Signale = Signale + 1 where id_annonce = ?";
+      
+        int rid = 0;
+
+        try {
+            ps = connection.prepareStatement(req,Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, Annonce);
+            
+            ps.executeUpdate();
+   
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    
+    }
+     public void SuppressionAutomatique(){
+         
+         
+    String req = "delete from Annonce_Covoiturage where date_depart <'"+java.sql.Date.valueOf(LocalDate.now().format(DateTimeFormatter.ISO_DATE))+"'";
+    System.out.println("req"+req);  
+    try {
+            ps = connection.prepareStatement(req);
+            
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    } 
+     
+    public void Trigger(){ 
+        String req = "select * from Annonce_Covoiturage where id_annonce = ? and Signale > 5";
+        
+        try {
+            ps = connection.prepareStatement(req);
+            ps.setInt(1, u.getId_user());
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                DeletedAnnonce = new Annonce_covoiturage( rs.getInt(2),rs.getDate(3),rs.getDate(4),rs.getString(5),rs.getString(6),rs.getFloat(7));
+                System.out.println("service"+DeletedAnnonce); 
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+       
+     String req1 = "delete from Annonce_Covoiturage where Signale > 5 ";
+        try {
+         
+             ps = connection.prepareStatement(req1); 
+             ps.execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -33,7 +92,7 @@ String req = "INSERT INTO `annonce_covoiturage` (`id_annonceur`, `date_depart`, 
 System.out.println(req);        
 try {System.out.println(req);
             ps = connection.prepareStatement(req);
-            ps.setInt(1, t.getId_annonceur());
+            ps.setInt(1,  t.getUser().getId_user());
             ps.setDate(2, t.getDate_depart());
             ps.setDate(3, t.getDate_arrivee());
             ps.setString(4, t.getAdresse_depart());
@@ -66,7 +125,7 @@ try {System.out.println(req);
             ps.setInt(1, r);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                Ann_cov = new Annonce_covoiturage( rs.getInt(1),rs.getInt(2),rs.getDate(3),rs.getDate(4),rs.getString(5),rs.getString(6),rs.getFloat(7));
+                Ann_cov = new Annonce_covoiturage( rs.getInt(2),rs.getDate(3),rs.getDate(4),rs.getString(5),rs.getString(6),rs.getFloat(7));
          
             }
         } catch (Exception e) {
@@ -75,16 +134,16 @@ try {System.out.println(req);
         return Ann_cov;
     }
     
-    public List<Annonce_covoiturage> findByIdAnnonceur(Integer r) {
+    public List<Annonce_covoiturage> findByIdAnnonceur(Utilisateur u) {
           String req = "select * from Annonce_Covoiturage where id_annonceur = ?";
           List<Annonce_covoiturage> lsa=new ArrayList<>();
         Annonce_covoiturage Ann_cov = null;
         try {
             ps = connection.prepareStatement(req);
-            ps.setInt(1, r);
+            ps.setInt(1, u.getId_user());
             ResultSet rs = ps.executeQuery();
            while (rs.next()) {
-                Ann_cov = new Annonce_covoiturage( rs.getInt(1),rs.getInt(2),rs.getDate(3),rs.getDate(4),rs.getString(5),rs.getString(6),rs.getFloat(7));
+                Ann_cov = new Annonce_covoiturage( rs.getInt(2),rs.getDate(3),rs.getDate(4),rs.getString(5),rs.getString(6),rs.getFloat(7));
                 lsa.add(Ann_cov);
             }
         } catch (Exception e) {
@@ -102,7 +161,9 @@ try {System.out.println(req);
             ps = connection.prepareStatement(req);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                Annonce_covoiturage Ann_cov = new Annonce_covoiturage( rs.getInt(1),rs.getInt(2),rs.getDate(3),rs.getDate(4),rs.getString(5),rs.getString(6),rs.getFloat(7));
+                Utilisateur utilisateur=new Utilisateur();
+                utilisateur.setId_user(rs.getInt(1));
+                Annonce_covoiturage Ann_cov = new Annonce_covoiturage( utilisateur,rs.getInt(2),rs.getDate(3),rs.getDate(4),rs.getString(5),rs.getString(6),rs.getFloat(7));
                 Annonces.add(Ann_cov);
             }
         } catch (Exception e) {
@@ -120,7 +181,7 @@ try {System.out.println(req);
         try {
             ps = connection.prepareStatement(req);
             ps.setInt(7, t.getId_annonce());
-            ps.setInt(1, t.getId_annonceur());
+            ps.setInt(1,  t.getUser().getId_user());
             ps.setDate(2, t.getDate_depart());
             ps.setDate(3, t.getDate_arrivee());
             ps.setString(4, t.getAdresse_depart());

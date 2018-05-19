@@ -14,7 +14,7 @@ import java.util.List;
  * @author medma
  */
 public class Annonce_collocation {
-private int id_annonceur;
+private Utilisateur user;
 private int id_annonce;
 private String titre_annonce;
 private String description;
@@ -27,41 +27,38 @@ private List<UploadImage> ui=new ArrayList<>();
     public Annonce_collocation() {
     }
 
-    public Annonce_collocation(int id_annonceur, int id_annonce, String titre_annonce, String Description, float tarif, String adresse, Date datedebut, Date datefin) {
-        this.id_annonceur = id_annonceur;
+    @Override
+    public String toString() {
+        return "Annonce_collocation{" + "user=" + user + ", id_annonce=" + id_annonce + ", titre_annonce=" + titre_annonce + ", description=" + description + ", tarif=" + tarif + ", adresse=" + adresse + ", datedebut=" + datedebut + ", datefin=" + datefin + ", ui=" + ui + '}';
+    }
+
+    public Annonce_collocation(int id_annonce, String titre_annonce, String description, float tarif, String adresse, Date datedebut, Date datefin) {
         this.id_annonce = id_annonce;
         this.titre_annonce = titre_annonce;
-        this.description = Description;
+        this.description = description;
         this.tarif = tarif;
         this.adresse = adresse;
         this.datedebut = datedebut;
         this.datefin = datefin;
     }
 
-    public Date getDatedebut() {
-        return datedebut;
-    }
-
-    public void setDatedebut(Date datedebut) {
+    public Annonce_collocation(Utilisateur user, int id_annonce, String titre_annonce, String description, float tarif, String adresse, Date datedebut, Date datefin) {
+        this.user = user;
+        this.id_annonce = id_annonce;
+        this.titre_annonce = titre_annonce;
+        this.description = description;
+        this.tarif = tarif;
+        this.adresse = adresse;
         this.datedebut = datedebut;
-    }
-
-    public Date getDatefin() {
-        return datefin;
-    }
-
-    public void setDatefin(Date datefin) {
         this.datefin = datefin;
     }
 
-   
-
-    public int getId_annonceur() {
-        return id_annonceur;
+    public Utilisateur getUser() {
+        return user;
     }
 
-    public void setId_annonceur(int id_annonceur) {
-        this.id_annonceur = id_annonceur;
+    public void setUser(Utilisateur user) {
+        this.user = user;
     }
 
     public int getId_annonce() {
@@ -84,8 +81,8 @@ private List<UploadImage> ui=new ArrayList<>();
         return description;
     }
 
-    public void setDescription(String Description) {
-        this.description = Description;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public float getTarif() {
@@ -104,6 +101,22 @@ private List<UploadImage> ui=new ArrayList<>();
         this.adresse = adresse;
     }
 
+    public Date getDatedebut() {
+        return datedebut;
+    }
+
+    public void setDatedebut(Date datedebut) {
+        this.datedebut = datedebut;
+    }
+
+    public Date getDatefin() {
+        return datefin;
+    }
+
+    public void setDatefin(Date datefin) {
+        this.datefin = datefin;
+    }
+
     public List<UploadImage> getUi() {
         return ui;
     }
@@ -112,10 +125,5 @@ private List<UploadImage> ui=new ArrayList<>();
         this.ui = ui;
     }
 
-    @Override
-    public String toString() {
-        return "Annonce_collocation{" + "id_annonceur=" + id_annonceur + ", id_annonce=" + id_annonce + ", titre_annonce=" + titre_annonce + ", Description=" + description + ", tarif=" + tarif + ", adresse=" + adresse + ", ui=" + ui+ '}';
-    }
-    
-    
+   
 }

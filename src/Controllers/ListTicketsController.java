@@ -436,7 +436,7 @@ public class ListTicketsController implements Initializable {
                 ImageViewUser2.setFitHeight(IMageView.getFitHeight());
                 //    ImageView ImageViewUser2 = new ImageView("Ressource/bck_inscri.png");
                 ServiceUtilisateur uti=new ServiceUtilisateur();
-                IMageView = new ImageView(uti.findUtilisateurbyID(ticket.getIdUser().getId()).getImg_profile());
+                //IMageView = new ImageView(uti.findUtilisateurbyID(ticket.getIdUser().getId()).getImg_profile());
                 IMageView.setFitHeight(80);
                 IMageView.setFitWidth(70);
                 IMageView.setLayoutX(45);
