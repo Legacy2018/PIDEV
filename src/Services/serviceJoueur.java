@@ -282,7 +282,7 @@ public class serviceJoueur implements IServices.IServiceGestionJoueur {
 
             ResultSet rest = st.executeQuery("SELECT id_joueur ,nom ,equipe.pays , nombre_de_buts , position, `cartrouge`,`cartjaune`,`NumeroMaillot`  "
                     + "FROM `joueur` , equipe"
-                    + " where equipe.id_equipe=joueur.id_equipe and equipe.pays like '%" + pays + "%' order by nombre_de_buts desc;");
+                    + " where equipe.id_equipe=joueur.id_equipe and equipe.pays like '" + pays + "' order by nombre_de_buts desc;");
             if (!rest.next()) {
                 System.err.println("Resultat introuvable");
             } else {

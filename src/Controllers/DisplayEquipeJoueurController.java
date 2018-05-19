@@ -405,12 +405,12 @@ public class DisplayEquipeJoueurController implements Initializable {
         nbrbuteq.setText(String.valueOf(me.afficherNombreButParEquipe(e.getIdequipe())));
         select.setText(e.getSelecteur());
 
-        ////File file = new File(e.getImg().getLink().replace("file:/C", "C"));
-        //Image image = new Image(file.toURI().toString());
+   //    File file = new File(e.getImg().getLink().replace("file:/C", "C"));
+     //  Image image = new Image(file.toURI().toString());
 
-        File file = new File(e.getImg().getLink());
-        Image image = new Image(e.getImg().getLink(),true);
-        drapeau.setImage(image);
+//       File file = new File(e.getImg().getLink());
+     //   Image image = new Image(e.getImg().getLink(),true);
+   //     drapeau.setImage(image);
         System.out.println("equipe " + e);
         ObservableList<Joueur> jEq = FXCollections.observableArrayList(sj.chercherParEquipe(e.getPays()));
         System.out.println("liste joueur " + jEq);

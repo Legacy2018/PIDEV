@@ -346,12 +346,12 @@ public class Gestion_match extends Application implements Initializable {
          if (option.get() == ButtonType.OK){
               M.supprimerMatch(s);
          }else if(option.get()==ButtonType.CANCEL){
-       t.refresh();
+  //     t.refresh();
          }
          
 
         
-   t.refresh();
+ //  t.refresh();
        
        
        Parent creerGroupe = FXMLLoader.load(getClass().getResource("/Gui/FXMLGestion_Match.fxml"));
@@ -399,7 +399,7 @@ public class Gestion_match extends Application implements Initializable {
         alert.showAndWait();
         }
       
-     t.refresh();
+//     t.refresh();
        
        
        Parent creerGroupe = FXMLLoader.load(getClass().getResource("/Gui/FXMLGestion_Match.fxml"));
@@ -575,7 +575,7 @@ public class Gestion_match extends Application implements Initializable {
              .showInformation();
         }} 
         }
-    t.refresh();
+//    t.refresh();
        
        
        Parent creerGroupe = FXMLLoader.load(getClass().getResource("/Gui/FXMLGestion_Match.fxml"));
