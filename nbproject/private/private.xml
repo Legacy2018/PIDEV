@@ -2,6 +2,67 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< HEAD
         <group/>
+=======
+        <group>
+<<<<<<< HEAD
+            <file>file:/C:/Users/Emel/Documents/javaproject/PIDEV1/src/Controllers/Commentaire1Controller.java</file>
+=======
+<<<<<<< HEAD
+            <file>file:/C:/Users/medma/Documents/NetBeansProjects/GitProject/PIDEV/src/Controllers/ConsulterAnnoncesCollocationsController.java</file>
+            <file>file:/C:/Users/medma/Documents/NetBeansProjects/GitProject/PIDEV/src/Controllers/GestionCollocationController.java</file>
+            <file>file:/C:/Users/medma/Documents/NetBeansProjects/GitProject/PIDEV/src/GUI/ConsulterAnnoncesCollocations.fxml</file>
+            <file>file:/C:/Users/medma/Documents/NetBeansProjects/GitProject/PIDEV/src/Asset/MainFram.css</file>
+            <file>file:/C:/Users/medma/Documents/NetBeansProjects/GitProject/PIDEV/src/Controllers/GestionCovoiturageController.java</file>
+            <file>file:/C:/Users/medma/Documents/NetBeansProjects/GitProject/PIDEV/src/Asset/accueilannonces.css</file>
+            <file>file:/C:/Users/medma/Documents/NetBeansProjects/GitProject/PIDEV/src/Main/PIDEV_V1.java</file>
+            <file>file:/C:/Users/medma/Documents/NetBeansProjects/GitProject/PIDEV/src/GUI/AccueilAnnonces.fxml</file>
+            <file>file:/C:/Users/medma/Documents/NetBeansProjects/GitProject/PIDEV/src/Controllers/ConsulterAnnoncesCovoiturageController.java</file>
+            <file>file:/C:/Users/medma/Documents/NetBeansProjects/GitProject/PIDEV/src/Services/CovoiturageService.java</file>
+=======
+<<<<<<< HEAD
+            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Controllers/ListTicketsController.java</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Controllers/ClassementController.java</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Entities/Equipe.java</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/DataSource/DataSource.java</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Services/serviceEquipe.java</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Services/serviceJoueur.java</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Controllers/Gestion_match.java</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Controllers/ToolbarController.java</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/Controllers/DashboardController.java</file>
+            <file>file:/C:/Users/admin/Documents/GitHub/PIDEV/src/GUI/FXMLGestionEquipe.fxml</file>
+=======
+<<<<<<< HEAD
+            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Controllers/SidePannelController.java</file>
+            <file>file:/C:/Users/Katouchi/Documents/GitHub/PIDEV1/src/Controllers/Recherche_ProfileController.java</file>
+=======
+            <file>file:/C:/Users/Emel/Documents/javaproject/PIDEV1/src/Services/serviceEquipe.java</file>
+>>>>>>> 2d4eb7d3f087ddb76f61ff6c4443c2b159215cba
+            <file>file:/C:/Users/Emel/Documents/javaproject/PIDEV1/src/Controllers/Gestion_match.java</file>
+            <file>file:/C:/Users/Emel/Documents/javaproject/PIDEV1/src/Controllers/GestionJoueurController.java</file>
+            <file>file:/C:/Users/Emel/Documents/javaproject/PIDEV1/src/DataSource/DataSource.java</file>
+            <file>file:/C:/Users/Emel/Documents/javaproject/PIDEV1/src/Controllers/ToolbarController.java</file>
+            <file>file:/C:/Users/Emel/Documents/javaproject/PIDEV1/src/Asset/MainFramemel.css</file>
+            <file>file:/C:/Users/Emel/Documents/javaproject/PIDEV1/src/Entities/EmailAttachmentSender.java</file>
+            <file>file:/C:/Users/Emel/Documents/javaproject/PIDEV1/src/Controllers/ListTicketsController.java</file>
+            <file>file:/C:/Users/Emel/Documents/javaproject/PIDEV1/src/GUI/FXMLGestionEquipe.fxml</file>
+            <file>file:/C:/Users/Emel/Documents/javaproject/PIDEV1/src/Entities/Joueur.java</file>
+            <file>file:/C:/Users/Emel/Documents/javaproject/PIDEV1/src/GUI/FXMLDisplayEquipeJoueur.fxml</file>
+            <file>file:/C:/Users/Emel/Documents/javaproject/PIDEV1/src/Services/serviceEquipe.java</file>
+            <file>file:/C:/Users/Emel/Documents/javaproject/PIDEV1/src/Main/PIDEV_V1.java</file>
+            <file>file:/C:/Users/Emel/Documents/javaproject/PIDEV1/src/GUI/FXMLStatistique.fxml</file>
+            <file>file:/C:/Users/Emel/Documents/javaproject/PIDEV1/src/Controllers/GestionEquipeController.java</file>
+            <file>file:/C:/Users/Emel/Documents/javaproject/PIDEV1/src/Controllers/DisplayEquipeJoueurController.java</file>
+<<<<<<< HEAD
+            <file>file:/C:/Users/Emel/Documents/javaproject/PIDEV1/src/Entities/Equipe.java</file>
+            <file>file:/C:/Users/Emel/Documents/javaproject/PIDEV1/src/GUI/FXMLGestionJoueur.fxml</file>
+=======
+>>>>>>> 6716bbc3a78d2b7e468335d771ce13a856b874da
+>>>>>>> 33ac5287755f2f6ebd8a6d44be5bad186ca1b59f
+>>>>>>> 4df0fd73bafd56ecef847cbe12942e2ae3ae506c
+>>>>>>> 2d4eb7d3f087ddb76f61ff6c4443c2b159215cba
+        </group>
+>>>>>>> 94efeac3350aa43cb4c87b00463cdf50df10ee3c
     </open-files>
 </project-private>

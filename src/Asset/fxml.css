@@ -3,7 +3,11 @@
     -fx-control-inner-background:linear-gradient( from 50% 0% to 50% 100%,#2A2E37,#454c5b); ;
     -fx-color: #2A2E37 ;
     
+<<<<<<< HEAD
 }
+=======
+
+>>>>>>> 94efeac3350aa43cb4c87b00463cdf50df10ee3c
 .root{
 
 -fx-background-image:  url("../Ressource/a.PNG");
@@ -386,4 +390,5 @@ TiTled pane Customusation
     -fx-border-color: -fx-secondary;
     -fx-background-color: transparent;
     -fx-text-fill: -fx-primarytext;
+}
 }
