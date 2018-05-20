@@ -36,13 +36,14 @@ public class CollocationService implements IService<Annonce_collocation, Integer
     public void SuppressionAutomatique(){
      String req1 = "DELETE FROM Annonce_Collocation WHERE  datefin <'"+java.sql.Date.valueOf(LocalDate.now().format(DateTimeFormatter.ISO_DATE))+ "' or datedebut <'" +java.sql.Date.valueOf(LocalDate.now().format(DateTimeFormatter.ISO_DATE))+ "'";
         System.out.println("reeeeeqqqqq"+ req1);
+        if (req1.equals("null")){
         try {
 
             ps = connection.prepareStatement(req1);
             ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }}
     } 
             
     public void Signaler(int Annonce) {

@@ -514,7 +514,7 @@ public class serviceEquipe implements IServices.IServiceGestionEquipe {
                     e.setGroupe(rest.getString(5));
                     e.setSelecteur(rest.getString(6));
                     e.setPoint(rest.getInt(7));
-                  
+                    e.setImg(new Imagedrapeau(rest.getString(8), e));
 
                     equipes.add(e);
 

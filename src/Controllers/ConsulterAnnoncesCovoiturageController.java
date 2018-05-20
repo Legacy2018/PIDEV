@@ -14,7 +14,7 @@ import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.transitions.hamburger.HamburgerSlideCloseTransition;
-import com.sun.corba.se.impl.util.Utility;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -46,7 +46,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import services.ServiceUtilisateur;
+import Services.ServiceUtilisateur;
 import tray.notification.NotificationType;
 import tray.notification.TrayNotification;
 
@@ -229,10 +229,10 @@ public class ConsulterAnnoncesCovoiturageController extends Application implemen
         System.out.println("Adresse depart ="+Annonce.getAdresse_depart());
         System.out.println("Adresse arrivee ="+Annonce.getAdresse_arrivee());
          try {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../GUI/AfficherItineraireCovoiturage.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/GUI/AfficherItineraireCovoiturage.fxml"));
                 Parent root1 = (Parent) fxmlLoader.load();
                         Scene scene = new Scene(root1);
-        scene.getStylesheets().add(getClass().getResource("../Asset/afficheritinerairecovoiturage.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/Asset/afficheritinerairecovoiturage.css").toExternalForm());
                 Stage stage = new Stage();
                 stage.setScene(scene);  
                 stage.show();
@@ -246,10 +246,10 @@ public class ConsulterAnnoncesCovoiturageController extends Application implemen
     void EnvoyerMail(ActionEvent event) {
          
          try {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../GUI/EnvoyerMail.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/GUI/EnvoyerMail.fxml"));
                 Parent root1 = (Parent) fxmlLoader.load();
                         Scene scene = new Scene(root1);
-        scene.getStylesheets().add(getClass().getResource("../Asset/envoyerMail.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/Asset/envoyerMail.css").toExternalForm());
                 Stage stage = new Stage();
                 stage.setScene(scene);  
                 stage.show();
@@ -264,9 +264,9 @@ public class ConsulterAnnoncesCovoiturageController extends Application implemen
         Scene sceneAffichage;
           Stage stage=new Stage();
         
-        afficher = FXMLLoader.load(getClass().getResource("../GUI/AccueilAnnonces.fxml"));
+        afficher = FXMLLoader.load(getClass().getResource("/GUI/AccueilAnnonces.fxml"));
      sceneAffichage = new Scene(afficher);
-     sceneAffichage.getStylesheets().add(getClass().getResource("../Asset/accueilannonces.css").toExternalForm());
+     sceneAffichage.getStylesheets().add(getClass().getResource("/Asset/accueilannonces.css").toExternalForm());
          stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
         stage.setScene(sceneAffichage);
@@ -280,10 +280,11 @@ ServiceUtilisateur SU=new ServiceUtilisateur();
  
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+      
         //TRAVEL TODO
         isConsulterAnnoncesCollocaionsController=0;
         List<Annonce_covoiturage> lsa = CS.getAll();
-       initDrawer();
+      // initDrawer();
         data = FXCollections.observableArrayList();
         System.out.println("ggiiiirrrr"+lsa);
         btn_signaler.setVisible(false);
@@ -341,9 +342,9 @@ ServiceUtilisateur SU=new ServiceUtilisateur();
         Scene sceneAffichage;
           Stage stage=new Stage();
         
-        afficher = FXMLLoader.load(getClass().getResource("../GUI/ConsulterAnnoncesCovoiturage.fxml"));
+        afficher = FXMLLoader.load(getClass().getResource("/GUI/ConsulterAnnoncesCovoiturage.fxml"));
      sceneAffichage = new Scene(afficher);
-     sceneAffichage.getStylesheets().add(getClass().getResource("../Asset/consultertoutesannonces.css").toExternalForm());
+     sceneAffichage.getStylesheets().add(getClass().getResource("/Asset/consultertoutesannonces.css").toExternalForm());
          stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
         stage.setScene(sceneAffichage);
@@ -354,9 +355,9 @@ ServiceUtilisateur SU=new ServiceUtilisateur();
     @Override
     public void start(Stage stage) throws Exception {
         
-        Parent root = FXMLLoader.load(getClass().getResource("../GUI/ConsulterAnnoncesCovoiturage.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/GUI/ConsulterAnnoncesCovoiturage.fxml"));
         Scene scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("../Asset/consultertoutesannonces.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/Asset/consultertoutesannonces.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
     }

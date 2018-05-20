@@ -82,15 +82,17 @@ public class DashboardController implements Initializable {
     }
     @FXML
     private void switchToMatch(MouseEvent event) throws IOException {
+         
          Stage stage=(Stage) paneDeconnection.getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("/GUI/FXMLConsulter_Match.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/GUI/FXMLGestion_Match.fxml"));
         
         Scene scene2 = new Scene(root);
-         scene2.getStylesheets().add(getClass().getResource("/Asset/fxml.css").toExternalForm());
+         scene2.getStylesheets().add(getClass().getResource("/Asset/MainFramemel.css").toExternalForm());
         
         stage.setScene(scene2);
         stage.show();
          stage.setTitle("Russie 2018");
+         
     }
 
     @FXML

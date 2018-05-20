@@ -26,61 +26,17 @@ public class DataSource {
                   //         Class.forName("com.mysql.jdbc.Driver");
 
 
-<<<<<<< HEAD
-            con= DriverManager.getConnection("jdbc:mysql://localhost:3306/pidev_v4", "root","");
 
-            con= DriverManager.getConnection("jdbc:mysql://localhost:3306/pidev_v2", "root","");
+            //con= DriverManager.getConnection("jdbc:mysql://localhost:3306/pidev_v5", "root","");
 
-            
-//         Class.forName("com.mysql.jdbc.Driver");
-
-=======
-<<<<<<< HEAD
-            con= DriverManager.getConnection("jdbc:mysql://localhost:3306/pidev", "root","");
-=======
-      //      con= DriverManager.getConnection("jdbc:mysql://localhost:3306/pidev_v4", "root","");
-
-<<<<<<< HEAD
-       //     con= DriverManager.getConnection("jdbc:mysql://localhost:3306/pidev_v2", "root","");
-=======
-           
-
-=======
-<<<<<<< HEAD
-
-=======
-<<<<<<< HEAD
-          
-=======
-<<<<<<< HEAD
->>>>>>> 2d988acd322c59772e3eb310985fbe884c26ac41
-            con= DriverManager.getConnection("jdbc:mysql://localhost:3306/pidev_v4", "root","");
-
-            con= DriverManager.getConnection("jdbc:mysql://localhost:3306/pidev_v2", "root","");
->>>>>>> 5ef7fc540d90676a41dd4a6cf84e60367fde330f
->>>>>>> b24e2d3c3080ad597ee137ba5a2836569a51539a
->>>>>>> 4df0fd73bafd56ecef847cbe12942e2ae3ae506c
         
 
 
 
             
-//         Class.forName("com.mysql.jdbc.Driver");
-<<<<<<< HEAD
-       //     con= DriverManager.getConnection("jdbc:mysql://localhost:3306/pidev_v4", "root","");
-=======
-<<<<<<< HEAD
->>>>>>> 3a36ce9c30a1a0761b3615608ad96e5c3bb3e277
 
-            //con= DriverManager.getConnection("jdbc:mysql://localhost:3306/pidev_v4", "root","");
-            con= DriverManager.getConnection("jdbc:mysql://localhost:3306/pidev_v4", "root","");
-            //con= DriverManager.getConnection("jdbc:mysql://localhost:3306/pidev_v2", "root","");
+            con= DriverManager.getConnection("jdbc:mysql://localhost:3306/pidev_v6", "root","");
 
-
-            con= DriverManager.getConnection("jdbc:mysql://localhost:3306/pidev_v4", "root","");
-
-            con= DriverManager.getConnection("jdbc:mysql://localhost:3306/pidev_v4", "root","");
->>>>>>> b24e2d3c3080ad597ee137ba5a2836569a51539a
 
 
             System.out.println("connexion Ok ! !");

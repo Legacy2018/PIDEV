@@ -69,14 +69,14 @@ public class AccueilAnnoncesController extends Application implements Initializa
 
     @FXML
     void AnnoncesCovoiturage(MouseEvent event) throws IOException {
+
+            Parent afficher ;
+            Scene sceneAffichage;
+            Stage stage=new Stage();
         
-         Parent afficher ;
-        Scene sceneAffichage;
-          Stage stage=new Stage();
-        
-        afficher = FXMLLoader.load(getClass().getResource("../GUI/ConsulterAnnoncesCovoiturage.fxml"));
-     sceneAffichage = new Scene(afficher);
-     sceneAffichage.getStylesheets().add(getClass().getResource("../Asset/consultertoutesannonces.css").toExternalForm());
+            afficher = FXMLLoader.load(getClass().getResource("/GUI/ConsulterAnnoncesCovoiturage.fxml"));
+            sceneAffichage = new Scene(afficher);
+            sceneAffichage.getStylesheets().add(getClass().getResource("/Asset/consultertoutesannonces.css").toExternalForm());
          stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
         stage.setScene(sceneAffichage);
@@ -116,9 +116,9 @@ public class AccueilAnnoncesController extends Application implements Initializa
         Scene sceneAffichage;
           Stage stage=new Stage();
         
-        afficher = FXMLLoader.load(getClass().getResource("../GUI/GestionCovoiturage.fxml"));
+        afficher = FXMLLoader.load(getClass().getResource("/GUI/GestionCovoiturage.fxml"));
      sceneAffichage = new Scene(afficher);
-     sceneAffichage.getStylesheets().add(getClass().getResource("../Asset/fxml.css").toExternalForm());
+     sceneAffichage.getStylesheets().add(getClass().getResource("/Asset/fxml.css").toExternalForm());
          stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
         stage.setScene(sceneAffichage);
@@ -131,9 +131,9 @@ public class AccueilAnnoncesController extends Application implements Initializa
         Scene sceneAffichage;
           Stage stage=new Stage();
         
-        afficher = FXMLLoader.load(getClass().getResource("../GUI/ConsulterAnnoncesCollocations.fxml"));
+        afficher = FXMLLoader.load(getClass().getResource("/GUI/ConsulterAnnoncesCollocations.fxml"));
      sceneAffichage = new Scene(afficher);
-     sceneAffichage.getStylesheets().add(getClass().getResource("../Asset/consulterannoncescollocaions.css").toExternalForm());
+     sceneAffichage.getStylesheets().add(getClass().getResource("/Asset/consulterannoncescollocaions.css").toExternalForm());
          stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
         stage.setScene(sceneAffichage);
@@ -146,9 +146,9 @@ public class AccueilAnnoncesController extends Application implements Initializa
         Scene sceneAffichage;
           Stage stage=new Stage();
         
-        afficher = FXMLLoader.load(getClass().getResource("../GUI/GestionCollocation.fxml"));
+        afficher = FXMLLoader.load(getClass().getResource("/GUI/GestionCollocation.fxml"));
      sceneAffichage = new Scene(afficher);
-     sceneAffichage.getStylesheets().add(getClass().getResource("../Asset/ajoutercollocation.css").toExternalForm());
+     sceneAffichage.getStylesheets().add(getClass().getResource("/Asset/ajoutercollocation.css").toExternalForm());
          stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
         stage.setScene(sceneAffichage);
@@ -179,9 +179,9 @@ public class AccueilAnnoncesController extends Application implements Initializa
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("../GUI/AccueilAnnonces.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/GUI/AccueilAnnonces.fxml"));
         Scene scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("../Asset/accueilannonces.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/Asset/accueilannonces.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
     }

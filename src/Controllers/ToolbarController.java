@@ -29,6 +29,10 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import Controllers.ListTicketsController;
+import Services.TicketDAO;
+
+
 
 /**
  * FXML Controller class
@@ -97,9 +101,9 @@ public class ToolbarController implements Initializable {
     @FXML
     private void switchToTickets(MouseEvent event) throws IOException {
          Stage stage=(Stage) paneDeconnection.getScene().getWindow();
-         Parent root = FXMLLoader.load(getClass().getResource("/GUI/ListTickets.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/GUI/ListTickets.fxml"));
         Scene scene = new Scene(root);
-     //   scene.getStylesheets().add(getClass().getResource("/Asset/MainFramsarra.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/Asset/accueilannonces.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
         
@@ -108,21 +112,20 @@ public class ToolbarController implements Initializable {
     @FXML
     private void switchToMatch(MouseEvent event) throws IOException {
         Stage stage=(Stage) paneDeconnection.getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("/GUI/FXMLGestion_Match.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/GUI/FXMLConsulter_Match.fxml"));
         
         Scene scene2 = new Scene(root);
          scene2.getStylesheets().add(getClass().getResource("/Asset/fxml.css").toExternalForm());
         
         stage.setScene(scene2);
         stage.show();
-         stage.setTitle("Russie 2018");
-         
+      
     }
 
     @FXML
     private void switchToLogistique(MouseEvent event) throws IOException {
         Stage stage=(Stage) paneDeconnection.getScene().getWindow();
-         Parent root = FXMLLoader.load(getClass().getResource("/GUI/AccueilAnnonces.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/GUI/AccueilAnnonces.fxml"));
         Scene scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("/Asset/accueilannonces.css").toExternalForm());
         stage.setScene(scene);

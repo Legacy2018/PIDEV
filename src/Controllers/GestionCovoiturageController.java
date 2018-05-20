@@ -187,9 +187,9 @@ public class GestionCovoiturageController extends Application implements Initial
         System.out.println(txidann.getText());
         CS.delete(s);
 
-        Parent creerGroupe = FXMLLoader.load(getClass().getResource("../GUI/GestionCovoiturage.fxml"));
+        Parent creerGroupe = FXMLLoader.load(getClass().getResource("/GUI/GestionCovoiturage.fxml"));
         Scene sceneAffichage = new Scene(creerGroupe);
-        sceneAffichage.getStylesheets().add(getClass().getResource("../Asset/fxml.css").toExternalForm());
+        sceneAffichage.getStylesheets().add(getClass().getResource("/Asset/fxml.css").toExternalForm());
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(sceneAffichage);
         stage.show();
@@ -257,9 +257,9 @@ public class GestionCovoiturageController extends Application implements Initial
         Scene sceneAffichage;
           Stage stage=new Stage();
         
-        afficher = FXMLLoader.load(getClass().getResource("../GUI/GestionCovoiturage.fxml"));
+        afficher = FXMLLoader.load(getClass().getResource("/GUI/GestionCovoiturage.fxml"));
      sceneAffichage = new Scene(afficher);
-     sceneAffichage.getStylesheets().add(getClass().getResource("../Asset/fxml.css").toExternalForm());
+     sceneAffichage.getStylesheets().add(getClass().getResource("/Asset/fxml.css").toExternalForm());
          stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
         stage.setScene(sceneAffichage);
@@ -290,9 +290,9 @@ public class GestionCovoiturageController extends Application implements Initial
                
              else {
                 CS.edit(AnnCo);
-                Parent creerGroupe = FXMLLoader.load(getClass().getResource("../GUI/GestionCovoiturage.fxml"));
+                Parent creerGroupe = FXMLLoader.load(getClass().getResource("/GUI/GestionCovoiturage.fxml"));
                 Scene sceneAffichage = new Scene(creerGroupe);
-                sceneAffichage.getStylesheets().add(getClass().getResource("../Asset/fxml.css").toExternalForm());
+                sceneAffichage.getStylesheets().add(getClass().getResource("/Asset/fxml.css").toExternalForm());
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(sceneAffichage);
                 stage.show();
@@ -347,9 +347,9 @@ public class GestionCovoiturageController extends Application implements Initial
             else {
                 System.out.println("fergha");
                 CS.add(AC);
-                Parent creerGroupe = FXMLLoader.load(getClass().getResource("../GUI/GestionCovoiturage.fxml"));
+                Parent creerGroupe = FXMLLoader.load(getClass().getResource("/GUI/GestionCovoiturage.fxml"));
                 Scene sceneAffichage = new Scene(creerGroupe);
-                sceneAffichage.getStylesheets().add(getClass().getResource("../Asset/fxml.css").toExternalForm());
+                sceneAffichage.getStylesheets().add(getClass().getResource("/Asset/fxml.css").toExternalForm());
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(sceneAffichage);
                 stage.show();
@@ -376,9 +376,9 @@ public class GestionCovoiturageController extends Application implements Initial
         Scene sceneAffichage;
           Stage stage=new Stage();
         
-        afficher = FXMLLoader.load(getClass().getResource("../GUI/AccueilAnnonces.fxml"));
+        afficher = FXMLLoader.load(getClass().getResource("/GUI/AccueilAnnonces.fxml"));
      sceneAffichage = new Scene(afficher);
-     sceneAffichage.getStylesheets().add(getClass().getResource("../Asset/accueilannonces.css").toExternalForm());
+     sceneAffichage.getStylesheets().add(getClass().getResource("/Asset/accueilannonces.css").toExternalForm());
          stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
         stage.setScene(sceneAffichage);
@@ -395,7 +395,9 @@ public class GestionCovoiturageController extends Application implements Initial
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        System.out.println("faouzi");
        initDrawer();
+         System.out.println("faouzi1");
         btn_modifier.setVisible(false);
         btn_supprimer.setVisible(false);
         // Travel TODO
@@ -448,9 +450,9 @@ public class GestionCovoiturageController extends Application implements Initial
     @Override
     public void start(Stage stage) throws Exception {
 
-        Parent root = FXMLLoader.load(getClass().getResource("../GUI/GestionCovoiturage.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/GUI/GestionCovoiturage.fxml"));
         Scene scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("../Asset/fxml.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/Asset/fxml.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
     }

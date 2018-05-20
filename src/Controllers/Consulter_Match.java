@@ -97,7 +97,7 @@ private JFXButton ac;
 void ac(MouseEvent event) throws IOException{
     Parent creerGroupe = FXMLLoader.load(getClass().getResource("/GUI/FXMLGestion_Match.fxml"));
         Scene sceneAffichage = new Scene(creerGroupe);
-        sceneAffichage.getStylesheets().add(getClass().getResource("../Asset/fxml.css").toExternalForm());
+        sceneAffichage.getStylesheets().add(getClass().getResource("/Asset/fxml.css").toExternalForm());
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(sceneAffichage);
         stage.show();

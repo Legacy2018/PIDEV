@@ -1,16 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<<<<<<< HEAD
-<?import com.lynden.gmapsfx.*?>
-<?import java.lang.*?>
-<?import java.net.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
-<AnchorPane id="AnchorPane" prefHeight="465.0" prefWidth="594.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AfficherItineraireCovoiturageController">
-=======
 <?import com.lynden.gmapsfx.GoogleMapView?>
 <?import java.net.URL?>
 <?import javafx.scene.control.Button?>
@@ -18,22 +7,15 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane id="AnchorPane" prefHeight="465.0" prefWidth="594.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AfficherItineraireCovoiturageController">
->>>>>>> 3a36ce9c30a1a0761b3615608ad96e5c3bb3e277
     <stylesheets>
         <URL value="@/Asset/afficheritinerairecovoiturage.css" />
     </stylesheets>
    <children>
       <GoogleMapView fx:id="mapView" prefHeight="491.0" prefWidth="620.0">
          <children>
-<<<<<<< HEAD
-            <TextField fx:id="fromTextField" editable="false" layoutY="50.0" />
-            <TextField fx:id="toTextField" editable="false" />
-            <Button fx:id="btn_Consulter" layoutX="200.0" mnemonicParsing="false" onAction="#toTextFieldAction" prefHeight="39.0" prefWidth="189.0" text="Consulter itinénarire" />
-=======
             <TextField fx:id="fromTextField" editable="false" layoutY="50.0" visible="false" />
             <TextField fx:id="toTextField" editable="false" visible="false" />
             <Button fx:id="btn_Consulter" layoutX="200.0" mnemonicParsing="false" onAction="#toTextFieldAction" prefHeight="36.0" prefWidth="209.0" text="Consulter itinénarire" textAlignment="CENTER" />
->>>>>>> 3a36ce9c30a1a0761b3615608ad96e5c3bb3e277
          </children>
       </GoogleMapView>
    </children>

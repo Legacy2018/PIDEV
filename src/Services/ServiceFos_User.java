@@ -34,9 +34,9 @@ public class ServiceFos_User {
     }
     public int GetAnFos_User( Fos_User fu) 
     {
-         try {
-            String req = " INSERT INTO fos_user (id, username, email, password, enabled , confirmation_token,roles) "
-                    + "VALUES (NULL, '" +fu.getUsername()+ "', '"+fu.getEmail()+"', '"+fu.getPassword()+"' ,0,'0','user');";
+         try {System.out.println("ajouta fos");
+            String req = " INSERT INTO fos_user (id, username, email, password, enabled, , confirmation_token,roles) "
+                    + "VALUES (NULL, '" +fu.getUsername()+ "', '"+fu.getEmail()+"', '"+fu.getPassword()+"' ,0,'0','a:0:{}');";
 
             st.executeUpdate(req);
            ResultSet res= st.executeQuery("Select id from fos_User where email='"+fu.getEmail()+"';");
@@ -51,6 +51,7 @@ public class ServiceFos_User {
     
     public Fos_User findFos_User(String login) 
     {
+        System.out.println("Select * from fos_User where email='"+login+"' or username='"+login+"';");
         try
         { ResultSet res= st.executeQuery("Select * from fos_User where email='"+login+"' or username='"+login+"';");
           if(res.next())
@@ -59,7 +60,7 @@ public class ServiceFos_User {
               
           }
           else
-          {   
+          {   System.out.println("feragh");
               return null;
           }
         }

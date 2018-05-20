@@ -46,13 +46,14 @@ import javafx.util.Duration;
 import org.controlsfx.control.Notifications;
 import org.controlsfx.control.Rating;
 import Services.ServiceUtilisateur;
+import javafx.application.Application;
 
 /**
  * FXML Controller class
  *
  * @author BSS
  */
-public class ListTicketsController implements Initializable {
+public class ListTicketsController extends Application implements Initializable {
 
     @FXML
     private JFXTextField recherche;
@@ -253,7 +254,7 @@ public class ListTicketsController implements Initializable {
         
         afficher = FXMLLoader.load(getClass().getResource("/GUI/AjouterTicket.fxml"));
      sceneAffichage = new Scene(afficher);
-     sceneAffichage.getStylesheets().add(getClass().getResource("../Asset/MainFramsarra.css").toExternalForm());
+     sceneAffichage.getStylesheets().add(getClass().getResource("/Asset/MainFramsarra.css").toExternalForm());
          stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
         stage.setScene(sceneAffichage);
@@ -435,8 +436,8 @@ public class ListTicketsController implements Initializable {
                 ImageViewUser2.setFitWidth(IMageView.getFitWidth());
                 ImageViewUser2.setFitHeight(IMageView.getFitHeight());
                 //    ImageView ImageViewUser2 = new ImageView("Ressource/bck_inscri.png");
-                ServiceUtilisateur uti=new ServiceUtilisateur();
-                //IMageView = new ImageView(uti.findUtilisateurbyID(ticket.getIdUser().getId()).getImg_profile());
+              //  ServiceUtilisateur uti=new ServiceUtilisateur();
+            // IMageView = new ImageView(uti.findUtilisateurbyID(ticket.getIdUser().getId()).getImg_profile());
                 IMageView.setFitHeight(80);
                 IMageView.setFitWidth(70);
                 IMageView.setLayoutX(45);
@@ -623,7 +624,7 @@ public class ListTicketsController implements Initializable {
         
         afficher = FXMLLoader.load(getClass().getResource("/GUI/ModifierTicket.fxml"));
      sceneAffichage = new Scene(afficher);
-     sceneAffichage.getStylesheets().add(getClass().getResource("../Asset/MainFramsarra.css").toExternalForm());
+     sceneAffichage.getStylesheets().add(getClass().getResource("/Asset/MainFramsarra.css").toExternalForm());
          stage = (Stage) ModifierButton.getScene().getWindow();
 
         stage.setScene(sceneAffichage);
@@ -671,7 +672,7 @@ public class ListTicketsController implements Initializable {
 
                                sceneAffichage = new Scene(afficher);
                                   stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-                               sceneAffichage.getStylesheets().add(getClass().getResource("../Asset/MainFramsarra.css").toExternalForm());
+                               sceneAffichage.getStylesheets().add(getClass().getResource("/Asset/MainFramsarra.css").toExternalForm());
       
 
                                 stage.setScene(sceneAffichage);
@@ -684,7 +685,7 @@ public class ListTicketsController implements Initializable {
                    try {
                                 afficher = FXMLLoader.load(getClass().getResource("/GUI/ListTickets.fxml"));
                  
-                      sceneAffichage.getStylesheets().add(getClass().getResource("../Asset/fxml.css").toExternalForm());
+                      sceneAffichage.getStylesheets().add(getClass().getResource("/Asset/fxml.css").toExternalForm());
                              //   sceneAffichage = new Scene(afficher);
                                stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
 
@@ -735,7 +736,7 @@ public class ListTicketsController implements Initializable {
 
                                 sceneAffichage = new Scene(afficher);
                                 //  stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-                               sceneAffichage.getStylesheets().add(getClass().getResource("../Asset/MainFramsarra.css").toExternalForm());
+                               sceneAffichage.getStylesheets().add(getClass().getResource("/Asset/MainFramsarra.css").toExternalForm());
       
 
                                 stage.setScene(sceneAffichage);
@@ -788,4 +789,17 @@ public class ListTicketsController implements Initializable {
         stage.show();
 */
     }
-}
+
+    @Override
+    public void start(Stage stage) throws Exception {
+        Login_viewController.u=new ServiceUtilisateur().findUtilisateur("malouka");
+         Parent root = FXMLLoader.load(getClass().getResource("/GUI/ListTickets.fxml"));
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("/Asset/MainFram.css").toExternalForm());
+        stage.setScene(scene);
+        stage.show();
+    }
+      public static void main(String[] args) {
+        launch(args);
+    }
+} 

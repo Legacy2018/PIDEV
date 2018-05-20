@@ -140,6 +140,8 @@ public class FenetreMessagerieController extends Thread implements Initializable
         );
         
     }
+    
+    
     @Override
     public void run() {
         Messages m=null;

@@ -1,9 +1,9 @@
-<<<<<<< HEAD
+
 .date-picker .text-field {
     -fx-control-inner-background:linear-gradient( from 50% 0% to 50% 100%,#2A2E37,#454c5b); ;
     -fx-color: #2A2E37 ;
     
-=======
+}
 .root{
 
 -fx-background-image:  url("../Ressource/a.PNG");
@@ -134,7 +134,7 @@ TiTled pane Customusation
 .jfx-snackbar-toast{
     -fx-text-fill:white;
     -fx-font-size:14;
->>>>>>> 4df0fd73bafd56ecef847cbe12942e2ae3ae506c
+
 }
 * {
     -fx-primary : #2A2E37;

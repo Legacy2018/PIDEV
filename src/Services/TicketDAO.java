@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class TicketDAO implements ITicketDAO {
+public class TicketDAO  {
 
     Connection connection;
     private PreparedStatement ps;
@@ -29,23 +29,25 @@ public class TicketDAO implements ITicketDAO {
 
     public static ITicketDAO getInstance() {
         if (iTicketDao == null) {
-            iTicketDao = new TicketDAO();
+            //iTicketDao = new TicketDAO();
         }
         return iTicketDao;
     }
 
-    @Override
+    //@Override
     public void ajouter_Ticket(Ticket ticket) {
 
-        String requete = "INSERT INTO `ticket` ( `categories`, `NbTicket`, `prix`, `idMatch`, `id_annonceur`) VALUES (?,?,?,?,?)";
+        String requete = "INSERT INTO `ticket`  VALUES (?,?,?,?,?,?)";
 
         try {
             ps = connection.prepareStatement(requete);
-            ps.setString(1, ticket.getCategories());
-            ps.setInt(2, ticket.getNbrTicket());
-            ps.setFloat(3, ticket.getPrix());
-            ps.setInt(4, ticket.getIdMatch().getIdMatch());
-            ps.setInt(5, ticket.getIdUser().getId());
+             ps.setInt(1, ticket.getIdUser().getId());
+            ps.setString(2, ticket.getCategories());
+            ps.setInt(3, ticket.getNbrTicket());
+            ps.setFloat(4, ticket.getPrix());
+            ps.setFloat(5,1);
+            ps.setInt(6, ticket.getIdMatch().getIdMatch());
+         
 
             ps.executeUpdate();
         } catch (SQLException ex) {
@@ -53,7 +55,7 @@ public class TicketDAO implements ITicketDAO {
         }
     }
 
-    @Override
+    //@Override
     public List<Ticket> afficher_Ticket() {
 
         List<Ticket> listTicket = new ArrayList<>();
@@ -66,19 +68,20 @@ public class TicketDAO implements ITicketDAO {
 
                 Ticket t = new Ticket();
                 t.setIdTicket(resultat.getInt(1));
-                t.setCategories(resultat.getString(2));
-                t.setPrix(resultat.getFloat(4));
-                 t.setNbrTicket(resultat.getInt(3));
-                 t.setHeurAjout(resultat.getDate(7));
+               t.setIdUser(new Services.ServiceFos_User().findFos_UserbyID(resultat.getInt(2)));
+                t.setCategories(resultat.getString(3));
+                t.setPrix(resultat.getFloat(5));
+                 t.setNbrTicket(resultat.getInt(4));
+                 t.setHeurAjout(resultat.getDate(6));
           
      // ps = connection.prepareStatement(requete2);
 //
            // ps.setInt(1,resultat.getInt(5));
              //    ResultSet resultSet2 = ps.executeQuery();
-               t.setIdMatch(new MatchDAO().chercherMatchParId(resultat.getInt(5)));
+               t.setIdMatch(new MatchDAO().chercherMatchParId(resultat.getInt(8)));
 
                // t.setIdMatch(new Match (resultSet2.getInt(1),resultSet2.getString(5),resultSet2.getString(7),resultSet2.getString(6),resultSet2.getString(3),resultSet2.getString(4)));
-                t.setIdUser(new Services.ServiceFos_User().findFos_UserbyID(resultat.getInt(6)));
+             
                 //System.out.println(t);
                 listTicket.add(t);
             }
@@ -90,7 +93,7 @@ public class TicketDAO implements ITicketDAO {
 
     }
 
-    @Override
+   // @Override
     public void supprimerTicket(int id) {
         String requete = "DELETE FROM `ticket` WHERE `id_ticket`=?";
         try {
@@ -103,7 +106,7 @@ public class TicketDAO implements ITicketDAO {
         }
     }
 
-    @Override
+   // @Override
     public void modifierTicket( Ticket ticket) {
         String requete = "UPDATE `ticket` SET `categories` =?, `NbTicket` =?, `prix` =?, `idMatch` =?, `id_annonceur` =? WHERE id_ticket=? ";
         try {
@@ -122,7 +125,7 @@ public class TicketDAO implements ITicketDAO {
         }
     }
 
-    @Override
+    //@Override
     public Ticket chercherTicketParId(int id) {
         String req = "select * from ticket where id_ticket =?";
         Ticket ticket = null;
@@ -140,7 +143,7 @@ public class TicketDAO implements ITicketDAO {
         return ticket;
     }
     
-    @Override
+  //  @Override
     public List<Ticket> chercherTicketMatch(match Match) {
         List<Ticket> listTicket = new ArrayList<>();
         String requete = "select * from ticket where ticket.idMatch='" + Match.getIdMatch() + "';";
@@ -212,7 +215,7 @@ public class TicketDAO implements ITicketDAO {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }*/
 
-    @Override
+ //   @Override
       public List<Ticket>  rechercherTicket  (String rechercher) {
      List<Ticket> listeTicket= new ArrayList<>();
        List<Ticket> listeTicket2= new ArrayList<>();
@@ -247,12 +250,12 @@ public class TicketDAO implements ITicketDAO {
      
       }
 
-    @Override
+   // @Override
     public int nbTicketAcheteParMatch(match Matche) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
+  //  @Override
     public List<Ticket> chercherTicketParCategorie(String categorie) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }

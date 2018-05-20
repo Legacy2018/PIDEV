@@ -74,7 +74,7 @@ public class Login_viewController implements Initializable {
                         Parent root;
                         if(u.isEnabled())
                 {
-                        if(u.getRole().equals("user"))
+                        if(u.getRole().equals("a:0:{}"))
                             root = FXMLLoader.load(getClass().getResource("/GUI/toolbar.fxml"));
                         else
                             root = FXMLLoader.load(getClass().getResource("/GUI/Dashboard.fxml"));

@@ -1,18 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<<<<<<< HEAD
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.image.*?>
-<?import com.jfoenix.controls.*?>
-<?import java.lang.*?>
-<?import java.net.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
-<AnchorPane id="AnchorPane" prefHeight="597.0" prefWidth="696.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ConsulterAnnoncesCollocationsController">
-=======
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXDrawer?>
 <?import com.jfoenix.controls.JFXHamburger?>
@@ -34,34 +21,10 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="596.0" prefWidth="1074.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ConsulterAnnoncesCollocationsController">
->>>>>>> 3a36ce9c30a1a0761b3615608ad96e5c3bb3e277
     <stylesheets>
         <URL value="@/Asset/consulterannoncescollocaions.css" />
     </stylesheets>
    <children>
-<<<<<<< HEAD
-      <ScrollPane prefHeight="597.0" prefWidth="771.0">
-         <content>
-            <VBox fx:id="annoncesVBox" opacity="0.5" prefHeight="589.0" prefWidth="696.0" />
-         </content>
-      </ScrollPane>
-      <AnchorPane fx:id="annoncesAnchorPane" layoutX="7.0" layoutY="-267.0" prefHeight="259.0" prefWidth="756.0" scaleZ="5.0">
-         <children>
-            <Label fx:id="titre" layoutX="35.0" layoutY="21.0" prefHeight="17.0" prefWidth="76.0" textFill="#cadb0d" />
-            <Label fx:id="DateDepart" layoutX="35.0" layoutY="87.0" prefHeight="17.0" prefWidth="76.0" textFill="#cadb0d" />
-            <Label fx:id="DateArivee" layoutX="35.0" layoutY="120.0" prefHeight="17.0" prefWidth="76.0" textFill="#cadb0d" />
-            <ImageView fx:id="Image1" fitHeight="92.0" fitWidth="101.0" layoutX="380.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="Image2" fitHeight="92.0" fitWidth="101.0" layoutX="549.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="Image4" fitHeight="92.0" fitWidth="101.0" layoutX="549.0" layoutY="148.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="Image3" fitHeight="92.0" fitWidth="101.0" layoutX="380.0" layoutY="157.0" pickOnBounds="true" preserveRatio="true" />
-            <Label fx:id="Description" layoutX="35.0" layoutY="58.0" prefHeight="17.0" prefWidth="76.0" textFill="#cadb0d" />
-            <Separator fx:id="separator" layoutX="3.0" layoutY="254.0" prefHeight="6.0" prefWidth="756.0" style="-fx-border-color: black;" />
-            <JFXButton fx:id="btn_mail" layoutX="82.0" layoutY="203.0" onAction="#ShowMap" text="Position" />
-            <JFXButton fx:id="btn_position" layoutX="227.0" layoutY="203.0" onAction="#SendMail" text="Envoyer Mail" />
-            <Label fx:id="Tarif" layoutX="35.0" layoutY="148.0" prefHeight="17.0" prefWidth="76.0" textFill="#cadb0d" />
-            <TextField fx:id="idAnnonce" layoutX="260.0" layoutY="92.0" prefHeight="25.0" prefWidth="69.0" />
-            <TextField fx:id="IdAnnonceur" layoutX="255.0" layoutY="144.0" prefHeight="25.0" prefWidth="76.0" />
-=======
       <BorderPane prefHeight="596.0" prefWidth="1249.0" style="-fx-background-color: trasparent;" stylesheets="@../Asset/consulterannoncescollocaions.css">
          <center>
             <ScrollPane prefHeight="596.0" prefWidth="545.0" stylesheets="@../Asset/consulterannoncescollocaions.css" BorderPane.alignment="CENTER">
@@ -161,7 +124,6 @@
             </Label>
             <TextField fx:id="idAnnonce" layoutX="260.0" layoutY="92.0" prefHeight="25.0" prefWidth="69.0" visible="false" />
             <TextField fx:id="IdAnnonceur" layoutX="255.0" layoutY="144.0" prefHeight="25.0" prefWidth="76.0" visible="false" />
->>>>>>> 3a36ce9c30a1a0761b3615608ad96e5c3bb3e277
          </children>
       </AnchorPane>
    </children>

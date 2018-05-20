@@ -34,7 +34,7 @@ public class ServiceUtilisateur extends ServiceFos_User {
         }
     }
     public void ajouter(Utilisateur u)
-    {
+    {System.out.println("ajouta user");
         
          try {
             String req = " INSERT INTO utilisateur  "
@@ -52,6 +52,7 @@ public class ServiceUtilisateur extends ServiceFos_User {
         System.out.println("fos_user  "+fu);
         if(fu==null)
         {
+            System.out.println("hetha");
           
             return null;
         }
@@ -60,12 +61,12 @@ public class ServiceUtilisateur extends ServiceFos_User {
              try
         { ResultSet res= st.executeQuery("Select * from utilisateur where id='"+fu.getId()+"';");
           if(res.next())
-          {
+          { 
               return new Utilisateur(res.getInt("id"), res.getString("position"), res.getString("telephone"), false, res.getString("nom"),res.getString("prenom") , res.getString("date_de_naissances"),fu,res.getString("Img_profile"),res.getInt("Numdeconfirmation"));
           }
           else
           { 
-              return null;
+              return new Utilisateur(fu.getId(), "null", "Mazel", true, "Ma yekhdemesh", "Ma yekhdemesh", "mayekhdemesh", fu,"http://Ressource-Pidev/temoin-de-mariage-toulouse-magasin-robe-de-maric3a9e-toulouse-pas-cher-robe-de-marie-toulouse-pas-cher.jpg" , 0);
           }
         }
         catch (SQLException ex) {
