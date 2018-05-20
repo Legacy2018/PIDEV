@@ -1,16 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<<<<<<< HEAD
-<?import com.jfoenix.controls.*?>
-<?import java.lang.*?>
-<?import java.net.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="660.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ConsulterAnnoncesCovoiturageController">
-=======
 <?import com.jfoenix.controls.JFXDrawer?>
 <?import com.jfoenix.controls.JFXHamburger?>
 <?import com.jfoenix.controls.JFXTextField?>
@@ -25,22 +14,14 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="655.0" prefWidth="1025.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ConsulterAnnoncesCovoiturageController">
->>>>>>> 3a36ce9c30a1a0761b3615608ad96e5c3bb3e277
     <stylesheets>
         <URL value="@/Asset/consultertoutesannonces.css" />
     </stylesheets>
    <children>
-<<<<<<< HEAD
-      <TableView fx:id="tableannonces" layoutY="110.0" onMouseClicked="#setCellValueFromTableToText" prefHeight="200.0" prefWidth="714.0">
-         <columns>
-            <TableColumn fx:id="Datedepart" prefWidth="127.0" text="Date de Depart" />
-            <TableColumn fx:id="Datearrivee" prefWidth="134.0" text="Date d' Arrivée" />
-=======
       <TableView fx:id="tableannonces" layoutX="67.0" layoutY="144.0" onMouseClicked="#setCellValueFromTableToText" prefHeight="386.0" prefWidth="577.0">
          <columns>
             <TableColumn fx:id="Datedepart" prefWidth="127.0" text="Date de Depart" />
             <TableColumn fx:id="Datearrivee" prefWidth="134.0" text="Date d' Arrivée" visible="false" />
->>>>>>> 3a36ce9c30a1a0761b3615608ad96e5c3bb3e277
             <TableColumn fx:id="Adressedepart" minWidth="9.0" prefWidth="156.0" text="Adresse de Depart" />
             <TableColumn fx:id="Adressearrivee" minWidth="0.0" prefWidth="154.0" text="Adresse d'Arrivée" />
             <TableColumn fx:id="Tarrifs" minWidth="0.0" prefWidth="141.0" text="Tarif" />
@@ -48,12 +29,6 @@
             <TableColumn fx:id="idannonceur" prefWidth="75.0" text="Column X" visible="false" />
          </columns>
       </TableView>
-<<<<<<< HEAD
-      <Label layoutX="255.0" layoutY="25.0" text="Consulter les annonces de covoiturage" textAlignment="CENTER" />
-      <Button fx:id="btn_conlt_itin" layoutX="102.0" layoutY="335.0" mnemonicParsing="false" onAction="#ConsulterItinerarire" prefHeight="25.0" prefWidth="170.0" text="Consulter Itineraire " />
-      <Button fx:id="btn_envoyer_mail" layoutX="370.0" layoutY="335.0" mnemonicParsing="false" onAction="#EnvoyerMail" prefHeight="25.0" prefWidth="128.0" text="Envoyer Email" />
-      <Button fx:id="btn_retour" layoutX="648.0" layoutY="335.0" mnemonicParsing="false" onAction="#Retour" text="Retour" />
-=======
       <Button fx:id="btn_conlt_itin" layoutX="67.0" layoutY="553.0" mnemonicParsing="false" onAction="#ConsulterItinerarire" prefHeight="43.0" prefWidth="178.0" text="Consulter Itineraire " />
       <Button fx:id="btn_envoyer_mail" layoutX="390.0" layoutY="555.0" mnemonicParsing="false" onAction="#EnvoyerMail" prefHeight="43.0" prefWidth="141.0" text="Envoyer Email" />
       <Button fx:id="btn_retour" layoutX="822.0" layoutY="552.0" mnemonicParsing="false" onAction="#Retour" prefHeight="43.0" prefWidth="97.0" text="Retour" />
@@ -83,6 +58,5 @@
       <JFXDrawer fx:id="SidePannel" layoutX="9.0" layoutY="79.0" prefHeight="521.0" prefWidth="135.0" />
       <JFXHamburger fx:id="Sp" alignment="CENTER_RIGHT" layoutX="19.0" layoutY="17.0" />
 
->>>>>>> 3a36ce9c30a1a0761b3615608ad96e5c3bb3e277
    </children>
 </AnchorPane>

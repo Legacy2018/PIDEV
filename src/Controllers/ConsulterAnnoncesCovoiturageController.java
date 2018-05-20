@@ -46,7 +46,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import services.ServiceUtilisateur;
+import Services.ServiceUtilisateur;
 import tray.notification.NotificationType;
 import tray.notification.TrayNotification;
 

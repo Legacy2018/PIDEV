@@ -18,11 +18,7 @@
     -fx-red: #FF0000;
 }
 .scroll-pane > .viewport {
-<<<<<<< HEAD
-   -fx-background-color: #2A2E37;
-=======
    -fx-background-color: transparent;
->>>>>>> 3a36ce9c30a1a0761b3615608ad96e5c3bb3e277
 }
 .date-picker .text-field .text-area {
     -fx-control-inner-background: #2A2E37 ;
@@ -30,11 +26,6 @@
 
 
 .root{
-<<<<<<< HEAD
-    -fx-background-color: -fx-primary;
-}
-
-=======
     /*-fx-background-color: linear-gradient( from 50% 0% to 50% 100%,#31445A,#298DC5);*/
     -fx-background-color :   rgba(127, 140, 141,1.0);
 }
@@ -49,20 +40,11 @@
 .scroll-pane{
      -fx-background-image:  url("../Ressource/bg.png");
 }
->>>>>>> 3a36ce9c30a1a0761b3615608ad96e5c3bb3e277
 .glyph-icon
 {
     -fx-fill: -fx-primarytext;
 }
 
-<<<<<<< HEAD
-.button{
-    -fx-text-fill: -fx-primarytext;
-    -fx-background-color: -fx-primary;
-    -fx-border-color: -fx-secondary;
-    -fx-border-radius: 20px;
-    -fx-background-radius: 20px;
-=======
 .jfx-hamburger StackPane {
 	-fx-background-color: white;
 }
@@ -202,19 +184,13 @@ TiTled pane Customusation
     -fx-border-color: -fx-primary;
     -fx-border-radius: 2px;
     -fx-background-radius: 2px;
->>>>>>> 3a36ce9c30a1a0761b3615608ad96e5c3bb3e277
     -fx-font-size: 13pt;
 }
 
 .button:hover{
     -fx-border-color: -fx-secondary;
-<<<<<<< HEAD
-    -fx-background-color: -fx-secondary;
-    -fx-text-fill: -fx-primary;
-=======
     -fx-background-color: transparent;
     -fx-text-fill: -fx-primarytext;
->>>>>>> 3a36ce9c30a1a0761b3615608ad96e5c3bb3e277
 }
 
 .text-field
@@ -222,23 +198,6 @@ TiTled pane Customusation
     -fx-text-fill: -fx-primarytext;
     -fx-font-size : 13pt;
     -jfx-focus-color: -fx-secondary;
-<<<<<<< HEAD
-    -fx-text-fill: derive(-fx-secondary, 20%);
-}
-.image-view:hover {
-    -fx-scale-x: 2.2;
-    -fx-scale-y: 2.2;
-    -fx-scale-z: 2.2;
-}
-
-.text-area
-{
-    -fx-text-fill: -fx-primarytext;
-    -fx-font-size : 13pt;
-    -jfx-focus-color: -fx-secondary;
-    -fx-text-fill: derive(-fx-secondary, 20%);
-}
-=======
     -fx-text-fill: derive(-fx-primarytext, 20%);
     -fx-background-color: rgba(44, 62, 80,0.7);
     
@@ -251,7 +210,6 @@ TiTled pane Customusation
 
 
 
->>>>>>> 3a36ce9c30a1a0761b3615608ad96e5c3bb3e277
 /*Login Screen Specific*/
 
 
@@ -319,11 +277,7 @@ TiTled pane Customusation
 .main-text
 {
     -fx-fill: -fx-secondary;
-<<<<<<< HEAD
-    -fx-font-size: 12pt;
-=======
     -fx-font-size: 14pt;
->>>>>>> 3a36ce9c30a1a0761b3615608ad96e5c3bb3e277
     -fx-text-alignment: center;
 }
 
@@ -380,21 +334,13 @@ TiTled pane Customusation
 /*TableView Default*/
 .table-view{
     -fx-background-color: derive(-fx-primary, 10%);
-<<<<<<< HEAD
-    -fx-font-size: 14px; 
-=======
     -fx-font-size: 16px; 
->>>>>>> 3a36ce9c30a1a0761b3615608ad96e5c3bb3e277
 }
 .table-view:focused{
     -fx-background-color: derive(-fx-primary, 20%);
 }
 .table-row-cell {
-<<<<<<< HEAD
-    -fx-cell-size: 30px;
-=======
     -fx-cell-size: 40px;
->>>>>>> 3a36ce9c30a1a0761b3615608ad96e5c3bb3e277
 }
 .table-view .column-header-background{
     -fx-background-color: -fx-primary;
@@ -459,11 +405,8 @@ TiTled pane Customusation
 .table-context
 {
     -fx-base: -fx-primary;
-<<<<<<< HEAD
-=======
 }
 #pansearch
 {
     -fx-background-color: rgba(236, 240, 241,0.65);
->>>>>>> 3a36ce9c30a1a0761b3615608ad96e5c3bb3e277
 }

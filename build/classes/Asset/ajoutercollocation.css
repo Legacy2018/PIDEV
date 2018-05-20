@@ -1,11 +1,8 @@
-<<<<<<< HEAD
-=======
 .date-picker .text-field {
     -fx-control-inner-background:linear-gradient( from 50% 0% to 50% 100%,#2A2E37,#454c5b); ;
     -fx-color: #2A2E37 ;
     
 }
->>>>>>> 3a36ce9c30a1a0761b3615608ad96e5c3bb3e277
 * {
     -fx-primary : #2A2E37;
     -fx-secondary : #1976D2;
@@ -15,12 +12,8 @@
 }
 
 .root{
-<<<<<<< HEAD
-    -fx-background-color: -fx-primary;
-=======
     /*-fx-background-color: linear-gradient( from 50% 0% to 50% 100%,#31445A,#298DC5);*/
     -fx-background-image:  url("../Ressource/bg.png");
->>>>>>> 3a36ce9c30a1a0761b3615608ad96e5c3bb3e277
 }
 
 .glyph-icon
@@ -246,9 +239,6 @@
 .table-context
 {
     -fx-base: -fx-primary;
-<<<<<<< HEAD
-}
-=======
 }
 .button{
     -fx-text-fill: -fx-primarytext;
@@ -264,4 +254,3 @@
     -fx-background-color: transparent;
     -fx-text-fill: -fx-primarytext;
 }
->>>>>>> 3a36ce9c30a1a0761b3615608ad96e5c3bb3e277
