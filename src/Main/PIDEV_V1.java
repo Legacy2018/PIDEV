@@ -24,7 +24,7 @@ public class PIDEV_V1 extends Application {
     public void start(Stage stage) {
         try
         {
-        Parent root = FXMLLoader.load(getClass().getResource("/GUI/FXMLDisplayEquipeJoueur.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/GUI/Login.fxml"));
         
         Scene scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("/Asset/Style.css").toExternalForm());
