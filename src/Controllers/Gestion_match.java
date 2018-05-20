@@ -450,18 +450,18 @@ public class Gestion_match extends Application implements Initializable {
          //e.modifierEquipescore(ea, ea.idEquipe);
 
 
-<<<<<<< HEAD
+
           //Equipe ea=new Equipe(z1,3+score);
          e.modifierEquipe(ea, ea.idEquipe);
           //Equipe ea=new Equipe(z1,3+score);
          //e.modifierEquipescore(ea, ea.idEquipe);
 
-=======
+
      //     Equipe ea=new Equipe(z1,3+score);
          e.modifierEquipe(ea, ea.idEquipe);
           //Equipe ea=new Equipe(z1,3+score);
          //e.modifierEquipescore(ea, ea.idEquipe);
->>>>>>> 94efeac3350aa43cb4c87b00463cdf50df10ee3c
+
              Notifications.create()
            .title("Changement du score")
               .text("l'equipe "+e2+" a gagné")
@@ -477,10 +477,7 @@ public class Gestion_match extends Application implements Initializable {
            int score2=e.Consulterpoint(e2);
           Equipe ea2=new Equipe(z2,1+score2);
          e.modifierEquipe(ea2, ea2.idEquipe);
-<<<<<<< HEAD
 
-=======
->>>>>>> 94efeac3350aa43cb4c87b00463cdf50df10ee3c
 
           //Equipe ea=new Equipe(z1,1+score);
          //e.modifierEquipescore(ea, ea.idEquipe);
@@ -488,22 +485,15 @@ public class Gestion_match extends Application implements Initializable {
           //Equipe ea2=new Equipe(z2,1+score2);
          //e.modifierEquipescore(ea2, ea2.getIdEquipe());
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 94efeac3350aa43cb4c87b00463cdf50df10ee3c
           //Equipe ea=new Equipe(z1,1+score);
          //e.modifierEquipescore(ea, ea.idEquipe);
        //   int z2= e.AfficherEquipe(e2).getIdEquipe();
         //   int score2=e.Consulterpoint(e2);
           //Equipe ea2=new Equipe(z2,1+score2);
          //e.modifierEquipescore(ea2, ea2.getIdEquipe());
-<<<<<<< HEAD
 
-=======
->>>>>>> 94efeac3350aa43cb4c87b00463cdf50df10ee3c
-             Notifications.create()
-           .title("Changement du score")
+             Notifications.create().title("Changement du score")
               .text("Null")
              .showInformation();
         }}
@@ -530,10 +520,7 @@ public class Gestion_match extends Application implements Initializable {
          e.modifierEquipe(ea, z1);
 
          //e.modifierEquipescore(ea, z1);
-<<<<<<< HEAD
 
-=======
->>>>>>> 94efeac3350aa43cb4c87b00463cdf50df10ee3c
           int z2=e.AfficherEquipe(e1).getIdEquipe();
         Equipe eq2=e.AfficherEquipe(z2);
         eq2.setPhase("Eliminée");
@@ -570,10 +557,7 @@ public class Gestion_match extends Application implements Initializable {
 
          e.modifierEquipe(ea, z1);
          //e.modifierEquipescore(ea, z1);
-<<<<<<< HEAD
 
-=======
->>>>>>> 94efeac3350aa43cb4c87b00463cdf50df10ee3c
          
           int z2=e.AfficherEquipe(e1).getIdEquipe();
         Equipe eq2=e.AfficherEquipe(z2);
@@ -609,10 +593,7 @@ public class Gestion_match extends Application implements Initializable {
 
 
          e.modifierEquipe(ea, z1);
-<<<<<<< HEAD
 
-=======
->>>>>>> 94efeac3350aa43cb4c87b00463cdf50df10ee3c
 
          //e.modifierEquipescore(ea, z1);
 
@@ -625,17 +606,17 @@ public class Gestion_match extends Application implements Initializable {
 
          //e.modifierEquipescore(ea1, z2); 
 
-<<<<<<< HEAD
-         e.modifierEquipe(ea1, z2); 
-
-         //e.modifierEquipescore(ea1, z2); 
-
-=======
 
          e.modifierEquipe(ea1, z2); 
 
          //e.modifierEquipescore(ea1, z2); 
->>>>>>> 94efeac3350aa43cb4c87b00463cdf50df10ee3c
+
+
+
+         e.modifierEquipe(ea1, z2); 
+
+         //e.modifierEquipescore(ea1, z2); 
+
          
          Notifications.create()
            .title("Changement du score")
@@ -726,34 +707,33 @@ public class Gestion_match extends Application implements Initializable {
     }
     @FXML
     void gp(ActionEvent event) {
-<<<<<<< HEAD
+
 
 
         e.chercherParGroupe(this.gp.getValue());
 
-=======
+
         
         
 
         e.chercherParGroupe(this.gp.getValue());
->>>>>>> 94efeac3350aa43cb4c87b00463cdf50df10ee3c
+
                 e.chercherParGroupe(this.gp.getValue());
         List z = new ArrayList<>();
         z=e.chercherParGroupe(this.gp.getValue()).stream().map(e->e.getPays()).collect(Collectors.toList());
 
        // e.AfficherEquipepargp(this.gp.getValue());
-<<<<<<< HEAD
+
 
       
         //z=e.AfficherEquipepargp(this.gp.getValue()).stream().map(e->e.getPays()).collect(Collectors.toList());
 
-=======
- 
+
       
         //z=e.AfficherEquipepargp(this.gp.getValue()).stream().map(e->e.getPays()).collect(Collectors.toList());
 
 
->>>>>>> 94efeac3350aa43cb4c87b00463cdf50df10ee3c
+
 //        List z = new ArrayList<>();
         //z=e.AfficherEquipepargp(this.gp.getValue()).stream().map(e->e.getPays()).collect(Collectors.toList());
 
