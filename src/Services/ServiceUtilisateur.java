@@ -17,6 +17,9 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.ObservableListBase;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 /**
  *
@@ -33,12 +36,29 @@ public class ServiceUtilisateur extends ServiceFos_User {
            
         }
     }
+    public static String get_SHA_512_SecurePassword(String passwordToHash, String   salt){
+        String generatedPassword = null;
+        try {
+             MessageDigest md = MessageDigest.getInstance("SHA-512");
+             md.update(salt.getBytes(StandardCharsets.UTF_8));
+             byte[] bytes = md.digest(passwordToHash.getBytes(StandardCharsets.UTF_8));
+             StringBuilder sb = new StringBuilder();
+             for(int i=0; i< bytes.length ;i++){
+                sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+             }
+             generatedPassword = sb.toString();
+            } 
+           catch (NoSuchAlgorithmException e){
+            e.printStackTrace();
+           }
+        return generatedPassword;
+    }
     public void ajouter(Utilisateur u)
     {System.out.println("ajouta user");
         
          try {
             String req = " INSERT INTO utilisateur  "
-                    + "VALUES ("+GetAnFos_User(new Fos_User(u.getId(), u.getUsername(), u.getEmail(), u.getPassword(), false, false, "user"))+", '"+u.getPosition()+"', '"+u.getTelephone()+"',"+u.isFumeur()+",'"+u.getNom()+"','"+u.getPnom()+"',null,'"+u.getImg_profile()+"',"+u.getNum_confirm()+");";
+                    + "VALUES ("+GetAnFos_User(new Fos_User(u.getId(), u.getUsername(), u.getEmail(), u.getPassword(), false, false, "user",getNextSalt().toString()))+", '"+u.getPosition()+"', '"+u.getTelephone()+"',"+u.isFumeur()+",'"+u.getNom()+"','"+u.getPnom()+"',null,'"+u.getImg_profile()+"',"+u.getNum_confirm()+");";
              System.out.println(u.getImg_profile());
             st.executeUpdate(req);
           
@@ -92,8 +112,8 @@ public class ServiceUtilisateur extends ServiceFos_User {
               return new Utilisateur(res.getInt("id"), res.getString("position"), res.getString("telephone"), false, res.getString("nom"),res.getString("prenom") , res.getString("date_de_naissances"),fu,res.getString("Img_profile"),res.getInt("Numdeconfirmation"));
           }
           else
-          { 
-              return null;
+          { System.out.println("step 3");
+              return new Utilisateur(fu.getId(), "null", "Mazel", true, "Ma yekhdemesh", "Ma yekhdemesh", "mayekhdemesh", fu,"http://Ressource-Pidev/temoin-de-mariage-toulouse-magasin-robe-de-maric3a9e-toulouse-pas-cher-robe-de-marie-toulouse-pas-cher.jpg" , 0);
           }
         }
         catch (SQLException ex) {
@@ -160,6 +180,7 @@ public class ServiceUtilisateur extends ServiceFos_User {
          return us;
        
     }
+    
     public List<Utilisateur> getallfiltred(String column,String val) 
     {   List<Utilisateur> us=new ArrayList<>();
     ResultSet res;
@@ -167,9 +188,13 @@ public class ServiceUtilisateur extends ServiceFos_User {
         {  if(!column.equals("username"))
             res= st.executeQuery("Select * from Utilisateur where "+column+" like '"+val+"%';");
         else
+        {
+            System.out.println("Step 2");
             res= st.executeQuery("Select * from fos_User where "+column+" like '"+val+"%';");
+        }
+            
             while(res.next())
-            {
+            { System.out.println("Step 3");
                 us.add(new ServiceUtilisateur().findUtilisateurbyID(res.getInt("id")));
             }
         } catch (SQLException ex) {

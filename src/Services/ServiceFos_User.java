@@ -9,8 +9,10 @@ import DataSource.DataSource;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
 import Entities.Fos_User;
+import java.security.SecureRandom;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -22,6 +24,9 @@ public class ServiceFos_User {
     protected DataSource db;
     protected Connection cnx;
     protected Statement st;
+    private static final Random RANDOM = new SecureRandom();
+    private static final int ITERATIONS = 10000;
+    private static final int KEY_LENGTH = 256;
 
     public ServiceFos_User() {
       cnx = (Connection) DataSource.getInstance().getConnection();
@@ -55,8 +60,8 @@ public class ServiceFos_User {
         try
         { ResultSet res= st.executeQuery("Select * from fos_User where email='"+login+"' or username='"+login+"';");
           if(res.next())
-          { System.out.println(new Fos_User(res.getInt("id"), res.getString("username"), res.getString("email"), res.getString("password"), res.getBoolean("enabled"), res.getBoolean("enabled"), res.getString("roles")));
-              return new Fos_User(res.getInt("id"), res.getString("username"), res.getString("email"), res.getString("password"), res.getBoolean("enabled"), res.getBoolean("enabled"), res.getString("roles"));
+          { System.out.println(new Fos_User(res.getInt("id"), res.getString("username"), res.getString("email"), res.getString("password"), res.getBoolean("enabled"), res.getBoolean("enabled"), res.getString("roles"),res.getString("salt")));
+              return new Fos_User(res.getInt("id"), res.getString("username"), res.getString("email"), res.getString("password"), res.getBoolean("enabled"), res.getBoolean("enabled"), res.getString("roles"),res.getString("salt"));
               
           }
           else
@@ -75,7 +80,7 @@ public class ServiceFos_User {
         { ResultSet res= st.executeQuery("Select * from fos_User where id="+id+";");
           if(res.next())
           {
-              return new Fos_User(res.getInt("id"), res.getString("username"), res.getString("email"), res.getString("password"), res.getBoolean("enabled"), res.getBoolean("enabled"), res.getString("roles"));
+              return new Fos_User(res.getInt("id"), res.getString("username"), res.getString("email"), res.getString("password"), res.getBoolean("enabled"), res.getBoolean("enabled"), res.getString("roles"),res.getString("salt"));
               
           }
           else
@@ -97,6 +102,11 @@ public class ServiceFos_User {
         catch (SQLException ex) {
             System.out.println(ex);
         }
+    }
+    public static byte[] getNextSalt() {
+        byte[] salt = new byte[16];
+        RANDOM.nextBytes(salt);
+        return salt;
     }
     public void enableaccount(int id)
     {

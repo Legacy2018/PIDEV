@@ -23,7 +23,7 @@ public class Utilisateur extends Fos_User{
     }
 
     public Utilisateur(int id_user, String position, String telephone, boolean fumeur, String nom, String pnom, String date_de_naissance,Fos_User fu,String Img_profile,int num_confirm) {
-        super(fu.id, fu.username, fu.email, fu.password, fu.enabled, fu.confirmation_token, fu.role);
+        super(fu.id, fu.username, fu.email, fu.password, fu.enabled, fu.confirmation_token, fu.role,fu.salt);
         this.id_user = id_user;
         this.position = position;
         this.telephone = telephone;
@@ -35,8 +35,8 @@ public class Utilisateur extends Fos_User{
         this.num_confirm=num_confirm;
     }
 
-    public Utilisateur(int id_user, String position, String telephone, boolean fumeur, String nom, String pnom, String date_de_naissance, int id, String username, String email, String password, boolean enabled, boolean confirmation_token, String role,String Img_profile,int num_confirm) {
-        super(id, username, email, password, enabled, confirmation_token, role);
+    public Utilisateur(int id_user, String position, String telephone, boolean fumeur, String nom, String pnom, String date_de_naissance, int id, String username, String email, String password, boolean enabled, boolean confirmation_token, String role,String Img_profile,int num_confirm,String salt) {
+        super(id, username, email, password, enabled, confirmation_token, role,salt);
         this.id_user = id_user;
         this.position = position;
         this.telephone = telephone;

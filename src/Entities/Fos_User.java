@@ -18,11 +18,20 @@ public class Fos_User {
     protected boolean enabled;
     protected boolean confirmation_token;
     protected String role;
+    protected String salt;
 
     public Fos_User() {
     }
 
-    public Fos_User(int id, String username, String email, String password, boolean enabled, boolean confirmation_token, String role) {
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
+    }
+    
+    public Fos_User(int id, String username, String email, String password, boolean enabled, boolean confirmation_token, String role,String salt) {
         this.id = id;
         this.username = username;
         this.email = email;
@@ -30,6 +39,7 @@ public class Fos_User {
         this.enabled = enabled;
         this.confirmation_token = confirmation_token;
         this.role = role;
+        this.salt=salt;
     }
 
      public Fos_User(int id) {
