@@ -223,7 +223,7 @@ public class TicketDAO  {
    listeTicket=afficher_Ticket();
      for (Ticket gr: listeTicket){
      //System.out.println(listeTicket);
-      String req ="select * from ticket t inner join matchs m where t.categories like '%"+rechercher+"%' or m.nom_equipe1 like '%"+rechercher+"%' or m.Nom_equipe2 like '%"+rechercher+"%' and t.id_ticket=? and m.id_match=?";  
+      String req ="select * from ticket t inner join matchss m where t.categories like '%"+rechercher+"%' or m.nom_equipe1 like '%"+rechercher+"%' or m.Nom_equipe2 like '%"+rechercher+"%' and t.id_ticket=? and m.id_match=?";  
     //  String req ="select * from ticket t inner join  matchs m where t.prix like '%"+rechercher+"%' or t.categories like '%"+rechercher+"%'  and t.id_ticket=? and m.id_match=?";  
   
 //or m.equipe1 like '%"+rechercher+"%' or m.equipe2 like '%"+rechercher+"%' or m.heure like '%"+rechercher+"%'

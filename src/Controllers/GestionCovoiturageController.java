@@ -8,6 +8,7 @@ package Controllers;
 import static Controllers.Login_viewController.u;
 import Entities.Annonce_covoiturage;
 import Services.CovoiturageService;
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.controls.JFXListView;
@@ -142,7 +143,8 @@ public class GestionCovoiturageController extends Application implements Initial
 
     @FXML
     private Button btn_retour;
-
+  @FXML
+    private JFXComboBox<Integer> nbplaces;
 
     public int selectedAnn;
     private ObservableList<Annonce_covoiturage> data;
@@ -274,6 +276,7 @@ public class GestionCovoiturageController extends Application implements Initial
         System.out.println("date====="+Datearrivee_txt.getValue());
         if ((Datearrivee_txt.getValue() != null) && (!Tarrifs.getText().trim().isEmpty()) && (!Adressedepart_txt.getText().trim().isEmpty())&&(!Adressearrivee_txt.getText().trim().isEmpty()) ) {
             if(ValidateFloat()){AnnCo = new Annonce_covoiturage(u, s, java.sql.Date.valueOf(Datedapart_txt1.getValue()), java.sql.Date.valueOf(LocalDate.now()), Adressedepart_txt.getText(), Adressearrivee_txt.getText(), Float.parseFloat(Tarif_txt.getText()));
+           AnnCo.setNbplaces(nbplaces.getValue());
             if (lsa.contains(AnnCo)) {System.out.println("faouziii"+Datearrivee_txt.getValue()+Tarrifs.getText()+Adressedepart_txt.getText()+Adressearrivee_txt.getText());
                 Alert alert = new Alert(AlertType.ERROR);
                 alert.setTitle("Annonce dupliquée");
@@ -330,6 +333,7 @@ public class GestionCovoiturageController extends Application implements Initial
             System.out.println("mouch fergha");
             if (ValidateFloat()){
             AC = new Annonce_covoiturage(u, 1, java.sql.Date.valueOf(Datedapart_txt1.getValue()), java.sql.Date.valueOf(Datearrivee_txt.getValue()), Adressedepart_txt.getText(), Adressearrivee_txt.getText(), Integer.parseInt(Tarif_txt.getText()));
+           AC.setNbplaces(nbplaces.getValue());
             List<Annonce_covoiturage> lsa = CS.findByIdAnnonceur(u);
             if (lsa.contains(AC)) {
                 Alert alert = new Alert(AlertType.ERROR);
@@ -398,6 +402,7 @@ public class GestionCovoiturageController extends Application implements Initial
         System.out.println("faouzi");
        initDrawer();
          System.out.println("faouzi1");
+         nbplaces.getItems().addAll(1,2,3,4,5,6,7,8);
         btn_modifier.setVisible(false);
         btn_supprimer.setVisible(false);
         // Travel TODO

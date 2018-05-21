@@ -87,8 +87,8 @@ public class CovoiturageService implements IService<Annonce_covoiturage,Integer>
 
     @Override
     public void add(Annonce_covoiturage t) {
-String req = "INSERT INTO `annonce_covoiturage` (`id_annonceur`, `date_depart`, `Date_arrivee`, `adresse_depart`, `adresse_arrivee`, `tari`) "
-        + "VALUES (?,?,?,?,?,?)";
+String req = "INSERT INTO `annonce_covoiturage` (`id_annonceur`, `date_depart`, `Date_arrivee`, `adresse_depart`, `adresse_arrivee`, `tari`, `nbrplaces`) "
+        + "VALUES (?,?,?,?,?,?,?)";
 System.out.println(req);        
 try {System.out.println(req);
             ps = connection.prepareStatement(req);
@@ -98,6 +98,7 @@ try {System.out.println(req);
             ps.setString(4, t.getAdresse_depart());
             ps.setString(5, t.getAdresse_arrivee());
             ps.setDouble(6, (double)t.getTarif());
+            ps.setDouble(7, t.getNbplaces());
             ps.executeUpdate();
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -126,7 +127,7 @@ try {System.out.println(req);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 Ann_cov = new Annonce_covoiturage( rs.getInt(2),rs.getDate(3),rs.getDate(4),rs.getString(5),rs.getString(6),rs.getFloat(7));
-         
+                Ann_cov.setNbplaces(Integer.parseInt(rs.getString(9)));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -144,6 +145,7 @@ try {System.out.println(req);
             ResultSet rs = ps.executeQuery();
            while (rs.next()) {
                 Ann_cov = new Annonce_covoiturage( rs.getInt(2),rs.getDate(3),rs.getDate(4),rs.getString(5),rs.getString(6),rs.getFloat(7));
+                  Ann_cov.setNbplaces(Integer.parseInt(rs.getString(9)));
                 lsa.add(Ann_cov);
             }
         } catch (Exception e) {
@@ -164,6 +166,7 @@ try {System.out.println(req);
                 Utilisateur utilisateur=new Utilisateur();
                 utilisateur.setId_user(rs.getInt(1));
                 Annonce_covoiturage Ann_cov = new Annonce_covoiturage( utilisateur,rs.getInt(2),rs.getDate(3),rs.getDate(4),rs.getString(5),rs.getString(6),rs.getFloat(7));
+                  Ann_cov.setNbplaces(Integer.parseInt(rs.getString(9)));
                 Annonces.add(Ann_cov);
             }
         } catch (Exception e) {
@@ -176,11 +179,12 @@ try {System.out.println(req);
     @Override
     public void edit(Annonce_covoiturage t) {
          System.out.println("hellloooooo111111");
-           String req = "update Annonce_Covoiturage set `id_annonceur`=?, `date_depart`=?, `Date_arrivee`=?, `adresse_depart`=?, `adresse_arrivee`=?, `tari` =? where id_annonce = ?";
+           String req = "update Annonce_Covoiturage set `id_annonceur`=?, `date_depart`=?, `Date_arrivee`=?, `adresse_depart`=?, `adresse_arrivee`=?, `tari` =?, `nbrplaces`=? where id_annonce = ?";
         Annonce_covoiturage Ann_cov = null;
         try {
             ps = connection.prepareStatement(req);
-            ps.setInt(7, t.getId_annonce());
+            ps.setInt(8, t.getId_annonce());
+            ps.setInt(7, t.getNbplaces());
             ps.setInt(1,  t.getUser().getId_user());
             ps.setDate(2, t.getDate_depart());
             ps.setDate(3, t.getDate_arrivee());

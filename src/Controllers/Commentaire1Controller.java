@@ -181,7 +181,7 @@ public class Commentaire1Controller implements Initializable {
         heurAjout.setText(ticketSelectionne.getHeurAjout().toString());
         LabelUser.setText(ticketSelectionne.getIdUser().getUsername());
            ServiceUtilisateur uti=new ServiceUtilisateur();
-         IMageView=new ImageView(uti.findUtilisateurbyID(ticketSelectionne.getIdUser().getId()).getImg_profile());
+         //IMageView=new ImageView(uti.findUtilisateurbyID(ticketSelectionne.getIdUser().getId()).getImg_profile());
                
                 
         Ticket ticket = new Ticket();
