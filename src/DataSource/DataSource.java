@@ -22,7 +22,7 @@ public class DataSource {
 
     private DataSource() {
         try {
-            con= DriverManager.getConnection("jdbc:mysql://localhost:3306/pidev_v5", "root","");
+            con= DriverManager.getConnection("jdbc:mysql://localhost:3307/pidev_v6", "root","");
 
 
             

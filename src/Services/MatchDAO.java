@@ -313,7 +313,7 @@ public class MatchDAO implements IMatchDAO {
     @Override
     public match chercherMatchParId(int id) {
          
-        String requete = "select * from matchs where id_match='" + id + "';";
+        String requete = "select * from matchss where id_match='" + id + "';";
         try {
             ste = connection.createStatement();
             ResultSet resultat = ste.executeQuery(requete);

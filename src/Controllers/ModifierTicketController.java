@@ -124,7 +124,7 @@ public class ModifierTicketController implements Initializable {
             id_equipe2.setText(ticketSelectionne.getIdMatch().getEquipe2().getPays());
               id_stade.setText(ticketSelectionne.getIdMatch().getStade().getNom_Stade());
         id_heur.setText(ticketSelectionne.getIdMatch().getHeureMatch());
-        id_date.setText(ticketSelectionne.getIdMatch().getDateMatch());
+        id_date.setText(ticketSelectionne.getIdMatch().getDateMatch().toString());
         id_nbticket.setValue(ticketSelectionne.getNbrTicket());
         id_prix.setText(Float.toString(ticketSelectionne.getPrix()));
        
@@ -170,7 +170,7 @@ id_matchht.setCellValueFactory(new PropertyValueFactory<>("idMatch"));
                 id_stade.setText(gr.getStade().getNom_Stade());
                // id_nbticket.setText(Integer.toString(gr.getNbTicket()));
                // id_prix.setText(Float.toString(gr.getPrix()));
-                id_date.setText(gr.getDateMatch());
+                id_date.setText(gr.getDateMatch().toString());
                 id_heur.setText(gr.getHeureMatch());
                     txdann.setText(Integer.toString(gr.getIdMatch()));
             }
