@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXDrawer?>
 <?import com.jfoenix.controls.JFXHamburger?>
 <?import com.jfoenix.controls.JFXTextField?>
@@ -18,11 +19,11 @@
         <URL value="@/Asset/fxml.css" />
     </stylesheets>
    <children>
-      <JFXTextField fx:id="Adressedepart_txt" layoutX="44.0" layoutY="170.0" onKeyTyped="#fromOnKeyTypedEvent" promptText="Adresse de depart" />
-      <JFXTextField fx:id="Tarif_txt" layoutX="44.0" layoutY="286.0" prefHeight="25.0" prefWidth="132.0" promptText="Tarif" />
-      <JFXTextField fx:id="Adressearrivee_txt" layoutX="44.0" layoutY="209.0" onAction="#toTextFieldAction" promptText="Adresse d'arrivée" />
-      <Button fx:id="btn_Ajouter" layoutX="219.0" layoutY="355.0" mnemonicParsing="false" onMouseClicked="#AjouterAnnonceCovoiturage" prefHeight="48.0" prefWidth="110.0" text="Ajouter" />
-      <DatePicker fx:id="Datedapart_txt1" editable="false" layoutX="43.0" layoutY="256.0" promptText="Date de depart " />
+      <JFXTextField fx:id="Adressedepart_txt" layoutX="77.0" layoutY="170.0" onKeyTyped="#fromOnKeyTypedEvent" promptText="Adresse de depart" />
+      <JFXTextField fx:id="Tarif_txt" layoutX="77.0" layoutY="286.0" prefHeight="25.0" prefWidth="132.0" promptText="Tarif" />
+      <JFXTextField fx:id="Adressearrivee_txt" layoutX="77.0" layoutY="209.0" onAction="#toTextFieldAction" promptText="Adresse d'arrivée" />
+      <Button fx:id="btn_Ajouter" layoutX="218.0" layoutY="393.0" mnemonicParsing="false" onMouseClicked="#AjouterAnnonceCovoiturage" prefHeight="48.0" prefWidth="110.0" text="Ajouter" />
+      <DatePicker fx:id="Datedapart_txt1" editable="false" layoutX="76.0" layoutY="256.0" promptText="Date de depart " />
       <DatePicker fx:id="Datearrivee_txt" layoutX="44.0" layoutY="231.0" promptText="Date Arrivée" visible="false" />
       <TableView fx:id="tableannonces" layoutX="343.0" layoutY="152.0" prefHeight="417.0" prefWidth="713.0">
         <columns>
@@ -38,9 +39,9 @@
       <Button fx:id="btn_supprimer" layoutX="615.0" layoutY="602.0" mnemonicParsing="false" onAction="#SupprimerAnnonces" prefHeight="48.0" prefWidth="120.0" text="Supprimer" />
       <JFXTextField fx:id="txidann" layoutX="374.0" layoutY="37.0" opacity="0.0" />
       <Button fx:id="btn_modifier" layoutX="387.0" layoutY="602.0" mnemonicParsing="false" onAction="#ModifierAnnonce" prefHeight="44.0" prefWidth="110.0" text="Modifier" />
-      <GoogleMapView fx:id="mapView" layoutX="34.0" layoutY="432.0" prefHeight="196.0" prefWidth="253.0" />
+      <GoogleMapView fx:id="mapView" layoutX="34.0" layoutY="454.0" prefHeight="196.0" prefWidth="253.0" />
       <Button fx:id="btn_retour" layoutX="996.0" layoutY="624.0" mnemonicParsing="false" onAction="#Retour" prefHeight="40.0" prefWidth="120.0" text="Retour" />
-      <Button fx:id="btn_vider" layoutX="24.0" layoutY="356.0" mnemonicParsing="false" onAction="#ViderFiltres" prefHeight="44.0" prefWidth="164.0" text="Annuler Modification" />
+      <Button fx:id="btn_vider" layoutX="28.0" layoutY="395.0" mnemonicParsing="false" onAction="#ViderFiltres" prefHeight="44.0" prefWidth="164.0" text="Annuler Modification" />
       <Label layoutX="44.0" layoutY="14.0" prefHeight="103.0" prefWidth="686.0" text="Support Logistique">
          <font>
             <Font size="70.0" />
@@ -53,5 +54,6 @@
       </Label>
       <JFXDrawer fx:id="SidePannel" layoutX="-2.0" layoutY="78.0" prefHeight="521.0" prefWidth="135.0" />
       <JFXHamburger fx:id="Sp" alignment="CENTER_RIGHT" layoutX="19.0" layoutY="17.0" />
+      <JFXComboBox fx:id="nbplaces" layoutX="77.0" layoutY="330.0" prefHeight="25.0" prefWidth="135.0" promptText="Nombre Places" />
    </children>
 </AnchorPane>

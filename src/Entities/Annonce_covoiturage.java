@@ -19,6 +19,7 @@ public class Annonce_covoiturage {
     private String adresse_depart;
     private String adresse_arrivee;
     private float tarif;
+    private int nbplaces;
 
     public Annonce_covoiturage() {
     }
@@ -101,6 +102,14 @@ public class Annonce_covoiturage {
 
     public void setTarif(float tarif) {
         this.tarif = tarif;
+    }
+
+    public int getNbplaces() {
+        return nbplaces;
+    }
+
+    public void setNbplaces(int nbplaces) {
+        this.nbplaces = nbplaces;
     }
 
     
