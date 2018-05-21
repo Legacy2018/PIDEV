@@ -48,18 +48,23 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.application.Application;
+import static javafx.application.Application.launch;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 /**
  *
  * @author Emel
  */
-public class GestionEquipeController implements Initializable {
+public class GestionEquipeController extends Application implements Initializable {
 
     Services.serviceEquipe se = new serviceEquipe();
     Equipe e = new Equipe();
@@ -251,7 +256,19 @@ public class GestionEquipeController implements Initializable {
 
     @FXML
     private JFXTextField txtPoint;
-
+ public static void main(String[] args) {
+        launch(args);
+    }
+ 
+    @Override
+    public void start(Stage stage) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("/GUI/FXMLGestionEquipe.fxml"));
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("/Asset/MainFramemel.css").toExternalForm());
+        stage.setScene(scene);
+        stage.show();
+        stage.getIcons().add(new Image("/Ressource/fa.png"));
+    }
     @FXML
     void SupprimerEq(ActionEvent event) {
         boolean choix = true;
