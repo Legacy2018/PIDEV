@@ -191,7 +191,7 @@ public class MatchDAO implements IMatchDAO {
     @Override
     public List<match> afficherMatchParPhase(String phase) {
         List<match> listeMatch = new ArrayList<match>();
-        String requete = "select * from matchs where phase='" + phase + "';";
+        String requete = "select * from matchss where phase='" + phase + "';";
         try {
             ste = connection.createStatement();
             ResultSet resultat = ste.executeQuery(requete);
@@ -232,7 +232,7 @@ public class MatchDAO implements IMatchDAO {
      @Override
     public List<match> afficherMatchParequipe(String nom_equipe) {
         List<match> listeMatch = new ArrayList<>();
-        String requete = "select * from matchs where nom_equipe1='" + nom_equipe + "'or nom_equipe2='"+nom_equipe+"';";
+        String requete = "select * from matchss where nom_equipe1='" + nom_equipe + "'or nom_equipe2='"+nom_equipe+"';";
         try {
             ste = connection.createStatement();
             ResultSet resultat = ste.executeQuery(requete);
@@ -313,7 +313,7 @@ public class MatchDAO implements IMatchDAO {
     @Override
     public match chercherMatchParId(int id) {
          
-        String requete = "select * from matchs where id_match='" + id + "';";
+        String requete = "select * from matchss where id_match='" + id + "';";
         try {
             ste = connection.createStatement();
             ResultSet resultat = ste.executeQuery(requete);
@@ -351,7 +351,7 @@ match match = new match();
     @Override
     public List<match> chercherMatchParEquipe(Equipe equipe) {
         List<match> listeMatch = new ArrayList<>();
-        String requete = "select * from matchs where id_equipe1='" + equipe.getIdEquipe() + "';";
+        String requete = "select * from matchss where id_equipe1='" + equipe.getIdEquipe() + "';";
         try {
             ste = connection.createStatement();
             ResultSet resultat = ste.executeQuery(requete);
@@ -388,9 +388,9 @@ match match = new match();
     }
 
     @Override
-    public List<match> chercherMatchParDate(String date) {
+    public List<match> chercherMatchParDate(Date date) {
         List<match> listeMatch = new ArrayList<match>();
-        String requete = "select * from matchs where date='" + date + "';";
+        String requete = "select * from matchss where date='" + date + "';";
         try {
             ste = connection.createStatement();
             ResultSet resultat = ste.executeQuery(requete);
@@ -400,6 +400,7 @@ match match = new match();
             while (resultat.next()) {
                 match match = new match();
                 match.setIdMatch(resultat.getInt(1));
+           
                 match.setScore(resultat.getInt(7));
                 match.setScore2(resultat.getInt(8));
                 Equipe e = new Equipe();

@@ -389,7 +389,7 @@ public class ListTicketsController extends Application implements Initializable 
                 labelDate.setTextFill(LabelDate.getTextFill());
                 labelDate.setLayoutX(LabelDate.getLayoutX());
                 labelDate.setLayoutY(LabelDate.getLayoutY());
-                labelDate.setText(ticket.getIdMatch().getDateMatch());
+                labelDate.setText(ticket.getIdMatch().getDateMatch().toString());
 
                 //labelHeure
                 Label labelHeure = new Label();

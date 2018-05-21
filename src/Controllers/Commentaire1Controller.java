@@ -171,7 +171,7 @@ public class Commentaire1Controller implements Initializable {
 
         // u=loginCQONTROLLER.getU();
         idcategorie.setText(ticketSelectionne.getCategories());
-        iddate.setText(ticketSelectionne.getIdMatch().getDateMatch());
+        iddate.setText(ticketSelectionne.getIdMatch().getDateMatch().toString());
         idequipe1.setText(ticketSelectionne.getIdMatch().getEquipe1().getPays());
         idequipe2.setText(ticketSelectionne.getIdMatch().getEquipe2().getPays());
         idheur.setText(ticketSelectionne.getIdMatch().getHeureMatch());

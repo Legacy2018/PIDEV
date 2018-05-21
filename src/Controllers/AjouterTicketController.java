@@ -283,7 +283,7 @@ id_matchht.setCellValueFactory(new PropertyValueFactory<>("idMatch"));
                 id_stade.setText(gr.getStade().getNom_Stade());
                // id_nbticket.setText(Integer.toString(gr.getNbTicket()));
                // id_prix.setText(Float.toString(gr.getPrix()));
-                id_date.setText(gr.getDateMatch());
+                id_date.setText(gr.getDateMatch().toString());
                 id_heur.setText(gr.getHeureMatch());
                   txdann.setText(Integer.toString(gr.getIdMatch()));
                 AjouterAchatTicket.setDisable(false);

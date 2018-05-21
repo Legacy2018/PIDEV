@@ -8,6 +8,7 @@ package IServices;
 
 import Entities.Equipe;
 import Entities.match;
+import java.sql.Date;
 import java.util.List;
 
 /**
@@ -36,7 +37,7 @@ public interface IMatchDAO {
     public List<match> chercherMatchParEquipe(Equipe equipe);
     
     
-    List<match> chercherMatchParDate(String date);
+    List<match> chercherMatchParDate(Date date);
     
    
 }

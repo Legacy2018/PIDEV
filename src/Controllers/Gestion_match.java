@@ -42,6 +42,7 @@ import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -97,9 +98,9 @@ public class Gestion_match extends Application implements Initializable {
     private TableColumn<match, String> dt;
     
     @FXML
-    private TableColumn<match, ?> sc;
+    private TableColumn<match, String> sc;
     @FXML
-    private TableColumn<match, ?> sc1;
+    private TableColumn<match, String> sc1;
     
     @FXML
     private TableColumn<match, String> Stade;
@@ -259,7 +260,7 @@ public class Gestion_match extends Application implements Initializable {
          
    
      
-    List<match> sda= M.chercherMatchParDate(date.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+    List<match> sda= M.chercherMatchParDate(java.sql.Date.valueOf(date.getValue()));
    List sda1=sda.stream().map(e->e.getStade()).collect(Collectors.toList());
    if(sda.stream().anyMatch(e->e.getStade().getNom_Stade().contains(Stades.getValue()))){
         Alert alert = new Alert(AlertType.ERROR);
@@ -709,8 +710,9 @@ public class Gestion_match extends Application implements Initializable {
        ph.setCellValueFactory(new PropertyValueFactory<>("phase"));
        h.setCellValueFactory(c-> new SimpleStringProperty(c.getValue().getHeureMatch()));
        dt.setCellValueFactory(c-> new SimpleStringProperty(c.getValue().getDateMatch().toString()));
-       sc.setCellValueFactory(new PropertyValueFactory<>("score"));
-       sc1.setCellValueFactory(new PropertyValueFactory<>("score2"));
+       sc.setCellValueFactory(c-> new SimpleObjectProperty(String.valueOf(c.getValue().getScore())));
+       
+       sc1.setCellValueFactory(c-> new SimpleObjectProperty(String.valueOf(c.getValue().getScore2())));
         System.out.println(h.getCellData(0));
         System.out.println(dt.getCellData(0));
         System.out.println(sc.getCellData(0));
