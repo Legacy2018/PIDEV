@@ -89,25 +89,13 @@ public class serviceEquipe implements IServices.IServiceGestionEquipe {
         try {
 
             String req = "UPDATE `equipe` "
-                    + "SET `pays` = '" + e.getPays() + "',"
-                    + "`etat` = " + e.getEtat() + ", "
-                    + "`Phase` = '" + e.getPhase() + "', `Groupe` = '" + e.getGroupe() + "',"
+                    + "SET`etat` = " + e.getEtat() + ", "
+                    + "`Phase` = '" + e.getPhase() + "',"
                     + "`Selecteur` = '" + e.getSelecteur() + "', "
                     + "point=" + e.getPoint()
                     + " WHERE `equipe`.`id_equipe` =" + id + ";";
             int count = st.executeUpdate(req);
-            if (count > 0) {
-               // resultat = true;
-                System.out.println("here          :"+e.getImg().getLink());
-                String   req2 = "UPDATE `imagedrapeau` "
-                        + "SET `lien` = '"+e.getImg().getLink()+"'"
-                        + " WHERE `id_equipe` = "+id+";";
-           int count2 = st2.executeUpdate(req2);
-            
-              if (count2 > 0) {
-               resultat = true;
-              }else  resultat = false;
-            } else {
+            if (count > 0)  {
                 resultat = false;
             }
 
@@ -151,11 +139,11 @@ public class serviceEquipe implements IServices.IServiceGestionEquipe {
 
         try {
 
-            ResultSet rest = st.executeQuery("SELECT equipe.`id_equipe`, `pays`, `etat`, `Phase`, `Groupe`, `Selecteur`, `point`, "
-                    + "imagedrapeau.lien"
-                    + " from equipe , imagedrapeau"
-                    + " WHERE equipe.id_equipe=imagedrapeau.id_equipe and "
-                    + "pays like '%" + pays + "%'");
+            ResultSet rest = st.executeQuery("SELECT`id_equipe`, `pays`, `etat`, `Phase`, `Groupe`, `Selecteur`, `point` "
+                    
+                    + " from equipe "
+                  
+                    + "WHERE pays like '%" + pays + "%'");
             if (!rest.next()) {
                 System.err.println("Resultat introuvable");
             } else {
@@ -169,7 +157,7 @@ public class serviceEquipe implements IServices.IServiceGestionEquipe {
                     e.setGroupe(rest.getString(5));
                     e.setSelecteur(rest.getString(6));
                     e.setPoint(rest.getInt(7));
-                    System.out.println("image 0");
+                    
 
                     /*   System.out.println("image 1");
                         im = new Imagedrapeau();
@@ -205,9 +193,9 @@ public class serviceEquipe implements IServices.IServiceGestionEquipe {
         Equipe e = new Equipe();
         try {
 
-            ResultSet rest = st.executeQuery("SELECT equipe.`id_equipe`, `pays`, `etat`, `Phase`, `Groupe`, `Selecteur`, `point`, "
-                    + "imagedrapeau.lien"
-                    + " from equipe , imagedrapeau"
+            ResultSet rest = st.executeQuery("SELECT `id_equipe`, `pays`, `etat`, `Phase`, `Groupe`, `Selecteur`, `point` "
+                   
+                    + " from equipe "
                     + " WHERE "
                     + "pays like '" + pays + "'");
             if (!rest.next()) {
@@ -223,7 +211,7 @@ public class serviceEquipe implements IServices.IServiceGestionEquipe {
                     e.setGroupe(rest.getString(5));
                     e.setSelecteur(rest.getString(6));
                     e.setPoint(rest.getInt(7));
-                    e.setImg(new Imagedrapeau(rest.getString(8), null));
+                 
 
                 }
 
@@ -292,11 +280,9 @@ public class serviceEquipe implements IServices.IServiceGestionEquipe {
         Equipe e = new Equipe();
         try {
 
-            ResultSet rest = st.executeQuery("SELECT equipe.`id_equipe`, `pays`, `etat`, `Phase`, `Groupe`, `Selecteur`, `point`, "
-                    + "imagedrapeau.lien"
-                    + " from equipe , imagedrapeau"
-                    + " where equipe.id_equipe=imagedrapeau.id_equipe and "
-                    + "pays like '" + eq.getPays() + "'");
+            ResultSet rest = st.executeQuery("SELECT `id_equipe`, `pays`, `etat`, `Phase`, `Groupe`, `Selecteur`, `point` "
+                    
+                    + "from equipe where pays like '" + eq.getPays() + "';");
             if (!rest.next()) {
                 System.err.println("Resultat introuvable");
             } else {
@@ -310,7 +296,7 @@ public class serviceEquipe implements IServices.IServiceGestionEquipe {
                     e.setGroupe(rest.getString(5));
                     e.setSelecteur(rest.getString(6));
                     e.setPoint(rest.getInt(7));
-                    e.setImg(new Imagedrapeau(rest.getString(8), null));
+                   
 
                 }
 
@@ -418,7 +404,7 @@ public class serviceEquipe implements IServices.IServiceGestionEquipe {
                  
                     + " from equipe "
                    
-                    + "where groupe='"+groupe+"'");
+                    + "where groupe='"+groupe+"'order by point desc");
             if (!rest.next()) {
                 System.err.println("Resultat introuvable");
             } else {
@@ -456,11 +442,9 @@ public class serviceEquipe implements IServices.IServiceGestionEquipe {
 
         try {
 
-            ResultSet rest = st.executeQuery("SELECT equipe.`id_equipe`, `pays`, `etat`, `Phase`, `Groupe`, `Selecteur`, `point`, "
-                    + "imagedrapeau.lien"
-                    + " from equipe , imagedrapeau"
-                    + " WHERE equipe.id_equipe=imagedrapeau.id_equipe and "
-                    + "phase='"+phase+"'");
+            ResultSet rest = st.executeQuery("SELECT `id_equipe`, `pays`, `etat`, `Phase`, `Groupe`, `Selecteur`, `point`  from equipe "+
+                  
+                   " WHERE phase='"+phase+"'");
             if (!rest.next()) {
                 System.err.println("Resultat introuvable");
             } else {
@@ -474,7 +458,7 @@ public class serviceEquipe implements IServices.IServiceGestionEquipe {
                     e.setGroupe(rest.getString(5));
                     e.setSelecteur(rest.getString(6));
                     e.setPoint(rest.getInt(7));
-                    e.setImg(new Imagedrapeau(rest.getString(8), null));
+                 
 
                     equipes.add(e);
 
@@ -498,9 +482,9 @@ public class serviceEquipe implements IServices.IServiceGestionEquipe {
 
         try {
 
-            ResultSet rest = st.executeQuery("SELECT equipe.`id_equipe`, `pays`, `etat`, `Phase`, `Groupe`, `Selecteur`, `point`,  imagedrapeau.lien "
-                    + "from equipe ,imagedrapeau "
-                    + "where equipe.id_equipe = imagedrapeau.id_equipe");
+            ResultSet rest = st.executeQuery("SELECT `id_equipe`, `pays`, `etat`, `Phase`, `Groupe`, `Selecteur`, `point` "
+                    + "from equipe  "
+                   );
             if (!rest.next()) {
                 System.err.println("Resultat introuvable");
             } else {
@@ -514,7 +498,7 @@ public class serviceEquipe implements IServices.IServiceGestionEquipe {
                     e.setGroupe(rest.getString(5));
                     e.setSelecteur(rest.getString(6));
                     e.setPoint(rest.getInt(7));
-                    e.setImg(new Imagedrapeau(rest.getString(8), e));
+                  
 
                     equipes.add(e);
 
@@ -565,11 +549,11 @@ public class serviceEquipe implements IServices.IServiceGestionEquipe {
         Equipe e = new Equipe();
         try {
 
-            ResultSet rest = st.executeQuery("SELECT equipe.`id_equipe`, `pays`, `etat`, `Phase`, `Groupe`, `Selecteur`, `point`, "
-                    + "imagedrapeau.lien"
-                    + " from equipe , imagedrapeau"
-                    + " WHERE equipe.id_equipe=imagedrapeau.id_equipe and "
-                    + " equipe.`id_equipe`=" + id + "");
+            ResultSet rest = st.executeQuery("SELECT `id_equipe`, `pays`, `etat`, `Phase`, `Groupe`, `Selecteur`, `point` "
+                
+                    + " from equipe "
+                
+                    + "WHERE `id_equipe`=" + id + "");
             if (!rest.next()) {
                 System.err.println("Resultat introuvable");
             } else {
@@ -583,7 +567,7 @@ public class serviceEquipe implements IServices.IServiceGestionEquipe {
                     e.setGroupe(rest.getString(5));
                     e.setSelecteur(rest.getString(6));
                     e.setPoint(rest.getInt(7));
-                    e.setImg(new Imagedrapeau(rest.getString(8), e));
+                 
 
                 }
 

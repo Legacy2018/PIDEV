@@ -389,7 +389,7 @@ public class ListTicketsController extends Application implements Initializable 
                 labelDate.setTextFill(LabelDate.getTextFill());
                 labelDate.setLayoutX(LabelDate.getLayoutX());
                 labelDate.setLayoutY(LabelDate.getLayoutY());
-                labelDate.setText(ticket.getIdMatch().getDateMatch());
+                labelDate.setText(ticket.getIdMatch().getDateMatch().toString());
 
                 //labelHeure
                 Label labelHeure = new Label();
@@ -732,7 +732,7 @@ public class ListTicketsController extends Application implements Initializable 
                             ticketSelectionne = ticket;
 
                              try {
-                                afficher = FXMLLoader.load(getClass().getResource("/GUI/Commentaire1.fxml"));
+                                afficher = FXMLLoader.load(getClass().getResource("../GUI/Commentaire1.fxml"));
 
                                 sceneAffichage = new Scene(afficher);
                                 //  stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
@@ -795,7 +795,7 @@ public class ListTicketsController extends Application implements Initializable 
         Login_viewController.u=new ServiceUtilisateur().findUtilisateur("malouka");
          Parent root = FXMLLoader.load(getClass().getResource("/GUI/ListTickets.fxml"));
         Scene scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("/Asset/MainFram.css").toExternalForm());
+        //scene.getStylesheets().add(getClass().getResource("/Asset/MainFram.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
     }

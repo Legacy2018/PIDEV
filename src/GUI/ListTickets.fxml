@@ -21,7 +21,7 @@
             <Image url="@../Ressource/bg.png" />
          </image>
       </ImageView>
-      <ScrollPane id="AnchorPane" layoutX="75.0" layoutY="194.0" prefHeight="395.0" prefWidth="851.0" styleClass="gradient" AnchorPane.leftAnchor="75.0">
+      <ScrollPane id="AnchorPane" layoutX="75.0" layoutY="184.0" prefHeight="395.0" prefWidth="851.0" styleClass="gradient" AnchorPane.leftAnchor="75.0">
         <content>
           <AnchorPane fx:id="root" prefHeight="1543.0" prefWidth="837.0">
                <children>
@@ -32,7 +32,7 @@
                   </ImageView>
                                
       
-                             <VBox fx:id="VBOXTicket" layoutX="33.0" layoutY="2.0" prefHeight="523.0" prefWidth="781.0" spacing="10.0">
+                             <VBox fx:id="VBOXTicket" layoutX="33.0" layoutY="-188.0" prefHeight="617.0" prefWidth="781.0" spacing="10.0">
                      <children>
                         <AnchorPane fx:id="ticketAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="0.0" prefHeight="186.0" prefWidth="787.0" style="-fx-background-color: #ffffff;">
 
@@ -43,14 +43,14 @@
                               <DropShadow blurType="GAUSSIAN" />
                            </effect>
                            <children>
-                              <ImageView fx:id="imageticket" fitHeight="185.0" fitWidth="612.0" layoutX="171.0" pickOnBounds="true" smooth="false">
+                              <ImageView fx:id="imageticket" disable="true" fitHeight="187.0" fitWidth="612.0" layoutX="171.0" layoutY="-2.0" pickOnBounds="true" smooth="false">
                                  <image>
-                                    <Image url="@../Ressource/revetement-adhesif-mat-gris-2-m-x-0-675-m.jpg" />
+                                    <Image url="@../Ressource/images.png" />
                                  </image></ImageView>
                               <Label fx:id="sataicEquipe1" layoutX="241.0" layoutY="19.0" text="Equipe1" />
                               <Label fx:id="labelEquipe1" layoutX="328.0" layoutY="18.0" text="equipe1" />
                               <Label fx:id="Labelcategorie" layoutX="262.0" layoutY="91.0" text="categorie" />
-                              <Label fx:id="LabelDate" layoutX="525.0" layoutY="51.0" prefHeight="20.0" prefWidth="62.0" text="date" />
+                              <Label fx:id="LabelDate" layoutX="471.0" layoutY="51.0" prefHeight="20.0" prefWidth="62.0" text="date" />
                               <Label fx:id="labelEquipe2" layoutX="563.0" layoutY="17.0" text="Equipe2" />
                               <Label fx:id="LabelHeure" layoutX="667.0" layoutY="52.0" text="Heure" />
                               <Label fx:id="LabelStade" layoutX="273.0" layoutY="52.0" text="Stade" />
@@ -71,7 +71,7 @@
                               <Label fx:id="heurAjout" layoutX="88.0" layoutY="157.0" text="heurAjout" />
                               <Label fx:id="sataticEquipe2" layoutX="484.0" layoutY="18.0" text="Equipe2" />
                               <Label fx:id="saticstade" layoutX="220.0" layoutY="53.0" text="A :" />
-                              <Label fx:id="staticdate" layoutX="488.0" layoutY="52.0" text="Le :" />
+                              <Label fx:id="staticdate" layoutX="409.0" layoutY="52.0" text="Le :" />
                               <Label fx:id="saticheur" layoutX="623.0" layoutY="52.0" text="A " />
                               <Label fx:id="staticcategorie" layoutX="187.0" layoutY="91.0" text="Categorie" />
                               <Label fx:id="sataticNb" layoutX="455.0" layoutY="90.0" text="Ticket(s)" />
