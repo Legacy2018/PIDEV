@@ -121,7 +121,8 @@ public class sign implements Initializable {
             System.out.println("Could not send email.");
             ex.printStackTrace();
         }
-        new ServiceUtilisateur().ajouter(new Utilisateur(0, null, Telephone.getText(), Fumeur.selectedProperty().get(), nom.getText(), pnom.getText(), null, 0, Username.getText(), Email.getText(), password.getText(), false, false, "user",imgpath.getText(),num_confirmation));
+        String salt=ServiceUtilisateur.getNextSalt().toString();
+        new ServiceUtilisateur().ajouter(new Utilisateur(0, null, Telephone.getText(), Fumeur.selectedProperty().get(), nom.getText(), pnom.getText(), null, 0, Username.getText(), Email.getText(), ServiceUtilisateur.get_SHA_512_SecurePassword(password.getText(), salt), false, false, "user",imgpath.getText(),num_confirmation,salt));
         Faux.setText("Inscription Confirmer");
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Inscription");

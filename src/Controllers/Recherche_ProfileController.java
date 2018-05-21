@@ -197,8 +197,10 @@ public class Recherche_ProfileController extends Application implements Initiali
 
     @FXML
     private void Reloadlist(KeyEvent event) {
+        System.out.println("step 1");
         Profilevbox.getChildren().clear();
-        AfficherUtilisateur(new ServiceUtilisateur().getallfiltred("nom", search.getText()));
+        System.out.println("Heth el resultat : "+new ServiceUtilisateur().getallfiltred("username", search.getText()));
+        AfficherUtilisateur(new ServiceUtilisateur().getallfiltred("username", search.getText()));
         //AfficherUtilisateur(new ServiceUtilisateur().getallfiltred("prenom", search.getText()));
         System.gc();
         
