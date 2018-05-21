@@ -39,7 +39,7 @@ public class serviceJoueur implements IServices.IServiceGestionJoueur {
 
     public int VerifJoueur (int idj , int maillot, int idequipe , String nom) throws SQLException
     {
-                ResultSet rest1 = st.executeQuery("SELECT COUNT("+idj+") FROM `joueur` WHERE id_equipe="+idequipe+" and NumeroMaillot="+maillot+"  or nom like '"+nom+"';");
+                ResultSet rest1 = st.executeQuery("SELECT COUNT("+idj+") FROM `joueur` WHERE idEquipe="+idequipe+" and NumeroMaillot="+maillot+"  or nom like '"+nom+"';");
         rest1.next();
     return rest1.getInt(1);
     }
@@ -50,7 +50,7 @@ public class serviceJoueur implements IServices.IServiceGestionJoueur {
         int ok = 1;
         try {
 
-            ResultSet rest1 = st.executeQuery("SELECT count(id_equipe) from joueur where joueur.id_equipe=" + j.getId_equipe().getIdequipe());
+            ResultSet rest1 = st.executeQuery("SELECT count(idEquipe) from joueur where joueur.idEquipe=" + j.getId_equipe().getIdequipe());
             rest1.next();
             //verifier que l'equipe n'est pas saturée ( 23j/equipe)
             if ((rest1.getInt(1) < 23)) {
@@ -59,11 +59,11 @@ public class serviceJoueur implements IServices.IServiceGestionJoueur {
                 if (VerifJoueur(j.getIdJoueur(), j.getNumMaillot(), j.getId_equipe().getIdequipe(), j.getNomJoueur())==0)
                 {
                 if (j.getPosition().equals("Gardien")) {
-                    ResultSet rest2 = st.executeQuery("SELECT count(id_joueur) from joueur where joueur.id_equipe =" + j.getId_equipe().getIdequipe() + " and joueur.position='Gardien'");
+                    ResultSet rest2 = st.executeQuery("SELECT count(id_joueur) from joueur where joueur.idEquipe =" + j.getId_equipe().getIdequipe() + " and joueur.position='Gardien'");
                     rest2.next();
                     if ((rest2.getInt(1) < 3)) {
 
-                        String req = " INSERT INTO `joueur` (`id_joueur`, `nom`, `nombre_de_buts`, `position`, `id_equipe`, `cartrouge`, `cartjaune`, `NumeroMaillot`)"
+                        String req = " INSERT INTO `joueur` (`id_joueur`, `nom`, `nombre_de_buts`, `position`, `idEquipe`, `cartrouge`, `cartjaune`, `NumeroMaillot`)"
                                 + " VALUES (NULL, '" + j.getNom_joueur() + "', " + j.getNbr_but() + ", '" + j.getPosition() + "', " + j.getId_equipe().getIdequipe() + ",0 , 0, " + j.getNumMaillot() + ")";
 
                         st.executeUpdate(req);
@@ -75,7 +75,7 @@ public class serviceJoueur implements IServices.IServiceGestionJoueur {
                 } else //SI IL EST PAS GARDIEN L AJOUT SERA FAIT sans verification pour les autres positions
                 {
 
-                    String req = " INSERT INTO `joueur` (`id_joueur`, `nom`, `nombre_de_buts`, `position`, `id_equipe`, `cartrouge`, `cartjaune`, `NumeroMaillot`)"
+                    String req = " INSERT INTO `joueur` (`id_joueur`, `nom`, `nombre_de_buts`, `position`, `idEquipe`, `cartrouge`, `cartjaune`, `NumeroMaillot`)"
                             + " VALUES (NULL, '" + j.getNom_joueur() + "', " + j.getNbr_but() + ", '" + j.getPosition() + "', " + j.getId_equipe().getIdequipe() + ",0 , 0, " + j.getNumMaillot() + ")";
 
                     st.executeUpdate(req);
@@ -105,7 +105,7 @@ public class serviceJoueur implements IServices.IServiceGestionJoueur {
             String req = "UPDATE `joueur` SET `nom` = '" + j.getNom_joueur() + "',"
                     + "`nombre_de_buts` = " + j.getNbr_but() + " , "
                     + "`position` = '" + j.getPosition() + "' , "
-                    + "`id_equipe` = " + j.getId_equipe().getIdequipe()
+                    + "`idEquipe` = " + j.getId_equipe().getIdequipe()
                     + ",  `cartrouge` = '" + j.getNbrCartRouge() + "',"
                     + " `cartjaune` = '" + j.getNbrCartJaune() + "',"
                     + " `NumeroMaillot` = '" + j.getNumMaillot() + "' "
@@ -150,7 +150,7 @@ public class serviceJoueur implements IServices.IServiceGestionJoueur {
 
         try {
 
-            ResultSet rest = st.executeQuery ("SELECT `id_joueur`, `nom`, `nombre_de_buts`, `position`,  joueur.id_equipe , `cartrouge`, `cartjaune`, `NumeroMaillot` FROM `joueur` , equipe WHERE joueur.id_equipe = equipe.id_equipe");
+            ResultSet rest = st.executeQuery ("SELECT `id_joueur`, `nom`, `nombre_de_buts`, `position`,  joueur.idEquipe , `cartrouge`, `cartjaune`, `NumeroMaillot` FROM `joueur` , equipe WHERE joueur.idEquipe = equipe.id_equipe");
             if (!rest.next()) {
                 System.err.println("Resultat introuvable");
             } else {
@@ -193,7 +193,7 @@ public class serviceJoueur implements IServices.IServiceGestionJoueur {
 
             ResultSet rest = st.executeQuery("SELECT id_joueur ,nom ,equipe.pays, nombre_de_buts , position, `cartrouge`,`cartjaune`,`NumeroMaillot` "
                     + "FROM `joueur` , equipe"
-                    + " where equipe.id_equipe=joueur.id_equipe and nom like '%" + nom + "%' order by nombre_de_buts desc;");
+                    + " where equipe.id_equipe=joueur.idEquipe and nom like '%" + nom + "%' order by nombre_de_buts desc;");
             if (!rest.next()) {
                 System.err.println("Resultat introuvable");
             } else {
@@ -239,7 +239,7 @@ public class serviceJoueur implements IServices.IServiceGestionJoueur {
 
             ResultSet rest = st.executeQuery("SELECT id_joueur ,nom ,equipe.pays, nombre_de_buts , position, `cartrouge`,`cartjaune`,`NumeroMaillot`"
                     + "FROM `joueur` , equipe"
-                    + " where equipe.id_equipe=joueur.id_equipe and position= '" + pos + "' order by nombre_de_buts desc;");
+                    + " where equipe.id_equipe=joueur.idEquipe and position= '" + pos + "' order by nombre_de_buts desc;");
             if (!rest.next()) {
                 System.err.println("Resultat introuvable");
             } else {
@@ -282,7 +282,7 @@ public class serviceJoueur implements IServices.IServiceGestionJoueur {
 
             ResultSet rest = st.executeQuery("SELECT id_joueur ,nom ,equipe.pays , nombre_de_buts , position, `cartrouge`,`cartjaune`,`NumeroMaillot`  "
                     + "FROM `joueur` , equipe"
-                    + " where equipe.id_equipe=joueur.id_equipe and equipe.pays like '" + pays + "' order by nombre_de_buts desc;");
+                    + " where equipe.id_equipe=joueur.idEquipe and equipe.pays like '%" + pays + "%' order by nombre_de_buts desc;");
             if (!rest.next()) {
                 System.err.println("Resultat introuvable");
             } else {
@@ -323,7 +323,7 @@ public class serviceJoueur implements IServices.IServiceGestionJoueur {
 
             ResultSet rest = st.executeQuery("SELECT id_joueur ,nom ,equipe.pays , nombre_de_buts , position, `cartrouge`,`cartjaune`,`NumeroMaillot` "
                     + "FROM `joueur`, equipe "
-                    + "WHERE joueur.id_equipe=equipe.id_equipe");
+                    + "WHERE joueur.idEquipe=equipe.id_equipe");
             if (!rest.next()) {
                 System.err.println("Resultat introuvable");
             } else {
@@ -364,7 +364,7 @@ public class serviceJoueur implements IServices.IServiceGestionJoueur {
 
             ResultSet rest = st.executeQuery("SELECT id_joueur ,nom ,equipe.pays , nombre_de_buts , position, `cartrouge`,`cartjaune`,`NumeroMaillot`"
                     + "FROM `joueur`, equipe "
-                    + " WHERE joueur.id_equipe=equipe.id_equipe "
+                    + " WHERE joueur.idEquipe=equipe.id_equipe "
                     + "and id_joueur=" + id);
             if (!rest.next()) {
                 System.err.println("Resultat introuvable");

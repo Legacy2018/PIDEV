@@ -213,12 +213,9 @@ public class GestionEquipeController implements Initializable {
             cbetat.setValue("IN");
         }
         cbpahse.setValue(eq.getPhase());
-          //File file = new File(e.getImg().getLink());
-       // Image image = new Image(e.getImg().getLink(),true);
-        // imgdr.setImage(image);
         File file = new File(eq.getImg().getLink().replace("file:/C", "C"));
-       Image image = new Image(file.toURI().toString());
-       imgdr.setImage(image);
+        Image image = new Image(file.toURI().toString());
+        imgdr.setImage(image);
         btAjouter.setDisable(true);
     }
 
