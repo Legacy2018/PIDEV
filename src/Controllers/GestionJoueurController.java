@@ -10,6 +10,7 @@ import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextField;
 import Entities.Equipe;
+//dd
 import Entities.Joueur;
 import Services.metierequipe;
 import java.net.URL;
@@ -47,19 +48,24 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javafx.application.Application;
+import static javafx.application.Application.launch;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
 import javafx.scene.image.Image;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
  *
  * @author Emel
  */
-public class GestionJoueurController implements Initializable {
+public class GestionJoueurController extends Application implements Initializable {
 
     serviceEquipe se = new serviceEquipe();
     serviceJoueur sj = new serviceJoueur();
@@ -150,7 +156,19 @@ public class GestionJoueurController implements Initializable {
         crtJaune.setCellValueFactory(new PropertyValueFactory<>("nbrCartJaune"));
         crtRouge.setCellValueFactory(new PropertyValueFactory<>("nbrCartRouge"));
     }
-
+ public static void main(String[] args) {
+        launch(args);
+    }
+ 
+    @Override
+    public void start(Stage stage) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("/GUI/FXMLGestionJoueur.fxml"));
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("/Asset/MainFramemel.css").toExternalForm());
+        stage.setScene(scene);
+        stage.show();
+        stage.getIcons().add(new Image("/Ressource/fa.png"));
+    }
     @FXML
     void filtrerjoueur(ActionEvent event) {
 
