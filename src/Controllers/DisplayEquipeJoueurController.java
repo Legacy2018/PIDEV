@@ -90,7 +90,6 @@ public class DisplayEquipeJoueurController implements Initializable {
 
     public ObservableList<Equipe> getEq() {
         ObservableList<Equipe> p = FXCollections.observableArrayList(se.selectEquipes());
-        System.out.println("observable liste : "+p);
         System.err.println("test " + p.get(1));
         return p;
     }
@@ -151,8 +150,7 @@ public class DisplayEquipeJoueurController implements Initializable {
 
                 int rand = (int) (Math.random() * (1000 - 1));
                 String nomchfich = "Formation" + e.getPays() + String.valueOf(rand) + ".pdf";
-                
-                writer = PdfWriter.getInstance(doc, new FileOutputStream("C:\\Users\\Katouchi\\Documents\\GitHub\\PIDEV1\\src\\pdf\\"+nomchfich));
+                writer = PdfWriter.getInstance(doc, new FileOutputStream(nomchfich));
                 doc.open();
                 //  doc.add(new Paragraph("Fiche Recapitulative "),Bold);
                 System.err.println("pdf equipe  " + e.getPays());
@@ -260,7 +258,7 @@ public class DisplayEquipeJoueurController implements Initializable {
                 alert.setHeaderText(null);
                 alert.setContentText("Le fichier PDF est téléchargé!");
                 alert.showAndWait();
-                Desktop.getDesktop().open(new File("C:\\Users\\Katouchi\\Documents\\GitHub\\PIDEV1\\src\\pdf\\" + nomchfich));
+                Desktop.getDesktop().open(new File("C:\\Users\\Emel\\Documents\\javaproject\\PIDEV1\\" + nomchfich));
                 /*
                 DialogPane dialogPane = alert.getDialogPane();
                 dialogPane.getStylesheets().add(
@@ -407,20 +405,11 @@ public class DisplayEquipeJoueurController implements Initializable {
         nbrbuteq.setText(String.valueOf(me.afficherNombreButParEquipe(e.getIdequipe())));
         select.setText(e.getSelecteur());
 
-        ////File file = new File(e.getImg().getLink().replace("file:/C", "C"));
-        //Image image = new Image(file.toURI().toString());
-System.out.println("emel"+e);
-//        File file = new File(e.getImg().getLink());
-        Image image = new Image(e.getImg().getLink(),true);
+        File file = new File(e.getImg().getLink().replace("file:/C", "C"));
+        Image image = new Image(file.toURI().toString());
+        
+
         drapeau.setImage(image);
-
-   //    File file = new File(e.getImg().getLink().replace("file:/C", "C"));
-     //  Image image = new Image(file.toURI().toString());
-
-//       File file = new File(e.getImg().getLink());
-     //   Image image = new Image(e.getImg().getLink(),true);
-   //     drapeau.setImage(image);
-
         System.out.println("equipe " + e);
         ObservableList<Joueur> jEq = FXCollections.observableArrayList(sj.chercherParEquipe(e.getPays()));
         System.out.println("liste joueur " + jEq);

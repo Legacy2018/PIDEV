@@ -5,17 +5,20 @@
  */
 package Services;
 
-import IServices.IServiceGestionEquipe;
 import IServices.IMatchDAO;
 import IServices.IStadeDAO;
 import DataSource.DataSource;
 import Entities.Equipe;
 import Entities.match;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -46,35 +49,44 @@ public class MatchDAO implements IMatchDAO {
     @Override
     public void ajouterMatch(match match) {
 
-        String requete = "INSERT INTO `matchs` (`id_match`, `nom_equipe1`, `Nom_equipe2`, `date`, `nom_stade`, `heure`, `phase`,`score`,`score2`) VALUES (?,?,?,?,?,?,?,null,null)";
+        String requete = "INSERT INTO `matchss` (`id_match`,"
+                + "`nom_equipe1`,"
+                + "`nom_equipe2`, "
+                + "`idequipe1`, "
+                + "`idequipe2`, "
+                + "`nom_stade`,"
+                + "`date`, "
+                + " `heure`, "
+                + "`phase`) VALUES (?,null,null,?,?,?,?,?,?)";
         PreparedStatement ps;
         try {
             ps = connection.prepareStatement(requete);
-            ps.setString(4, match.getDateMatch());
-           ps.setString(6, match.getHeureMatch());
-            ps.setString(5, match.getStade().getNom_Stade());
-            ps.setString(2, match.getEquipe1().getPays());
-            ps.setString(3, match.getEquipe2().getPays());
+            ps.setDate(5,new java.sql.Date(match.getDateMatch().getTime()));
+            ps.setString(6, match.getHeureMatch());
+            ps.setInt(4, match.getStade().getId_stade());
+            ps.setInt(2, match.getEquipe1().getIdEquipe());
+            ps.setInt(3, match.getEquipe2().getIdEquipe());
            
            
             ps.setString(7, match.getPhase());
            ps.setInt(1, match.getIdMatch());
            
             ps.executeUpdate();
-         
+            System.err.println("service ajouter");
         } catch (SQLException ex) {
+            System.out.println(ex);
             System.out.print("remplir info");
         }
     }
 
     @Override
     public void modifierMatch(match match) {
-        String requete = "update matchs set score=?,set score2?,   where id_match=?";
+        String requete = "update matchss set score=?,set score2?,   where id_match=?";
         try {
             PreparedStatement ps = connection.prepareStatement(requete);
            
-            ps.setString(1,match.getScore());
-            ps.setString(2,match.getScore2());
+            ps.setInt(1,match.getScore());
+            ps.setInt(2,match.getScore2());
            
             ps.setInt(3, match.getIdMatch());
 
@@ -89,7 +101,7 @@ public class MatchDAO implements IMatchDAO {
     
      @Override
     public void modifierMatchScore(int score,int score2,match match) {
-        String requete = "update matchs set score=?,score2=?   where id_match=?";
+        String requete = "update matchss set score=?,score2=?   where id_match=?";
         try {
             PreparedStatement ps = connection.prepareStatement(requete);
            
@@ -108,7 +120,7 @@ public class MatchDAO implements IMatchDAO {
     @Override
     public void modifierDateMatch(String date, match match) {
 
-        String requete = "update matchs set date=?  where id_match=?";
+        String requete = "update matchss set date=?  where id_match=?";
         try {
             PreparedStatement ps = connection.prepareStatement(requete);
             ps.setString(1, date);
@@ -124,7 +136,7 @@ public class MatchDAO implements IMatchDAO {
 
     @Override
     public void supprimerMatch(int id) {
-        String requete = "delete from matchs where id_match=?";
+        String requete = "delete from matchss where id_match=?";
         PreparedStatement ps;
         try {
             ps = connection.prepareStatement(requete);
@@ -138,7 +150,7 @@ public class MatchDAO implements IMatchDAO {
     @Override
     public List<match> afficherMatch() {
         List<match> listeMatch = new ArrayList<match>();
-        String requete = "select * from matchs";
+        String requete = "select * from matchss";
         try {
             ste = connection.createStatement();
             ResultSet resultat = ste.executeQuery(requete);
@@ -149,17 +161,22 @@ public class MatchDAO implements IMatchDAO {
             while (resultat.next()) {
                 match match = new match();
                 match.setIdMatch(resultat.getInt(1));
-                match.setScore(resultat.getString(2));
-                match.setScore2(resultat.getString(3));
+                match.setScore(resultat.getInt(7));
+                match.setScore2(resultat.getInt(8));
                 Equipe e = new Equipe();
             //    e= resultat.getString(4);
-                match.setEquipe1(iEquipeDao.AfficherEquipe(resultat.getString(4)));
-                match.setEquipe2(iEquipeDao.AfficherEquipe(resultat.getString(5)));
-                match.setDateMatch(resultat.getString(6));
-                match.setStade(iStadeDao.Consulterstade(resultat.getString(7)));
-                match.setHeureMatch(resultat.getString(8));
-                match.setPhase(resultat.getString(9));
-               
+                match.setEquipe1(iEquipeDao.AfficherEquipe(resultat.getInt(4)));
+                match.setEquipe2(iEquipeDao.AfficherEquipe(resultat.getInt(5)));
+                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-mm-dd");
+                try {
+                    match.setDateMatch(formatter.parse(resultat.getString(9)));
+                } catch (ParseException ex) {
+                    System.out.println("noaoa");
+                }
+                match.setStade(iStadeDao.ConsulterstadeId(resultat.getInt(6)));
+                match.setHeureMatch(resultat.getString(10));
+                match.setPhase(resultat.getString(11));
+                System.out.println(match.getHeureMatch());
                 
                 listeMatch.add(match);
             }
@@ -174,7 +191,7 @@ public class MatchDAO implements IMatchDAO {
     @Override
     public List<match> afficherMatchParPhase(String phase) {
         List<match> listeMatch = new ArrayList<match>();
-        String requete = "select * from matchs where phase='" + phase + "';";
+        String requete = "select * from matchss where phase='" + phase + "';";
         try {
             ste = connection.createStatement();
             ResultSet resultat = ste.executeQuery(requete);
@@ -184,17 +201,23 @@ public class MatchDAO implements IMatchDAO {
             while (resultat.next()) {
               
               match match = new match();
-                
+           
                 match.setIdMatch(resultat.getInt(1));
-                match.setScore(resultat.getString(2));
-                match.setScore2(resultat.getString(3));
-                match.setEquipe1(iEquipeDao.AfficherEquipe(resultat.getString(4)));
-                match.setEquipe2(iEquipeDao.AfficherEquipe(resultat.getString(5)));
-                match.setDateMatch(resultat.getString(6));
-                match.setStade(iStadeDao.Consulterstade(resultat.getString(7)));
-                match.setHeureMatch(resultat.getString(8));
-                match.setPhase(resultat.getString(9));
-                
+                match.setScore(resultat.getInt(7));
+                match.setScore2(resultat.getInt(8));
+                Equipe e = new Equipe();
+            //    e= resultat.getString(4);
+                match.setEquipe1(iEquipeDao.AfficherEquipe(resultat.getInt(4)));
+                match.setEquipe2(iEquipeDao.AfficherEquipe(resultat.getInt(5)));
+                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-mm-dd");
+                try {
+                    match.setDateMatch(formatter.parse(resultat.getString(9)));
+                } catch (ParseException ex) {
+                    System.out.println("noaoa");
+                }
+                match.setStade(iStadeDao.ConsulterstadeId(resultat.getInt(6)));
+                match.setHeureMatch(resultat.getString(10));
+                match.setPhase(resultat.getString(11));
                 
                 listeMatch.add(match);
             }
@@ -209,7 +232,7 @@ public class MatchDAO implements IMatchDAO {
      @Override
     public List<match> afficherMatchParequipe(String nom_equipe) {
         List<match> listeMatch = new ArrayList<>();
-        String requete = "select * from matchs where nom_equipe1='" + nom_equipe + "'or nom_equipe2='"+nom_equipe+"';";
+        String requete = "select * from matchss where nom_equipe1='" + nom_equipe + "'or nom_equipe2='"+nom_equipe+"';";
         try {
             ste = connection.createStatement();
             ResultSet resultat = ste.executeQuery(requete);
@@ -219,16 +242,22 @@ public class MatchDAO implements IMatchDAO {
             while (resultat.next()) {
               
               match match = new match();
-                
                 match.setIdMatch(resultat.getInt(1));
-                match.setScore(resultat.getString(2));
-                match.setScore2(resultat.getString(3));
-                match.setEquipe1(iEquipeDao.AfficherEquipe(resultat.getString(4)));
-                match.setEquipe2(iEquipeDao.AfficherEquipe(resultat.getString(5)));
-                match.setDateMatch(resultat.getString(6));
-                match.setStade(iStadeDao.Consulterstade(resultat.getString(7)));
-                match.setHeureMatch(resultat.getString(8));
-                match.setPhase(resultat.getString(9));
+                match.setScore(resultat.getInt(7));
+                match.setScore2(resultat.getInt(8));
+                Equipe e = new Equipe();
+            //    e= resultat.getString(4);
+                match.setEquipe1(iEquipeDao.AfficherEquipe(resultat.getInt(4)));
+                match.setEquipe2(iEquipeDao.AfficherEquipe(resultat.getInt(5)));
+                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-mm-dd");
+                try {
+                    match.setDateMatch(formatter.parse(resultat.getString(9)));
+                } catch (ParseException ex) {
+                    System.out.println("noaoa");
+                }
+                match.setStade(iStadeDao.ConsulterstadeId(resultat.getInt(6)));
+                match.setHeureMatch(resultat.getString(10));
+                match.setPhase(resultat.getString(11));
               
                 
                 listeMatch.add(match);
@@ -253,16 +282,23 @@ public class MatchDAO implements IMatchDAO {
             serviceEquipe iEquipeDao = new serviceEquipe();
 
             while (resultat.next()) {
-                 match match = new match();
+                match match = new match();
                 match.setIdMatch(resultat.getInt(1));
-                match.setScore(resultat.getString(2));
-                match.setScore2(resultat.getString(3));
-               match.setEquipe1(iEquipeDao.AfficherEquipe(resultat.getString(4)));
-                match.setEquipe2(iEquipeDao.AfficherEquipe(resultat.getString(5)));
-                match.setDateMatch(resultat.getString(6));
-                match.setStade(iStadeDao.Consulterstade(resultat.getString(7)));
-                match.setHeureMatch(resultat.getString(8));
-                match.setPhase(resultat.getString(9));
+                match.setScore(resultat.getInt(7));
+                match.setScore2(resultat.getInt(8));
+                Equipe e = new Equipe();
+            //    e= resultat.getString(4);
+                match.setEquipe1(iEquipeDao.AfficherEquipe(resultat.getInt(4)));
+                match.setEquipe2(iEquipeDao.AfficherEquipe(resultat.getInt(5)));
+                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-mm-dd");
+                try {
+                    match.setDateMatch(formatter.parse(resultat.getString(9)));
+                } catch (ParseException ex) {
+                    System.out.println("noaoa");
+                }
+                match.setStade(iStadeDao.ConsulterstadeId(resultat.getInt(6)));
+                match.setHeureMatch(resultat.getString(10));
+                match.setPhase(resultat.getString(11));
               
                 listeMatch.add(match);
             }
@@ -276,25 +312,32 @@ public class MatchDAO implements IMatchDAO {
 
     @Override
     public match chercherMatchParId(int id) {
-          match match = new match();
-        String requete = "select * from matchs where id_match='" + id + "';";
+         
+        String requete = "select * from matchss where id_match='" + id + "';";
         try {
             ste = connection.createStatement();
             ResultSet resultat = ste.executeQuery(requete);
             IStadeDAO iStadeDao = DAOStade.getInstance();
             serviceEquipe iEquipeDao = new serviceEquipe();
-
+match match = new match();
             while (resultat.next()) {
-             
+         
                 match.setIdMatch(resultat.getInt(1));
-                match.setScore(resultat.getString(2));
-                match.setScore2(resultat.getString(3));
-                match.setEquipe1(iEquipeDao.AfficherEquipe(resultat.getString(4)));
-                match.setEquipe2(iEquipeDao.AfficherEquipe(resultat.getString(5)));
-                match.setDateMatch(resultat.getString(6));
-                match.setStade(iStadeDao.Consulterstade(resultat.getString(7)));
-                match.setHeureMatch(resultat.getString(8));
-                match.setPhase(resultat.getString(9));
+                match.setScore(resultat.getInt(7));
+                match.setScore2(resultat.getInt(8));
+                Equipe e = new Equipe();
+            //    e= resultat.getString(4);
+                match.setEquipe1(iEquipeDao.AfficherEquipe(resultat.getInt(4)));
+                match.setEquipe2(iEquipeDao.AfficherEquipe(resultat.getInt(5)));
+                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-mm-dd");
+                try {
+                    match.setDateMatch(formatter.parse(resultat.getString(9)));
+                } catch (ParseException ex) {
+                    System.out.println("noaoa");
+                }
+                match.setStade(iStadeDao.ConsulterstadeId(resultat.getInt(6)));
+                match.setHeureMatch(resultat.getString(10));
+                match.setPhase(resultat.getString(11));
               
             }
             return match;
@@ -308,7 +351,7 @@ public class MatchDAO implements IMatchDAO {
     @Override
     public List<match> chercherMatchParEquipe(Equipe equipe) {
         List<match> listeMatch = new ArrayList<>();
-        String requete = "select * from matchs where id_equipe1='" + equipe.getIdEquipe() + "';";
+        String requete = "select * from matchss where id_equipe1='" + equipe.getIdEquipe() + "';";
         try {
             ste = connection.createStatement();
             ResultSet resultat = ste.executeQuery(requete);
@@ -318,14 +361,21 @@ public class MatchDAO implements IMatchDAO {
             while (resultat.next()) {
                 match match = new match();
                 match.setIdMatch(resultat.getInt(1));
-                match.setScore(resultat.getString(2));
-                match.setScore2(resultat.getString(3));
-                 match.setEquipe1(iEquipeDao.AfficherEquipe(resultat.getString(4)));
-                match.setEquipe2(iEquipeDao.AfficherEquipe(resultat.getString(5)));
-                match.setDateMatch(resultat.getString(6));
-                match.setStade(iStadeDao.Consulterstade(resultat.getString(7)));
-                match.setHeureMatch(resultat.getString(8));
-                match.setPhase(resultat.getString(9));
+                match.setScore(resultat.getInt(7));
+                match.setScore2(resultat.getInt(8));
+                Equipe e = new Equipe();
+            //    e= resultat.getString(4);
+                match.setEquipe1(iEquipeDao.AfficherEquipe(resultat.getInt(4)));
+                match.setEquipe2(iEquipeDao.AfficherEquipe(resultat.getInt(5)));
+                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-mm-dd");
+                try {
+                    match.setDateMatch(formatter.parse(resultat.getString(9)));
+                } catch (ParseException ex) {
+                    System.out.println("noaoa");
+                }
+                match.setStade(iStadeDao.ConsulterstadeId(resultat.getInt(6)));
+                match.setHeureMatch(resultat.getString(10));
+                match.setPhase(resultat.getString(11));
               
                 listeMatch.add(match);
             }
@@ -338,9 +388,9 @@ public class MatchDAO implements IMatchDAO {
     }
 
     @Override
-    public List<match> chercherMatchParDate(String date) {
+    public List<match> chercherMatchParDate(Date date) {
         List<match> listeMatch = new ArrayList<match>();
-        String requete = "select * from matchs where date='" + date + "';";
+        String requete = "select * from matchss where date='" + date + "';";
         try {
             ste = connection.createStatement();
             ResultSet resultat = ste.executeQuery(requete);
@@ -350,16 +400,22 @@ public class MatchDAO implements IMatchDAO {
             while (resultat.next()) {
                 match match = new match();
                 match.setIdMatch(resultat.getInt(1));
-                match.setScore(resultat.getString(2));
-                match.setScore2(resultat.getString(3));
-                match.setEquipe1(iEquipeDao.AfficherEquipe(resultat.getString(4)));
-                match.setEquipe2(iEquipeDao.AfficherEquipe(resultat.getString(5)));
-                match.setDateMatch(resultat.getString(6));
-                match.setStade(iStadeDao.Consulterstade(resultat.getString(7)));
-                match.setHeureMatch(resultat.getString(8));
-                match.setPhase(resultat.getString(9));
-                
-                
+           
+                match.setScore(resultat.getInt(7));
+                match.setScore2(resultat.getInt(8));
+                Equipe e = new Equipe();
+            //    e= resultat.getString(4);
+                match.setEquipe1(iEquipeDao.AfficherEquipe(resultat.getInt(4)));
+                match.setEquipe2(iEquipeDao.AfficherEquipe(resultat.getInt(5)));
+                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-mm-dd");
+                try {
+                    match.setDateMatch(formatter.parse(resultat.getString(9)));
+                } catch (ParseException ex) {
+                    System.out.println("noaoa");
+                }
+                match.setStade(iStadeDao.ConsulterstadeId(resultat.getInt(6)));
+                match.setHeureMatch(resultat.getString(10));
+                match.setPhase(resultat.getString(11));
                 listeMatch.add(match);
             }
             return listeMatch;

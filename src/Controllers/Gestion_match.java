@@ -27,6 +27,7 @@ import Entities.stade;
 import java.io.IOException;
 import javafx.scene.control.*;
 import java.net.URL;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.chrono.ChronoLocalDate;
@@ -41,6 +42,7 @@ import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -93,17 +95,17 @@ public class Gestion_match extends Application implements Initializable {
     private TableColumn<?, ?> ph;
 
     @FXML
-    private TableColumn<?, ?> dt;
+    private TableColumn<match, String> dt;
     
     @FXML
-    private TableColumn<match, ?> sc;
+    private TableColumn<match, String> sc;
     @FXML
-    private TableColumn<match, ?> sc1;
+    private TableColumn<match, String> sc1;
     
     @FXML
     private TableColumn<match, String> Stade;
     @FXML
-    private TableColumn<?, ?> h;
+    private TableColumn<match, String> h;
     @FXML
     private JFXComboBox<String> id_equipe2;
     @FXML
@@ -170,9 +172,9 @@ public class Gestion_match extends Application implements Initializable {
     }   
      @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("../GUI/FXMLGestion_Match.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/GUI/FXMLGestion_Match.fxml"));
         Scene scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("../Asset/fxml.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/Asset/fxml.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
         stage.getIcons().add(new Image("/Ressource/fa.png"));
@@ -195,7 +197,7 @@ public class Gestion_match extends Application implements Initializable {
     void Classement(ActionEvent event) throws IOException {
         
        
-        Parent root = FXMLLoader.load(getClass().getResource("/Gui/Classement.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/GUI/Classement.fxml"));
         Scene s = new Scene(root); 
         s.getStylesheets().add(getClass().getResource("/Asset/fxml.css").toExternalForm());
          Stage s2 =(Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -247,7 +249,7 @@ public class Gestion_match extends Application implements Initializable {
 
     
     @FXML
-    void ajouter_m(MouseEvent event) throws IOException {
+    void ajouter_m(MouseEvent event) throws IOException, ParseException {
         
         Equipe eqa= new Equipe(); 
         Equipe eqb = new Equipe();
@@ -258,7 +260,7 @@ public class Gestion_match extends Application implements Initializable {
          
    
      
-    List<match> sda= M.chercherMatchParDate(date.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+    List<match> sda= M.chercherMatchParDate(java.sql.Date.valueOf(date.getValue()));
    List sda1=sda.stream().map(e->e.getStade()).collect(Collectors.toList());
    if(sda.stream().anyMatch(e->e.getStade().getNom_Stade().contains(Stades.getValue()))){
         Alert alert = new Alert(AlertType.ERROR);
@@ -312,7 +314,8 @@ public class Gestion_match extends Application implements Initializable {
              
              
             else {
-          m = new match(date.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")),ta.getValue().format(DateTimeFormatter.ofPattern("hh:mm")),eqa,saa,eqb,phase.getValue());
+         java.util.Date d = new SimpleDateFormat("yyyy-MM-dd").parse(date.getValue().toString());
+          m = new match(d,ta.getValue().format(DateTimeFormatter.ofPattern("hh:mm")),eqa,saa,eqb,phase.getValue());
          M.ajouterMatch(m);
           Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle("Match ajouté");
@@ -346,15 +349,15 @@ public class Gestion_match extends Application implements Initializable {
          if (option.get() == ButtonType.OK){
               M.supprimerMatch(s);
          }else if(option.get()==ButtonType.CANCEL){
-  //     t.refresh();
+          t.refresh();
          }
          
 
         
- //  t.refresh();
+     t.refresh();
        
        
-       Parent creerGroupe = FXMLLoader.load(getClass().getResource("/Gui/FXMLGestion_Match.fxml"));
+       Parent creerGroupe = FXMLLoader.load(getClass().getResource("/GUI/FXMLGestion_Match.fxml"));
         Scene sceneAffichage = new Scene(creerGroupe);
         sceneAffichage.getStylesheets().add(getClass().getResource("/Asset/fxml.css").toExternalForm());
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -366,7 +369,7 @@ public class Gestion_match extends Application implements Initializable {
     
     @FXML
     void c_phase(ActionEvent event) throws IOException {
-  Parent root = FXMLLoader.load(getClass().getResource("/Gui/FXMLConsulter_Match.fxml"));
+  Parent root = FXMLLoader.load(getClass().getResource("/GUI/FXMLConsulter_Match.fxml"));
         Scene s = new Scene(root); 
         s.getStylesheets().add(getClass().getResource("/Asset/fxml.css").toExternalForm());
         Stage s2 =(Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -399,10 +402,10 @@ public class Gestion_match extends Application implements Initializable {
         alert.showAndWait();
         }
       
-//     t.refresh();
+      t.refresh();
        
        
-       Parent creerGroupe = FXMLLoader.load(getClass().getResource("/Gui/FXMLGestion_Match.fxml"));
+       Parent creerGroupe = FXMLLoader.load(getClass().getResource("/GUI/FXMLGestion_Match.fxml"));
         Scene sceneAffichage = new Scene(creerGroupe);
        sceneAffichage.getStylesheets().add(getClass().getResource("/Asset/fxml.css").toExternalForm());
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -427,10 +430,8 @@ public class Gestion_match extends Application implements Initializable {
         {if(c>c2){
            int z1= e.AfficherEquipe(e1).getIdEquipe();
            int score=e.Consulterpoint(e1);
-
           Equipe ea=new Equipe(z1,3+score);
-         e.modifierEquipe(ea, ea.idEquipe);
-
+         e.modifierEquipe(ea, z1);
           //Equipe ea=new Equipe(z1,3+score);
          //e.modifierEquipescore(ea, ea.getIdEquipe());
 
@@ -442,23 +443,9 @@ public class Gestion_match extends Application implements Initializable {
              int z1= e.AfficherEquipe(e2).getIdEquipe();
            int score=e.Consulterpoint(e2);
 
-
           Equipe ea=new Equipe(z1,3+score);
-         e.modifierEquipe(ea, ea.idEquipe);
+         e.modifierEquipe(ea, z1);
 
-          //Equipe ea=new Equipe(z1,3+score);
-         //e.modifierEquipescore(ea, ea.idEquipe);
-
-
-
-          //Equipe ea=new Equipe(z1,3+score);
-         e.modifierEquipe(ea, ea.idEquipe);
-          //Equipe ea=new Equipe(z1,3+score);
-         //e.modifierEquipescore(ea, ea.idEquipe);
-
-
-     //     Equipe ea=new Equipe(z1,3+score);
-         e.modifierEquipe(ea, ea.idEquipe);
           //Equipe ea=new Equipe(z1,3+score);
          //e.modifierEquipescore(ea, ea.idEquipe);
 
@@ -478,22 +465,10 @@ public class Gestion_match extends Application implements Initializable {
           Equipe ea2=new Equipe(z2,1+score2);
          e.modifierEquipe(ea2, ea2.idEquipe);
 
+         
 
-          //Equipe ea=new Equipe(z1,1+score);
-         //e.modifierEquipescore(ea, ea.idEquipe);
-        
-          //Equipe ea2=new Equipe(z2,1+score2);
-         //e.modifierEquipescore(ea2, ea2.getIdEquipe());
-
-
-          //Equipe ea=new Equipe(z1,1+score);
-         //e.modifierEquipescore(ea, ea.idEquipe);
-       //   int z2= e.AfficherEquipe(e2).getIdEquipe();
-        //   int score2=e.Consulterpoint(e2);
-          //Equipe ea2=new Equipe(z2,1+score2);
-         //e.modifierEquipescore(ea2, ea2.getIdEquipe());
-
-             Notifications.create().title("Changement du score")
+             Notifications.create()
+           .title("Changement du score")
               .text("Null")
              .showInformation();
         }}
@@ -517,10 +492,11 @@ public class Gestion_match extends Application implements Initializable {
           
           Equipe ea=e.AfficherEquipe(z1);
           ea.setPhase("1/4");
+
          e.modifierEquipe(ea, z1);
 
-         //e.modifierEquipescore(ea, z1);
 
+         
           int z2=e.AfficherEquipe(e1).getIdEquipe();
         Equipe eq2=e.AfficherEquipe(z2);
         eq2.setPhase("Eliminée");
@@ -553,10 +529,7 @@ public class Gestion_match extends Application implements Initializable {
 
          e.modifierEquipe(ea, z1);
 
-         //e.modifierEquipescore(ea, z1);
-
-         e.modifierEquipe(ea, z1);
-         //e.modifierEquipescore(ea, z1);
+         
 
          
           int z2=e.AfficherEquipe(e1).getIdEquipe();
@@ -591,31 +564,18 @@ public class Gestion_match extends Application implements Initializable {
            Equipe ea=e.AfficherEquipe(z1);
           ea.setPhase("final");
 
-
          e.modifierEquipe(ea, z1);
 
-
-         //e.modifierEquipescore(ea, z1);
+         
 
          
          int z2= e.AfficherEquipe(e1).getIdEquipe();
            Equipe ea1=e.AfficherEquipe(z2);
-          ea.setPhase("3éme place");
+          ea1.setPhase("3éme place");
 
          e.modifierEquipe(ea1, z2); 
 
-         //e.modifierEquipescore(ea1, z2); 
-
-
-         e.modifierEquipe(ea1, z2); 
-
-         //e.modifierEquipescore(ea1, z2); 
-
-
-
-         e.modifierEquipe(ea1, z2); 
-
-         //e.modifierEquipescore(ea1, z2); 
+       
 
          
          Notifications.create()
@@ -624,10 +584,10 @@ public class Gestion_match extends Application implements Initializable {
              .showInformation();
         }} 
         }
-//    t.refresh();
+      t.refresh();
        
        
-       Parent creerGroupe = FXMLLoader.load(getClass().getResource("/Gui/FXMLGestion_Match.fxml"));
+       Parent creerGroupe = FXMLLoader.load(getClass().getResource("/GUI/FXMLGestion_Match.fxml"));
         Scene sceneAffichage = new Scene(creerGroupe);
        sceneAffichage.getStylesheets().add(getClass().getResource("/Asset/fxml.css").toExternalForm());
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -695,7 +655,7 @@ public class Gestion_match extends Application implements Initializable {
      @FXML
     void modifier_Ca(ActionEvent event) throws IOException {
        
-       Parent creerGroupe = FXMLLoader.load(getClass().getResource("/Gui/FXMLC_Stade.fxml"));
+       Parent creerGroupe = FXMLLoader.load(getClass().getResource("/GUI/FXMLC_Stade.fxml"));
         Scene sceneAffichage = new Scene(creerGroupe);
        sceneAffichage.getStylesheets().add(getClass().getResource("/Asset/fxml.css").toExternalForm());
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -707,35 +667,14 @@ public class Gestion_match extends Application implements Initializable {
     }
     @FXML
     void gp(ActionEvent event) {
-
-
-
-        e.chercherParGroupe(this.gp.getValue());
-
-
         
         
 
         e.chercherParGroupe(this.gp.getValue());
-
-                e.chercherParGroupe(this.gp.getValue());
         List z = new ArrayList<>();
         z=e.chercherParGroupe(this.gp.getValue()).stream().map(e->e.getPays()).collect(Collectors.toList());
 
-       // e.AfficherEquipepargp(this.gp.getValue());
-
-
-      
-        //z=e.AfficherEquipepargp(this.gp.getValue()).stream().map(e->e.getPays()).collect(Collectors.toList());
-
-
-      
-        //z=e.AfficherEquipepargp(this.gp.getValue()).stream().map(e->e.getPays()).collect(Collectors.toList());
-
-
-
-//        List z = new ArrayList<>();
-        //z=e.AfficherEquipepargp(this.gp.getValue()).stream().map(e->e.getPays()).collect(Collectors.toList());
+     
 
         this.id_equipe.getItems().clear();
         this.id_equipe.getItems().addAll(z);
@@ -769,11 +708,14 @@ public class Gestion_match extends Application implements Initializable {
        
        Stade.setCellValueFactory(c-> new SimpleStringProperty(c.getValue().getStade().getNom_Stade()));
        ph.setCellValueFactory(new PropertyValueFactory<>("phase"));
-       h.setCellValueFactory(new PropertyValueFactory<>("heureMatch"));
-       dt.setCellValueFactory(new PropertyValueFactory<>("dateMatch"));
-       sc.setCellValueFactory(new PropertyValueFactory<>("score"));
-       sc1.setCellValueFactory(new PropertyValueFactory<>("score2"));
+       h.setCellValueFactory(c-> new SimpleStringProperty(c.getValue().getHeureMatch()));
+       dt.setCellValueFactory(c-> new SimpleStringProperty(c.getValue().getDateMatch().toString()));
+       sc.setCellValueFactory(c-> new SimpleObjectProperty(String.valueOf(c.getValue().getScore())));
        
+       sc1.setCellValueFactory(c-> new SimpleObjectProperty(String.valueOf(c.getValue().getScore2())));
+        System.out.println(h.getCellData(0));
+        System.out.println(dt.getCellData(0));
+        System.out.println(sc.getCellData(0));
          initDrawer();
        
      

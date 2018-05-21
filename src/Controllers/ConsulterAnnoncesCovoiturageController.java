@@ -47,6 +47,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import Services.ServiceUtilisateur;
+import com.jfoenix.controls.JFXComboBox;
 import tray.notification.NotificationType;
 import tray.notification.TrayNotification;
 
@@ -79,6 +80,8 @@ public class ConsulterAnnoncesCovoiturageController extends Application implemen
     private TableColumn<?, ?> idannonce;
  @FXML
     private TableColumn<?, ?> Adressedepart;
+    @FXML
+    private TableColumn<?, ?> places;
    @FXML
     private Button btn_retour;
      @FXML
@@ -108,6 +111,8 @@ public class ConsulterAnnoncesCovoiturageController extends Application implemen
     private JFXDrawer SidePannel;
     @FXML
     private JFXHamburger Sp;
+        @FXML
+    private JFXComboBox<Integer> nbplaces;
 
   public static Utilisateur globalDestMail=null;
    private void initDrawer() {
@@ -301,6 +306,7 @@ ServiceUtilisateur SU=new ServiceUtilisateur();
         Adressearrivee.setCellValueFactory(new PropertyValueFactory<>("adresse_arrivee"));
         Tarrifs.setCellValueFactory(new PropertyValueFactory<>("tarif"));
         idannonce.setCellValueFactory(new PropertyValueFactory<>("id_annonce"));
+        places.setCellValueFactory(new PropertyValueFactory<>("nrbplaces"));
         idannonceur.setCellValueFactory(c-> new SimpleStringProperty(String.valueOf(c.getValue().getUser().getId_user())));
         //String e1= t.getSelectionModel().getSelectedItem().getEquipe1().getPays();
         
@@ -318,7 +324,7 @@ ServiceUtilisateur SU=new ServiceUtilisateur();
                         btn_signaler.setVisible(true);
         btn_envoyer_mail.setVisible(true);
         btn_conlt_itin.setVisible(true);
-     
+     nbplaces.getItems().clear();
            
                 Annonce = (Annonce_covoiturage) tableannonces.getItems().get(tableannonces.getSelectionModel().getSelectedIndex());
                int selectedAnn = tableannonces.getSelectionModel().getSelectedIndex();
@@ -332,9 +338,13 @@ ServiceUtilisateur SU=new ServiceUtilisateur();
                 globalDestMail=SU.findUtilisateurbyID(IdAnnonceur);
                 AdrDepart=Annonce.getAdresse_depart();
                 AdrArrivee=Annonce.getAdresse_arrivee();
+                 for(int i=1;i<=Annonce.getNbplaces();i++)
+                { nbplaces.getItems().add(i);}
+                            
                             }
              
         });
+        
     }
        @FXML
     void ViderFiltres(ActionEvent event) throws IOException {

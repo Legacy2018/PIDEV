@@ -5,7 +5,7 @@
  */
 package Entities;
 
-import java.sql.Date;
+import java.util.Date;
 
 /**
  *
@@ -15,21 +15,38 @@ public class match {
     
     private int idMatch;
     private int nbButTot;
-    private String score;
-    private String score2;
-    private String dateMatch;
+    private int score;
+    private int score2;
+    private Date dateMatch;
     private String heureMatch;
     private stade stade;
     private Equipe equipe1;
     private Equipe equipe2;
     private String phase;
-   
+    private boolean estJoue; 
+
+    public match(Date d, String format, Equipe eqa, stade saa, Equipe eqb, String value) {
+       this.dateMatch=d;
+       this.heureMatch=format;
+       this.equipe1=eqa;
+       this.equipe2=eqb;
+       this.stade=saa;
+       this.phase=value;
+    }
+
+    public boolean isEstJoue() {
+        return estJoue;
+    }
+
+    public void setEstJoue(boolean estJoue) {
+        this.estJoue = estJoue;
+    }
 
     
 
-    public match(String dateMatch, String heureMatch, Equipe equipe1,stade stade,Equipe  equipe2, String phase) {
+    public match(Date dateMatch, Equipe equipe1,stade stade,Equipe  equipe2, String phase) {
         this.dateMatch = dateMatch;
-        this.heureMatch = heureMatch;
+     
         this.stade = stade;
         this.equipe1 = equipe1;
         this.equipe2 = equipe2;
@@ -41,7 +58,7 @@ public class match {
     }
     
 
-    public match(String score,String score2) {
+    public match(int score,int score2) {
         this.score = score;
         this.score2=score2;
     }
@@ -65,11 +82,11 @@ public class match {
         return nbButTot;
     }
 
-    public String getScore() {
+    public int getScore() {
         return score;
     }
 
-    public String getDateMatch() {
+    public Date getDateMatch() {
         return dateMatch;
     }
     
@@ -93,19 +110,19 @@ public class match {
         this.nbButTot = nbButTot;
     }
 
-    public void setScore(String Score) {
+    public void setScore(int Score) {
         this.score = Score;
     }
 
-    public String getScore2() {
+    public int getScore2() {
         return score2;
     }
 
-    public void setScore2(String score2) {
+    public void setScore2(int score2) {
         this.score2 = score2;
     }
 
-    public void setDateMatch(String dateMatch) {
+    public void setDateMatch(Date dateMatch) {
         this.dateMatch = dateMatch;
     }
 

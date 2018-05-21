@@ -151,7 +151,7 @@ void ac(MouseEvent event) throws IOException{
     }
     @FXML
     void d(ActionEvent event){
-          List<match> lsa=M.chercherMatchParDate(dta.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+          List<match> lsa=M.chercherMatchParDate(java.sql.Date.valueOf(dta.getValue()));
         data = FXCollections.observableArrayList();
        lsa.stream().forEach((e) -> {
             data.add(e);
