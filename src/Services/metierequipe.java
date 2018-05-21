@@ -40,7 +40,7 @@ public class metierequipe {
     public int afficherNombreButParEquipe(int ideq) {
         int somme = 0;
         try {
-            ResultSet rest = st.executeQuery("SELECT SUM(joueur.nombre_de_buts) FROM joueur where id_equipe=" + ideq);
+            ResultSet rest = st.executeQuery("SELECT SUM(joueur.nombre_de_buts) FROM joueur where idEquipe=" + ideq);
             rest.next();
             somme = rest.getInt(1);
             System.out.println("pays");
@@ -72,7 +72,7 @@ public class metierequipe {
 
         try {
 
-            ResultSet rest = st.executeQuery("SELECT count(`joueur`.`id_joueur`) FROM joueur , equipe WHERE equipe.id_equipe= joueur.id_equipe and joueur.id_equipe=" + e.getIdEquipe());
+            ResultSet rest = st.executeQuery("SELECT count(`joueur`.`id_joueur`) FROM joueur , equipe WHERE equipe.id_equipe= joueur.idEquipe and joueur.id_equipe=" + e.getIdEquipe());
             rest.next();
             resultat = rest.getInt(1);
 
@@ -88,7 +88,7 @@ public class metierequipe {
 
         try {
 
-            ResultSet rest = st.executeQuery(" SELECT SUM(`cartrouge`) FROM joueur , equipe WHERE equipe.id_equipe= joueur.id_equipe and joueur.id_equipe=" + e.getIdEquipe());
+            ResultSet rest = st.executeQuery(" SELECT SUM(`cartrouge`) FROM joueur , equipe WHERE equipe.id_equipe= joueur.idEquipe and joueur.idEquipe=" + e.getIdEquipe());
             rest.next();
             resultat = rest.getInt(1);
 
@@ -104,7 +104,7 @@ public class metierequipe {
 
         try {
 
-            ResultSet rest = st.executeQuery("SELECT SUM(`cartrouge`) FROM joueur , equipe WHERE equipe.id_equipe= joueur.id_equipe");
+            ResultSet rest = st.executeQuery("SELECT SUM(`cartrouge`) FROM joueur , equipe WHERE equipe.id_equipe= joueur.idEquipe");
             rest.next();
             resultat = rest.getInt(1);
 
@@ -120,7 +120,7 @@ public class metierequipe {
 
         try {
 
-            ResultSet rest = st.executeQuery(" SELECT SUM(`cartjaune`) FROM joueur , equipe WHERE equipe.id_equipe= joueur.id_equipe and joueur.id_equipe=" + e.getIdEquipe());
+            ResultSet rest = st.executeQuery(" SELECT SUM(`cartjaune`) FROM joueur , equipe WHERE equipe.id_equipe= joueur.idEquipe and joueur.idEquipe=" + e.getIdEquipe());
             rest.next();
             resultat = rest.getInt(1);
 
@@ -136,7 +136,7 @@ public class metierequipe {
 
         try {
 
-            ResultSet rest = st.executeQuery("SELECT SUM(`cartjaune`) FROM joueur , equipe WHERE equipe.id_equipe= joueur.id_equipe");
+            ResultSet rest = st.executeQuery("SELECT SUM(`cartjaune`) FROM joueur , equipe WHERE equipe.id_equipe= joueur.idEquipe");
             rest.next();
             resultat = rest.getInt(1);
 

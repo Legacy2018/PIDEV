@@ -161,6 +161,7 @@ public class MatchDAO implements IMatchDAO {
             while (resultat.next()) {
                 match match = new match();
                 match.setIdMatch(resultat.getInt(1));
+                
                 match.setScore(resultat.getInt(7));
                 match.setScore2(resultat.getInt(8));
                 Equipe e = new Equipe();
